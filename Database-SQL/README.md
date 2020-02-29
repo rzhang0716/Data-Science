@@ -1,1 +1,1 @@
-## This is for all sql coures (SQLite, MySQL) 
+## This is for all sql materials
