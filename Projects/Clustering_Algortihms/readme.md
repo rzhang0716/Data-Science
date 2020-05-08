@@ -17,3 +17,12 @@ Gaussian Mixture Model Clustering is a clustering algorithm which assumes each c
 
 #### 4. Density – Based Clustering (DBSCAN)
 Density-Based Clustering is different from the algortihms above, not all points will be in the clusters. Two important parameters in DBSCAN defines how to formulate a cluster. Minumum numbers of points (m) and maximum distance between two samples (d). For any point we started, it needs to find m points within d distance. If there are m points within d distance, this point will be identified as core point; if not this point will be indenfied as noise points unless find another core point within d distance.
+
+
+## References
+1. https://www.displayr.com/what-is-hierarchical-clustering/
+2. https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-knowa36d136ef68
+3. https://www.analyticsvidhya.com/blog/2019/10/gaussian-mixture-models-clustering/
+4. https://www.dummies.com/programming/big-data/data-science/how-to-create-anunsupervised-
+learning-model-with-dbscan/
+5. https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation
