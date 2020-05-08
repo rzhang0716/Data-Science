@@ -1,2 +1,5 @@
-# Project Description
-This project uses the IRIS dataset from python, to compare 4 different clustering algorithms. Data visualization, Principal Component Analysis, K-means clustering, Density-based clustering, Hierachial clustering and Gaussian Maximum Model clustering are applied. The performance is compared by visualization and adjusted rand score.
+# Clustering algorithms validation and comparison 
+
+## *Introduction*
+
+Clustering is an important Machine Learning Technology work on data without labels. Unlike the data with labels, which we can estimate the values (regression) or classification. For data withoutlabels, we can use clustering to group the different data points, we assume the data points in the same group have similar or same features, data points in the different groups have different features. Here, we’ll use four different algorithms on clustering (K-means nearest, Hierarchial,Density Based Clustering, Gaussian Maximum Model Clustering), optimize the parameters and then comparethree different algorithms on different datasets to find the best performance algorithm on eachdataset. Iris dataset and is used to here. Although the IRIS dataset has labels (target), we willhide them then apply our algorithms to do the clustering. Accuracy and confusion matrix are two candidates to used for compareing performances among three algorithms.
