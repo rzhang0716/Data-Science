@@ -1,3 +1,3 @@
 ## Leetcode Databse Problems (Based on MySQL)
 
-*Question 1
+* Question 1
