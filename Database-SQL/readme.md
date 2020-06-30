@@ -1,4 +1,4 @@
-## Leetcode Databse Problems (Based on MySQL)
+## Leetcode Databse Problems (MySQL)
 
 * Question 1: Write an SQL query to find the id and the name of all students who are enrolled in departments that no longer exists.
 
