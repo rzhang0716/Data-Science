@@ -35,3 +35,9 @@ SELECT p.product_id as product_id, ROUND((sum(price*units))/(sum(units)),2) as a
 #### Question #511: Write an SQL query that reports the first login date for each player
 SELECT player_id, min(event_date) as first_login FROM Activity GROUP BY player_id;
 
+#### Question #1173: Write an SQL query to find the percentage of immediate orders in the table, rounded to 2 decimal places.
+SELECT round(sum(order_date = customer_pref_delivery_date)*100/count(*),2) as immediate_percentage FROM Delivery;
+
+#### Question #613: Write a query to find the shortest distance between two points in these points.
+SELECT min(abs(a.x-b.x)) as shortest FROM point a JOIN point b WHERE a.x != b.x;
+
