@@ -41,3 +41,7 @@ SELECT round(sum(order_date = customer_pref_delivery_date)*100/count(*),2) as im
 #### Question #613: Write a query to find the shortest distance between two points in these points.
 SELECT min(abs(a.x-b.x)) as shortest FROM point a JOIN point b WHERE a.x != b.x;
 
+#### Question #595: Write a SQL solution to output big countries' name, population and area.
+SELECT name, population, area FROM World WHERE population > 25000000 OR area > 3000000;
+
+
