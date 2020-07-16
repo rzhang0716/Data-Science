@@ -1,4 +1,4 @@
-<h1><center>Leetcode Databse Problems (MySQL)</center>
+<h1><centerLeetcode Databse Problems (MySQL)>
 
 #### Question #1350: Write an SQL query to find the id and the name of all students who are enrolled in departments that no longer exists.
 
