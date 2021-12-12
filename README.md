@@ -1,6 +1,6 @@
 - : I love statistics, programming, data science, and cats
 - 🌱 I’m addicted to learning and growing every day
-- :earth_africa: I am currently continue studying in computer science in OMSCS
+- :earth_africa: I am currently working as a Data Scientist (Biostatistician)
 - 📫 How to find me: 
   - :bulb: [Google Scholar](https://scholar.google.com/citations?user=hMmoRWsAAAAJ&hl=en)
   - :office: [LinkedIn](https://www.linkedin.com/in/rzhang12/)
