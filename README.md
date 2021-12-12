@@ -1,1 +1,5 @@
-### This is for all work on Data Science
+- : I love statistics, programming, data science, and cats
+- 🌱 I’m addicted to learning and growing every day
+- :earth_africa: I am currently continue studying in computer science in OMSCS
+- 📫 How to find me: 
+  - :office: [LinkedIn](https://www.linkedin.com/in/rzhang12/)
