@@ -2,6 +2,7 @@
 - 🌱 I’m addicted to learning and growing every day
 - :earth_africa: I am currently continue studying in computer science in OMSCS
 - 📫 How to find me: 
+  - :bulb: [Google Scholar](https://scholar.google.com/citations?user=hMmoRWsAAAAJ&hl=en)
   - :office: [LinkedIn](https://www.linkedin.com/in/rzhang12/)
 
 [![Ran's github stats](https://github-readme-stats.vercel.app/api?username=rzhang0716&count_private=true&show_icons=true&theme=radical&hide_rank=false)]
