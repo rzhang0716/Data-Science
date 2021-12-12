@@ -1,6 +1,7 @@
-- : I love statistics, programming, data science, and cats
-- 🌱 I’m addicted to learning and growing every day
-- :earth_africa: I am currently working as a Data Scientist (Biostatistician)
+- 🌱 I am a Ph.D. in Biochemistry and a master in Statistics
+- :earth_africa: I am currently studing computer science at Georgia Tech (Online Master)
+- :zap: I am currently working as a Data Scientist (Biostatistician) in Nemours
+
 - 📫 How to find me: 
   - :bulb: [Google Scholar](https://scholar.google.com/citations?user=hMmoRWsAAAAJ&hl=en)
   - :office: [LinkedIn](https://www.linkedin.com/in/rzhang12/)
