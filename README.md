@@ -4,4 +4,4 @@
 - 📫 How to find me: 
   - :office: [LinkedIn](https://www.linkedin.com/in/rzhang12/)
 
-[![Ran's github stats](https://github-readme-stats.vercel.app/api?username=rzhang0716&count_private=true&show_icons=true&theme=radical&hide_rank=false
+[![Ran's github stats](https://github-readme-stats.vercel.app/api?username=rzhang0716&count_private=true&show_icons=true&theme=radical&hide_rank=false)]
