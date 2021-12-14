@@ -16,7 +16,6 @@ library(writexl)
 
 
 ```{r}
-setwd("~/Desktop/Private/Work/Nemours/ISPCTN/ClinicalTrals.gov")
 df_DE_2019 <- read_csv('2019-DE.csv')
 df_FL_2019 <- read_csv('2019-FL.csv')
 df_2019 <- read_csv('2019.csv')
