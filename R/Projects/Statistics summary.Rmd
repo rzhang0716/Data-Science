@@ -14,7 +14,6 @@ Import libraries and dataset
 ```{r}
 library(tidyverse)
 library(GGally)
-setwd("~/Desktop/Private/Work/Nemours/DE-CTR/#572 Brit Foster ")
 df <- read.csv('df.csv')
 ```
 
