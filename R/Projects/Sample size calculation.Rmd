@@ -1,0 +1,76 @@
+---
+title: "Sample size calculation"
+author: "RZ"
+date: "11/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Sample size calculation 
+```{r}
+# Power =0.8, effect size = 20, sd = 10.8 or 12.7
+power.t.test(power=0.8, sd=10.8, delta=20)
+power.t.test(power=0.8, sd=30.1, delta=20)
+```
+
+Plot with sample size and power 
+```{r}
+samplesizes <- seq(from=1,to=20,by=1)
+power.samplesizes <- power.t.test(n=samplesizes, sd=10.8, delta=20)$power
+plot(samplesizes,
+     power.samplesizes,
+     xlim=c(0,20),
+     xlab="Sample size",
+     ylab="Expected power",
+     ylim=c(0,1),
+     type="b",
+     col="darkorange",
+     lwd=5,axes=FALSE)
+axis(1,at=c(0,4,8,12,16,20))
+axis(2,at=c(0,0.25,0.5,0.75,1),labels=paste(c(0,25,50,75,100),"%"))
+```
+
+
+Plot with sample size and effect size
+```{r}
+differences <- seq(from=1,to=20,by=1)
+samplesize.sd1 <- sapply(differences,
+                          function(d){power.t.test(power=0.8,
+                                                   delta=d,
+                                                   sd=10.8,
+                                                   type="two.sample")$n})
+samplesize.sd2 <- sapply(differences,
+                          function(d){power.t.test(power=0.8,
+                                                   delta=d,
+                                                   sd=12.7,
+                                                   type="two.sample")$n})
+plot(differences,
+     samplesize.sd1,
+     xlim=c(0,20),
+     xlab="Expected difference between groups",
+     ylab="Required sample size",
+     ylim=c(0,300),
+     type="b",
+     col="darkblue",
+     lwd=5,axes=FALSE)
+lines(differences, samplesize.sd2,col="turquoise",lwd=5,type="b")
+axis(1,at=c(0,4,8,12,16,20))
+axis(2,at=c(300,200,150,100,50,0))
+legend(x="topright",lwd=5,bty="n",legend=c("SD=10.8","SD=12.7"),col=c("darkblue","turquoise"))
+```
+
+
+#################*****************######################
+Sample Size calculation based on Specificity and Sensitivity 
+#################*****************######################
+
+```{r}
+library(MKmisc)
+power.diagnostic.test(sens = 0.88, delta = 0.1, power = 0.95)
+power.diagnostic.test(sens = 0.99, delta = 0.14, power = 0.95)
+power.diagnostic.test(spec = 0.93, delta = 0.14, power = 0.95)
+```
+
