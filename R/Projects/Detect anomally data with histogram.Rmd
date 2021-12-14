@@ -16,7 +16,6 @@ library(readxl)
 ```
 
 ```{r}
-setwd("~/Desktop/Private/Work/Nemours/JHossain/Strang_Chedikel")
 df <- read_excel('df.xlsx')
 ```
 
