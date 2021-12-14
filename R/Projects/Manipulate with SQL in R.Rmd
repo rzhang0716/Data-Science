@@ -1,0 +1,93 @@
+---
+title: "ISPTCN"
+author: "Ran Zhang"
+date: "12/14/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(writexl)
+```
+
+
+```{r}
+setwd("~/Desktop/Private/Work/Nemours/ISPCTN/ClinicalTrals.gov")
+df_DE_2019 <- read_csv('2019-DE.csv')
+df_FL_2019 <- read_csv('2019-FL.csv')
+df_2019 <- read_csv('2019.csv')
+```
+
+```{r}
+df_DE_FL_index<- inner_join(df_FL_2019,df_DE_2019,by="NCT Number") %>% select(`NCT Number`)
+```
+
+```{r}
+df_DE_2019_only <- df_DE_2019 %>% filter(df_DE_2019$`NCT Number` %in% df_DE_FL_Index$`NCT Number` == FALSE)
+```
+
+```{r}
+df_FL_2019_only <- df_FL_2019 %>% filter(df_FL_2019$`NCT Number` %in% df_DE_FL_Index$`NCT Number` == FALSE)
+```
+
+```{r}
+df_DE_FL_2019 <- df_2019 %>% filter(df_2019$`NCT Number` %in% df_DE_FL_Index$`NCT Number` == TRUE) 
+```
+
+```{r}
+df_2019_all <- rbind(df_DE_2019_only, df_FL_2019_only, df_DE_FL_2019)
+```
+
+```{r}
+write_csv(df_2019_all, 'df_2019.csv')
+```
+
+
+```{r}
+df_DE_2020 <- read_csv('2020-DE.csv')
+df_FL_2020 <- read_csv('2020-FL.csv')
+df_2020 <- read_csv('2020.csv')
+```
+
+```{r}
+df_DE_FL_Index<- inner_join(df_FL_2020,df_DE_2020,by="NCT Number") %>% select(`NCT Number`)
+df_DE_2020_only <- df_DE_2020 %>% filter(df_DE_2020$`NCT Number` %in% df_DE_FL_Index$`NCT Number` == FALSE)
+df_FL_2020_only <- df_FL_2020 %>% filter(df_FL_2020$`NCT Number` %in% df_DE_FL_Index$`NCT Number` == FALSE)
+df_DE_FL_2020 <- df_2020 %>% filter(df_2020$`NCT Number` %in% df_DE_FL_Index$`NCT Number` == TRUE) 
+```
+
+```{r}
+df_2020_all <- rbind(df_DE_2020_only, df_FL_2020_only, df_DE_FL_2020)
+```
+
+```{r}
+write_csv(df_2020_all, 'df_2020.csv')
+```
+
+
+
+```{r}
+df_DE_2021 <- read_csv('2021-DE.csv')
+df_FL_2021 <- read_csv('2021-FL.csv')
+df_2021 <- read_csv('2021.csv')
+```
+
+```{r}
+df_DE_FL_Index<- inner_join(df_FL_2021,df_DE_2021,by="NCT Number") %>% select(`NCT Number`)
+df_DE_2021_only <- df_DE_2021 %>% filter(df_DE_2021$`NCT Number` %in% df_DE_FL_Index$`NCT Number` == FALSE)
+df_FL_2021_only <- df_FL_2021 %>% filter(df_FL_2021$`NCT Number` %in% df_DE_FL_Index$`NCT Number` == FALSE)
+df_DE_FL_2021 <- df_2021 %>% filter(df_2021$`NCT Number` %in% df_DE_FL_Index$`NCT Number` == TRUE) 
+```
+
+```{r}
+df_2021_all <- rbind(df_DE_2021_only, df_FL_2021_only, df_DE_FL_2021)
+```
+
+```{r}
+write_csv(df_2021_all, 'df_2021.csv')
+```
+
