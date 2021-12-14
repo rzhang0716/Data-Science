@@ -21,7 +21,6 @@ library(tidyverse)
 library(GGally)
 library(sjstats)
 library(lmerTest) # Used here for p-value output
-setwd("~/Desktop/Private/Work/Nemours/DE-CTR/#572 Brit Foster ")
 df <- read.csv('df.csv')
 ```
 
