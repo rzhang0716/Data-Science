@@ -1,0 +1,149 @@
+---
+title: 'DE-CTR #572'
+author: "RZ"
+date: "11/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Import libraries and dataset
+```{r}
+library(tidyverse)
+library(GGally)
+setwd("~/Desktop/Private/Work/Nemours/DE-CTR/#572 Brit Foster ")
+df <- read.csv('df.csv')
+```
+
+Extract 1-step useful columns to form different tables/tibbles 
+```{r}
+# Baseline 
+df0 <- df %>% select(hgb_0,hct_0,total_t_0) 
+
+# 2-6 month
+df1 <- df %>% select(hgb_1,hct_1,total_t_1)
+df1.1 <- df %>% select(hgb_2_1, hct_2_1, total_t_2_1) # Extra for df1
+
+# 6-9 month
+df2 <- df %>% select(hgb_2,hct_2,total_t_2)
+df2.1 <- df %>% select(hgb_2_2,hct_2_2,total_t_2_2)
+
+# 9-12 month
+df3 <- df %>% select(hgb_3,hct_3,total_t_3)
+df3.1 <- df %>% select(hgb_2_3,hct_2_3,total_t_2_3)
+
+# 12-18 month
+df4 <- df %>% select(hgb_4,hct_4,total_t_4)
+df4.1 <- df %>% select(hgb_2_4,hct_2_4,total_t_2_4)
+
+# >= 18 month
+df5 <- df %>% select(hgb_5,hct_5,total_t_5)
+df5.1 <- df %>% select(hgb_2_5,hct_2_5,total_t_2_5)
+```
+
+Find the correlation and summary statistics within each dataset
+```{r}
+options(warn = -1)
+df_c <- list(df0,df1,df2,df3,df4,df5)
+print(lapply(df_c,summary))
+print(lapply(df_c, ggpairs))
+options(warn = 0)
+```
+```{r}
+for (i in df_c){
+  print(apply(na.omit(i),2,sd))
+}
+```
+
+
+
+
+Load the statistics data and library here
+```{r}
+library(readxl)
+df_hgb_stat <-read_excel('Summary statistics.xlsx', sheet='hgb')
+df_hct_stat <-read_excel('Summary statistics.xlsx', sheet='hct')
+df_tt_stat <-read_excel('Summary statistics.xlsx', sheet='total_t')
+df_cor_stat <- read_excel('Summary statistics.xlsx', sheet='cor')
+```
+
+Pivot each table from wider to longer for plotting in the same plot
+```{r}
+# pivot hgb data wider to longer 
+df_hgb_stat_longer <- df_hgb_stat %>% pivot_longer(cols = c('Min','Median', 'Mean','Max'), names_to = 'category',values_to = 'value') 
+
+df_hct_stat_longer <- df_hct_stat %>% pivot_longer(cols = c('Min','Median', 'Mean','Max'), names_to = 'category',values_to = 'value') 
+
+df_tt_stat_longer <- df_tt_stat %>% pivot_longer(cols = c('Min','Median', 'Mean','Max'), names_to = 'category',values_to = 'value') 
+
+df_cor_stat_longer <- df_cor_stat %>% pivot_longer(cols = c('hgb-hct','hgb-total', 'hct-total'), names_to = 'category',values_to = 'cor')
+```
+Plot the min, mean, median, max change on each hgb, hct and total
+```{r}
+# For hgb
+my_colors <- c("red", "magenta", "cyan", 'green')
+my_labels <- c('Baseline','2-6 month', '6-9 month', '9-12 month', '12-18 month', '>18 month')
+ggplot(df_hgb_stat_longer,aes(x=Time,y=value, color=category)) + 
+  geom_line() +
+  geom_point() +
+  scale_color_manual(values = my_colors) +
+  scale_x_continuous(labels=my_labels) + 
+  ggtitle('hgb') + 
+  theme_bw()
+
+# For Hct
+ggplot(df_hct_stat_longer,aes(x=Time,y=value, color=category)) + 
+  geom_line() +
+  geom_point() +
+  scale_color_manual(values = my_colors) +
+  scale_x_continuous(labels=my_labels) + 
+  ggtitle('hct') + 
+  theme_bw()
+
+# For Total_t
+ggplot(df_tt_stat_longer,aes(x=Time,y=value, color=category)) + 
+  geom_line() +
+  geom_point() +
+  scale_color_manual(values = my_colors) +
+  scale_x_continuous(labels=my_labels) + 
+  ggtitle('total_t') + 
+  theme_bw()
+
+# For correlation
+cor_colors =  c("red", "magenta", 'green')
+ggplot(df_cor_stat_longer,aes(x=Time,y=cor, color=category)) + 
+  geom_line() +
+  geom_point() +
+  scale_color_manual(values = cor_colors) +
+  scale_x_continuous(labels=my_labels) +
+  ggtitle('correlation') + 
+  theme_bw()
+```
+
+Another one with standard deviation
+```{r}
+library(readxl)
+df_stat <-read_excel('Summary statistics.xlsx', sheet='Sheet2')
+df_mean <- df_stat %>% select('Time','Mean', 'Category')
+df_sd <- df_stat %>% select('Time','sd', 'Category')
+
+my_labels <- c('Baseline','2-6 month', '6-9 month', '9-12 month', '12-18 month', '>18 month')
+ggplot(df_mean,aes(x=Time,y=Mean, color=Category)) + 
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(labels=my_labels) + 
+  ggtitle('Mean') + 
+  theme_bw()
+
+
+ggplot(df_sd,aes(x=Time,y=sd, color=Category)) + 
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(labels=my_labels) + 
+  ggtitle('Standard Deviation') + 
+  theme_bw()
+```
+

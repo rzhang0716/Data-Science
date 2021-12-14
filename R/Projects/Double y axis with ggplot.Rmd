@@ -1,0 +1,50 @@
+---
+title: "visualization\"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Import libraries 
+```{r}
+library(tidyverse)
+library(patchwork) # To display 2 charts together
+library(hrbrthemes)
+```
+
+Prepare data  
+```{r}
+x <- c(0,1600)
+y1 <- c(13.18,16.45)
+y2 <- c(39.46, 50.71)
+
+
+df <- as_tibble(cbind(x,y1,y2))
+colnames(df) <- c('Total Testosterone ng/dL','Hemoglobin g/dl','Hematocrit %')
+```
+
+Visualization
+```{r}
+p <-ggplot(df,aes(x=`Total Testosterone ng/dL`)) + 
+  geom_line(aes(y=`Hemoglobin g/dl`,linetype='hgb')) + 
+  geom_line(aes(y=`Hematocrit %`*1/3,linetype='hct')) +
+  scale_x_continuous(expand = c(0, 10), breaks = c(0,400,800,1200,1600), limits = c(0, 1600)) + 
+  scale_y_continuous(
+    name = 'Hemoglobin g/dl', breaks = seq(10,20, by=2), limits = c(10, 20),
+    sec.axis = sec_axis(trans=~.*3, name='Hematocrit %',breaks = c(30,40,50,60)
+  )) + 
+   ggtitle("Testosterone effect on hgb+hct")+
+  theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank(),panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_rect(colour = "black", fill=NA, size=1),
+    panel.background = element_blank())
+p
+```
+
+```{r}
+setwd("~/Downloads")
+ggsave(filename = 'plo2.jpg',plot = p,dpi = 300)
+```
+

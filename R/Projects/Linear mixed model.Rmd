@@ -1,0 +1,443 @@
+---
+title: "Linear mixed model"
+author: "RZ"
+date: "11/16/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+*******************************
+Linear Mixed Effects model
+*******************************
+
+Step 1: Setting up packages and the working directory
+```{r}
+# Import libraries and data set
+library(tidyverse)
+library(GGally)
+library(sjstats)
+library(lmerTest) # Used here for p-value output
+setwd("~/Desktop/Private/Work/Nemours/DE-CTR/#572 Brit Foster ")
+df <- read.csv('df.csv')
+```
+
+Step 2: Data Cleaning
+```{r}
+# Data Preparation
+hgb <- c('hgb_0', 'hgb_1', 'hgb_2', 'hgb_3', 'hgb_4', 'hgb_5')
+hgb_extra <- c('hgb_2_1','hgb_2_2','hgb_2_3','hgb_2_4','hgb_2_5')
+hct <- c('hct_0', 'hct_1', 'hct_2', 'hct_3', 'hct_4', 'hct_5')
+hct_extra <- c('hct_2_1','hct_2_2','hct_2_3','hct_2_4','hct_2_5')
+total_t <- c('total_t_0','total_t_1','total_t_2','total_t_3','total_t_4','total_t_5')
+total_t_extra <- c('total_t_2_1','total_t_2_2','total_t_2_3','total_t_2_4','total_t_2_5')
+df_hgb <- df %>% select(record_id,hgb)
+df_hct <- df %>% select(record_id,hct)
+```
+
+
+```{r}
+df_total <- df %>% select(record_id,total_t)
+time_c <- c('time_0','time_1','time_2','time_3','time_4','time_5')
+colnames(df_hgb) <- c('ID','time_0','time_1','time_2','time_3','time_4','time_5')
+colnames(df_hct) <- c('ID','time_0','time_1','time_2','time_3','time_4','time_5')
+colnames(df_total) <- c('ID','time_0','time_1','time_2','time_3','time_4','time_5')
+
+# Convert from longer to wider
+df_hgb_long <- df_hgb %>% pivot_longer(cols = time_c, names_to = 'time',values_to = 'hgb_value')
+df_hgb_long$time <- as.factor(df_hgb_long$time)
+
+df_hct_long <- df_hct %>% pivot_longer(cols = time_c, names_to = 'time',values_to = 'hct_value') 
+df_hct_long$time <- as.factor(df_hct_long$time)
+
+df_total_long <- df_total %>% pivot_longer(cols = time_c, names_to = 'time',values_to = 'total_value') 
+df_total_long$time <- as.factor(df_total_long$time)
+
+# Combine Data Frames
+df_hct_total <- inner_join(df_hct_long,df_total_long,by=c('ID','time'))
+df_hgb_total <- inner_join(df_hgb_long,df_total_long,by=c('ID','time'))
+
+# Convert time to numeric
+fac_num <- function(x){
+  if (x == 'time_0') {
+    x <- 0
+  } else if (x == 'time_1'){
+    x <- 1
+  } else if ( x=='time_2') {
+    x <- 2
+  } else if (x=='time_3') {
+    x <- 3
+  } else if (x =='time_4') {
+    x <- 4
+  } else if (x=='time_5') {
+    x <- 5
+  }
+}
+# Convert the data type of time from factor/string to numeric
+df_hct_total$time <- unlist(lapply(df_hct_total$time, fac_num))
+df_hgb_total$time <- unlist(lapply(df_hgb_total$time, fac_num))
+
+# Remove the missing values
+df_hct_na <- na.omit(df_hct_total)
+df_hgb_na <- na.omit(df_hgb_total)
+```
+
+
+
+```{r}
+df_hgb1 <- df_hgb_na %>% select(-c('fit','time','ID'))
+df_hct1 <- df_hct_na %>% select(-c('time','ID'))
+
+colnames(df_hct1) <- c('Hematocrit %','Total Testosterone ng/dL')
+colnames(df_hgb1) <- c('Hemoglobin g/dl','Total Testosterone ng/dL')
+
+df_hgb_hct <- cbind(df_hct1,df_hgb1)
+df_hgb_hct <- df_hgb_hct %>% select(c(1,2,3))
+```
+
+
+```{r}
+
+```
+
+
+Step 3: Plotting the data 
+```{r}
+ggplot(data = df_hgb_na, aes(x = time, y = hgb_value,col=ID,group=ID)) + 
+  geom_point(size=1.2, alpha=.8, position = 'jitter') +  #to add some random noise 
+  geom_smooth(method=lm, se=FALSE, size=0.5, alpha=0.8) +
+  scale_color_gradientn(colours = rainbow(100))+
+  theme_minimal() 
+```
+```{r}
+library(ggeffects)
+pred.mm <-ggpredict(hgb.m3, terms=c('total_value'))
+
+(ggplot(pred.mm) + 
+   geom_line(aes(x = x, y = predicted)) +          # slope
+   geom_ribbon(aes(x = x, ymin = predicted - std.error, ymax = predicted + std.error), 
+               fill = "lightgrey", alpha = 0.5) +  # error band
+   geom_point(data = df_hgb_na,                      # adding the raw data (scaled values)
+              aes(x = total_value, y = hgb_value, colour = time)) + 
+  scale_color_gradientn(colours = rainbow(5))+
+   labs(x = "testosterone", y = "hgb_value", 
+        title = "realtionship between testosterone and hgb") + 
+   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+panel.background = element_blank(), axis.line = element_line(colour = "black"))
+)
+
+
+```
+
+```{r}
+pred.mm1 <-ggpredict(hgb.m3, terms=c('time'))
+
+(ggplot(pred.mm1) + 
+   geom_line(aes(x = x, y = predicted)) +          # slope
+   geom_ribbon(aes(x = x, ymin = predicted - std.error, ymax = predicted + std.error), 
+               fill = "lightgrey", alpha = 0.5) +  # error band
+   geom_point(data = df_hgb_na,                      # adding the raw data (scaled values)
+              aes(x = time, y = hgb_value, colour = total_value)) +
+    scale_color_gradientn(colours = rainbow(10))+
+    scale_x_continuous(breaks = seq(0,1,by=0.2)) +
+   labs(x = "time", y = "hgb_value", 
+        title = "realtionship between time and hgb") + 
+   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+panel.background = element_blank(), axis.line = element_line(colour = "black"))
+)
+```
+
+
+```{r}
+pred.mm2 <-ggpredict(hct.m3, terms=c('total_value'))
+
+(ggplot(pred.mm2) + 
+   geom_line(aes(x = x, y = predicted)) +          # slope
+   geom_ribbon(aes(x = x, ymin = predicted - std.error, ymax = predicted + std.error), 
+               fill = "lightgrey", alpha = 0.5) +  # error band
+   geom_point(data = df_hct_na,                      # adding the raw data (scaled values)
+              aes(x = total_value, y = hct_value, colour = time)) + 
+  scale_color_gradientn(colours = rainbow(5))+
+   labs(x = "testosterone", y = "hct", 
+        title = "realtionship between testosterone and hct") + 
+   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+panel.background = element_blank(), axis.line = element_line(colour = "black"))
+)
+```
+
+
+```{r}
+pred.mm3 <-ggpredict(hct.m3, terms=c('time'))
+
+(ggplot(pred.mm3) + 
+   geom_line(aes(x = x, y = predicted)) +          # slope
+   geom_ribbon(aes(x = x, ymin = predicted - std.error, ymax = predicted + std.error), 
+               fill = "lightgrey", alpha = 0.5) +  # error band
+   geom_point(data = df_hct_na,                      # adding the raw data (scaled values)
+              aes(x = time, y = hct_value, colour = total_value)) +
+    scale_x_continuous(breaks = seq(0,1,by=0.2)) +
+    scale_color_gradientn(colours = rainbow(10))+
+   labs(x = "time", y = "hct_value", 
+        title = "realtionship between time and hct") + 
+   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+panel.background = element_blank(), axis.line = element_line(colour = "black"))
+)
+```
+```{r}
+hct_hgb <- inner_join(df_hct_na,df_hgb_na)
+
+ggplot(data = hct_hgb, aes(x = hct_value, y = hgb_value,col=time)) + 
+  geom_point(size=1.2, alpha=.8, position = 'jitter') +  #to add some random noise 
+  geom_smooth(method=lm, se=FALSE, size=0.5, alpha=0.8) +
+  scale_color_gradientn(colours = rainbow(5))+
+  theme_minimal() 
+```
+```{r}
+df_hgb_na$fit <-predict(hgb.m3)
+ggplot(data = df_hgb_na, aes(x = total_value, y = hgb_value,col=time, group=interaction(time,total_value))) + 
+  facet_grid(~time) + 
+  geom_line(aes(y=fit)) + 
+  geom_point(size=1.2, alpha=.8, position = 'jitter') +  #to add some random noise 
+  geom_smooth(method=lm, se=FALSE, size=0.5, alpha=0.8) +
+  scale_color_gradientn(colours = rainbow(5))+
+  theme_minimal() 
+```
+
+
+```{r}
+plot_model(hct.m3, type='re')
+```
+
+```{r}
+plot_model(hgb.m3, type='re')
+```
+
+
+Step 4: Analysis 
+Fit the linear mixed model on hct
+```{r}
+# Scale the time first 
+
+range01 <- function(x){(x-min(x))/(max(x)-min(x))}
+df_hgb_na['time'] <- range01(df_hgb_na$time)
+df_hct_na['time'] <- range01(df_hct_na$time)
+
+# Find the best random effects structure
+hct.nullmodel1 <- lmer(hct_value ~ 1 + (1|ID), data=df_hct_na,REML=FALSE)
+hct.nullmodel2 <- lmer(hct_value ~ 1 + (1+time|ID), data=df_hct_na,REML=FALSE)
+print(anova(hct.nullmodel1,hct.nullmodel2))
+# hct.nullmodel3 <- lmer(hct_value ~ 1 + (1+total_value*time|ID), data=df_hct_na) 
+# not works here as number of observations < number of random effects
+
+
+# Find the best fixed effects
+hct.m1 <- lmer(hct_value ~ total_value + (1+time|ID), data=df_hct_na, REML=FALSE)
+print(summary(hct.m1))
+hct.m2 <- lmer(hct_value ~ total_value + time + (1+time|ID), data=df_hct_na, REML=FALSE)
+print(summary(hct.m2))
+hct.m3 <- lmer(hct_value ~ total_value * time + (1+time|ID), data=df_hct_na, REML=FALSE)
+print(summary(hct.m3))
+
+# Compare Model Fit
+print(anova(hct.m1,hct.m2,hct.m3))
+```
+
+```{r}
+performance::icc(hct.m3)
+```
+
+
+```{r}
+# Correlation between hct and total
+for (i in seq(2,7)){
+  a = cbind(df_hct[i],df_total[i])
+  b = na.omit(a)
+  print(cor(b[1],b[2]))
+}
+
+
+```
+```{r}
+# Correlation between hgb and total
+for (i in seq(2,7)){
+  a = cbind(df_hgb[i],df_total[i])
+  b = na.omit(a)
+  print(cor(b[1],b[2]))
+}
+```
+
+```{r}
+# Correlation between hgb and hct
+for (i in seq(2,7)){
+  a = cbind(df_hgb[i],df_hct[i])
+  b = na.omit(a)
+  print(cor(b[1],b[2]))
+}
+```
+
+
+Examine results
+```{r}
+# Check the summary first
+print(summary(hct.m3))
+
+# Examine the random effects
+print(ranef(hct.m3))
+
+```
+
+
+
+Test Assumptions 
+```{r}
+# 1.Linearity
+print(plot(resid(hct.m3),df_hct_na$hct_value))
+# Looks pretty random so we probably haven’t violated this assumption
+
+# 2.Homogeneity of Variance
+df_hct_na$model.res <- residuals(hct.m3)
+df_hct_na$abs.model.res <- abs(df_hct_na$model.res)
+df_hct_na$model.res2 <- df_hct_na$abs.model.res^2
+levene.mode.f <- lm(model.res2~ID, data=df_hct_na)
+print(anova(levene.mode.f))
+# Since the p value is greater than 0.05, we can say that the variance of the residuals is equal and therefore the assumption of homoscedasticity is met
+
+# Create a visualization plot (Fitted vs. residual plot)
+print(plot(hct.m3))
+# even spread around the centered line, but I prefer the Levene’s test as I’m not entirely sure what this graph is supposed to look like
+
+
+# 3. Residuals of the model are normally distributed 
+library(lattice)
+qqmath(hct.m3, id=0.05)
+
+```
+
+
+```{r}
+# Find the best random effects structure
+hgb.nullmodel1 <- lmer(hgb_value ~ 1 + (1|ID), data=df_hgb_na,REML=FALSE)
+hgb.nullmodel2 <- lmer(hgb_value ~ 1 + (1+time|ID), data=df_hgb_na,REML=FALSE)
+print(anova(hgb.nullmodel1,hgb.nullmodel2))
+# hct.nullmodel3 <- lmer(hct_value ~ 1 + (1+total_value*time|ID), data=df_hct_na) 
+# not works here as number of observations < number of random effects
+
+
+# Find the best fixed effects
+hgb.m1 <- lmer(hgb_value ~ total_value + (1+time|ID), data=df_hgb_na, REML=FALSE)
+print(summary(hgb.m1))
+hgb.m2 <- lmer(hgb_value ~ total_value + time + (1+time|ID), data=df_hgb_na, REML=FALSE)
+print(summary(hgb.m2))
+hgb.m3 <- lmer(hgb_value ~ total_value * time + (1+time|ID), data=df_hgb_na, REML=FALSE)
+print(summary(hgb.m3))
+
+# Compare Model Fit
+print(anova(hgb.m1,hgb.m2,hgb.m3))
+print(icc(hgb.m3))
+```
+
+```{r}
+sjplot(df_hct_na)
+
+```
+
+
+
+
+
+```{r}
+# Start from the null model (intercept only)
+fit.hct.0 <- lmer(total_value~1+(1|ID),data = df_hct_na)
+print(summary(fit.hct.0))
+print(performance::icc(fit.hct.0))
+
+# Add hgb fixed effect
+fit.hct.1 <- lmer(total_value~1+hct_value+(1|ID),data = df_hct_na)
+print(summary(fit.hct.1))
+print(performance::icc(fit.hct.1))
+
+# Add time fixed effect
+fit.hct.2 <- lmer(total_value~1+hct_value+time+(1|ID),data = df_hct_na)
+print(summary(fit.hct.2))
+print(performance::icc(fit.hct.2))
+
+# Compare these two models
+print(anova(fit.hct.1,fit.hct.2))
+
+# p < 0.01, more variables model is better
+
+# Add interaction
+fit.hct <-lmer(hct_value ~ total_value*time + (0+time|ID),data=df_hct_na)
+fit.hct.3 <- lmer(total_value~1+hct_value*time+(1|ID),data = df_hct_na)
+print(summary(fit.hct.3))
+print(performance::icc(fit.hct.3))
+
+# Compare like before
+print(anova(fit.hct.2,fit.hct.3))
+
+# Still a bit of better as p-value is 0.002
+
+# Consider time as a random effect 
+fit.hct.4 <- lmer(total_value~1+hct_value+(0+time|ID),data = df_hct_na)
+print(summary(fit.hct.4))
+print(performance::icc(fit.hct.4))
+print(anova(fit.hct.4,fit.hct.3))
+```
+
+
+
+```{r}
+# Start from the null model (intercept only)
+fit.hgb.0 <- lmer(total_value~1+(1|ID),data = df_hgb_na)
+print(summary(fit.hgb.0))
+print(performance::icc(fit.hgb.0))
+
+# Add hgb fixed effect
+fit.hgb.1 <- lmer(total_value~1+hgb_value+(1|ID),data = df_hgb_na)
+print(summary(fit.hgb.1))
+print(performance::icc(fit.hgb.1))
+
+# Add time fixed effect
+fit.hgb.2 <- lmer(total_value~1+hgb_value+time+(1|ID),data = df_hgb_na)
+print(summary(fit.hgb.2))
+print(performance::icc(fit.hgb.2))
+
+# Compare these two models
+print(anova(fit.hgb.1,fit.hgb.2))
+
+# p < 0.01, more variables model is better
+
+# Add interaction
+fit.hgb.3 <- lmer(total_value~1+hgb_value*time+(1|ID),data = df_hgb_na)
+print(summary(fit.hgb.3))
+print(performance::icc(fit.hgb.3))
+
+# Compare like before
+print(anova(fit.hgb.2,fit.hgb.3))
+
+# Still a bit of better as p-value is 0.002
+
+# Consider time as a random effect 
+fit.hgb.4 <- lmer(total_value~1+hgb_value+(0+time|ID),data = df_hgb_na)
+print(summary(fit.hgb.4))
+print(performance::icc(fit.hgb.4))
+print(anova(fit.hgb.4,fit.hgb.3))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
