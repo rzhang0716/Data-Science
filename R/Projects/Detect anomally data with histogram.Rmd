@@ -1,0 +1,241 @@
+---
+title: "Data prep"
+author: "Ran Zhang"
+date: "12/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+setwd("~/Desktop/Private/Work/Nemours/JHossain/Strang_Chedikel")
+df <- read_excel('df.xlsx')
+```
+
+Check the NA values in each column
+```{r}
+cbind(colnames(df),as_tibble(colSums(is.na(df))))
+```
+
+Check the anomaly detection
+```{r}
+for (i in colnames(df)){
+  a = summary(df[i])
+  print(a)
+  print(' ')
+}
+```
+
+```{r}
+library(ggplot2)
+
+lapply(names(df), function(col) {
+  ggplot(df, aes(.data[[col]], ..count..)) + 
+    geom_bar(aes(fill = .data[[col]]), position = "dodge")
+})
+```
+
+BMI
+```{r}
+print(na.omit(df$ID[df$BMI < 30]))
+print(na.omit(df$ID[df$BMI > 70]))
+```
+
+
+BMI-z score
+```{r}
+print(na.omit(df$ID[df$`BMI-z` > 5]))
+print(df$`BMI-z`[df$ID == 165])
+print(' ')
+print(df$`BMI-z`[df$ID == 200])
+```
+
+FVC-percent-Predicted (AI)
+```{r}
+print(na.omit(df$ID[df$`FVC-percent-Predicted` > 150]))
+print(df$`FVC-percent-Predicted` [df$ID == 224])
+print(' ')
+print(na.omit(df$ID[df$`FVC-percent-Predicted` < 50]))
+
+print(df$`FVC-percent-Predicted`[df$ID == 119])
+```
+
+FVC% predicted post change (AI) 
+```{r}
+print(na.omit(df$ID[df$`FVC post bronchodilator   % change` < -10]))
+print(df$`FVC post bronchodilator   % change`[df$ID == 74])
+print(df$`FVC post bronchodilator   % change`[df$ID == 213])
+print(' ')
+print(na.omit(df$ID[df$`FVC post bronchodilator   % change` > 10]))
+print(df$`FVC post bronchodilator   % change`[df$ID == 9])
+print(df$`FVC post bronchodilator   % change`[df$ID == 14])
+print(df$`FVC post bronchodilator   % change`[df$ID == 15])
+print(df$`FVC post bronchodilator   % change`[df$ID == 16])
+print(df$`FVC post bronchodilator   % change`[df$ID == 39])
+print(df$`FVC post bronchodilator   % change`[df$ID == 50])
+print(df$`FVC post bronchodilator   % change`[df$ID == 59])
+```
+
+
+
+FEV1 % predicted (AK)
+```{r}
+print(na.omit(df$ID[df$`FEV1 % Predicted` < 50]))
+print(na.omit(df$ID[df$`FEV1 % Predicted` > 150]))
+```
+
+FEV1 % post bronchodilator change (AL)
+```{r}
+print(na.omit(df$ID[df$`FEV1 post bronchodilator   % change` > 50]))
+```
+
+FEF 27-75, post bronchodilator change (AR)
+```{r}
+print(na.omit(df$ID[df$`FEF ( 25-75 %) post bronchodilator  % change` > 100]))
+```
+
+IC % predicted (AV)
+```{r}
+print(na.omit(df$ID[df$`IC (L) % Predicted` <50]))
+```
+
+
+ERV % predicted (AX)
+```{r}
+print(na.omit(df$ID[df$`ERV (L) % Predicted` > 150]))
+```
+
+
+RV (pleth) % predicted (AZ)
+```{r}
+print(na.omit(df$ID[df$`RV (PLETH) (L) % Predicted` > 500]))
+```
+
+EtCO2
+```{r}
+print(na.omit(df$ID[df$EtCO2<=30]))
+```
+
+Minimum SpO2 
+```{r}
+print(na.omit(df$ID[df$`Minimum-SpO2`<=60]))
+```
+
+
+Total study time ETCO2 >50 mmHg (percent)
+```{r}
+print(na.omit(df$ID[df$`Total study time ETCO2 >50 mmHg (percent)`>100]))
+```
+
+
+
+******************
+Boxplot
+
+```{r}
+library(ggstatsplot)
+lapply(names(df)[5:69], function(col) {
+  ggplot(df, aes(as.factor(Sex),.data[[col]], )) + 
+    geom_boxplot(outlier.colour="black", outlier.shape=16,outlier.size=2, notch=FALSE)
+})
+```
+
+
+Race
+```{r}
+df$ID[df$Race == 3]
+```
+Only two Asian 
+
+
+
+Insurance
+```{r}
+na.omit(df$ID[df$Insurance == 2])
+```
+Only one Nemours
+
+
+Weight
+```{r}
+print(na.omit(df$ID[df$Weight < 50]))
+print(na.omit(df$ID[df$Weight > 300]))
+
+```
+
+BMI-z score
+```{r}
+print(na.omit(df$ID[df$`BMI-z` < -3]))
+print(na.omit(df$ID[df$`BMI-z` > 3]))
+print(na.omit(df$ID[df$`BMI-z` > 40]))
+```
+
+Recording Time
+```{r}
+print(na.omit(df$ID[df$RecordingTime<100]))
+```
+
+SleepTime
+```{r}
+print(na.omit(df$ID[df$SleepTime<=0]))
+```
+
+SleepEfficiency
+```{r}
+print(na.omit(df$ID[df$SleepEfficiency<=0]))
+```
+
+
+
+
+FEV1 post bronchodilator   % change
+```{r}
+print(na.omit(df$ID[df$`FEV1 post bronchodilator   % change`>50]))
+```
+
+IC (L) % Predicted
+```{r}
+print(na.omit(df$ID[df$`IC (L) % Predicted`<=50]))
+```
+
+RV (L) actual
+```{r}
+print(na.omit(df$ID[df$`RV (PLETH) (L) Actual`>=10]))
+```
+
+RV (L) predicted
+```{r}
+print(na.omit(df$ID[df$`RV (PLETH) (L) % Predicted`>=300]))
+```
+
+TLC Actual
+```{r}
+print(na.omit(df$ID[df$`TLC (PLETH) (L) Actual`>=30]))
+```
+
+
+```{r}
+
+lapply(names(df), function(col) {
+  ggplot(df, aes(.data[[col]], ..count..)) + 
+    geom_bar(aes(fill = .data[[col]]), position = "dodge")
+})
+```
+
+
+
+
+
+
+
+
+
+

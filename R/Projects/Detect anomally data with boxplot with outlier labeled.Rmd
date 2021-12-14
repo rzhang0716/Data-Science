@@ -1,0 +1,248 @@
+---
+title: "Data Manipulate"
+author: "Ran Zhang"
+date: "12/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+setwd("~/Desktop/Private/Work/Nemours/JHossain/Lurah_Welch")
+df <- read_excel('df.xlsx')
+```
+
+```{r}
+colnames(df)
+```
+
+```{r}
+library(ggstatsplot)
+lapply(names(df)[4:45], function(col) {
+  ggplot(df, aes(Group,.data[[col]], )) + 
+    geom_boxplot(outlier.colour="black", outlier.shape=16,outlier.size=2, notch=FALSE)
+})
+
+```
+
+MSEFR0
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSEFR0,outlier.tagging = TRUE,outlier.label = ID)
+
+```
+
+MSEFR12
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSEFR12,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+MSEFL6
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSEFL6,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+MSEER0
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSEER0,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+MSEER12
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSEER12,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+MSEEL0
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSEEL0,outlier.tagging = TRUE,outlier.label = ID)
+```
+MSEEL12
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSEEL12,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+MSKFR0
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSKFR0,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+MSKFR6
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSKFR6,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+MSKFL6
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSKFL6,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+
+MSKFL12
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSKFL12,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+
+MSKER0
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSKER0,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+MSKER6
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSKER6,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+
+MSKER12
+```{r}
+ggbetweenstats(data=df,x=Group,y=MSKER12,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+PVJ0
+```{r}
+ggbetweenstats(data=df,x=Group,y=PVJ0,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+
+PVJ6
+```{r}
+ggbetweenstats(data=df,x=Group,y=PVJ6,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+EPU6
+```{r}
+ggbetweenstats(data=df,x=Group,y=EPU6,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+EPU12
+```{r}
+ggbetweenstats(data=df,x=Group,y=EPU12,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+Agility0
+```{r}
+ggbetweenstats(data=df,x=Group,y=Agility0,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+Agility6
+```{r}
+ggbetweenstats(data=df,x=Group,y=Agility6,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+Age0
+```{r}
+ggbetweenstats(data=df,x=Group,y=Age0,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+Age6
+```{r}
+ggbetweenstats(data=df,x=Group,y=Age6,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+LBM0
+```{r}
+ggbetweenstats(data=df,x=Group,y=LBM0,outlier.tagging = TRUE,outlier.label = ID)
+```
+LBM6
+```{r}
+ggbetweenstats(data=df,x=Group,y=LBM6,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+LBM12
+```{r}
+ggbetweenstats(data=df,x=Group,y=LBM12,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+FFM0
+```{r}
+ggbetweenstats(data=df,x=Group,y=FFM0,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+FFM6
+```{r}
+ggbetweenstats(data=df,x=Group,y=FFM6,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+
+FFM12
+```{r}
+ggbetweenstats(data=df,x=Group,y=FFM12,outlier.tagging = TRUE,outlier.label = ID)
+```
+
+Check the NA values in each column
+```{r}
+cbind(colnames(df),as_tibble(colSums(is.na(df))))
+```
+
+
+
+Create each different data set
+```{r}
+MSEFR_df <- df%>% select(ID,Group,Race,MSEFR0,MSEFR6,MSEFR12)
+MSEFL_df <- df%>% select(ID,Group,Race,MSEFL0,MSEFL6,MSEFL12)
+MSEER_df <- df%>% select(ID,Group,Race,MSEER0,MSEER6,MSEER12)
+MSEEL_df <- df%>% select(ID,Group,Race,MSEEL0,MSEEL6,MSEEL12)
+MSKFR_df <- df%>% select(ID,Group,Race,MSKFR0,MSKFR6,MSKFR12)
+MSKER_df <- df%>% select(ID,Group,Race,MSKER0,MSKER6,MSKER12)
+MSKEL_df <- df%>% select(ID,Group,Race,MSKEL0,MSKEL6,MSKEL12)
+LBM_df <- df%>% select(ID,Group,Race,LBM0,LBM6,LBM12)
+FFM_df <- df%>% select(ID,Group,Race,FFM0,FFM6,FFM12)
+```
+
+Convert to pivot longer table 
+```{r}
+
+MSEFR_df_longer <- MSEFR_df %>% pivot_longer(cols = c('MSEFR0','MSEFR6','MSEFR12'), names_to = 'month',values_to = 'value') 
+MSEFL_df_longer <- MSEFL_df %>% pivot_longer(cols = c('MSEFL0','MSEFL6','MSEFL12'), names_to = 'month',values_to = 'value') 
+MSEER_df_longer <- MSEER_df %>% pivot_longer(cols = c('MSEER0','MSEER6','MSEER12'), names_to = 'month',values_to = 'value') 
+MSEEL_df_longer <- MSEEL_df %>% pivot_longer(cols = c('MSEEL0','MSEEL6','MSEEL12'), names_to = 'month',values_to = 'value') 
+MSKFR_df_longer <- MSKFR_df %>% pivot_longer(cols = c('MSKFR0','MSKFR6','MSKFR12'), names_to = 'month',values_to = 'value') 
+MSKER_df_longer <- MSKER_df %>% pivot_longer(cols = c('MSKER0','MSKER6','MSKER12'), names_to = 'month',values_to = 'value') 
+MSKEL_df_longer <- MSKEL_df %>% pivot_longer(cols = c('MSKEL0','MSKEL6','MSKEL12'), names_to = 'month',values_to = 'value') 
+LBM_df_longer <- LBM_df %>% pivot_longer(cols = c('LBM0','LBM6','LBM12'), names_to = 'month',values_to = 'value') 
+FFM_df_longer <- FFM_df %>% pivot_longer(cols = c('FFM0','FFM6','FFM12'), names_to = 'month',values_to = 'value') 
+df_l <- list(MSEFR_df_longer,MSEFL_df_longer,MSEER_df_longer,MSEEL_df_longer,MSKFR_df_longer,MSKER_df_longer, MSKEL_df_longer,LBM_df_longer,FFM_df_longer)
+```
+
+
+Plot
+```{r}
+plot_df <- function(df) {
+  my_colors <- c("red", "cyan", 'green')
+  my_labels <- c('Baseline','6 month', '12 month')
+  ggplot(df,aes(x=month,y=value,group=ID,color=ID)) + 
+      geom_point() +
+  geom_line() +
+
+  scale_x_discrete(labels=my_labels) + 
+  theme_bw()
+}
+
+```
+
+```{r}
+for (i in df_l){
+  print(plot_df(i))
+}
+
+```
+

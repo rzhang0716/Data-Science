@@ -1,0 +1,66 @@
+---
+title: "Pivot_Longer"
+author: "Ran Zhang"
+date: "12/13/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+setwd("~/Desktop/Private/Work/Nemours/JHossain/Lurah_Welch")
+df <- read_excel('df.xlsx')
+```
+
+Create each different data set
+```{r}
+MSEFR_df <- df%>% select(ID,Group,Race,MSEFR0,MSEFR6,MSEFR12)
+MSEFL_df <- df%>% select(ID,Group,Race,MSEFL0,MSEFL6,MSEFL12)
+MSEER_df <- df%>% select(ID,Group,Race,MSEER0,MSEER6,MSEER12)
+MSEEL_df <- df%>% select(ID,Group,Race,MSEEL0,MSEEL6,MSEEL12)
+MSKFR_df <- df%>% select(ID,Group,Race,MSKFR0,MSKFR6,MSKFR12)
+MSKER_df <- df%>% select(ID,Group,Race,MSKER0,MSKER6,MSKER12)
+MSKEL_df <- df%>% select(ID,Group,Race,MSKEL0,MSKEL6,MSKEL12)
+LBM_df <- df%>% select(ID,Group,Race,LBM0,LBM6,LBM12)
+FFM_df <- df%>% select(ID,Group,Race,FFM0,FFM6,FFM12)
+```
+
+Convert to pivot longer table 
+```{r}
+
+MSEFR_df_longer <- MSEFR_df %>% pivot_longer(cols = c('MSEFR0','MSEFR6','MSEFR12'), names_to = 'month',values_to = 'value') 
+MSEFL_df_longer <- MSEFL_df %>% pivot_longer(cols = c('MSEFL0','MSEFL6','MSEFL12'), names_to = 'month',values_to = 'value') 
+MSEER_df_longer <- MSEER_df %>% pivot_longer(cols = c('MSEER0','MSEER6','MSEER12'), names_to = 'month',values_to = 'value') 
+MSEEL_df_longer <- MSEEL_df %>% pivot_longer(cols = c('MSEEL0','MSEEL6','MSEEL12'), names_to = 'month',values_to = 'value') 
+MSKFR_df_longer <- MSKFR_df %>% pivot_longer(cols = c('MSKFR0','MSKFR6','MSKFR12'), names_to = 'month',values_to = 'value') 
+MSKER_df_longer <- MSKER_df %>% pivot_longer(cols = c('MSKER0','MSKER6','MSKER12'), names_to = 'month',values_to = 'value') 
+MSKEL_df_longer <- MSKEL_df %>% pivot_longer(cols = c('MSKEL0','MSKEL6','MSKEL12'), names_to = 'month',values_to = 'value') 
+LBM_df_longer <- LBM_df %>% pivot_longer(cols = c('LBM0','LBM6','LBM12'), names_to = 'month',values_to = 'value') 
+FFM_df_longer <- FFM_df %>% pivot_longer(cols = c('FFM0','FFM6','FFM12'), names_to = 'month',values_to = 'value') 
+```
+
+Combine all together
+```{r}
+df_longer <- rbind(MSEFR_df_longer,MSEFL_df_longer,MSEER_df_longer,MSEEL_df_longer,MSKFR_df_longer,MSKER_df_longer,MSKEL_df_longer,LBM_df_longer,FFM_df_longer)
+```
+
+Write out excel
+```{r}
+# Whole dataset
+library(writexl)
+write_xlsx(df_longer,'df_longer.xlsx')
+```
+
+Write out No NA 
+```{r}
+df_no_na <- na.omit(df_longer)
+write_xlsx(df_no_na,'df_longer_no_na.xlsx')
+```
+

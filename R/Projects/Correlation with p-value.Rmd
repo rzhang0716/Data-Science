@@ -1,0 +1,88 @@
+---
+title: "Correlation"
+author: "Ran Zhang"
+date: "12/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. significant correlations between total AHI (column P) and the following variables:
+```{r}
+library(ggpubr)
+library("Hmisc")
+library(readxl)
+library(tidyverse)
+
+setwd("~/Desktop/Private/Work/Nemours/JHossain/Strang_Chedikel")
+
+df_clean <- read_excel('Clean_column.xlsx')
+
+
+```
+
+
+```{r}
+# Correlation
+df1 <- df_clean %>% select(P,H,I,AH,AI,AK,AL,AM,AQ,AR,AT,AV,AX,AZ,BB,BF,BH)
+df1_corr <- df1 %>% correlate() %>% focus(P)
+
+# p-value
+library(psych)
+pvals_df1 <- sapply(df1[-1], function(x) corr.test(x, df1$P)$p)
+df1_corr <- cbind(as_tibble(df1_corr),as_tibble(pvals_df1))
+df1_corr
+```
+
+
+2. significant correlations between Minimum SpO2 (column S) and the following variables
+```{r}
+# Correlation
+df2 <- df_clean %>% select(S,H,I,AH,AI,AK,AL,AM,AQ,AR,AT,AV,AX,AZ,BB,BF,BH)
+df2_corr <- df2 %>% correlate() %>% focus(S)
+
+# p-value
+pvals_df2 <- sapply(df2[-1], function(x) corr.test(x, df2$S)$p)
+df2_corr <- cbind(as_tibble(df2_corr),as_tibble(pvals_df2))
+df2_corr
+```
+
+
+3. significant correlations between Total study time ETCO2 >50 mmHg (percent) (column V) and the following variables
+```{r}
+# Correlation
+df3 <- df_clean %>% select(V,H,I,AH,AI,AK,AL,AM,AQ,AR,AT,AV,AX,AZ,BB,BF,BH)
+df3_corr <- df3 %>% correlate() %>% focus(V)
+
+# p-value
+pvals_df3 <- sapply(df3[-1], function(x) corr.test(x, df3$V)$p)
+df3_corr <- cbind(as_tibble(df3_corr),as_tibble(pvals_df3))
+df3_corr
+```
+
+4. significant correlations between peak ETCO2 >50 mmHg (W) and the following variables: 
+```{r}
+# Correlation
+df4 <- df_clean %>% select(W,H,I,AH,AI,AK,AL,AM,AQ,AR,AT,AV,AX,AZ,BB,BF,BH)
+df4_corr <- df4 %>% correlate() %>% focus(W)
+
+# p-value
+pvals_df4 <- sapply(df4[-1], function(x) corr.test(x, df4$W)$p)
+df4_corr <- cbind(as_tibble(df4_corr),as_tibble(pvals_df4))
+df4_corr
+```
+
+
+
+
+Correlation with p-value
+```{r}
+library(ggpubr)
+library("Hmisc")
+# rcorr(x, type = c("pearson","spearman","kendall"))
+
+rcorr(as.matrix(df))
+
+```
