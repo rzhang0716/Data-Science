@@ -18,7 +18,6 @@ library(readxl)
 
 Import data and Review the data
 ```{r}
-setwd("~/Desktop/Private/Work/Nemours/Projects/Survival Analysis/SEERdata")
 df <- read_excel('partdata.xlsx', sheet = 'Sheet1')
 ```
 
