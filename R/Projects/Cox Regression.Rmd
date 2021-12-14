@@ -1,0 +1,32 @@
+---
+title: "Cox Regression"
+author: "RZ"
+date: "10/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load the packages and data set 
+```{r}
+library("survival")
+library("survminer")
+
+data("lung")
+head(lung)
+```
+
+Multi-variate Cox Regression analysis
+```{r}
+res.cox <- coxph(Surv(time, status) ~ age + sex + ph.ecog, data =  lung)
+summary(res.cox)
+```
+
+Visualizing the estimated distribution of survival times
+```{r}
+# Plot the baseline survival function
+ggsurvplot(survfit(res.cox), color = "#2E9FDF",ggtheme = theme_minimal(), data=lung)
+```
+

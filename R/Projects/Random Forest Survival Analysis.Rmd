@@ -1,0 +1,145 @@
+---
+title: "RF-SRC"
+author: "RZ"
+date: "10/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load packages
+```{r}
+library(randomForestSRC)
+library(tidyverse)
+library(readxl)
+```
+
+Import data and Review the data
+```{r}
+setwd("~/Desktop/Private/Work/Nemours/Projects/Survival Analysis/SEERdata")
+df <- read_excel('partdata.xlsx', sheet = 'Sheet1')
+```
+
+Deal with missing data in the dataframe
+```{r}
+# Print the number of rows containing na 
+print(sum(is.na(df)))
+# Print the dimension of the dataframe
+print(dim(df))
+
+# Remove all NA rows based on the results
+df_new <- na.omit(df)
+
+
+```
+
+
+
+```{r}
+
+v.obj <- rfsrc(Surv(time,status) ~ ., data = df_new, ntree = 1000, mtry=5)
+print(v.obj)
+
+# Variable Importance (VIMP) 
+oo <- subsample(v.obj, verbose = FALSE) 
+
+# calculates variable importance (VIMP) 
+vimpCI <- extract.subsample(oo)$var.jk.sel.Z
+print(vimpCI)
+
+# VIMP using misclassification error, ectract variable importance
+print(vimp(v.obj)$importance)
+
+```
+
+Variable Importance (VIMP) 
+```{r}
+oo <- subsample(v.obj, verbose = FALSE) 
+# calculates variable importance (VIMP) 
+vimpCI <- extract.subsample(oo)$var.jk.sel.Z
+print(vimpCI)
+
+# VIMP using misclassification error, ectract variable importance
+print(vimp(v.obj)$importance)
+
+```
+
+# Harrell’s C-index (1 minus concordance) using mortality for comparison
+```{r}
+get.cindex(time = df1$time, censoring = df1$status, predicted = v.obj$predicted.oob)
+```
+
+
+
+
+##------------------------------------------------------------
+## Survival Analysis Overview
+##------------------------------------------------------------
+```{r}
+## randomized trial of two treatment regimens for lung cancer
+v.obj <- rfsrc(Surv(time, status) ~ ., data = df1, ntree = 100,block.size = 1)
+## print tree number 3
+plot(get.tree(v.obj, 3))
+
+## print the grow object and plot various useful details
+print(v.obj)
+plot(v.obj)
+
+## plot survival curves for first 10 individuals -- direct way
+matplot(v.obj$time.interest, 100 * t(v.obj$survival.oob[1:10, ]),
+    xlab = "Time", ylab = "Survival", type = "l", lty = 1)
+
+## plot survival curves for first 10 individuals using function "plot.survival" 
+plot.survival(v.obj, subset = 1:10)
+
+## fast nodesize optimization for the subsample data
+## optimal nodesize in survival is larger than other families
+tune.nodesize(Surv(time,status) ~ ., df_1)
+```
+
+
+
+
+##------------------------------------------------------------
+## example of imputation in survival analysis
+##------------------------------------------------------------
+```{r}
+data(pbc, package = "randomForestSRC")
+pbc.obj2 <- rfsrc(Surv(days, status) ~ ., pbc,
+           nsplit = 10, na.action = "na.impute")
+
+
+## same as above but we iterate the missing data algorithm
+pbc.obj3 <- rfsrc(Surv(days, status) ~ ., pbc,
+         na.action = "na.impute", nimpute = 3)
+
+## fast way to impute the data (no inference is done)
+## see impute for more details
+pbc.imp <- impute(Surv(days, status) ~ ., pbc, splitrule = "random")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reference:
+1. https://luminwin.github.io/randomForestSRC/articles/getstarted.html
+
+2. https://pedroconcejero.wordpress.com/2015/11/12/survival-random-forests-for-churn-prediction-3/
+
+3. https://arxiv.org/pdf/1612.08974.pdf
+
+4. https://rdrr.io/cran/randomForestSRC/man/rfsrc.html
+
+5. 
