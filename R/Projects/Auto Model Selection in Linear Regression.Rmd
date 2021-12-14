@@ -1,0 +1,244 @@
+---
+title: "Logistic Regression"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Import libraries and dataset 
+```{r}
+# Libraries
+library(tidyverse)
+library(reshape)
+library(MASS)
+library(SignifReg)
+library(caTools)
+library(ROCR) 
+
+# Dataset 
+setwd("~/Desktop/Private/Work/Nemours/Projects/Table1/Ejaz_yousef (10:2021)")
+df <- read.csv('df.csv',stringsAsFactors = TRUE)
+```
+
+
+
+##------------------------------------------------------------
+##  Data Prepearation
+##------------------------------------------------------------
+
+Check the dataset 
+```{r}
+print(head(df))
+print(colnames(df))
+print(str(df))
+print(dim(df))
+```
+
+Convert the datatype
+```{r}
+df <- df %>% mutate(across(where(is.character), as.factor))
+df[13:27] <- lapply(df[13:27],factor)
+print(str(df))
+```
+
+Reset the levels of factors
+```{r}
+# Produce most common in each factor level and set for control 
+sapply(colnames(df), function(i) names((sort(table(df[,i]),decreasing = TRUE)[1])))
+
+# Sex
+df$Sex <- factor(df$Sex, levels = c('male', 'female'))
+
+# Race 
+df$Race <- factor(df$Race, levels=c('white','aa','his','asian','other'))
+
+# FHA
+df$FHAtopicAsthma <- factor(df$FHAtopicAsthma, levels=c('no','yes'))
+
+# Asthmas
+df$AsthmaS <- factor(df$AsthmaS, levels=c('mildi','mildp','modp','severep'))
+
+# AR
+df$AR <- factor(df$AR, levels=c('no','yes'))
+
+# SMOKE
+df$SMOKE <- factor(df$SMOKE, levels=c('no','yes'))
+
+# ENT
+df$ENT <- factor(df$ENT,levels=c('no','yes'))
+
+# GER
+df$GER <- factor(df$GER, levels=c('no','yes'))
+
+# ARdm
+df$ARdm <- factor(df$ARdm, levels=c('0','1'))
+
+# ARC
+df$ARc <- factor(df$ARc, levels=c('0','1'))
+
+# Ard
+df$ARd <- factor(df$ARd, levels=c('0','1'))
+
+# ARpo
+df$ARpo <- factor(df$ARpo, levels=c('0','1'))
+
+# ARcr
+df$ARcr <- factor(df$ARcr, levels=c('0','1'))
+
+# ENTah
+df$ENTah <- factor(df$ENTah, levels=c('0','1'))
+
+# ENTta
+df$ENTta <- factor(df$ENTta, levels=c('0','1'))
+
+# Foodpn
+df$FOODpn <- factor(df$FOODpn, levels=c('0','1'))
+
+# FoodDeg
+df$FOODeg <- factor(df$FOODeg, levels=c('0','1'))
+
+# Group
+df$group <- factor(df$group, levels=c('B','A'))
+
+
+```
+
+
+
+##------------------------------------------------------------
+## Repeat Univariate Logistic Regression
+##------------------------------------------------------------
+```{r}
+lapply(colnames(df)[1:27],
+
+       function(var) {
+           options(warn=-1)
+           formula    <- as.formula(paste("group ~", var))
+           res.logist <- glm(formula, data = df, family = binomial)
+
+           print(round(exp(cbind(coef(res.logist), confint(res.logist)))),2)
+           print(round(summary(res.logist)$coef[,'Pr(>|z|)']),3)
+       })
+```
+
+
+##------------------------------------------------------------
+## Stepwise Regression ##
+##------------------------------------------------------------
+```{r}
+nullmodel <- glm(group ~ 1, data=df,family='binomial')
+fullmodel <- glm(group~.,data=na.omit(df), family='binomial')
+scope = list(lower=formula(nullmodel),upper=formula(fullmodel))
+fit <- glm(group~.,data=na.omit(df), family='binomial') # Omit NAs here
+options(warn = -1)
+select.fit = SignifReg(fit,scope=scope, alpha = 0.1,direction = "backward", criterion = "p-value",adjust.method = "fdr",trace=TRUE)
+options(warn = 0)
+select.fit$steps.info
+```
+
+
+##------------------------------------------------------------
+## Multi-variate Regression
+##------------------------------------------------------------
+```{r}
+options(warn = -1)
+multi.res.logit <- glm(group ~ Race  + FHAtopicAsthma + AsthmaS +FoodAllergy + ENT + GER +  ARpo + FOODeg, data=df, family='binomial')
+print(summary(multi.res.logit))
+print(exp(cbind(coef(multi.res.logit), confint(multi.res.logit))))
+print(summary(multi.res.logit)$coef[,'Pr(>|z|)'])
+options(warn = 0)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##------------------------------------------------------------
+##------------------------------------------------------------
+## Method 2
+##------------------------------------------------------------
+##------------------------------------------------------------
+
+```{r}
+# Load the packages
+
+
+# Splitting dataset
+split <- sample.split(df_character, SplitRatio = 0.8)
+
+train_reg <- subset(df_character, split == "TRUE")
+test_reg <- subset(df_character, split == "FALSE")
+
+# Training model
+logistic_model <- glm(group ~ Variable_a + b+ ..., data = train_reg, family = "binomial")
+
+# Summary
+summary(logistic_model)
+
+# Step-wise
+null.model<-glm(group ~ 1, data=df,family='binomial')
+summary(null.model)
+stepwise.model.forward<- step(null.model,direction = 'forward')
+summary(stepwise.model.forward)
+# Start the model with the intercept to do the forward selection only to see if we achieve the same model as above 
+
+stepwise.model.both<- step(null.model,direction = 'both')
+summary(stepwise.model.both)
+# Doing the both direction to compare as well
+
+full.model <- glm(group~.,data=omit.na(df), family='binomial') # Omit NAs here
+stepwise.model.backward<- step(full.model,direction = 'backward')
+summary(stepwise.model.backward)
+
+   
+# Predict test data based on model
+predict_reg <- predict(logistic_model, test_reg, type = "response")
+
+# Changing probabilities
+predict_reg <- ifelse(predict_reg >0.5, 1, 0)
+
+# Evaluating model accuracy
+# using confusion matrix
+table(test_reg$vs, predict_reg)
+   
+missing_classerr <- mean(predict_reg != test_reg$vs)
+print(paste('Accuracy =', 1 - missing_classerr))
+   
+# ROC-AUC Curve
+ROCPred <- prediction(predict_reg, test_reg$vs) 
+ROCPer <- performance(ROCPred, measure = "tpr", x.measure = "fpr")
+   
+auc <- performance(ROCPred, measure = "auc")
+auc <- auc@y.values[[1]]
+auc
+   
+# Plotting curve
+plot(ROCPer)
+plot(ROCPer, colorize = TRUE, 
+     print.cutoffs.at = seq(0.1, by = 0.1), 
+     main = "ROC CURVE")
+abline(a = 0, b = 1)
+   
+auc <- round(auc, 4)
+legend(.6, .4, auc, title = "AUC", cex = 1)
+
+
+```
+
+
+References:
+1. https://stackoverflow.com/questions/32766325/fastest-way-of-determining-most-frequent-factor-in-a-grouped-data-frame-in-dplyr
+
+2. https://stackoverflow.com/questions/38678378/factor-levels-default-to-1-and-2-in-r-dummy-variable
+

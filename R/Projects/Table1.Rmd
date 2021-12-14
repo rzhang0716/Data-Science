@@ -1,0 +1,82 @@
+---
+title: "Table1_question"
+author: "RZ"
+date: "10/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Import libraries required
+```{r}
+library(tidyverse)
+library(table1)
+library(readxl)
+library(writexl)
+```
+
+Load the files and format for the table1 use
+```{r}
+setwd("~/Desktop/Private/Work/Nemours/Projects/Table1/Ejaz_yousef (10:2021)")
+df <- read_excel('ADMR3.xlsx', sheet='Sheet1')
+df <- df[1:28]
+```
+
+Set Prednisone and HospAdmissAsthma as numerical, convert <1 as 0.5
+```{r}
+# t1 <- df['Prednisone'] == '<1'
+# df['Prednisone'][t1] <- '0.5'
+# df['Prednisone'] <- as.numeric(unlist(df['Prednisone']))
+# df['HospAdmissAsthma'] <- as.numeric(unlist(df['HospAdmissAsthma']))
+```
+
+
+Check the type of column and then convert to factor if necessary
+```{r}
+t1 <- df['GER'] == '?'
+df['GER'][t1] <- NA
+df_character <- df %>% mutate(across(where(is.character), as.factor))
+df_character[13:24] <- lapply(df_character[13:24],factor)
+```
+
+Write out the excel file 
+```{r}
+# write_xlsx(df_character, "df.xlsx")
+# write.csv(df_character, 'df.csv',row.names = FALSE)
+```
+
+Create a function to compute the p-value for continuous or categorical variables
+```{r}
+pvalue <- function(x, ...) {
+    # Construct vectors of data y, and groups (strata) g
+    y <- unlist(x)
+    g <- factor(rep(1:length(x), times=sapply(x, length)))
+    if (is.numeric(y)) {
+        # For numeric variables, perform a standard 2-sample t-test
+        p <- t.test(y ~ g)$p.value
+    } else {
+        # For categorical variables, perform a chi-squared test of independence
+        p <- chisq.test(table(y, g))$p.value
+    }
+    # Format the p-value, using an HTML entity for the less-than sign.
+    # The initial empty string places the output on the line below the variable label.
+    c("", sub("<", "&lt;", format.pval(p, digits=3, eps=0.001)))
+}
+```
+
+Make the table
+```{r}
+table1(~ .-group | group, data=df_character,overall=F, extra.col=list('P-value'=pvalue))
+```
+
+
+
+Reference:
+
+1. https://cran.r-project.org/web/packages/table1/vignettes/table1-examples.html#example-a-column-of-p-values
+
+2. https://www.geeksforgeeks.org/logistic-regression-in-r-programming/
+
+3. https://stats.idre.ucla.edu/r/dae/logit-regression/
