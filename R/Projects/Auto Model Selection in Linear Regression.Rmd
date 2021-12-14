@@ -18,7 +18,6 @@ library(caTools)
 library(ROCR) 
 
 # Dataset 
-setwd("~/Desktop/Private/Work/Nemours/Projects/Table1/Ejaz_yousef (10:2021)")
 df <- read.csv('df.csv',stringsAsFactors = TRUE)
 ```
 
