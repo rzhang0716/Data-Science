@@ -16,7 +16,6 @@ library("Hmisc")
 library(readxl)
 library(tidyverse)
 
-setwd("~/Desktop/Private/Work/Nemours/JHossain/Strang_Chedikel")
 
 df_clean <- read_excel('Clean_column.xlsx')
 
