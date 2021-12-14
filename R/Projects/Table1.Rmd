@@ -19,7 +19,6 @@ library(writexl)
 
 Load the files and format for the table1 use
 ```{r}
-setwd("~/Desktop/Private/Work/Nemours/Projects/Table1/Ejaz_yousef (10:2021)")
 df <- read_excel('ADMR3.xlsx', sheet='Sheet1')
 df <- df[1:28]
 ```
