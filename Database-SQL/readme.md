@@ -50,4 +50,5 @@ select firstName, lastName,  city,state from Person p left join Address a on p.p
  #### Question #181: Write an SQL query to find the employees who earn more than their managers.
 select e1.name as Employee from Employee e1 join Employee e2 on e1.managerId = e2.id where e1.salary > e2.salary;
 
-
+ #### Question #182: Write an SQL query to report all the duplicate emails.
+ select distinct p1.email Email from Person p1 join Person p2 where p1.email = p2.email and p1.id != p2.id;
