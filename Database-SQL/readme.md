@@ -55,3 +55,6 @@ select e1.name as Employee from Employee e1 join Employee e2 on e1.managerId = e
   
 #### Question #183: Write an SQL query to report all customers who never order anything.
 select name Customers from Customers c left join Orders o on c.id = o.customerID where o.customerID is null;
+
+#### Question #196: Write an SQL query to delete all the duplicate emails, keeping only one unique email with the smallest id.  
+delete p1 from Person p1, Person p2 where p1.email = p2.email and p1.id > p2.id;
