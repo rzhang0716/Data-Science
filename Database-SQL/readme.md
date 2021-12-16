@@ -15,6 +15,9 @@ select name Customers from Customers c left join Orders o on c.id = o.customerID
 #### Question #196: Write an SQL query to delete all the duplicate emails, keeping only one unique email with the smallest id.  
 delete p1 from Person p1, Person p2 where p1.email = p2.email and p1.id > p2.id;
 
+#### Question #197:Write an SQL query to find all dates' Id with higher temperatures compared to its previous dates (yesterday).
+select w2.id from Weather w1 join Weather w2 where datediff(w1.recordDate, w2.recordDate) = -1 and w1.temperature < w2.temperature;
+  
 #### Question #511: Write an SQL query that reports the first login date for each player
 SELECT player_id, min(event_date) as first_login FROM Activity GROUP BY player_id;
 
