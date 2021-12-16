@@ -47,8 +47,11 @@ SELECT name, population, area FROM World WHERE population > 25000000 OR area > 3
 #### Question #175: Write an SQL query to report the first name, last name, city, and state of each person in the Person table. If the address of a personId is not present in the Address table, report null instead.
 select firstName, lastName,  city,state from Person p left join Address a on p.personID = a.personID;
   
- #### Question #181: Write an SQL query to find the employees who earn more than their managers.
+#### Question #181: Write an SQL query to find the employees who earn more than their managers.
 select e1.name as Employee from Employee e1 join Employee e2 on e1.managerId = e2.id where e1.salary > e2.salary;
 
- #### Question #182: Write an SQL query to report all the duplicate emails.
+#### Question #182: Write an SQL query to report all the duplicate emails.
  select distinct p1.email Email from Person p1 join Person p2 where p1.email = p2.email and p1.id != p2.id;
+  
+#### Question #183: Write an SQL query to report all customers who never order anything.
+select name Customers from Customers c left join Orders o on c.id = o.customerID where o.customerID is null;
