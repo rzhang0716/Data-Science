@@ -23,7 +23,10 @@ SELECT player_id, min(event_date) as first_login FROM Activity GROUP BY player_i
                                                                                                                                    
 #### Question #512: Write an SQL query to report the device that is first logged in for each player.
 select a1.player_id, a1.device_id from Activity a1 join (select player_id, min(event_date) m from Activity group by player_id) a2 on a1.player_id = a2.player_id and a1.event_date = a2.m;
-                                                                                                                                   
+
+#### Question #577: Write an SQL query to report the name and bonus amount of each employee with a bonus less than 1000.
+select name, bonus from Employee e1 left join Bonus b on e1.empId = b.empId where bonus < 1000 or bonus is null;                                                 
+                                                                                                                                 
 #### Question #595: Write a SQL solution to output big countries' name, population and area.
 SELECT name, population, area FROM World WHERE population > 25000000 OR area > 3000000;
 
