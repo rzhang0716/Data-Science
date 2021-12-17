@@ -20,7 +20,10 @@ select w2.id from Weather w1 join Weather w2 where datediff(w1.recordDate, w2.re
   
 #### Question #511: Write an SQL query that reports the first login date for each player
 SELECT player_id, min(event_date) as first_login FROM Activity GROUP BY player_id;
-
+                                                                                                                                   
+#### Question #512: Write an SQL query to report the device that is first logged in for each player.
+select a1.player_id, a1.device_id from Activity a1 join (select player_id, min(event_date) m from Activity group by player_id) a2 on a1.player_id = a2.player_id and a1.event_date = a2.m;
+                                                                                                                                   
 #### Question #595: Write a SQL solution to output big countries' name, population and area.
 SELECT name, population, area FROM World WHERE population > 25000000 OR area > 3000000;
 
