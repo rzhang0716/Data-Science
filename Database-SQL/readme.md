@@ -29,6 +29,9 @@ select name, bonus from Employee e1 left join Bonus b on e1.empId = b.empId wher
 
 #### Question #584: Write an SQL query to report the IDs of the customer that are not referred by the customer with id = 2.
 select name from Customer where referee_id != 2 or referee_id is null;
+  
+#### Question #586: Write an SQL query to find the customer_number for the customer who has placed the largest number of orders.
+select customer_number from Orders group by customer_number order by count(order_number) desc limit 1;
 
 #### Question #595: Write a SQL solution to output big countries' name, population and area.
 SELECT name, population, area FROM World WHERE population > 25000000 OR area > 3000000;
