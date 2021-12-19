@@ -36,6 +36,9 @@ select customer_number from Orders group by customer_number order by count(order
 #### Question #595: Write a SQL solution to output big countries' name, population and area.
 SELECT name, population, area FROM World WHERE population > 25000000 OR area > 3000000;
 
+#### Question #596: Write an SQL query to report all the classes that have at least five students.
+select class from Courses group by class having count(class) >=5;
+
 #### Question #613: Write a query to find the shortest distance between two points in these points.
 SELECT min(abs(a.x-b.x)) as shortest FROM point a JOIN point b WHERE a.x != b.x;
 
