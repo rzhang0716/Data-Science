@@ -38,6 +38,9 @@ SELECT name, population, area FROM World WHERE population > 25000000 OR area > 3
 
 #### Question #596: Write an SQL query to report all the classes that have at least five students.
 select class from Courses group by class having count(class) >=5;
+  
+#### Question #597: Write an SQL query to find the overall acceptance rate of requests, which is the number of acceptance divided by the number of requests. Return the answer rounded to 2 decimals places.
+select ifnull(round((count(distinct requester_id,accepter_id)/count(distinct sender_id,send_to_id)),2),0.00) as accept_rate from FriendRequest, RequestAccepted;
 
 #### Question #613: Write a query to find the shortest distance between two points in these points.
 SELECT min(abs(a.x-b.x)) as shortest FROM point a JOIN point b WHERE a.x != b.x;
