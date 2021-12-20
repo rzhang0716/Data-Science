@@ -1,7 +1,7 @@
 <h1>Leetcode Databse Problems (MySQL)
 
 #### Question #175: Write an SQL query to report the first name, last name, city, and state of each person in the Person table. If the address of a personId is not present in the Address table, report null instead.
-select firstName, lastName,  city,state from Person p left join Address a on p.personID = a.personID;
+select firstName, lastName, city, state from Person p left join Address a on p.personID = a.personID;
   
 #### Question #181: Write an SQL query to find the employees who earn more than their managers.
 select e1.name as Employee from Employee e1 join Employee e2 on e1.managerId = e2.id where e1.salary > e2.salary;
