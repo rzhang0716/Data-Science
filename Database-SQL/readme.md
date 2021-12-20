@@ -44,6 +44,9 @@ select ifnull(round((count(distinct requester_id,accepter_id)/count(distinct sen
 
 #### Question #603: Write an SQL query to report all the consecutive available seats in the cinema.  
 select distinct c1.seat_id from Cinema c1 join Cinema c2 where (abs(c1.seat_id - c2.seat_id) = 1) and (c1.free = 1) and (c2.free = 1) order by c1.seat_id;
+
+#### Question #607: Write an SQL query to report the names of all the salespersons who did not have any orders related to the company with the name "RED".
+select name from SalesPerson s left join (select o.sales_id, o.order_id from Orders o join Company c on o.com_id = c.com_id where c.name = 'RED') a on s.sales_id = a.sales_id where a.order_id is null;
   
 #### Question #613: Write a query to find the shortest distance between two points in these points.
 SELECT min(abs(a.x-b.x)) as shortest FROM point a JOIN point b WHERE a.x != b.x;
