@@ -47,6 +47,9 @@ select distinct c1.seat_id from Cinema c1 join Cinema c2 where (abs(c1.seat_id -
 
 #### Question #607: Write an SQL query to report the names of all the salespersons who did not have any orders related to the company with the name "RED".
 select name from SalesPerson s left join (select o.sales_id, o.order_id from Orders o join Company c on o.com_id = c.com_id where c.name = 'RED') a on s.sales_id = a.sales_id where a.order_id is null;
+
+#### Question #610: Write an SQL query to report for every three line segments whether they can form a triangle.
+select x, y,z, case when (x + y- z >0) and (x+z-y>0) and (y+z-x>0) then 'Yes' else 'No' end as triangle from Triangle;
   
 #### Question #613: Write a query to find the shortest distance between two points in these points.
 SELECT min(abs(a.x-b.x)) as shortest FROM point a JOIN point b WHERE a.x != b.x;
