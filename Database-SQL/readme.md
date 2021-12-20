@@ -42,6 +42,9 @@ select class from Courses group by class having count(class) >=5;
 #### Question #597: Write an SQL query to find the overall acceptance rate of requests, which is the number of acceptance divided by the number of requests. Return the answer rounded to 2 decimals places.
 select ifnull(round((count(distinct requester_id,accepter_id)/count(distinct sender_id,send_to_id)),2),0.00) as accept_rate from FriendRequest, RequestAccepted;
 
+#### Question #603: Write an SQL query to report all the consecutive available seats in the cinema.  
+select distinct c1.seat_id from Cinema c1 join Cinema c2 where (abs(c1.seat_id - c2.seat_id) = 1) and (c1.free = 1) and (c2.free = 1) order by c1.seat_id;
+  
 #### Question #613: Write a query to find the shortest distance between two points in these points.
 SELECT min(abs(a.x-b.x)) as shortest FROM point a JOIN point b WHERE a.x != b.x;
 
