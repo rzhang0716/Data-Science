@@ -11,11 +11,12 @@ Packages used: ggplot2, Dplyr, Tidyr, tidyverse
 Algortihms: Linear Regression, Logistic Regression, KNN, Decision Trees, Random Forest, SVM, K-means Clustering, Principal Component Analysis. 
 
 ## Projects
-This folder contains all projects about machine learning with different programming lanaguages (R, Python) in following fields: 
-#### Survival Analysis
+This folder contains all projects about machine learning with different programming lanaguages (R, Python) in following fields. 
 
-#### Clinical Trails 
+### Survival Analysis
 
-#### Risk Predictions 
+### Clinical Trails 
 
-#### Algorithm Optimizations
+### Risk Predictions 
+
+### Algorithm Optimizations
