@@ -53,7 +53,10 @@ select x, y,z, case when (x + y- z >0) and (x+z-y>0) and (y+z-x>0) then 'Yes' el
   
 #### Question #613: Write a query to find the shortest distance between two points in these points.
 SELECT min(abs(a.x-b.x)) as shortest FROM point a JOIN point b WHERE a.x != b.x;
-
+  
+#### Question #619: Write an SQL query to report the largest single number. If there is no single number, report null.
+select (select num from MyNumbers group by num having count(num) = 1 order by num desc limit 1) as num;
+  
 #### Question #1068: Write an SQL query that reports all product names of the products in the Sales table along with their selling year and price.
 SELECT product_name, year, price FROM Sales s JOIN Product p ON s.product_id = p.product_id; 
 
