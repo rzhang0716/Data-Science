@@ -60,6 +60,9 @@ select (select num from MyNumbers group by num having count(num) = 1 order by nu
 #### Question #620: Write an SQL query to report the movies with an odd-numbered ID and a description that is not "boring".
 select id, movie, description, rating from Cinema where mod(id,2) = 1 and description != 'boring' order by rating desc;
   
+#### Question #627: Write an SQL query to swap all 'f' and 'm' values (i.e., change all 'f' values to 'm' and vice versa) with a single update statement and no intermediate temporary tables.
+update salary set sex = CHAR(ASCII('f') ^ ASCII('m') ^ ASCII(sex));
+  
 #### Question #1068: Write an SQL query that reports all product names of the products in the Sales table along with their selling year and price.
 SELECT product_name, year, price FROM Sales s JOIN Product p ON s.product_id = p.product_id; 
 
