@@ -74,7 +74,10 @@ SELECT product_id, sum(quantity) AS total_quantity FROM Sales GROUP BY product_i
 
 #### Question #1075: Write an SQL query that reports the average experience years of all the employees for each project, rounded to 2 digits.
 select project_id, round(avg(experience_years),2) as average_years from Project p join Employee e on p.employee_id = e.employee_id group by project_id;
-  
+
+#### Question #1076: Write an SQL query that reports all the projects that have the most employees.
+select project_id from Project group by project_id having count(*) = (select count(*) from Project group by project_id order by count(*) desc limit 1);
+
 #### Question #1173: Write an SQL query to find the percentage of immediate orders in the table, rounded to 2 decimal places.
 SELECT round(sum(order_date = customer_pref_delivery_date)*100/count(*),2) as immediate_percentage FROM Delivery;
 
