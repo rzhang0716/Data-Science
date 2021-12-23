@@ -62,7 +62,10 @@ select id, movie, description, rating from Cinema where mod(id,2) = 1 and descri
   
 #### Question #627: Write an SQL query to swap all 'f' and 'm' values (i.e., change all 'f' values to 'm' and vice versa) with a single update statement and no intermediate temporary tables.
 update salary set sex = CHAR(ASCII('f') ^ ASCII('m') ^ ASCII(sex));
-  
+
+#### Question #1050: Write a SQL query for a report that provides the pairs (actor_id, director_id) where the actor has cooperated with the director at least three times.
+select actor_id, director_id from ActorDirector group by actor_id, director_id having count(*) >= 3;
+
 #### Question #1068: Write an SQL query that reports all product names of the products in the Sales table along with their selling year and price.
 SELECT product_name, year, price FROM Sales s JOIN Product p ON s.product_id = p.product_id; 
 
