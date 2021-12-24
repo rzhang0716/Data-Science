@@ -1,0 +1,89 @@
+---
+title: "Read pdf and extract texts"
+author: "RZ"
+date: "8/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+load the library and the pdf files
+```{r}
+library(pdftools)
+download.file('arxiv.org/pdf/1403.2805.pdf',"1403.2805.pdf",mode = "wb")
+txt <- pdf_text('1403.2805.pdf')
+```
+
+Cast the first and the second page
+```{r}
+# first page text
+cat(txt[1])
+
+# second page text
+cat(txt[2])
+```
+
+extract table 
+```{r}
+# Table of contents
+toc <- pdf_toc('1403.2805.pdf')
+
+# Show as JSON
+jsonlite::toJSON(toc, auto_unbox = TRUE, pretty = TRUE)
+
+```
+
+extract other information 
+```{r}
+# Author, version, etc
+info <- pdf_info('1403.2805.pdf')
+
+# Table with fonts
+fonts <- pdf_fonts('1403.2805.pdf')
+```
+
+some tables
+```{r}
+cat(txt[18])
+
+cat(txt[19])
+```
+
+
+Step 1: load packages
+```{r}
+library(pdftools)
+library(tidyverse)
+```
+
+Step 2: load the file
+```{r}
+setwd("~/Downloads")
+UC_text <- pdf_text('CI5volX-07.pdf') %>% readr::read_lines()
+head(UC_text)
+```
+Extract the table files
+```{r}
+season_status <- UC_text[70:91]
+```
+
+Step 3: Remove white spaces and comma etc
+str_trim(): removes whitespace from start and end of string
+str_squish(): also reduces repeated whitespace inside a string
+```{r}
+all_stats_lines <- season_status[4:22] %>% 
+  str_squish() %>%
+  str_replace_all(',', '') %>% 
+  strsplit(split = ' ')
+head(all_stats_lines)
+```
+
+Step 4: Convert to the tibble
+```{r}
+Find_DF <- as.tibble(all_stats_lines)
+```
+
+
+
