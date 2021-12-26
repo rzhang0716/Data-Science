@@ -81,7 +81,8 @@ select project_id from Project group by project_id having count(*) = (select cou
 #### Question #1082: Write an SQL query that reports the best seller by total sales price, If there is a tie, report them all.
 select seller_id from Sales group by seller_id having sum(price) = (select sum(price) from sales group by seller_id order by sum(price) desc limit 1);
   
-#### Question #1083:
+#### Question #1083: Write an SQL query that reports the buyers who have bought S8 but not iPhone. Note that S8 and iPhone are products present in the Product table.
+select buyer_id from sales s join product p on s.product_id = p.product_id group by buyer_id having sum(p.product_name = 'S8') > 0 and sum(p.product_name = 'iPhone') = 0;
   
 #### Question #1084:
   
