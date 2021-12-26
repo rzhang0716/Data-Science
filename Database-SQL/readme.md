@@ -90,6 +90,9 @@ SELECT s.product_id, product_name FROM Sales s LEFT JOIN Product p ON s.product_
 #### Question #1113: Write an SQL query that reports the number of posts reported yesterday for each report reason. Assume today is 2019-07-05.
 select extra as report_reason, count(distinct post_id) as report_count from Actions where extra is not null and action_date = '2019-07-04' and action = 'report'
 group by extra;
+
+#### Question #1141: Write an SQL query to find the daily active user count for a period of 30 days ending 2019-07-27 inclusively. A user was active on someday if they made at least one activity on that day.
+select activity_date as day, count(distinct user_id) as active_users from Activity where datediff('2019-07-27', activity_date) <30 group by activity_date;
   
 #### Question #1173: Write an SQL query to find the percentage of immediate orders in the table, rounded to 2 decimal places.
 SELECT round(sum(order_date = customer_pref_delivery_date)*100/count(*),2) as immediate_percentage FROM Delivery;
