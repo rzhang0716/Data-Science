@@ -2,7 +2,7 @@
 
 All python files are following python programming related projects.
 
-Day 1 --- Variables
+Day 1 --- Variables \n
 Day 2 --- Data Types
 Day 3 --- Control Flow and Logical Operators
 Day 4 --- Randomisation
