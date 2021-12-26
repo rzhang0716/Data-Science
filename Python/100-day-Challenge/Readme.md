@@ -1,6 +1,6 @@
 # 100 Day Python Programming Study Challenge
 
-All python files are following python programming related projects.
+### All python files are following python programming related projects.
 
 <br /> Day 1 --- Variables
 <br /> Day 2 --- Data Types
