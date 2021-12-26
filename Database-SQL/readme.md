@@ -78,6 +78,14 @@ select project_id, round(avg(experience_years),2) as average_years from Project 
 #### Question #1076: Write an SQL query that reports all the projects that have the most employees.
 select project_id from Project group by project_id having count(*) = (select count(*) from Project group by project_id order by count(*) desc limit 1);
 
+#### Question #1082: Write an SQL query that reports the best seller by total sales price, If there is a tie, report them all.
+select seller_id from Sales group by seller_id having sum(price) = (select sum(price) from sales group by seller_id order by sum(price) desc limit 1);
+  
+#### Question #1083:
+  
+#### Question #1084:
+  
+  
 #### Question #1173: Write an SQL query to find the percentage of immediate orders in the table, rounded to 2 decimal places.
 SELECT round(sum(order_date = customer_pref_delivery_date)*100/count(*),2) as immediate_percentage FROM Delivery;
 
