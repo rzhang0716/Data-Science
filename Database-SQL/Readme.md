@@ -100,6 +100,10 @@ SELECT ifnull(ROUND(COUNT(DISTINCT session_id)/COUNT(DISTINCT user_id), 2),0.00)
 #### Question #1173: Write an SQL query to find the percentage of immediate orders in the table, rounded to 2 decimal places.
 SELECT round(sum(order_date = customer_pref_delivery_date)*100/count(*),2) as immediate_percentage FROM Delivery;
 
+#### Question #1249: Write an SQL query to find the type of weather in each country for November 2019.
+with a as (select country_id, avg(weather_state) as b from Weather where month(day) = 11 and year(day) = 2019 group by country_id) select country_name, case
+when b  >= 25 then "Hot" when b <= 15 then "Cold" else "Warm" end as weather_type from Countries c join a on c.country_id = a.country_id;
+           
 #### Question #1251: Write an SQL query to find the average selling price for each product.average_price should be rounded to 2 decimal places.
 SELECT p.product_id as product_id, ROUND((sum(price*units))/(sum(units)),2) as average_price FROM Prices p JOIN UnitsSold u ON p.product_id = u.product_id AND (purchase_date BETWEEN start_date AND end_date) GROUP BY p.product_id;
 
