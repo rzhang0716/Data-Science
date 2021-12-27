@@ -103,6 +103,10 @@ SELECT round(sum(order_date = customer_pref_delivery_date)*100/count(*),2) as im
 #### Question #1251: Write an SQL query to find the average selling price for each product.average_price should be rounded to 2 decimal places.
 SELECT p.product_id as product_id, ROUND((sum(price*units))/(sum(units)),2) as average_price FROM Prices p JOIN UnitsSold u ON p.product_id = u.product_id AND (purchase_date BETWEEN start_date AND end_date) GROUP BY p.product_id;
 
+#### Question #1280: Write an SQL query to find the number of times each student attended each exam.
+with 
+a as (select * from Students s1 cross join Subjects s2), b as (select student_id, subject_name, count(*) as attended_name from Examinations group by 1,2) select a.student_id, a.student_name, a.subject_name, ifnull(b.attended_name,0) as attended_exams from a left join b on (a.student_id = b.student_id) and (a.subject_name = b.subject_name) order by 1,3;
+
 #### Question #1303: Write an SQL query to find for each date, the number of distinct products sold and their names. The sold-products names for each date should be sorted lexicographically. 
 SELECT sell_date, COUNT(DISTINCT product) AS num_sold, GROUP_CONCAT(DISTINCT product) AS products FROM Activities GROUP BY sell_date ORDER BY sell_date;
   
