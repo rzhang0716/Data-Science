@@ -133,11 +133,29 @@ SELECT name, Ifnull(sum(distance),0) AS travelled_distance FROM Users u LEFT JOI
 select q.id, q.year, ifnull(npv,0) as npv from Queries q left join NPV n on (q.id = n.id) and (q.year = n.year);
   
 #### Question #1435: You want to know how long a user visits your application. You decided to create bins of "[0-5>", "[5-10>", "[10-15>", and "15 minutes or more" and count the number of sessions on it. Write an SQL query to report the (bin, total).
-  
+WITH cte AS (
+    SELECT '[0-5>' AS bin,  0 AS min_duration, 5*60 AS max_duration
+    UNION ALL
+    SELECT '[5-10>' AS bin,  5*60 AS min_duration, 10*60 AS max_duration
+    UNION ALL
+    SELECT '[10-15>' AS bin, 10*60 AS min_duration, 15*60 AS max_duration
+    UNION ALL
+    SELECT '15 or more' AS bin,  15*60 as min_duration, 2147483647 AS max_duration
+    )
+
+SELECT cte.bin, COUNT(s.session_id) AS total
+FROM Sessions s
+RIGHT JOIN cte 
+		ON s.duration >= min_duration 
+        AND s.duration < max_duration				 
+GROUP BY cte.bin;  
 
 #### Question #1484: Write an SQL query to find the team size of each of the employees.
 SELECT employee_id, COUNT(employee_id) OVER (PARTITION BY team_id) AS team_size FROM Employee;
-
+  
+#### Question #1495: Write an SQL query to report the distinct titles of the kid-friendly movies streamed in June 2020.
+select distinct title from Content c join TVProgram t on c.content_id = t.content_id
+where Kids_content = 'Y' and content_type = 'Movies' and month(program_date) = 6 and year(program_date) = 2020;
 
 
 
