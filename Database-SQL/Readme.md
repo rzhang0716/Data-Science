@@ -132,6 +132,9 @@ SELECT name, Ifnull(sum(distance),0) AS travelled_distance FROM Users u LEFT JOI
 #### Question #1421: Write an SQL query to find the npv of each query of the Queries table.
 select q.id, q.year, ifnull(npv,0) as npv from Queries q left join NPV n on (q.id = n.id) and (q.year = n.year);
   
+#### Question #1435: You want to know how long a user visits your application. You decided to create bins of "[0-5>", "[5-10>", "[10-15>", and "15 minutes or more" and count the number of sessions on it. Write an SQL query to report the (bin, total).
+  
+
 #### Question #1484: Write an SQL query to find the team size of each of the employees.
 SELECT employee_id, COUNT(employee_id) OVER (PARTITION BY team_id) AS team_size FROM Employee;
 
