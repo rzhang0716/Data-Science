@@ -113,7 +113,10 @@ a as (select * from Students s1 cross join Subjects s2), b as (select student_id
 
 #### Question #1303: Write an SQL query to find for each date, the number of distinct products sold and their names. The sold-products names for each date should be sorted lexicographically. 
 SELECT sell_date, COUNT(DISTINCT product) AS num_sold, GROUP_CONCAT(DISTINCT product) AS products FROM Activities GROUP BY sell_date ORDER BY sell_date;
-  
+
+#### Question #1322: Write an SQL query to find the ctr of each Ad. Round ctr to two decimal points. Return the result table ordered by ctr in descending order and by ad_id in ascending order in case of a tie.
+select ad_id, ifnull(round(avg(case when action = 'Clicked' then 1 when action = 'Viewed' then 0 else null end)*100,2),0.00) as ctr from Ads group by ad_id order by 2 desc, 1;                                    
+                                    
 #### Question #1350: Write an SQL query to find the id and the name of all students who are enrolled in departments that no longer exists.
 SELECT id, name FROM Students WHERE department_id NOT IN (SELECT id FROM Departments)ORDER BY id;
   
