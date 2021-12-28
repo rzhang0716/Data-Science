@@ -129,6 +129,9 @@ SELECT E2.unique_id, E1.name FROM Employees E1 LEFT JOIN EmployeeUNI E2 ON E1.id
 #### Question #1407: Write an SQL query to report the distance travelled by each user. Return the result table ordered by travelled_distance in descending order, if two or more users travelled the same distance, order them by their name in ascending order.
 SELECT name, Ifnull(sum(distance),0) AS travelled_distance FROM Users u LEFT JOIN Rides r ON u.id = r.user_id GROUP BY name ORDER BY travelled_distance DESC, name;
 
+#### Question #1421: Write an SQL query to find the npv of each query of the Queries table.
+select q.id, q.year, ifnull(npv,0) as npv from Queries q left join NPV n on (q.id = n.id) and (q.year = n.year);
+  
 #### Question #1484: Write an SQL query to find the team size of each of the employees.
 SELECT employee_id, COUNT(employee_id) OVER (PARTITION BY team_id) AS team_size FROM Employee;
 
