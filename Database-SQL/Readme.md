@@ -142,7 +142,6 @@ WITH cte AS (
     UNION ALL
     SELECT '15 or more' AS bin,  15*60 as min_duration, 2147483647 AS max_duration
     )
-
 SELECT cte.bin, COUNT(s.session_id) AS total
 FROM Sessions s
 RIGHT JOIN cte 
