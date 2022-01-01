@@ -173,7 +173,9 @@ on t1.customer_id = t2.customer_id and t1.name = t2.name;
 
 
 
-
+#### Question #1517: Write an SQL query to find the users who have valid emails.The prefix name is a string that may contain letters (upper or lower case), digits, underscore '_', period '.', and/or dash '-'. The prefix name must start with a letter.
+The domain is '@leetcode.com'.
+select * from Users where mail regexp '^[A-Za-z][A-Za-z0-9\_\.\-]*@leetcode.com$'
 
 
 
