@@ -156,7 +156,20 @@ SELECT employee_id, COUNT(employee_id) OVER (PARTITION BY team_id) AS team_size 
 select distinct title from Content c join TVProgram t on c.content_id = t.content_id
 where Kids_content = 'Y' and content_type = 'Movies' and month(program_date) = 6 and year(program_date) = 2020;
 
-
+#### Question #1511: Write an SQL query to report the customer_id and customer_name of customers who have spent at least $100 in each month of June and July 2020.
+with 
+m6 as (select * from Orders where month(order_date) = 6 and year(order_date) = 2020),
+m7 as (select * from Orders where month(order_date) = 7 and year(order_date) = 2020),
+t1 as (select c.customer_id, name from Customers c join m6 m on c.customer_id = m.customer_id
+join Product p on m.product_id = p.product_id
+group by c.customer_id
+having sum(quantity*price) >= 100),
+t2 as (select c.customer_id, name from Customers c join m7 m on c.customer_id = m.customer_id
+join Product p on m.product_id = p.product_id
+group by c.customer_id
+having sum(quantity*price) >= 100)
+select distinct t1.customer_id, t1.name from t1 join t2
+on t1.customer_id = t2.customer_id and t1.name = t2.name;				     
 
 
 
