@@ -171,13 +171,12 @@ having sum(quantity*price) >= 100)
 select distinct t1.customer_id, t1.name from t1 join t2
 on t1.customer_id = t2.customer_id and t1.name = t2.name;				     
 
-
-
 #### Question #1517: Write an SQL query to find the users who have valid emails.The prefix name is a string that may contain letters (upper or lower case), digits, underscore '_', period '.', and/or dash '-'. The prefix name must start with a letter.
 The domain is '@leetcode.com'.
 select * from Users where mail regexp '^[A-Za-z][A-Za-z0-9\_\.\-]*@leetcode.com$'
 
-
+#### Question #1527: Write an SQL query to report the patient_id, patient_name all conditions of patients who have Type I Diabetes. Type I Diabetes always starts with DIAB1 prefix
+select * from Patients where conditions regexp '^DIAB1| DIAB1';
 
 
 
