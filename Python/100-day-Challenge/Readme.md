@@ -2,7 +2,7 @@
 
 ### All python files are following python programming related projects.
 
-## <br />  Beginner
+## Beginner
 <br /> Day 01 --- Variables
 <br /> Day 02 --- Data Types
 <br /> Day 03 --- Control Flow and Logical Operators
@@ -19,5 +19,5 @@
 <br /> Day 14 --- Higher Lower Game
 
 
-## <br />  Intermediate
+## Intermediate
 <br /> Day 15 --- Local Development Environment Setup
