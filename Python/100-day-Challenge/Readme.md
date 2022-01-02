@@ -2,7 +2,7 @@
 
 ### All python files are following python programming related projects.
 
-<br /> ## Beginner
+## <br /> Beginner
 <br /> Day 01 --- Variables
 <br /> Day 02 --- Data Types
 <br /> Day 03 --- Control Flow and Logical Operators
