@@ -181,7 +181,8 @@ select * from Patients where conditions regexp '^DIAB1| DIAB1';
 #### Question #1543: Since table Sales was filled manually in the year 2000, product_name may contain leading and/or trailing white spaces, also they are case-insensitive. Write an SQL query to report product_name in lowercase without leading or trailing white spaces. sale_date in the format ('YYYY-MM'). total the number of times the product was sold in this month. Return the result table ordered by product_name in ascending order. In case of a tie, order it by sale_date in ascending order.
 select lower(trim(product_name)) as product_name, DATE_FORMAT(sale_date,'%Y-%m') as sale_date, count(sale_id) as total from Sales group by 1,2 order by 1,2;
 
-
+#### Question #1565: Write an SQL query to find the number of unique orders and the number of unique customers with invoices > $20 for each different month.
+select date_format(order_date, '%Y-%m') as month, count(distinct order_id) as order_count, count(distinct customer_id) as customer_count from Orders where invoice > 20 group by 1;
 
 
 
