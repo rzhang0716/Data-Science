@@ -184,5 +184,5 @@ select lower(trim(product_name)) as product_name, DATE_FORMAT(sale_date,'%Y-%m')
 #### Question #1565: Write an SQL query to find the number of unique orders and the number of unique customers with invoices > $20 for each different month.
 select date_format(order_date, '%Y-%m') as month, count(distinct order_id) as order_count, count(distinct customer_id) as customer_count from Orders where invoice > 20 group by 1;
 
-
-
+#### Question #1571: Write an SQL query to report the number of cubic feet of volume the inventory occupies in each warehouse.
+select distinct name as warehouse_name, sum(units*Width*Length*Height) as volume from Warehouse w join Products p on w.product_id = p.product_id group by 1;
