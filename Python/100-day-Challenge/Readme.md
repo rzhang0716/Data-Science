@@ -3,7 +3,7 @@
 ### All python files are following python programming related projects.
 
 ## Beginner
-<br /> Day 01 --- Variables
+Day 01 --- Variables
 <br /> Day 02 --- Data Types
 <br /> Day 03 --- Control Flow and Logical Operators
 <br /> Day 04 --- Randomisation
@@ -20,4 +20,4 @@
 
 
 ## Intermediate
-<br /> Day 15 --- Local Development Environment Setup
+Day 15 --- Local Development Environment Setup
