@@ -8,7 +8,7 @@
 <br /> Day 03 --- Control Flow and Logical Operators
 <br /> Day 04 --- Randomisation
 <br /> Day 05 --- Loops
-<br /> Day 06 --- FUnctions and Karel
+<br /> Day 06 --- Functions and Karel
 <br /> Day 07 --- Hangman
 <br /> Day 08 --- Function Parameters
 <br /> Day 09 --- Dictionaries, Nesting
