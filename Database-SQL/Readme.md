@@ -189,3 +189,6 @@ select distinct name as warehouse_name, sum(units*Width*Length*Height) as volume
 
 #### Question #1581: Write an SQL query to find the IDs of the users who visited without making any transactions and the number of times they made these types of visits.
 select customer_id, count(*) as count_no_trans from Visits v left join Transactions t on v.visit_id = t.visit_id where transaction_id is NULL group by 1;
+
+#### Question #1587: Write an SQL query to report the name and balance of users with a balance higher than 10000. The balance of an account is equal to the sum of the amounts of all transactions involving that account.
+select name, sum(amount) as balance from Users u join Transactions t on u.account = t.account group by name having balance > 10000;
