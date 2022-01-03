@@ -195,3 +195,16 @@ select name, sum(amount) as balance from Users u join Transactions t on u.accoun
 
 #### Question #1607: Write an SQL query to report the names of all sellers who did not make any sales in 2020. Return the result table ordered by seller_name in ascending order.
 select distinct seller_name from Seller s left join (select * from Orders where year(sale_date) = 2020) o on s.seller_id = o.seller_id where o.customer_id is NULL order by seller_name;
+
+#### Question #1623: Write an SQL query to find all the possible triplets representing the country under the given constraints.
+SELECT sa.student_name AS member_a
+    , sb.student_name AS member_b
+    , sc.student_name AS member_c
+FROM schoola sa CROSS JOIN schoolb sb 
+    CROSS JOIN schoolc sc
+        WHERE sa.student_name != sb.student_name 
+            AND sa.student_name != sc.student_name
+            AND sb.student_name != sc.student_name
+            AND sa.student_id != sc.student_id
+            AND sb.student_id != sc.student_id
+            AND sa.student_id != sb.student_id	
