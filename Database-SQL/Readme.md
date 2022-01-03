@@ -192,3 +192,6 @@ select customer_id, count(*) as count_no_trans from Visits v left join Transacti
 
 #### Question #1587: Write an SQL query to report the name and balance of users with a balance higher than 10000. The balance of an account is equal to the sum of the amounts of all transactions involving that account.
 select name, sum(amount) as balance from Users u join Transactions t on u.account = t.account group by name having balance > 10000;
+
+#### Question #1607: Write an SQL query to report the names of all sellers who did not make any sales in 2020. Return the result table ordered by seller_name in ascending order.
+select distinct seller_name from Seller s left join (select * from Orders where year(sale_date) = 2020) o on s.seller_id = o.seller_id where o.customer_id is NULL order by seller_name;
