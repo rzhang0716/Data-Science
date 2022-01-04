@@ -208,3 +208,7 @@ FROM schoola sa CROSS JOIN schoolb sb
             AND sa.student_id != sc.student_id
             AND sb.student_id != sc.student_id
             AND sa.student_id != sb.student_id	
+
+#### Question #1633: Write an SQL query to find the percentage of the users registered in each contest rounded to two decimals. Return the result table ordered by percentage in descending order. In case of a tie, order it by contest_id in ascending order.
+select contest_id, round(ifnull((count(*)/(select count(user_id) from Users)*100),0),2) as percentage from Users u  join Register r on u.user_id = r.user_id group by 1 order by 2 desc, 1;
+	
