@@ -217,3 +217,7 @@ with start_time as (select * from Activity where activity_type = 'start'), end_t
 
 #### Question #1667: Write an SQL query to fix the names so that only the first character is uppercase and the rest are lowercase. Return the result table ordered by user_id.
 select user_id, concat(upper(substring(name,1,1)),lower(substring(name,2))) as name from Users order by 1;
+	
+#### Question #1677: Write an SQL query that will, for all products, return each product name with the total amount due, paid, canceled, and refunded across all invoices. Return the result table ordered by product_name.
+select distinct name, ifnull(sum(rest),0) as rest, ifnull(sum(paid),0) as paid, ifnull(sum(canceled),0) as canceled, ifnull(sum(refunded),0) as refunded
+from Product p left join Invoice i on p.product_id = i.product_id group by 1 order by 1;
