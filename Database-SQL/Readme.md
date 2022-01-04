@@ -224,3 +224,6 @@ from Product p left join Invoice i on p.product_id = i.product_id group by 1 ord
 	
 #### Question #1683: Write an SQL query to find the IDs of the invalid tweets. The tweet is invalid if the number of characters used in the content of the tweet is strictly greater than 15.
 select tweet_id from Tweets where char_length(content) > 15;
+
+#### Question #1693: Write an SQL query that will, for each date_id and make_name, return the number of distinct lead_id's and distinct partner_id's.
+select date_id, make_name, ifnull(count(distinct lead_id),0) as unique_leads, ifnull(count(distinct partner_id),0) as unique_partners from DailySales group by 1,2;
