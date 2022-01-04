@@ -214,3 +214,6 @@ select contest_id, round(ifnull((count(*)/(select count(user_id) from Users)*100
 	
 #### Question #1661: Write an SQL query to find the average time each machine takes to complete a process. The time to complete a process is the 'end' timestamp minus the 'start' timestamp. The average time is calculated by the total time to complete every process on the machine divided by the number of processes that were run. The resulting table should have the machine_id along with the average time as processing_time, which should be rounded to 3 decimal places.
 with start_time as (select * from Activity where activity_type = 'start'), end_time as (select * from Activity where activity_type = 'end') select s.machine_id, round(avg(e.timestamp - s.timestamp),3) as processing_time from start_time s join end_time e on s.machine_id = e.machine_id and s.process_id = e.process_id group by 1;
+
+#### Question #1667: Write an SQL query to fix the names so that only the first character is uppercase and the rest are lowercase. Return the result table ordered by user_id.
+select user_id, concat(upper(substring(name,1,1)),lower(substring(name,2))) as name from Users order by 1;
