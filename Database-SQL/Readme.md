@@ -221,3 +221,6 @@ select user_id, concat(upper(substring(name,1,1)),lower(substring(name,2))) as n
 #### Question #1677: Write an SQL query that will, for all products, return each product name with the total amount due, paid, canceled, and refunded across all invoices. Return the result table ordered by product_name.
 select distinct name, ifnull(sum(rest),0) as rest, ifnull(sum(paid),0) as paid, ifnull(sum(canceled),0) as canceled, ifnull(sum(refunded),0) as refunded
 from Product p left join Invoice i on p.product_id = i.product_id group by 1 order by 1;
+	
+#### Question #1683: Write an SQL query to find the IDs of the invalid tweets. The tweet is invalid if the number of characters used in the content of the tweet is strictly greater than 15.
+select tweet_id from Tweets where char_length(content) > 15;
