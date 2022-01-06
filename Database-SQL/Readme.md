@@ -239,3 +239,11 @@ select event_day as day, emp_id, sum(out_time-in_time) as total_time from Employ
 
 #### Question 1757: Write an SQL query to find the ids of products that are both low fat and recyclable.
 select product_id from Products where low_fats = 'Y' and recyclable = 'Y';
+
+#### Question 1777: Write an SQL query to find the price of each product in each store.
+select distinct product_id, 
+max(case when store = 'store1' then price end) as store1,
+max(case when store = 'store2' then price end) as store2,
+max(case when store = 'store3' then price end) as store3
+from Products
+group by 1;
