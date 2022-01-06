@@ -233,3 +233,6 @@ select user_id, count(distinct follower_id) as followers_count from Followers gr
 
 #### Question 1731: Write an SQL query to report the ids and the names of all managers, the number of employees who report directly to them, and the average age of the reports rounded to the nearest integer. Return the result table ordered by employee_id.
 select e1.employee_id, e1.name, count(*) as reports_count, round(avg(e2.age),0) as average_age from Employees e1 join Employees e2 on e1.employee_id = e2.reports_to group by 1 order by 1;
+
+#### Question 1741: Write an SQL query to calculate the total time in minutes spent by each employee on each day at the office. Note that within one day, an employee can enter and leave more than once. The time spent in the office for a single entry is out_time - in_time.
+select event_day as day, emp_id, sum(out_time-in_time) as total_time from Employees goup by 1,2;
