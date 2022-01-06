@@ -247,3 +247,13 @@ max(case when store = 'store2' then price end) as store2,
 max(case when store = 'store3' then price end) as store3
 from Products
 group by 1;
+
+#### Question 1789: Write an SQL query to report all the employees with their primary department. For employees who belong to one department, report their only department.
+SELECT employee_id, department_id 
+FROM Employee
+WHERE primary_flag = 'Y'
+UNION
+SELECT employee_id, department_id 
+FROM Employee 
+GROUP BY employee_id
+HAVING COUNT(employee_id) = 1;
