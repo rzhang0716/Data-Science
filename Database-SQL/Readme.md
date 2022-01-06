@@ -265,3 +265,10 @@ SELECT product_id, 'store2' AS store, store2 AS price FROM Products WHERE store2
 UNION 
 SELECT product_id, 'store3' AS store, store3 AS price FROM Products WHERE store3 IS NOT NULL
 ORDER BY 1,2;
+	
+#### Question 1809: Write an SQL query to report all the sessions that did not get shown any ads.
+select distinct session_id from Playback p
+left join Ads a
+on p.customer_id = a.customer_id
+and (timestamp between start_time and end_time)
+where a.customer_id is null;
