@@ -230,3 +230,6 @@ select date_id, make_name, ifnull(count(distinct lead_id),0) as unique_leads, if
 
 #### Question 1729: Write an SQL query that will, for each user, return the number of followers. Return the result table ordered by user_id.
 select user_id, count(distinct follower_id) as followers_count from Followers group by user_id order by 1;
+
+#### Question 1731: Write an SQL query to report the ids and the names of all managers, the number of employees who report directly to them, and the average age of the reports rounded to the nearest integer. Return the result table ordered by employee_id.
+select e1.employee_id, e1.name, count(*) as reports_count, round(avg(e2.age),0) as average_age from Employees e1 join Employees e2 on e1.employee_id = e2.reports_to group by 1 order by 1;
