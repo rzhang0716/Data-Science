@@ -227,3 +227,6 @@ select tweet_id from Tweets where char_length(content) > 15;
 
 #### Question #1693: Write an SQL query that will, for each date_id and make_name, return the number of distinct lead_id's and distinct partner_id's.
 select date_id, make_name, ifnull(count(distinct lead_id),0) as unique_leads, ifnull(count(distinct partner_id),0) as unique_partners from DailySales group by 1,2;
+
+#### Question 1729: Write an SQL query that will, for each user, return the number of followers. Return the result table ordered by user_id.
+select user_id, count(distinct follower_id) as followers_count from Followers group by user_id order by 1;
