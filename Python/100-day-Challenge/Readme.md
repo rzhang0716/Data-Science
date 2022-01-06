@@ -21,3 +21,5 @@ Day 01 --- Variables
 
 ## Intermediate
 Day 15 --- Local Development Environment Setup
+Day 16 --- Coffee Machine OOP
+Day 17 --- Quiz Game OOP
