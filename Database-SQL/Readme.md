@@ -236,3 +236,6 @@ select e1.employee_id, e1.name, count(*) as reports_count, round(avg(e2.age),0) 
 
 #### Question 1741: Write an SQL query to calculate the total time in minutes spent by each employee on each day at the office. Note that within one day, an employee can enter and leave more than once. The time spent in the office for a single entry is out_time - in_time.
 select event_day as day, emp_id, sum(out_time-in_time) as total_time from Employees goup by 1,2;
+
+#### Question 1757: Write an SQL query to find the ids of products that are both low fat and recyclable.
+select product_id from Products where low_fats = 'Y' and recyclable = 'Y';
