@@ -272,3 +272,6 @@ left join Ads a
 on p.customer_id = a.customer_id
 and (timestamp between start_time and end_time)
 where a.customer_id is null;
+
+#### Question 1821: Write an SQL query to report the customers with postive revenue in the year 2021.
+select customer_id from Customers where year = 2021 and revenue >0; 
