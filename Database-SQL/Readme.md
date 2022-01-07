@@ -228,19 +228,19 @@ select tweet_id from Tweets where char_length(content) > 15;
 #### Question #1693: Write an SQL query that will, for each date_id and make_name, return the number of distinct lead_id's and distinct partner_id's.
 select date_id, make_name, ifnull(count(distinct lead_id),0) as unique_leads, ifnull(count(distinct partner_id),0) as unique_partners from DailySales group by 1,2;
 
-#### Question 1729: Write an SQL query that will, for each user, return the number of followers. Return the result table ordered by user_id.
+#### Question #1729: Write an SQL query that will, for each user, return the number of followers. Return the result table ordered by user_id.
 select user_id, count(distinct follower_id) as followers_count from Followers group by user_id order by 1;
 
-#### Question 1731: Write an SQL query to report the ids and the names of all managers, the number of employees who report directly to them, and the average age of the reports rounded to the nearest integer. Return the result table ordered by employee_id.
+#### Question #1731: Write an SQL query to report the ids and the names of all managers, the number of employees who report directly to them, and the average age of the reports rounded to the nearest integer. Return the result table ordered by employee_id.
 select e1.employee_id, e1.name, count(*) as reports_count, round(avg(e2.age),0) as average_age from Employees e1 join Employees e2 on e1.employee_id = e2.reports_to group by 1 order by 1;
 
-#### Question 1741: Write an SQL query to calculate the total time in minutes spent by each employee on each day at the office. Note that within one day, an employee can enter and leave more than once. The time spent in the office for a single entry is out_time - in_time.
+#### Question #1741: Write an SQL query to calculate the total time in minutes spent by each employee on each day at the office. Note that within one day, an employee can enter and leave more than once. The time spent in the office for a single entry is out_time - in_time.
 select event_day as day, emp_id, sum(out_time-in_time) as total_time from Employees goup by 1,2;
 
-#### Question 1757: Write an SQL query to find the ids of products that are both low fat and recyclable.
+#### Question #1757: Write an SQL query to find the ids of products that are both low fat and recyclable.
 select product_id from Products where low_fats = 'Y' and recyclable = 'Y';
 
-#### Question 1777: Write an SQL query to find the price of each product in each store.
+#### Question #1777: Write an SQL query to find the price of each product in each store.
 select distinct product_id, 
 max(case when store = 'store1' then price end) as store1,
 max(case when store = 'store2' then price end) as store2,
@@ -248,7 +248,7 @@ max(case when store = 'store3' then price end) as store3
 from Products
 group by 1;
 
-#### Question 1789: Write an SQL query to report all the employees with their primary department. For employees who belong to one department, report their only department.
+#### Question #1789: Write an SQL query to report all the employees with their primary department. For employees who belong to one department, report their only department.
 SELECT employee_id, department_id 
 FROM Employee
 WHERE primary_flag = 'Y'
@@ -258,7 +258,7 @@ FROM Employee
 GROUP BY employee_id
 HAVING COUNT(employee_id) = 1;
 
-#### Question 1795: Write an SQL query to rearrange the Products table so that each row has (product_id, store, price). If a product is not available in a store, do not include a row with that product_id and store combination in the result table.
+#### Question #1795: Write an SQL query to rearrange the Products table so that each row has (product_id, store, price). If a product is not available in a store, do not include a row with that product_id and store combination in the result table.
 SELECT product_id, 'store1' AS store, store1 AS price FROM Products WHERE store1 IS NOT NULL
 UNION 
 SELECT product_id, 'store2' AS store, store2 AS price FROM Products WHERE store2 IS NOT NULL
@@ -266,22 +266,24 @@ UNION
 SELECT product_id, 'store3' AS store, store3 AS price FROM Products WHERE store3 IS NOT NULL
 ORDER BY 1,2;
 	
-#### Question 1809: Write an SQL query to report all the sessions that did not get shown any ads.
+#### Question #1809: Write an SQL query to report all the sessions that did not get shown any ads.
 select distinct session_id from Playback p
 left join Ads a
 on p.customer_id = a.customer_id
 and (timestamp between start_time and end_time)
 where a.customer_id is null;
 
-#### Question 1821: Write an SQL query to report the customers with postive revenue in the year 2021.
+#### Question #1821: Write an SQL query to report the customers with postive revenue in the year 2021.
 select customer_id from Customers where year = 2021 and revenue >0; 
 
-#### Question 1853: Write an SQL query to convert each date in Days into a string formatted as "day_name, month_name day, year".
+#### Question #1853: Write an SQL query to convert each date in Days into a string formatted as "day_name, month_name day, year".
 select date_format(day, "%W, %M %e, %Y") as day from Days;
 	
-#### Question 1873: Write an SQL query to calculate the bonus of each employee. The bonus of an employee is 100% of their salary if the ID of the employee is an odd number and the employee name does not start with the character 'M'. The bonus of an employee is 0 otherwise. Return the result table ordered by employee_id.
+#### Question #1873: Write an SQL query to calculate the bonus of each employee. The bonus of an employee is 100% of their salary if the ID of the employee is an odd number and the employee name does not start with the character 'M'. The bonus of an employee is 0 otherwise. Return the result table ordered by employee_id.
 with b as (select employee_id, salary from Employees where name not LIKE 'M%' and employee_id % 2 = 1) select e.employee_id, ifnull(b.salary, 0) as bonus from Employees e left join b on e.employee_id = b.employee_id order by e.employee_id;
 
-#### Question 1890: Write an SQL query to report the latest login for all users in the year 2020. Do not include the users who did not login in 2020.
+#### Question #1890: Write an SQL query to report the latest login for all users in the year 2020. Do not include the users who did not login in 2020.
 select user_id, max(time_stamp) as last_stamp from Logins where year(time_stamp) = 2020 group by 1;
 
+#### Question #1939: Write an SQL query to find the IDs of the users that requested a confirmation message twice within a 24-hour window. Two messages exactly 24 hours apart are considered to be within the window. The action does not affect the answer, only the request time.
+select distinct a.user_id from Confirmations a join Confirmations b on a.user_id = b.user_id and a.time_stamp > b.time_stamp and timestampdiff(second, b.time_stamp, a.time_stamp) <= 86400;
