@@ -297,5 +297,8 @@ with a as (select* from Employees where salary < 30000 and manager_id is not Nul
 #### Question #2026: Write an SQL query to report the IDs of the low-quality problems. A LeetCode problem is low-quality if the like percentage of the problem (number of likes divided by the total number of votes) is strictly less than 60%. Return the result table ordered by problem_id in ascending order.
 select problem_id from Problems where likes/(likes+dislikes) < 0.6 order by 1;
 								 
-#### Question # 2072: Write an SQL query to report: "New York University" if New York University wins the competition. "California University" if California University wins the competition. "No Winner" if the competition ends in a draw.
+#### Question #2072: Write an SQL query to report: "New York University" if New York University wins the competition. "California University" if California University wins the competition. "No Winner" if the competition ends in a draw.
 select (case when ((select ifnull(count(*),0) from NewYork where score >= 90) > (select ifnull(count(*),0) from California where score >= 90)) then 'New York University' when ((select ifnull(count(*),0) from NewYork where score >= 90) < (select ifnull(count(*),0) from  California where score >= 90)) then 'California University' else 'No Winner' end) as winner;
+
+#### Question #2082: Write an SQL query to report the number of customers who had at least one bill with an amount strictly greater than 500.
+select count(distinct customer_id) as rich_count from Store where amount > 500;
