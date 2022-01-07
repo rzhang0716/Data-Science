@@ -287,3 +287,6 @@ select user_id, max(time_stamp) as last_stamp from Logins where year(time_stamp)
 
 #### Question #1939: Write an SQL query to find the IDs of the users that requested a confirmation message twice within a 24-hour window. Two messages exactly 24 hours apart are considered to be within the window. The action does not affect the answer, only the request time.
 select distinct a.user_id from Confirmations a join Confirmations b on a.user_id = b.user_id and a.time_stamp > b.time_stamp and timestampdiff(second, b.time_stamp, a.time_stamp) <= 86400;
+
+#### Question #1965: Write an SQL query to report the IDs of all the employees with missing information. The information of an employee is missing if: The employee's name is missing, or The employee's salary is missing. Return the result table ordered by employee_id in ascending order.
+select employee_id from (select * from Employees union select * from Salaries) a group by 1 having count(*) = 1 order by 1;
