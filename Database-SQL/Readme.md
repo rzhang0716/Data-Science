@@ -275,3 +275,6 @@ where a.customer_id is null;
 
 #### Question 1821: Write an SQL query to report the customers with postive revenue in the year 2021.
 select customer_id from Customers where year = 2021 and revenue >0; 
+
+#### Question 1873: Write an SQL query to calculate the bonus of each employee. The bonus of an employee is 100% of their salary if the ID of the employee is an odd number and the employee name does not start with the character 'M'. The bonus of an employee is 0 otherwise. Return the result table ordered by employee_id.
+with b as (select employee_id, salary from Employees where name not LIKE 'M%' and employee_id % 2 = 1) select e.employee_id, ifnull(b.salary, 0) as bonus from Employees e left join b on e.employee_id = b.employee_id order by e.employee_id;
