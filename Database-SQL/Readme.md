@@ -293,3 +293,7 @@ select employee_id from (select * from Employees union select * from Salaries) a
 
 #### Question #1978: Write an SQL query to report the IDs of the employees whose salary is strictly less than $30000 and whose manager left the company. When a manager leaves the company, their information is deleted from the Employees table, but the reports still have their manager_id set to the manager that left. Return the result table ordered by employee_id.
 with a as (select* from Employees where salary < 30000 and manager_id is not Null) select a.employee_id from a left join Employees e on a.manager_id = e.employee_id where e.employee_id is null order by a.employee_id;
+
+#### Question #2026: Write an SQL query to report the IDs of the low-quality problems. A LeetCode problem is low-quality if the like percentage of the problem (number of likes divided by the total number of votes) is strictly less than 60%. Return the result table ordered by problem_id in ascending order.
+select problem_id from Problems where likes/(likes+dislikes) < 0.6 order by 1;
+								 
