@@ -281,3 +281,7 @@ select date_format(day, "%W, %M %e, %Y") as day from Days;
 	
 #### Question 1873: Write an SQL query to calculate the bonus of each employee. The bonus of an employee is 100% of their salary if the ID of the employee is an odd number and the employee name does not start with the character 'M'. The bonus of an employee is 0 otherwise. Return the result table ordered by employee_id.
 with b as (select employee_id, salary from Employees where name not LIKE 'M%' and employee_id % 2 = 1) select e.employee_id, ifnull(b.salary, 0) as bonus from Employees e left join b on e.employee_id = b.employee_id order by e.employee_id;
+
+#### Question 1890: Write an SQL query to report the latest login for all users in the year 2020. Do not include the users who did not login in 2020.
+select user_id, max(time_stamp) as last_stamp from Logins where year(time_stamp) = 2020 group by 1;
+
