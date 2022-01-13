@@ -1,5 +1,5 @@
 - 🌱 I am a Ph.D. in Biochemistry and a master in Statistics
-- :earth_africa: I am continue learning machine learning and deep learning online
+- :earth_africa: I am continue data science related courses online
 - :zap: I am currently working as a Data Scientist (Biostatistician) in Nemours
 
 - 📫 How to find me: 
