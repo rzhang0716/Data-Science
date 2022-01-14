@@ -1,7 +1,7 @@
 ## This folder covers all statistics related materials.
 
 ## Basic Concepts
-<br>1. Population: The collection of all subjects of interest.
+1. Population: The collection of all subjects of interest.
 <br>2. Sample: A subgroup of population from what we collect information.
 <br>3. Sample Size: The number of subjects in a sample.
 <br>4. Sample space: A list of all possible outcomes. 
