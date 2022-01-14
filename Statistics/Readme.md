@@ -1,23 +1,23 @@
 ## This folder covers all statistics related materials.
 
-## 1. Basic Concepts
-(1) Population: The collection of all subjects of interest.
-<br>(2) 
+## Basic Concepts
+1 Population: The collection of all subjects of interest.
+<br>2 
 
-## 2. Hypothesis Test
+## Hypothesis Test
 
-## 3. ANOVA 
+## ANOVA 
 
-## 4. Linear Regression
+## Linear Regression
 
-## 5. Logistic Regression
+## Logistic Regression
 
-## 6. Longditudinal Analysis
+## Longditudinal Analysis
 
-## 7. Clinical Trials
+## Clinical Trials
 
-## 8. Survival Analysis
+## Survival Analysis
 
-## 9. Multivariate Analysis
+## Multivariate Analysis
 
-## 10. 
+
