@@ -23,3 +23,5 @@ Day 01 --- Variables
 Day 15 --- Local Development Environment Setup
 <br /> Day 16 --- Coffee Machine OOP
 <br /> Day 17 --- Quiz Game OOP
+<br /> Day 18 --- Turtle
+<br /> Day 19 --- Turtle Racing
