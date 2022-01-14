@@ -1,6 +1,8 @@
 ## This folder covers all statistics related materials.
 
 ## 1. Basic Concepts
+<br> (1) Population: The collection of all subjects of interest.
+(2) 
 
 ## 2. Hypothesis Test
 
