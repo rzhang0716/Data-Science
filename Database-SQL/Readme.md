@@ -7,6 +7,15 @@ select firstName, lastName, city, state from Person p left join Address a on p.p
 select ifnull(max(salary), null) SecondHighestSalary from Employee where salary != (select max(salary) m from Employee);
 select (select distinct salary from Employee order by salary desc limit 1,1) as SecondHighestSalary; 
 	
+#### Question #177: Write an SQL query to report the nth highest salary from the Employee table. If there is no nth highest salary, the query should report null.
+CREATE function getNthHighestSalary (N INT) returns INT
+begin
+DECLARE M INT;
+SET M=N-1;
+return
+(select distinct salary from Employee order by salary desc limit 1 offset M);
+end;
+	
 #### Question #181: Write an SQL query to find the employees who earn more than their managers.
 select e1.name as Employee from Employee e1 join Employee e2 on e1.managerId = e2.id where e1.salary > e2.salary;
 
