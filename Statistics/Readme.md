@@ -21,6 +21,14 @@
 
 
 ## Hypothesis Test
+<br>1. Definition: Hypothesis test is an inference tool that examines if the hypotheses are supported by the sample data.
+<br>2. Hypothesis types: (1) Equality: Not too much difference on two treatments. (2) Non-inferiority: Aim to show the experiment is not worse than standards. (3) Superiority: Experiment is better than the standard. 
+<br>3. Statistical Hypothesis procedures: (1) State the null hypothesis and the alternative hypothesis; (2) Specify the significance level; (3) Calculate the test statistics; (4) Calculate the p-value and reject region; (5) State the conclustion. 
+<br>4. Hypothesis requirements: Must be specified in terms of parameters; (2) Must be in pair.
+<br>5. Test statistics: The numerical summary of the data, which aims to measure the distance between what is observed in the sample data and what is expected under H0. 
+<br>6. p-value: Probability of the observed data if H0 is ture, which used to quantify the statistical significance. 
+<br>7. Steps for calculating the power: (1) Obtain the value for mean under H0 and Ha; (2) Superimpose the distribution of the sample mean under H0 and Ha; (3) Identify the reject region with respect to sample mean under H0; (4) Identify the region corresponding to power with respect to sample mean distribution under Ha and compute the corresponding area. 
+
 
 ## ANOVA 
 
