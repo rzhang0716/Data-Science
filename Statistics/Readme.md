@@ -37,7 +37,9 @@
 
 
 ## Linear Regression
-
+1. Simple Linear Regression (SLR): (1) Intercept: Expected value of y when X = 0; (2) Slope: Expected change in Y relative to one unit change of X; (3) Random Error: The difference between observed and expected y values.
+2. SLR assumptions: (1) Linearity; (2) Equal Variance; (3) Independent; (4) Normally distributed; (5) Predictors w/t error. 
+3. 
 
 
 ## Logistic Regression
