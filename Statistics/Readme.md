@@ -16,8 +16,6 @@
 <br>15. If repeated samples were taken and the 95% confidence interval was computed for each sample, then 95% of these confidence intervals cover the true mean.
 
 
-
-
 ## Hypothesis Test
 <br>1. Definition: Hypothesis test is an inference tool that examines if the hypotheses are supported by the sample data.
 <br>2. Hypothesis types: (1) Equality: Not too much difference on two treatments. (2) Non-inferiority: Aim to show the experiment is not worse than standards. (3) Superiority: Experiment is better than the standard. 
@@ -29,8 +27,18 @@
 
 
 ## ANOVA 
+<br>1. Assumptions: (1) All samples means are normally distributed; (2) K samples are independent to each other; (3) Variance of all populations are equal.
+<br>2. Implement ANOVA: (1) Specify H0 and Ha; (2) Specify the significance level; (3) Compute test statistics; (4) Compute p-value and draw conclusion. 
+<br>3. Idea of ANOVA: Interest in test the euqality for K means but carry the analysis of variance. Because if all means are equal, the variance among all populations should be small. We use the within-group variance as a reference as ANOVA assumes equally between group variance.
+<br>4. Disadvantage of ANOVA: It cannot tell which one is different. Therefore, we need further pair-wise comparison to find the different one.
+<br>5. Two-way ANOVA: If a quantitative outcome and two categorical variables. 
+<br>6. MANOVA: ANOVA with several dependent variables (multiple y). 
+<br>7. Multiple comparisos:(1) Bonferroni procedure; (b) Tukey Procedure; (c) Scheffe Procedure. 
+
 
 ## Linear Regression
+
+
 
 ## Logistic Regression
 
