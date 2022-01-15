@@ -42,6 +42,8 @@
 3. Procedures of SLR: (1) Make a scatter plot of the data; (2) Fit the linear regression line; (3) Aceess the fitness of the regression line and verity model assumptions; (4) Perform inference.
 4. Estimating method of SLR: Leaset squrare error.
 5. R^2 (Coefficient of determinatio): Proportion of the total variance in Y that can be explained by the regression model. 
+6. Assumptions check: (1) Constant variance: Residuals vs. fitted values; (2) Linearity: Residuals vs. Predictors; (3) Independence: Residuals vs variables not in the model; (4) Normally distributed: QQ plot.
+7. Consequence of violation: (1) Linear: Model Garbage; (2) Independece/Constant variance: Inference not trust (Try transformation log or square root); (3) Normally distributed: Minimal.
 
 
 ## Logistic Regression
