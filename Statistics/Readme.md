@@ -39,7 +39,9 @@
 ## Linear Regression
 1. Simple Linear Regression (SLR): (1) Intercept: Expected value of y when X = 0; (2) Slope: Expected change in Y relative to one unit change of X; (3) Random Error: The difference between observed and expected y values.
 2. SLR assumptions: (1) Linearity; (2) Equal Variance; (3) Independent; (4) Normally distributed; (5) Predictors w/t error. 
-3. 
+3. Procedures of SLR: (1) Make a scatter plot of the data; (2) Fit the linear regression line; (3) Aceess the fitness of the regression line and verity model assumptions; (4) Perform inference.
+4. Estimating method of SLR: Leaset squrare error.
+5. R^2 (Coefficient of determinatio): Proportion of the total variance in Y that can be explained by the regression model. 
 
 
 ## Logistic Regression
