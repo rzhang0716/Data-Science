@@ -57,7 +57,12 @@
 4. Steps build regression: (1) Examine univariate summaries of the data and identify unusual values; (2) Examine scatterplots with all variables to find correlated variables; (3) Identify a model that includes relavent varibales based on domain knowledge; (4) Check the assumptions about the model; (5) Examine the collinearity using VIF (variance inflation factor), it indicates strong collinearity if VIF > 10; (6) Based the model to predict and test after stepwise selection. 
 5. Model evaluation metrics: (1) Adjusted R^2: A penalized version of R^2 that imposes a penalty for each additional parameter added to the model; (2) PRESS statistics (Predicted Sum of Squares): Each time remove a data point, then train the model based on the rest of data points to predict the removed points; (3) AIC: A penalized goodness of fit measure, smaller is better.
 
+
 ## Logistic Regression
+1. Odds and log odds: odds = p/(1-p); log odds = logit = ln[p/(1-p)], converting probabilites to log odds.
+2. Explanation: For given variable one, increasing variable 2 by on unit will increase/decrease the log odds of survival by XX. 
+3. Coefficient explanation: Hold all other predictors constant and increase the predictor xi by 1, then the predicted odds of success are multipled by the factor e^beta.
+
 
 ## Longditudinal Analysis
 
