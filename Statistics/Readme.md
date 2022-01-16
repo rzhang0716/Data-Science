@@ -33,10 +33,12 @@
 3. Idea of ANOVA: Interest in test the euqality for K means but carry the analysis of variance. Because if all means are equal, the variance among all populations should be small. We use the within-group variance as a reference as ANOVA assumes equally between group variance.<br>
 4. Disadvantage of ANOVA: It cannot tell which one is different. Therefore, we need further pair-wise comparison to find the different one.<br>
 5. Two-way ANOVA: If a quantitative outcome and two categorical variables.
-6. 
-7. MANOVA: ANOVA with several dependent variables (multiple y). <br>
-8. Multiple comparisos:(1) Bonferroni procedure; (b) Tukey Procedure; (c) Scheffe Procedure. <br>
-
+6. Simple Effect: Describe the difference among cell means associated with that factor at a single level of the other factors.
+7. Main Effect: Describe the difference among the marginal means associated with each levvel of an experimental factor. 
+8. Interaction Effect: Difference of differences, a measure of how one factor affects the simple effects of other factors. 
+9. MANOVA: ANOVA with several dependent variables (multiple y). <br>
+10. Multiple comparisos:(1) Bonferroni procedure; (b) Tukey Procedure; (c) Scheffe Procedure. <br>
+11. ANCOVA: Including covariates in ANOVA models, using a covariate that accounts for heterogeneity among EUs to reduce experiemental error and hence increasing precision. 
 
 ## Linear Regression
 ### Simple Linear Regression
