@@ -37,7 +37,7 @@
 
 
 ## Linear Regression
-#### Simple Linear Regression
+### Simple Linear Regression
 1. Simple Linear Regression (SLR): (1) Intercept: Expected value of y when X = 0; (2) Slope: Expected change in Y relative to one unit change of X; (3) Random Error: The difference between observed and expected y values.
 2. SLR assumptions: (1) Linearity; (2) Equal Variance; (3) Independent; (4) Normally distributed; (5) Predictors w/t error. 
 3. Procedures of SLR: (1) Make a scatter plot of the data; (2) Fit the linear regression line; (3) Aceess the fitness of the regression line and verity model assumptions; (4) Perform inference.
@@ -47,6 +47,10 @@
 7. Consequence of violation: (1) Linear: Model Garbage; (2) Independece/Constant variance: Inference not trust (Try transformation log or square root); (3) Normally distributed: Minimal.
 
 #### Multiple Linear Regression
+1. Coefficients explanation: The coefficients associated with the predictor xj is the slope of the linear association between y and xj while accounting for the effects of other predictors in the model.
+2. Interaction interpretation: The partial coefficient associated with an interaction between two predictors quantifies the effect that predictor A has on the  linear association between predictor B and the response. 
+3. Procedures: (1) Fit the full model (all variables included); (2) Fit the reduced model (set some variables coefficients as 0); (3) Calculatet F-test; (4) Draw conclusion, H0 is no difference between full and reduced model. 
+
 
 ## Logistic Regression
 
