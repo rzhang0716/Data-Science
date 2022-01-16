@@ -37,6 +37,7 @@
 
 
 ## Linear Regression
+#### Simple Linear Regression
 1. Simple Linear Regression (SLR): (1) Intercept: Expected value of y when X = 0; (2) Slope: Expected change in Y relative to one unit change of X; (3) Random Error: The difference between observed and expected y values.
 2. SLR assumptions: (1) Linearity; (2) Equal Variance; (3) Independent; (4) Normally distributed; (5) Predictors w/t error. 
 3. Procedures of SLR: (1) Make a scatter plot of the data; (2) Fit the linear regression line; (3) Aceess the fitness of the regression line and verity model assumptions; (4) Perform inference.
@@ -45,6 +46,7 @@
 6. Assumptions check: (1) Constant variance: Residuals vs. fitted values; (2) Linearity: Residuals vs. Predictors; (3) Independence: Residuals vs variables not in the model; (4) Normally distributed: QQ plot.
 7. Consequence of violation: (1) Linear: Model Garbage; (2) Independece/Constant variance: Inference not trust (Try transformation log or square root); (3) Normally distributed: Minimal.
 
+#### Multiple Linear Regression
 
 ## Logistic Regression
 
