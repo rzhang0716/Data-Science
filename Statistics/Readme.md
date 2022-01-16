@@ -46,11 +46,12 @@
 6. Assumptions check: (1) Constant variance: Residuals vs. fitted values; (2) Linearity: Residuals vs. Predictors; (3) Independence: Residuals vs variables not in the model; (4) Normally distributed: QQ plot.
 7. Consequence of violation: (1) Linear: Model Garbage; (2) Independece/Constant variance: Inference not trust (Try transformation log or square root); (3) Normally distributed: Minimal.
 
-#### Multiple Linear Regression
+### Multiple Linear Regression
 1. Coefficients explanation: The coefficients associated with the predictor xj is the slope of the linear association between y and xj while accounting for the effects of other predictors in the model.
 2. Interaction interpretation: The partial coefficient associated with an interaction between two predictors quantifies the effect that predictor A has on the  linear association between predictor B and the response. 
 3. Procedures: (1) Fit the full model (all variables included); (2) Fit the reduced model (set some variables coefficients as 0); (3) Calculatet F-test; (4) Draw conclusion, H0 is no difference between full and reduced model. 
-
+4. Steps build regression: (1) Examine univariate summaries of the data and identify unusual values; (2) Examine scatterplots with all variables to find correlated variables; (3) Identify a model that includes relavent varibales based on domain knowledge; (4) Check the assumptions about the model; (5) Examine the collinearity using VIF (variance inflation factor), it indicates strong collinearity if VIF > 10; (6) Based the model to predict and test after stepwise selection. 
+5. Model evaluation metrics: (1) Adjusted R^2: A penalized version of R^2 that imposes a penalty for each additional parameter added to the model; (2) PRESS statistics (Predicted Sum of Squares): Each time remove a data point, then train the model based on the rest of data points to predict the removed points; (3) AIC: A penalized goodness of fit measure, smaller is better.
 
 ## Logistic Regression
 
