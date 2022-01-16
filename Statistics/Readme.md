@@ -13,7 +13,8 @@
 12. Event: Any combinations of outcomes.<br>
 13. Central Limit Theorem: When sample size is sufficiently large, the sample distribution of the sample mean always follows normal distribution.<br>
 14. Law of large numbers: When sample size tends to infinitely, sample mean equals the population mean. <br>
-15. If repeated samples were taken and the 95% confidence interval was computed for each sample, then 95% of these confidence intervals cover the true mean.<br>
+15. If repeated samples were taken and the 95% confidence interval was computed for each sample, then 95% of these confidence intervals cover the true mean.
+16. Power: related to the effect size (positive), sample size (positive), within group variance (negative). 
 
 
 ## Hypothesis Test
@@ -31,9 +32,10 @@
 2. Implement ANOVA: (1) Specify H0 and Ha; (2) Specify the significance level; (3) Compute test statistics; (4) Compute p-value and draw conclusion. <br>
 3. Idea of ANOVA: Interest in test the euqality for K means but carry the analysis of variance. Because if all means are equal, the variance among all populations should be small. We use the within-group variance as a reference as ANOVA assumes equally between group variance.<br>
 4. Disadvantage of ANOVA: It cannot tell which one is different. Therefore, we need further pair-wise comparison to find the different one.<br>
-5. Two-way ANOVA: If a quantitative outcome and two categorical variables. <br>
-6. MANOVA: ANOVA with several dependent variables (multiple y). <br>
-7. Multiple comparisos:(1) Bonferroni procedure; (b) Tukey Procedure; (c) Scheffe Procedure. <br>
+5. Two-way ANOVA: If a quantitative outcome and two categorical variables.
+6. 
+7. MANOVA: ANOVA with several dependent variables (multiple y). <br>
+8. Multiple comparisos:(1) Bonferroni procedure; (b) Tukey Procedure; (c) Scheffe Procedure. <br>
 
 
 ## Linear Regression
