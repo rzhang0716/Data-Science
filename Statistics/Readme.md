@@ -66,8 +66,15 @@
 
 ## Longditudinal Analysis
 
-## Clinical Trials
 
+## Clinical Trials
+### Phase I 
+1. Definition: The first studies in which a new drug is administered to a small number of human subjects with increasing does of drug. To explore tolerance does for further experimentation. 
+2. Objectives: (1) Determine a 'safe', 'tolearance' does; (2) Develop an appropriate schedule of administration; (3) Gain understanding of the pharmacology of the drug; (4) Need to examine interaction effects for safety profile and proper labeling. 
+3. Features: (1) Do this in a timely manner, using a small number of subjects (10~15); (2) Most are not comparative but rather are informational; (3) Interaction studies are comparative but not aimed for efficiency. 
+
+### Phase II
+1. Objectives: To determine whether the new treatment should be used in a large-scale comparative study.  (1) Feasibility of treatment; (2) Side effects and toxicity; (3) Logistics of administration and cost. 
 ## Survival Analysis
 
 ## Multivariate Analysis
