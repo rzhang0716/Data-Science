@@ -75,7 +75,22 @@
 
 ### Phase II
 1. Objectives: To determine whether the new treatment should be used in a large-scale comparative study.  (1) Feasibility of treatment; (2) Side effects and toxicity; (3) Logistics of administration and cost. 
+2. Major issues to address: Is there eneough evidence of efficiency of the new drug?
+3. Surrogate markers: An outcome that can be measured quickly and is believed to be related to the clinical outcome. Eg: Lung cancer drug effect on tumor shrinkage. 
+4. Goal: To estimate the effect of the new drug on some endpoint with enough precision to decide whether we investigate the new drug in Phase III.
+
+##### Gehan's Two Stage Design
+1. Goal: To discard ineffective treatment early.
+2. Stages:(1) Give the new treatment to number of n0 patients. If no patient responds, declare the treatment is ineffective. (2): If at least one patient  responds in Stage I, add n- n0 patients and count the total number of patients responding to the new treatment. Calculate the point estimate of pi and construct the confidence interval. 
+3. Determine n0 and n. (1) 𝞹0 denotes as the minimal efficacy, ɑ0 denotes as tolerance; (2) First if (1-𝞹)no <= ɑ0 we need n0 >= log(ɑ0)/log(1-ɑ0) to find n0; (3) Determine n based on confidence interval z(p*(1-p)/n)= interval. 
+
+#### Simon's Two Stage Design
+1. Stages: (1) N1 patients are given treatment in the first stage. (1a) If r1 or less respond, then decalre the treatment is a failure and stop. (1b) If more than r1 respond, then add (n-n1) additional patients for a total of n patients. (2) If the total number that respond among all n patients is greater than r, then declare the treatment a success; otherwise, declare the treatment is fail. 
+2. Declare the treatment is failure if (X1 <= r1) or {(X1>r1) and (X1 + X2 <= r); Declare the treatment is sucess if {(X1 > r1) and (X1+X2 > r)}.
+3. Design contains: Type I and Type II error. 
+
 ## Survival Analysis
+1. 
 
 ## Multivariate Analysis
 
