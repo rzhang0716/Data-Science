@@ -89,6 +89,9 @@
 2. Declare the treatment is failure if (X1 <= r1) or {(X1>r1) and (X1 + X2 <= r); Declare the treatment is sucess if {(X1 > r1) and (X1+X2 > r)}.
 3. Design contains: Type I and Type II error. 
 
+### Phase III
+Definition: Comparison of new intervention to the current standard of treatment with respect to efficacy and toxicity. 
+
 ## Survival Analysis
 1. 
 
