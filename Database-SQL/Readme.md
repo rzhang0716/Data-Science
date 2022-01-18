@@ -318,6 +318,7 @@ select count(distinct customer_id) as rich_count from Store where amount > 500;
 
 	
 <h1>Leetcode Databse Problems (Oracle)
+	
 #### Question #178: Write an SQL query to rank the scores. The ranking should be calculated according to the following rules:
 The scores should be ranked from the highest to the lowest.
 If there is a tie between two scores, both should have the same ranking.
