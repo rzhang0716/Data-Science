@@ -66,7 +66,7 @@
 
 
 ## Longditudinal Analysis
-
+1.
 
 ## Clinical Trials
 ### Phase I 
@@ -97,5 +97,5 @@ Definition: Comparison of new intervention to the current standard of treatment 
 1. 
 
 ## Multivariate Analysis
-
+1.
 
