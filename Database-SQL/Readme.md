@@ -315,3 +315,13 @@ select (case when ((select ifnull(count(*),0) from NewYork where score >= 90) > 
 
 #### Question #2082: Write an SQL query to report the number of customers who had at least one bill with an amount strictly greater than 500.
 select count(distinct customer_id) as rich_count from Store where amount > 500;
+
+	
+<h1>Leetcode Databse Problems (Oracle)
+#### Question #178: Write an SQL query to rank the scores. The ranking should be calculated according to the following rules:
+The scores should be ranked from the highest to the lowest.
+If there is a tie between two scores, both should have the same ranking.
+After a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no holes between ranks.
+Return the result table ordered by score in descending order.
+	
+select score, (select count(distinct score) from Scores where score >= s1.score) rank from Scores s1 order by s1.score desc;
