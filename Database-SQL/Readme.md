@@ -15,6 +15,10 @@ SET M=N-1;
 return
 (select distinct salary from Employee order by salary desc limit 1 offset M);
 end;
+
+#### Question #178:Write an SQL query to rank the scores. The ranking should be calculated according to the following rules: The scores should be ranked from the highest to the lowest. If there is a tie between two scores, both should have the same ranking. After a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no holes between ranks. Return the result table ordered by score in descending order.
+	
+select score, (select count(distinct score) from Scores where score >= s1.score) as "rank" from Scores s1 order by s1.score desc;
 	
 #### Question #181: Write an SQL query to find the employees who earn more than their managers.
 select e1.name as Employee from Employee e1 join Employee e2 on e1.managerId = e2.id where e1.salary > e2.salary;
