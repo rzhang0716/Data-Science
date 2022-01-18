@@ -25,3 +25,5 @@ Day 15 --- Local Development Environment Setup
 <br /> Day 17 --- Quiz Game OOP
 <br /> Day 18 --- Turtle
 <br /> Day 19 --- Turtle Racing
+<br /> Day 20 --- Snake Game (Part I)
+<br /> Day 21 --- Snake Game (Part II)
