@@ -66,7 +66,10 @@
 
 
 ## Longditudinal Analysis
-1.
+### Introduction
+1. Definition: Repeately collect information on the same individuals over time. 
+2. Benefits: (1) Record incident event; (2) Ascertain exposure prospectively; (3) Separate time effects: cohort effect (difference between individuals at baseline), period effect (measure date varies), age effects (difference within individuals over time).
+3. 
 
 ## Clinical Trials
 ### Phase I 
