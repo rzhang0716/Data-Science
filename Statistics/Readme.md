@@ -62,6 +62,7 @@
 1. Odds and log odds: odds = p/(1-p); log odds = logit = ln[p/(1-p)], converting probabilites to log odds.
 2. Explanation: For given variable one, increasing variable 2 by on unit will increase/decrease the log odds of survival by XX. 
 3. Coefficient explanation: Hold all other predictors constant and increase the predictor xi by 1, then the predicted odds of success are multipled by the factor e^beta.
+4. Cost Function: Logit. 
 
 
 ## Longditudinal Analysis
