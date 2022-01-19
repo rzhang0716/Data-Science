@@ -73,6 +73,8 @@
 4. For unbalance and irregular design, we should use pivot-longer for long-format table. 
 5. Auto-correlation: The correlation between the repeated measurements when the 'lag', or distance between the time, is constant. Measures the variable's current value to the past value. 
 
+### Models for mean and covariance
+
 ## Clinical Trials
 ### Phase I 
 1. Definition: The first studies in which a new drug is administered to a small number of human subjects with increasing does of drug. To explore tolerance does for further experimentation. 
