@@ -68,7 +68,9 @@
 ## Longditudinal Analysis
 ### Introduction
 1. Basic Concepts:(1) **Response** is the outcome of interest; (2) **Unit** is the object on which repeated measurements are taken, typically are individuals; (3) **Time** is the generic term for the condition of measurement, consider as an important covariate in longitudinal data. 
-2. 
+2. Balanced design vs. Unbalance design: If all units have same number of repeated measurements. (Each unit has same measurements at each time point)
+3. Regular design vs. Irregular design: The times of measurements are the same for all units. (Each unit has same time points measurements).
+4. For unbalance and irregular design, we should use pivot-longer for long-format table. 
 
 ## Clinical Trials
 ### Phase I 
