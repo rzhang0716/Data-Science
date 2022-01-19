@@ -71,6 +71,7 @@
 2. Balanced design vs. Unbalance design: If all units have same number of repeated measurements. (Each unit has same measurements at each time point)
 3. Regular design vs. Irregular design: The times of measurements are the same for all units. (Each unit has same time points measurements).
 4. For unbalance and irregular design, we should use pivot-longer for long-format table. 
+5. Auto-correlation: The correlation between the repeated measurements when the 'lag', or distance between the time, is constant. Measures the variable's current value to the past value. 
 
 ## Clinical Trials
 ### Phase I 
