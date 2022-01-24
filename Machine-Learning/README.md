@@ -8,4 +8,4 @@
 ### Fisher's Linear Discriminant (FLD):
 LDA is a generialized form of FLD. The basic idea of FLD is to project data points onto a line to maximize the between-class scatter and minimize the within-class scatter. 
 
-LDA in R and Python are in the LDA folder (
+LDA in R and Python are in the [LDA folder](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning/Linear_Discriminant_Analysis)
