@@ -15,7 +15,6 @@ library(tidyverse)
 library(readxl)
 library(lattice)
 
-setwd("~/Documents/Private/Work/Nemours/2022/Megan")
 ```
 
 
