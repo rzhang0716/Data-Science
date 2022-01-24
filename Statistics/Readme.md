@@ -74,6 +74,9 @@
 5. Auto-correlation: The correlation between the repeated measurements when the 'lag', or distance between the time, is constant. Measures the variable's current value to the past value. 
 
 ### Models for mean and covariance
+1. Mean describes how the response changes on average over time. Overall, the mean can be thought of as a function of time: µj = µ(tj).
+2. Three main steps in modeling longitudinal data: (1) Modeling the mean; (2) Modeling the covariance; (3) Select the distribution of the data Y. 
+
 
 ## Clinical Trials
 ### Phase I 
