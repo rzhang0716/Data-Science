@@ -1,1 +1,2 @@
-This is for prepare AWS Cloud Practitioner Certificate
+# AWS Cloud Practitioner Certificate Preparation
+## 1. Identity and Access Management (IAM)
