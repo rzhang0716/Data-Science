@@ -1,6 +1,6 @@
 - 🌱 I am a Ph.D. in Biochemistry and a master in Statistics
 - :earth_africa: I am continue studing data science related courses online
-- :zap: I am currently working as a Data Scientist (Biostatistician) in Nemours
+- :zap: I am currently working as a Data Scientist & Biostatistician in Nemours
 
 - 📫 How to find me: 
   - :bulb: [Google Scholar](https://scholar.google.com/citations?user=hMmoRWsAAAAJ&hl=en)
