@@ -6,3 +6,5 @@
 4. AWS SDK: (1) AWS Software Development Kit; (2) Language-specific APIs (set of libraries); (3) Enables you to access and manage AWS services programmatically; (4) Embedded within your application. 
 5. IAM Roles for Services: Some AWS service will need to perform actions on user's behalf, users will assign permissions to AWS services within IAM Roles. Common roles are (1) EC2 Instance Roles; (2) Lambda Function Roles; (3) Roles for CloudFormtion.
 6. IAM Security Tools: (1) IAM Credential Report (Account Level): A report that lists all your account's users and the status of their various credentials. (2) IAM Access Advisor (user-level): shows the service permissions granted to a user and when those services were last accessed.
+
+## EC2 - Elastic Compute Cloud
