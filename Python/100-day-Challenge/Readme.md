@@ -32,5 +32,5 @@ Day 15 --- Local Development Environment Setup
 <br /> Day 24 --- Files and Paths
 <br /> Day 25 --- CSV data and Pandas
 <br /> Day 26 --- List Comprehension and NATO Aplhabet
-<br /> Day 27 --- GUI
+<br /> Day 27 --- tkinter GUI
 <br /> Day 28 --- Dynamic Typing and Pomodoro GUI Application
