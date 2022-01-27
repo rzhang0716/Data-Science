@@ -27,3 +27,10 @@ Day 15 --- Local Development Environment Setup
 <br /> Day 19 --- Turtle Racing
 <br /> Day 20 --- Snake Game (Part I)
 <br /> Day 21 --- Snake Game (Part II)
+<br /> Day 22 --- Pong Game
+<br /> Day 23 --- Turtle Crossing
+<br /> Day 24 --- Files and Paths
+<br /> Day 25 --- CSV data and Pandas
+<br /> Day 26 --- List Comprehension and NATO Aplhabet
+<br /> Day 27 --- GUI
+<br /> Day 28 --- Dynamic Typing and Pomodoro GUI Application
