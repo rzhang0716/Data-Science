@@ -9,7 +9,8 @@
 
 # Repositoriy Information
 
-### Programming Lanaguage: R, Python
+### Programming Lanaguage
+#### R: 
 it covers python and R, python is not limited to the Data Science packages but also with python programming on GUI, web scripting and other applications. For R, it most about data preparation with tidyverse and visualization with ggplot2, also have some specific statistics package in R, such as Sruvival, Table1 and so on. 
 
 
