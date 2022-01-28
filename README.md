@@ -18,12 +18,12 @@
 5. [Survival Analysis](): Survival Analysis in R, packages such as 
 
 
-
-
 ### Python
-(1) [Python Basic Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/Basic): Basic Python Commands such as for loop, if-else and all basic python programming scripts. 
-(2) [Python Advanced Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/Advanced): Include OOP, Regular Expression etc. 
-(3) [100 Day Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/100-day-Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include the OOP, GUI, Web Scripting, Image Processing and Data Science with 100 different projects. 
+1. [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/100-day-Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, Image Processing and Data Science with 100 different projects. 
+2. [Machine Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning/ML-Python): It includes all machine learning algorithms implemented in Python, such as KNN, SVM, Random Forest and etc, also have some data prepartion and visualization libraries such as seaborn, pandas, matplotlib and etc.
+3. 
+(2) 
+(3) 
 
 
 
