@@ -2,7 +2,7 @@
 - :school:  I graduated with a Ph.D. degree in Biochemistry and a master degree in Statistics from :wolf: North Carolina State University.
 - :man_student:  I have SAS base programming 9.4 certificate and preparing for AWS Cloud Practioner Cerficate now.
 - :hospital:  I am currently working as a Biostatistician (Data Scientist) in Nemours Chirldren's Health working on the clinical data.
-- :family_man_woman_girl:  I am living with my wife :baby: our daugther,  :dog: Mochi and :cat2: Dobe. 
+- :family_man_woman_girl:  I am living with my wife, :baby: our daugther,  :dog: Mochi and :cat2: Dobe. 
 - :rainbow:  I have published 13 peer-reviewd papers. 
 
 - :cn: How to find me: 
