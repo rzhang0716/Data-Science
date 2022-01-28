@@ -10,7 +10,11 @@
 # Repositoriy Information
 
 ## Programming Lanaguage
-### R: 
+### R
+It covers the R programming study materials: (1) [R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs) (2) [Data manipulation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Manipulation) (3) [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization).
+
+### Python
+it 
 it covers python and R, python is not limited to the Data Science packages but also with python programming on GUI, web scripting and other applications. For R, it most about data preparation with tidyverse and visualization with ggplot2, also have some specific statistics package in R, such as Sruvival, Table1 and so on. 
 
 
