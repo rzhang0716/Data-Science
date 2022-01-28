@@ -2,7 +2,7 @@
 - :man_student: I am a Ph.D. in Biochemistry and a master in Statistics
 - :earth_africa: I have SAS base programming 9.4 certificate and preparing for AWS Cloud Practioner Cerficate now.
 - :zap: I am currently working as a Biostatistician (Data Scientist) in Nemours Chirldren's Health working on the clinical data.
-- 
+- :family_man_woman_girl: I am living with my wife, Yuguo, our :baby: daugther Nicole, :dog: Mochi and :cat2: Dobe. 
 
 - 📫 How to find me: 
   - :bulb: [Google Scholar](https://scholar.google.com/citations?user=hMmoRWsAAAAJ&hl=en)
