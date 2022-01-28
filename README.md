@@ -7,8 +7,8 @@
   - :bulb: [Google Scholar](https://scholar.google.com/citations?user=hMmoRWsAAAAJ&hl=en)
   - :office: [LinkedIn](https://www.linkedin.com/in/rzhang12/)
 
-# Repositoriy Information
 
+# Repositoriy Information
 ## Programming Lanaguage
 ### R
 1. [R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs): Basic programming language in R.
@@ -16,8 +16,6 @@
 3. [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2.
 4. [Clinical Trails](): Clinical Trails projects in R, packages such as 
 5. [Survival Analysis](): Survival Analysis in R, packages such as 
-
-
 
 ### Python
 1. [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/100-day-Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, Image Processing and Data Science with 100 different projects. 
@@ -28,6 +26,12 @@
 ### SQL
 1. [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL/Stanford_SQL_Class): covers MySQL commands from basic (Select, join) to advanced Windows Function. 
 2. [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL#readme): Problems from DataBase in Leetcode, answered in MySQL and Oracle SQL.
+
+### SAS
+1. SAS Base Cerfied Programming in 9.4
+
+## Amazon Web Services (AWS)
+1. [AWS Cloud Practioner]
 
 
 # Support Information
