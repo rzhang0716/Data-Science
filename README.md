@@ -11,11 +11,17 @@
 
 ## Programming Lanaguage
 ### R
-It covers the R programming study materials: (1) [R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs) (2) [Data manipulation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Manipulation) (3) [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization).
+(1) [R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs): Basic programming language in R.
+(2) [Data manipulation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Manipulation): Manipulate data with dplyr and tidyr.  
+(3) [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2.
+(4) [Clinical Trails](): Clinical Trails projects in R, packages such as 
+(5) [Survival Analysis](): Survival Analysis in R, packages such as 
 
 ### Python
-it 
-it covers python and R, python is not limited to the Data Science packages but also with python programming on GUI, web scripting and other applications. For R, it most about data preparation with tidyverse and visualization with ggplot2, also have some specific statistics package in R, such as Sruvival, Table1 and so on. 
+#### Python Programming: 
+(1) [Python Basic Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/Basic): Basic Python Commands such as for loop, if-else and all basic python programming scripts. 
+(2) [Python Advanced Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/Advanced): Include OOP, Regular Expression etc. 
+(3) [100 Day Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/100-day-Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include the OOP, GUI, Web Scripting, Image Processing and Data Science with 100 different projects. 
 
 
 
