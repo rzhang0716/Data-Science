@@ -34,3 +34,4 @@ Day 15 --- Local Development Environment Setup
 <br /> Day 26 --- List Comprehension and NATO Aplhabet
 <br /> Day 27 --- tkinter GUI
 <br /> Day 28 --- Dynamic Typing and Pomodoro GUI Application
+<br /> Day 29 --- Password Generator GUI Appllication
