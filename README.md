@@ -6,8 +6,8 @@
 - :rainbow: I have published 13 papers. 
 
 - 📫 How to find me: 
-  - :bulb: [Google Scholar](https://scholar.google.com/citations?user=hMmoRWsAAAAJ&hl=en)
-  - :office: [LinkedIn](https://www.linkedin.com/in/rzhang12/)
+  - :mortar_board: [Google Scholar](https://scholar.google.com/citations?user=hMmoRWsAAAAJ&hl=en)
+  - :cn: [LinkedIn](https://www.linkedin.com/in/rzhang12/)
 
 
 # Repositoriy Information
