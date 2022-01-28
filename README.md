@@ -11,11 +11,14 @@
 
 ## Programming Lanaguage
 ### R
-[R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs): Basic programming language in R.
-[Data manipulation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Manipulation): Manipulate data with dplyr and tidyr.
-[Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2.
-[Clinical Trails](): Clinical Trails projects in R, packages such as 
-[Survival Analysis](): Survival Analysis in R, packages such as 
+1. [R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs): Basic programming language in R.
+2. [Data manipulation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Manipulation): Manipulate data with dplyr and tidyr.
+3. [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2.
+4. [Clinical Trails](): Clinical Trails projects in R, packages such as 
+5. [Survival Analysis](): Survival Analysis in R, packages such as 
+
+
+
 
 ### Python
 (1) [Python Basic Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/Basic): Basic Python Commands such as for loop, if-else and all basic python programming scripts. 
