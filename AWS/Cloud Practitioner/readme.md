@@ -10,9 +10,10 @@
 ## EC2 - Elastic Compute Cloud
 1. EC2 mainly covers: (1) Renting Virtual Machines (EC2); (2) Storing data on virtul drives (EBS); (3) Distributing load across machines (ELB); (4) Scaling the services using an auto-scaling group (ASG). 
 2. EC2 naming convention: m5.2xlarge, m represents the instance class; 5 represents generation; 2xlagre represents the size within the instance class.
-3. EC2 types: 
+### EC2 types: 
 (1) General Purpose: Great for a diversity of workloads such as web servers or code respositories; 
 (2) Computed Optimized: Great for compute-intesive task that require high performance processors (eg: Batch processing workloads, media transcoding, high performance XX, scientific modeling and machine learning). 
 (3) Memory Optimized: Fast performance for workloads that process large data sets in memory (eg: distributed web scale cahces stores, in-memory databases optimized for BI); 
 (4) Storage optimized: Great for storage-intensive tasks that required high, sequential read and write access to large data sets on local storage (eg: Relational & NoSQL databases, data warehouse applications)
-4. .  
+### Security Groups: 
+(1) control how traffic is allowed into or out of our EC2 instances.  
