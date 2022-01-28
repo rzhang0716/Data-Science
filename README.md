@@ -11,11 +11,12 @@
 
 ## Programming Lanaguage
 ### R
-[R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs): Basic programming language in R. <br>
-[Data manipulation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Manipulation): Manipulate data with dplyr and tidyr.<br>
-[Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2.<br>
-[Clinical Trails](): Clinical Trails projects in R, packages such as <br>
-[Survival Analysis](): Survival Analysis in R, packages such as <br>
+1. [R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs): Basic programming language in R.
+2. [Data manipulation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Manipulation): Manipulate data with dplyr and tidyr.
+3. [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2.
+4. [Clinical Trails](): Clinical Trails projects in R, packages such as 
+5. [Survival Analysis](): Survival Analysis in R, packages such as 
+
 
 
 ### Python
@@ -26,7 +27,7 @@
 
 ### SQL
 1. [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL/Stanford_SQL_Class): covers MySQL commands from basic (Select, join) to advanced Windows Function. 
-2. [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL#readme): DataBase questions
+2. [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL#readme): Problems from DataBase in Leetcode, answered in MySQL and Oracle SQL.
 
 
 
