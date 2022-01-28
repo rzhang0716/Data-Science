@@ -1,5 +1,5 @@
 # Personal Information
-:man_student: I am a Ph.D. in Biochemistry and a master in Statistics
+- :man_student: I am a Ph.D. in Biochemistry and a master in Statistics
 - :earth_africa: I have SAS base programming 9.4 certificate and preparing for AWS Cloud Practioner Cerficate now.
 - :zap: I am currently working as a Biostatistician (Data Scientist) in Nemours Chirldren's Health working on the clinical data.
 - 
