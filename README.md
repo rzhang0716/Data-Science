@@ -44,17 +44,17 @@
 
 ## Machine Learning
 1. [Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning/CS4780): Machine Learning algorithms theroy studies.
-2. [Projects](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning): My personal machine learning projects.
+2. Projects: See Project section.
 
 
 ## Deep Learning
 1. [Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning): Deep Learning algorithms theroy studies.
-2. [Projects](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Projects): My personal deep learning projects.
+2. Projects: See Project section.
 
 
 ## Statistics
 1. [Theories](https://github.com/rzhang0716/Data-Science/blob/master/Statistics/Readme.md): Statistics Learning and theories.
-2. [Projects](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Projects): Statistics projects, include longditudianl analysis, clinical trails, survival analysis, multivariate analysis and linear regression. 
+2. Projects: See Project section. 
 
 
 
