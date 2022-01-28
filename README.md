@@ -33,6 +33,8 @@
 1. [SAS Base](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/Codes): SAS base level codes.
 2. [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/SAS_Base_Exam): Personal Summaried materials for passing SAS Base Exam.
 
+### Linux
+1. [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/Linux)
 
 ## Amazon Web Services (AWS)
 1. [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
@@ -40,16 +42,23 @@
 
 
 ## Machine Learning
+1. [Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning/CS4780): Machine Learning algorithms theroy studies.
+2. [Projects](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning): My personal machine learning projects.
 
 
 ## Deep Learning
+1. [Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning): Deep Learning algorithms theroy studies.
+2. [Projects](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Projects): My personal deep learning projects.
 
 
 ## Statistics
+1. [Theories](https://github.com/rzhang0716/Data-Science/blob/master/Statistics/Readme.md): Statistics Learning and theories.
+2. [Projects](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Projects): Statistics projects, include longditudianl analysis, clinical trails, survival analysis, multivariate analysis and linear regression. 
+
 
 
 # Support Information
-
 [![Ran's github stats](https://github-readme-stats.vercel.app/api?username=rzhang0716&count_private=true&show_icons=true&theme=radical&hide_rank=false)]
+
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=rzhang0716)]
