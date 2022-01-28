@@ -1,6 +1,6 @@
 # Personal Information
 - 🌱 I am a Ph.D. in Biochemistry and a master in Statistics
-- :earth_africa: I am continue studing data science related courses online
+- :earth_africa: I have SAS base programming 9.4 certificate and preparing for AWS Cloud Practioner Cerficate now.
 - :zap: I am currently working as a Data Scientist & Biostatistician in Nemours
 
 - 📫 How to find me: 
@@ -28,7 +28,8 @@
 2. [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL#readme): Problems from DataBase in Leetcode, answered in MySQL and Oracle SQL.
 
 ### SAS
-1. SAS Base Cerfied Programming in 9.4
+1. [SAS Base](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/Codes): SAS base level codes.
+2. [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/SAS_Base_Exam): Personal Summaried materials for passing SAS Base Exam.
 
 ## Amazon Web Services (AWS)
 1. [AWS Cloud Practioner]
