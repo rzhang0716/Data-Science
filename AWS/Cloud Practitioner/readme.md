@@ -23,4 +23,6 @@
 7. EC2 On Demand: (1) Pay for what you use; (2) Highest cost but no upfront payment; (3) No long-term commitment. Use for short-term and un-interrupted workloads. 
 8. EC2 Reserved Instances: (1) Cheaper; (2) Reservation period: one year or 3 year; (3) Purchasing options (no upfront, partial upfront, all upfront); (4) Reserve a specific type; (5) Recommended for steady-state usage applications (database); Also have Convertible Reserved Instance and Scheduled Reserved Instances. 
 9. EC2 Spot Instances: (1) Cheapest; (2) Instances that you can 'lose' at any time point of time if your max price is less than the current spot price; (3) The most cost-efficient instances in AWS. Usefor for workloads that are resilient to failure (data Analysis, batch jobs, image processing, distributed works) and not suitable for critical jobs or databases.
-10. 
+10. EC2 Dedicated Hosts: (1) A physical server with EC2 instance capacity fully dedicated to your use. Dedicated hosts can address **complianace requirements** and reduce costs by allowing users to **use your existing server-bound software license**. (2) Allocate for the account for a 3-year period reservation; (3) More expensive; (4) Useful for software that have complicated licensing model (Bring your own license); (5) For companies that have strong regulatory or compliance needs. 
+11. EC2 Dedicated Instances: (1) Instances running on hardware that's dedicated to you; (2) May share hardware with other instance in same account; (3) No control over instance placement (can move hardware after stop/start).
+12. 
