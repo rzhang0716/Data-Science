@@ -82,5 +82,17 @@
 (1) Scalability: ability to accommodate a larger load by making the hardware stronger (scale up), or by adding nodes (scale out); <br>
 (2) Elasticity: once a system is scalable, elasticity means that there will be some "auto-scaling" so that the system can scale based on the load.<br>
 (3) Agility: new IT resources are only a clikc away, which means that you reduce the time to make those resources available to your developers from weeks to just minutes.
-7. 
-8. 
+7. Load Balancers: Servers tjat fprward omtermet traffic to multiple servers (EC2 Instances) downstream.
+8. Why choose Load Balancer:
+(1) Spread load across multiple downstream instansce. <br>
+(2) Expose a single point of access (DNS) to your application. <br>
+(3) Seamlessly handle failures of downstream instances. <br>
+(4) Do regular health checks to your instance. <br>
+(5) Provide SSL termination (HTTPS) for your webstie. <br>
+(6) High availability across zones. <br>
+9. Why choose Elastic Load Balancer
+(1) An ELB s a managed load balancer (a) AWS gurantees that it will be working. (b) AWS take care of upgrades, maintenace, high availability. (c) AWS provides only a few configuration knobs<br>
+(2) It costs less if set up your own load balancer buyt it will be a lot more effort on your end (maintenance, integrations).<br>
+(3) 3 kinds of load balancers offered by AWS: (a) Application Load Balancer (HTTP/HTTPS only) - Layer 7; (b) Network Load Balancer (ultra-high performance allows for TCP) - Layer 4; (c) Classic Load Balancer (slowly retireing) - Layer 4 & 7. 
+10.Auto Scaling Group: In really life, the load on your websites and application can change; In the cloud, you can create and get rid of servers very quickly.
+11. 
