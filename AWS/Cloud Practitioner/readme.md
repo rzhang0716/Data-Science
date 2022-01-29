@@ -52,15 +52,15 @@
 13. EFS (Elastic File System): (1) Managed NFS (network file system) that can be mounted on 100s of EC2; (2) EFS only works with Linux EC2 instance in multi-AZ; (3) Highly available, scalable, expensive, pay per use, no capacity planning.
 14. EFS-IA (EFS Infrequent Access): is a storage class that is cost-optimized for files not accessed everyday; (1) Up to 92% lower cost compared to EFS standard; (2) EFS will automatically move your files to EFS-IA based on the last time accessed; (3) Enable EFS-IA with a lifecycle policy; (4) Transparent to the applications accessing EFS. 
 15. Amazon FSx: Launch 3rd party high-performance file systems on AWS; Fully managed service. 
-### EC2 Instance Storgae Section Summary
-1. EBS vloumes: (1) Network drives attached to one EC2 instance at a time; (2) Mapped to an Availability Zones; (3) Can use EBS Snapshots for backups/transferring EBS volumes across AZ. 
-2. AMI: create ready-to-use EC2 instance with our customizations.
-3. EC2 Image Builder: Automatically build, test and distribute AMIs.
-4. EC2 Instance Storage: (1) High Performance hardware disk attached to our EC2; (2) Lost if our instance is stopped/terminated.
-5. EFS: network file system, can be attached to 100s of instances in a region.
-6. EFS-IA: cost-optimized storage class for infrequent accessed files.
-7. FSx For Windows: Network File System for Windows servers/
-8. FSx for Lustre: High Performance Computing Linux File system.
+16. Summary <br> 
+(1) EBS vloumes: (1) Network drives attached to one EC2 instance at a time; (2) Mapped to an Availability Zones; (3) Can use EBS Snapshots for backups/transferring EBS volumes across AZ. <br> 
+(2) AMI: create ready-to-use EC2 instance with our customizations.<br> 
+(3) EC2 Image Builder: Automatically build, test and distribute AMIs.<br> 
+(4) EC2 Instance Storage: (1) High Performance hardware disk attached to our EC2; (2) Lost if our instance is stopped/terminated.<br> 
+(5) EFS: network file system, can be attached to 100s of instances in a region.<br> 
+(6) EFS-IA: cost-optimized storage class for infrequent accessed files.<br> 
+(7) FSx For Windows: Network File System for Windows servers.<br> 
+(8) FSx for Lustre: High Performance Computing Linux File system.
 
 
 ## Elastic Load Balancing & Auto Scaling Groups Section
