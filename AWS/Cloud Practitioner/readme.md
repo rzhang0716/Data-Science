@@ -7,6 +7,7 @@
 5. IAM Roles for Services: Some AWS service will need to perform actions on user's behalf, users will assign permissions to AWS services within IAM Roles. Common roles are (1) EC2 Instance Roles; (2) Lambda Function Roles; (3) Roles for CloudFormtion.
 6. IAM Security Tools: (1) IAM Credential Report (Account Level): A report that lists all your account's users and the status of their various credentials. (2) IAM Access Advisor (user-level): shows the service permissions granted to a user and when those services were last accessed.
 
+
 ## EC2 - Elastic Compute Cloud
 1. EC2 mainly covers: (1) Renting Virtual Machines (EC2); (2) Storing data on virtul drives (EBS); (3) Distributing load across machines (ELB); (4) Scaling the services using an auto-scaling group (ASG). 
 2. EC2 naming convention: m5.2xlarge, m represents the instance class; 5 represents generation; 2xlagre represents the size within the instance class.
@@ -53,5 +54,13 @@
 15. Amazon FSx: Launch 3rd party high-performance file systems on AWS; Fully managed service. 
 ### EC2 Instance Storgae Section Summary
 1. EBS vloumes: (1) Network drives attached to one EC2 instance at a time; (2) Mapped to an Availability Zones; (3) Can use EBS Snapshots for backups/transferring EBS volumes across AZ. 
-2. AMI: create ready-to-use EC2 instance with our customizations
+2. AMI: create ready-to-use EC2 instance with our customizations.
+3. EC2 Image Builder: Automatically build, test and distribute AMIs.
+4. EC2 Instance Storage: (1) High Performance hardware disk attached to our EC2; (2) Lost if our instance is stopped/terminated.
+5. EFS: network file system, can be attached to 100s of instances in a region.
+6. EFS-IA: cost-optimized storage class for infrequent accessed files.
+7. FSx For Windows: Network File System for Windows servers/
+8. FSx for Lustre: High Performance Computing Linux File system.
 
+
+## Elastic Load Balancing & Auto Scaling Groups Section
