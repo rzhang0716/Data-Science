@@ -71,7 +71,7 @@
 5. High Availability & Scaliability for EC2 (1) Vertical Scaling: Increase instance size. (= scale up/down); (2) Horizontal Scaling: Increase number of instance (= scale out/in) -- Autoscaling Group and Load Balancer; (3) High Availability: Run instances for the same application across multi AZ: AUtp Scaling Group multi AZ and LOad Balancer multi AZ.
 6. Scalability vs Elasticity vs Agility <br>
 (1) Scalability: ability to accommodate a larger load by making the hardware stronger (scale up), or by adding nodes (scale out); <br>
-(2) Elasticity: once a system is scalable, elasticity means that there will be some "auto-scaling" so that the system can scale based on the load.
+(2) Elasticity: once a system is scalable, elasticity means that there will be some "auto-scaling" so that the system can scale based on the load.<br>
 (3) Agility: new IT resources are only a clikc away, which means that you reduce the time to make those resources available to your developers from weeks to just minutes.
 7. 
 8. 
