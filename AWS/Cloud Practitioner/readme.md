@@ -26,7 +26,7 @@
 10. EC2 Dedicated Hosts: (1) A physical server with EC2 instance capacity fully dedicated to your use. Dedicated hosts can address **complianace requirements** and reduce costs by allowing users to **use your existing server-bound software license**. (2) Allocate for the account for a 3-year period reservation; (3) More expensive; (4) Useful for software that have complicated licensing model (Bring your own license); (5) For companies that have strong regulatory or compliance needs. 
 11. EC2 Dedicated Instances: (1) Instances running on hardware that's dedicated to you; (2) May share hardware with other instance in same account; (3) No control over instance placement (can move hardware after stop/start).
 12. Shared responsibility model for EC2: For AWS: (1) Infrastructure (global network security); (2) Isolation on physical hosts; (3) Replacing faulty hardware; (4) Compliance validation. For Users: (1) Security Groups rules; (2) Operating-system patches and updates; (3) Software and utilities installed on the EC2 instance; (4) IAM roles assigned to EC2 &IAM user access management; (4) Data security on your instance.
-### Summary
+### EC2 Summary
 1. EC2 Instance: AMI(OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User data.
 2. Securtiy Groups: Firewall attached to the EC2 instance.
 3. EC2 user data: Script launched at the first start of an instance.
@@ -51,7 +51,7 @@
 13. EFS (Elastic File System): (1) Managed NFS (network file system) that can be mounted on 100s of EC2; (2) EFS only works with Linux EC2 instance in multi-AZ; (3) Highly available, scalable, expensive, pay per use, no capacity planning.
 14. EFS-IA (EFS Infrequent Access): is a storage class that is cost-optimized for files not accessed everyday; (1) Up to 92% lower cost compared to EFS standard; (2) EFS will automatically move your files to EFS-IA based on the last time accessed; (3) Enable EFS-IA with a lifecycle policy; (4) Transparent to the applications accessing EFS. 
 15. Amazon FSx: Launch 3rd party high-performance file systems on AWS; Fully managed service. 
-### Summary
+### EC2 Instance Storgae Section Summary
 1. EBS vloumes: (1) Network drives attached to one EC2 instance at a time; (2) Mapped to an Availability Zones; (3) Can use EBS Snapshots for backups/transferring EBS volumes across AZ. 
 2. AMI: create ready-to-use EC2 instance with our customizations
 
