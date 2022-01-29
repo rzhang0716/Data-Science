@@ -68,6 +68,10 @@
 2. Vertical Scalability: Increase the size of the instance; very common for nondistributed systems (such as database); usally a limit to how much you can vertically scale (hardware limit). 
 3. Horizontal Scalability: Increasing the number of instances/systems for your application; Implies distributed systems and very common for web applications/morden applications. (Easy on AWS EC2) 
 4. High Availability: (1) Hands in hand with horizaontal scaling; (2) High availability means running your application/system in at leaset 2 availability zones; Goal of high availabity is to survive a data center loss (disaster). 
-5. High Availability & Scaliability for EC2 (1) Vertical Scaling: Increase instance size. (= scale up/down); (2) Horizontal Scaling: Increase number of instance (= scale up/down); (
-6. 
+5. High Availability & Scaliability for EC2 (1) Vertical Scaling: Increase instance size. (= scale up/down); (2) Horizontal Scaling: Increase number of instance (= scale out/in) -- Autoscaling Group and Load Balancer; (3) High Availability: Run instances for the same application across multi AZ: AUtp Scaling Group multi AZ and LOad Balancer multi AZ.
+6. Scalability vs Elasticity vs Agility <br>
+(1) Scalability: ability to accommodate a larger load by making the hardware stronger (scale up), or by adding nodes (scale out); <br>
+(2) Elasticity: once a system is scalable, elasticity means that there will be some "auto-scaling" so that the system can scale based on the load.
+(3) Agility: new IT resources are only a clikc away, which means that you reduce the time to make those resources available to your developers from weeks to just minutes.
 7. 
+8. 
