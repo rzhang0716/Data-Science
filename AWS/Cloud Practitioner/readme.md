@@ -27,13 +27,13 @@
 10. EC2 Dedicated Hosts: (1) A physical server with EC2 instance capacity fully dedicated to your use. Dedicated hosts can address **complianace requirements** and reduce costs by allowing users to **use your existing server-bound software license**. (2) Allocate for the account for a 3-year period reservation; (3) More expensive; (4) Useful for software that have complicated licensing model (Bring your own license); (5) For companies that have strong regulatory or compliance needs. 
 11. EC2 Dedicated Instances: (1) Instances running on hardware that's dedicated to you; (2) May share hardware with other instance in same account; (3) No control over instance placement (can move hardware after stop/start).
 12. Shared responsibility model for EC2: For AWS: (1) Infrastructure (global network security); (2) Isolation on physical hosts; (3) Replacing faulty hardware; (4) Compliance validation. For Users: (1) Security Groups rules; (2) Operating-system patches and updates; (3) Software and utilities installed on the EC2 instance; (4) IAM roles assigned to EC2 &IAM user access management; (4) Data security on your instance.
-### EC2 Summary
-1. EC2 Instance: AMI(OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User data.
-2. Securtiy Groups: Firewall attached to the EC2 instance.
-3. EC2 user data: Script launched at the first start of an instance.
-4. SSH: Start a terminal into our EC2 Instances (port 22).
-5. EC2 Instance Role: Link to IAM roles.
-6. Purchasing Options: On-Demand, Spot, Reserved (Standard + Convertible + Sceduled), Dedicated Host, Dedicate Instance.
+13. EC2 Summary <br>
+(1) EC2 Instance: AMI(OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User data.<br>
+(2) Securtiy Groups: Firewall attached to the EC2 instance.<br>
+(3) EC2 user data: Script launched at the first start of an instance.<br>
+(4) SSH: Start a terminal into our EC2 Instances (port 22).<br>
+(5) EC2 Instance Role: Link to IAM roles.<br>
+(6) Purchasing Options: On-Demand, Spot, Reserved (Standard + Convertible + Sceduled), Dedicated Host, Dedicate Instance.
 
 
 ## EC2 Instance Storage Section
