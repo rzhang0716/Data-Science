@@ -82,7 +82,7 @@
 (1) Scalability: ability to accommodate a larger load by making the hardware stronger (scale up), or by adding nodes (scale out); <br>
 (2) Elasticity: once a system is scalable, elasticity means that there will be some "auto-scaling" so that the system can scale based on the load.<br>
 (3) Agility: new IT resources are only a clikc away, which means that you reduce the time to make those resources available to your developers from weeks to just minutes.
-7. Load Balancers: Servers tjat fprward omtermet traffic to multiple servers (EC2 Instances) downstream.
+7. Load Balancers: Servers that forward internet traffic to multiple servers (EC2 Instances) downstream.
 8. Why choose Load Balancer:
 (1) Spread load across multiple downstream instansce. <br>
 (2) Expose a single point of access (DNS) to your application. <br>
@@ -93,6 +93,23 @@
 9. Why choose Elastic Load Balancer
 (1) An ELB s a managed load balancer (a) AWS gurantees that it will be working. (b) AWS take care of upgrades, maintenace, high availability. (c) AWS provides only a few configuration knobs<br>
 (2) It costs less if set up your own load balancer buyt it will be a lot more effort on your end (maintenance, integrations).<br>
-(3) 3 kinds of load balancers offered by AWS: (a) Application Load Balancer (HTTP/HTTPS only) - Layer 7; (b) Network Load Balancer (ultra-high performance allows for TCP) - Layer 4; (c) Classic Load Balancer (slowly retireing) - Layer 4 & 7. 
-10.Auto Scaling Group: In really life, the load on your websites and application can change; In the cloud, you can create and get rid of servers very quickly.
-11. 
+(3) 3 kinds of load balancers offered by AWS: (a) Application Load Balancer (HTTP/HTTPS only) - Layer 7; (b) Network Load Balancer (ultra-high performance allows for TCP) - Layer 4; (c) Classic Load Balancer (slowly retireing) - Layer 4 & 7. <br>
+10. Auto Scaling Group: In really life, the load on your websites and application can change; In the cloud, you can create and get rid of servers very quickly.
+11. Goal of Auto Scaling Group (ASG)
+(1) Scale out (add EC2 instances) to match an increased load; <br>
+(2) Scale in (remove EC2 instances) to mathc a decreased load; <br>
+(3) Ensure we have a minimum and a maximum number of machines running. <br>
+(4) Automatically register new instances to a load balancer. <br>
+(5) Replace unhealthy instances. <br>
+12. Auto Scaling Groups Scaling Strategies
+(1) Manual ScalingL Update the size of an ASG manually; <br>
+(2) Dynamic Scaling: Respond to changing demand (Simple/Step Scaling; Target Tracking Scaling; Scheduled Scaling)<br>
+(3) Predictive Scaling: (a) Machine learning to predict future traffic ahead of time; (b) Automatically provisions the right number of EC2 instances in advance/ <br>
+13. Summmary
+(1) High Avalilabity vs Scalability (vertical and horizontal) vs Elaticity vs Agility in the cloud. <br>
+(2) Elastic Load Balancers (ELB): (a) Distributed traffic across backend EC2 instances, can be Multi-AZ; (b) Support health check; (c) 3 Types: Application LB, Network LB and Classic LB. <br>
+(3) Auto Scaling Groups (ASG): (a) Implement Elasticity for your application, across multiple AZ; (b) Scale EC2 instances based on the demand on your system, replace unhealthy instances; (c) Integrated with the ELB. 
+
+
+## Amazon S3
+15. 
