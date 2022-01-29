@@ -64,3 +64,10 @@
 
 
 ## Elastic Load Balancing & Auto Scaling Groups Section
+1. Scalability: Represents that an application/system can handle greater loads by adapting.
+2. Vertical Scalability: Increase the size of the instance; very common for nondistributed systems (such as database); usally a limit to how much you can vertically scale (hardware limit). 
+3. Horizontal Scalability: Increasing the number of instances/systems for your application; Implies distributed systems and very common for web applications/morden applications. (Easy on AWS EC2) 
+4. High Availability: (1) Hands in hand with horizaontal scaling; (2) High availability means running your application/system in at leaset 2 availability zones; Goal of high availabity is to survive a data center loss (disaster). 
+5. High Availability & Scaliability for EC2 (1) Vertical Scaling: Increase instance size. (= scale up/down); (2) Horizontal Scaling: Increase number of instance (= scale up/down); (
+6. 
+7. 
