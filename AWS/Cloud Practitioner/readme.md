@@ -26,12 +26,13 @@
 10. EC2 Dedicated Hosts: (1) A physical server with EC2 instance capacity fully dedicated to your use. Dedicated hosts can address **complianace requirements** and reduce costs by allowing users to **use your existing server-bound software license**. (2) Allocate for the account for a 3-year period reservation; (3) More expensive; (4) Useful for software that have complicated licensing model (Bring your own license); (5) For companies that have strong regulatory or compliance needs. 
 11. EC2 Dedicated Instances: (1) Instances running on hardware that's dedicated to you; (2) May share hardware with other instance in same account; (3) No control over instance placement (can move hardware after stop/start).
 12. Shared responsibility model for EC2: For AWS: (1) Infrastructure (global network security); (2) Isolation on physical hosts; (3) Replacing faulty hardware; (4) Compliance validation. For Users: (1) Security Groups rules; (2) Operating-system patches and updates; (3) Software and utilities installed on the EC2 instance; (4) IAM roles assigned to EC2 &IAM user access management; (4) Data security on your instance.
-13. EC2 Instance: AMI(OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User data.
-14. Securtiy Groups: Firewall attached to the EC2 instance.
-15. EC2 user data: Script launched at the first start of an instance.
-16. SSH: Start a terminal into our EC2 Instances (port 22).
-17. EC2 Instance Role: Link to IAM roles.
-18. Purchasing Options: On-Demand, Spot, Reserved (Standard + Convertible + Sceduled), Dedicated Host, Dedicate Instance.
+### Summary
+1. EC2 Instance: AMI(OS) + Instance Size (CPU + RAM) + Storage + security groups + EC2 User data.
+2. Securtiy Groups: Firewall attached to the EC2 instance.
+3. EC2 user data: Script launched at the first start of an instance.
+4. SSH: Start a terminal into our EC2 Instances (port 22).
+5. EC2 Instance Role: Link to IAM roles.
+6. Purchasing Options: On-Demand, Spot, Reserved (Standard + Convertible + Sceduled), Dedicated Host, Dedicate Instance.
 
 
 ## EC2 Instance Storage Section
@@ -45,5 +46,12 @@
 8. AMI are built for a specific region (and can be copied accoss regions).
 9. AMI type (use to launch EC2 instances): (1) Public AMI: AWS provided; (2) Own AMI: Own make and maintain; (3) AWS Marketplace AMI: Someone else make/sell.
 10. AMI Process (from an EC2 instance): (1) Start an EC2 instance and customize it; (2) Stop the instance (for data integrity); (3) Build an AMI - also create EBS snapshots; (4) Lauch instances from other AMIs. 
-11. 
+11. EC2 Image Builder: (1) Used to automated the creation of Virtual Machines or container images; (2) Automate the creation, maintain, validate and test EC2 AMIs; (3) Can be run on a schedule; (4) Free service. 
+12. EC2 Instance Store: (1) Larger valoume compared to the EBS volumes with better performance, especially when you need a high-performance hardware disk; (2) Better I/O performance; (3) EC2 Instance Store lose their storage if they're stopped; (4) Good for buffer/cache/scratch data/temporary content; (5) Risk of data loss if hardware fails; (6) Backups and Replication are users' responsibilities.
+13. EFS (Elastic File System): (1) Managed NFS (network file system) that can be mounted on 100s of EC2; (2) EFS only works with Linux EC2 instance in multi-AZ; (3) Highly available, scalable, expensive, pay per use, no capacity planning.
+14. EFS-IA (EFS Infrequent Access): is a storage class that is cost-optimized for files not accessed everyday; (1) Up to 92% lower cost compared to EFS standard; (2) EFS will automatically move your files to EFS-IA based on the last time accessed; (3) Enable EFS-IA with a lifecycle policy; (4) Transparent to the applications accessing EFS. 
+15. Amazon FSx: Launch 3rd party high-performance file systems on AWS; Fully managed service. 
+### Summary
+1. EBS vloumes: (1) Network drives attached to one EC2 instance at a time; (2) Mapped to an Availability Zones; (3) Can use EBS Snapshots for backups/transferring EBS volumes across AZ. 
+2. AMI: create ready-to-use EC2 instance with our customizations
 
