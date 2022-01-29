@@ -32,3 +32,18 @@
 16. SSH: Start a terminal into our EC2 Instances (port 22).
 17. EC2 Instance Role: Link to IAM roles.
 18. Purchasing Options: On-Demand, Spot, Reserved (Standard + Convertible + Sceduled), Dedicated Host, Dedicate Instance.
+
+
+## EC2 Instance Storage Section
+1. EBS (Elastic Block Store) Volume is a network drive you can attach to your instances while running.
+2. EBS allow your instances to persist data, even after instances termination.
+3. EBS can only be mounted to ons instance at a time.
+4. EBS are bound to a specific availability zone.
+5. Delete on Termination attribute of EBS is to use to preserve root volume when instance is terminated. 
+6. EBS Snapshots: (1) Backup of your EBS valume at a point in time; (2) Not neccessary to detach volume to do snapshot, but recommended; (3) Can copy snapshots accross AZ or Region. 
+7. AMI (Amazon Machine Image) are customization of an EC2 Instance (add own software, configuration, operating system; faster boot/configuration as required software is pre-package. 
+8. AMI are built for a specific region (and can be copied accoss regions).
+9. AMI type (use to launch EC2 instances): (1) Public AMI: AWS provided; (2) Own AMI: Own make and maintain; (3) AWS Marketplace AMI: Someone else make/sell.
+10. AMI Process (from an EC2 instance): (1) Start an EC2 instance and customize it; (2) Stop the instance (for data integrity); (3) Build an AMI - also create EBS snapshots; (4) Lauch instances from other AMIs. 
+11. 
+
