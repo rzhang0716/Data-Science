@@ -24,7 +24,7 @@
 - [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/100-day-Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, Image Processing and Data Science with 100 different projects. 
 - [Machine Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning/ML-Python): It includes all machine learning algorithms implemented in Python, such as KNN, SVM, Random Forest and etc, also have some data prepartion and visualization libraries such as seaborn, pandas, matplotlib and etc.
 - [Deep Learning in Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch): About implent neural network (ANN, CNN, RNN) in Pytorch. 
-- [Deep Learning in Tensorflow](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/TensorFlow): About implent neural network (ANN, CNN, RNN) in Tensorflow. 
+- [Deep Learning in Tensorflow](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/TensorFlow): About implent neural network (ANN, CNN, RNN), Natural Learning Processing in Tensorflow. 
 
 ### SQL
 - [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL/Stanford_SQL_Class): covers MySQL commands from basic (Select, join) to advanced Windows Function. 
