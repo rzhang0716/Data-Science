@@ -101,7 +101,8 @@
 3. Design contains: Type I and Type II error. 
 
 ### Phase III
-Definition: Comparison of new intervention to the current standard of treatment with respect to efficacy and toxicity. 
+1. Definition: Comparison of new intervention to the current standard of treatment with respect to efficacy and toxicity. 
+2. Randomized Clinical Trial
 
 ## Survival Analysis
 1. 
