@@ -49,8 +49,8 @@
 
 
 ## Statistics
-- [Theories](https://github.com/rzhang0716/Data-Science/blob/master/Statistics/Readme.md): Statistics Learning and theories.
-- Projects: See Project section. 
+- [Theories](https://github.com/rzhang0716/Data-Science/blob/master/Statistics/Readme.md): Basic Statistics Concepts and Theories.
+
 
 
 
