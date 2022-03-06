@@ -1,6 +1,6 @@
 # Personal Information
 - :school:  I graduated with a Ph.D. degree in Biochemistry and a master degree in Statistics from :wolf: North Carolina State University.
-- :man_student:  I have SAS base programming 9.4 certificate and preparing for AWS Cloud Practioner Cerficate now.
+- :man_student:  I have SAS base programming 9.4 certificate.
 - :hospital:  I am currently working as a Biostatistician/Data Scientist in Nemours Chirldren's Health working on the clinical data.
 - :family_man_woman_girl:  I am living with my wife, :baby: our daugther,  :dog: Mochi and :cat2: Dobe in Wilimington, Delaware.
 - :rainbow:  I have published 14 peer-reviewd papers. 
@@ -12,44 +12,40 @@
 
 
 # Repositoriy Information
-## Programming Lanaguage
-### R
+## R
 -  [R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs): Basic programming language in R.
--  [Data manipulation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Manipulation): Manipulate data with dplyr and tidyr.
--  [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2.
-- [Clinical Trails](): Clinical Trails projects in R, packages such as 
-- [Survival Analysis](): Survival Analysis in R, packages such as 
+-  [Data Preparation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Preparation): Manipulate data with dplyr, tidyr for analysis and prepare paper publish tables using Table1. 
+-  [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2 mainly for outlier detection and plot published figures for papers.
+-  [Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/R/Machine%20Learning): Apply machine learning algorithms in R to solve biomedical and clinical trial research, especially for time-series and longitudinal analysis.
+-  [Deep Learning](): Apply deep learning algorithms in R to solve biomedical and clinical trial research, especially for time-series and longitudinal analysis.
+- [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/R/Clinical%20Trials): Clinical Trails projects in R, packages such as 
+- [Survival Analysis](https://github.com/rzhang0716/Data-Science/tree/master/R/Survival%20Analysis): Survival Analysis in R, packages such as 
 
-### Python
+## Python
 - [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/100-day-Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, Image Processing and Data Science with 100 different projects. 
-- [Machine Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning/ML-Python): It includes all machine learning algorithms implemented in Python, such as KNN, SVM, Random Forest and etc, also have some data prepartion and visualization libraries such as seaborn, pandas, matplotlib and etc.
-- [Deep Learning in Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch): About implent neural network (ANN, CNN, RNN) in Pytorch. 
-- [Deep Learning in Tensorflow](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/TensorFlow): About implent neural network (ANN, CNN, RNN), Natural Learning Processing in Tensorflow. 
+- [Machine Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Machine_Learning): It includes all machine learning algorithms implemented in Python, such as KNN, SVM, Random Forest and etc, also have some data prepartion and visualization libraries such as seaborn, pandas, matplotlib and etc.
+- [Deep Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing, computer vision in [Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch) abd [TensorFlow/Keras](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/TensorFlow). 
 
-### SQL
-- [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL/Stanford_SQL_Class): covers MySQL commands from basic (Select, join) to advanced Windows Function. 
+## SQL
+- [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL/Stanford_SQL_Class): covers MySQL commands from basic (Select, join) to advanced Windows Function, online Stanford Classes.
 - [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL#readme): Problems from DataBase in Leetcode, answered in MySQL and Oracle SQL.
 
-### SAS
+## SAS
 - [SAS Base](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/Codes): SAS base level codes.
 - [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/SAS_Base_Exam): Personal Summaried materials for passing SAS Base Exam.
 
-### Linux
+## Linux
 - [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/Linux)
 
-## Amazon Web Services (AWS)
+## Big Data
 - [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
 - [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/AWS/Machine_Learning): AWS Specified in Machine Learning.
 
 
-## Machine Learning
-- [Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning/CS4780): Machine Learning algorithms theroy studies.
-- Projects: See Project section.
-
-
-## Deep Learning
-- [Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning): Deep Learning algorithms theroy studies.
-- Projects: See Project section.
+## Web-Development
+- [HTML]()
+- [CSS]()
+- [JavaScript]()
 
 
 ## Statistics
@@ -57,8 +53,6 @@
 - Projects: See Project section. 
 
 
-
-# Projects
 
 
 
