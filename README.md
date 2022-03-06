@@ -42,14 +42,10 @@
 - [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/AWS/Machine_Learning): AWS Specified in Machine Learning.
 
 
-## Machine Learning
-- [Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning/CS4780): Machine Learning algorithms theroy studies.
-- Projects: See Project section.
-
-
-## Deep Learning
-- [Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning): Deep Learning algorithms theroy studies.
-- Projects: See Project section.
+## Web-Development
+- [HTML]()
+- [CSS]()
+- [JavaScript]()
 
 
 ## Statistics
