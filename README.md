@@ -50,7 +50,7 @@
 
 ## Statistics
 - [Statistics](https://github.com/rzhang0716/Data-Science/blob/master/Statistics/Readme.md): Basic Statistics Concepts and Theories.
-- [Materials](): Statistics Courses tooken with materials and hw.
+- [Courses](): Statistics Courses tooken with materials and hw, include Clinical Trials, Survival Analysis, Statistical Theories, Biological Experiemtnal Statistics, Linear models and Regression, Time Series, Bioinformatics, Categorical Analysis, Multivariate and Longitudinal Analysis. 
 
 
 
