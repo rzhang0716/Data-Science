@@ -15,12 +15,12 @@
 ## Programming Lanaguage
 ### R
 -  [R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs): Basic programming language in R.
--  [Data Preparation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Manipulation): Manipulate data with dplyr, tidyr for analysis and prepare paper publish tables using Table1. 
+-  [Data Preparation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Preparation): Manipulate data with dplyr, tidyr for analysis and prepare paper publish tables using Table1. 
 -  [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2 mainly for outlier detection and plot published figures for papers.
--  [Machine Learning](): Apply machine learning algorithms in R to solve biomedical and clinical trial research, especially for time-series and longitudinal analysis.
+-  [Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/R/Machine%20Learning): Apply machine learning algorithms in R to solve biomedical and clinical trial research, especially for time-series and longitudinal analysis.
 -  [Deep Learning](): Apply deep learning algorithms in R to solve biomedical and clinical trial research, especially for time-series and longitudinal analysis.
-- [Clinical Trails](): Clinical Trails projects in R, packages such as 
-- [Survival Analysis](): Survival Analysis in R, packages such as 
+- [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/R/Clinical%20Trials): Clinical Trails projects in R, packages such as 
+- [Survival Analysis](https://github.com/rzhang0716/Data-Science/tree/master/R/Survival%20Analysis): Survival Analysis in R, packages such as 
 
 ### Python
 - [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/100-day-Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, Image Processing and Data Science with 100 different projects. 
