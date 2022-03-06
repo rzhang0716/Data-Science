@@ -49,7 +49,8 @@
 
 
 ## Statistics
-- [Theories](https://github.com/rzhang0716/Data-Science/blob/master/Statistics/Readme.md): Basic Statistics Concepts and Theories.
+- [Statistics](https://github.com/rzhang0716/Data-Science/blob/master/Statistics/Readme.md): Basic Statistics Concepts and Theories.
+- [Materials](): Statistics Courses tooken from university with slides and hw.
 
 
 
