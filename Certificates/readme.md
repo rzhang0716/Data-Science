@@ -1,1 +1,0 @@
-Certificates from online courses. 
