@@ -16,7 +16,8 @@
 ## Python
 - [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/Python%20Programming/100_day_Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, Image Processing and Data Science with 100 different projects. 
 - [Machine Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Machine_Learning): It includes all machine learning algorithms implemented in Python, such as KNN, SVM, Random Forest and etc, also have some data prepartion and visualization libraries such as seaborn, pandas, matplotlib and etc. Apply machine learning in clinical trials studies and survival analysis.
-- [Deep Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/Pytorch): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing, computer vision in [Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch) abd [TensorFlow/Keras](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/TensorFlow). Apply deep learning in survival analysis and time-series/longitudinal analysis. 
+- [Deep Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/Pytorch): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in [Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch) abd [TensorFlow/Keras](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/TensorFlow). Apply deep learning in survival analysis and time-series/longitudinal analysis. 
+- [Natural Learning Processing]()
 
 
 ## R
@@ -34,8 +35,8 @@
 
 
 ## Big Data
-- [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
-- [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/AWS/Machine_Learning): AWS Specified in Machine Learning.
+- [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
+- [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Machine_Learning): AWS Specified in Machine Learning.
 
 
 ## Web-Development
