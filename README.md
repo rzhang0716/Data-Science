@@ -25,8 +25,8 @@
 -  [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2 mainly for outlier detection and plot published figures for papers.
 -  [Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/R/Machine%20Learning): Apply machine learning algorithms in R to solve biomedical and clinical trial research, especially for time-series and longitudinal analysis.
 -  [Deep Learning](): Apply deep learning algorithms in R to solve biomedical and clinical trial research, especially for time-series and longitudinal analysis.
-- [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/R/Clinical%20Trials): Clinical Trails projects in R, packages such as 
-- [Survival Analysis](https://github.com/rzhang0716/Data-Science/tree/master/R/Survival%20Analysis): Survival Analysis in R, packages such as 
+- [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/R/Clinical%20Trials): Clinical Trails projects in R, mostly in Phase I to Phase III studies in Covid, oncology and heart diseases etc., which including sample size and power calculation, build models, visualization and longitudinal analysis. 
+- [Survival Analysis](https://github.com/rzhang0716/Data-Science/tree/master/R/Survival%20Analysis): Survival Analysis in R, in oncology, covid, cancer studies, etc. using survival packages etc.
 
 
 ## SQL
