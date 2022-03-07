@@ -29,7 +29,7 @@
 
 
 ## SQL
-- [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL/Stanford_SQL_Class): covers MySQL commands from basic (Select, join) to advanced Windows Function, online Stanford Classes.
+- [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL/Courses): covers MySQL commands from basic (Select, join) to advanced Windows Function, online Stanford Classes.
 - [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL#readme): Problems from DataBase in Leetcode, written in MySQL and Oracle SQL.
 
 
