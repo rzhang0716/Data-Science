@@ -12,6 +12,13 @@
 
 
 # Repositoriy Information
+
+## Python
+- [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/100-day-Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, Image Processing and Data Science with 100 different projects. 
+- [Machine Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Machine_Learning): It includes all machine learning algorithms implemented in Python, such as KNN, SVM, Random Forest and etc, also have some data prepartion and visualization libraries such as seaborn, pandas, matplotlib and etc. Apply machine learning in clinical trials studies and survival analysis.
+- [Deep Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing, computer vision in [Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch) abd [TensorFlow/Keras](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/TensorFlow). Apply deep learning in survival analysis and time-series/longitudinal analysis. 
+
+
 ## R
 -  [R basic commands](https://github.com/rzhang0716/Data-Science/tree/master/R/R%20baiscs): Basic programming language in R.
 -  [Data Preparation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Preparation): Manipulate data with dplyr, tidyr for analysis and prepare paper publish tables using Table1. 
@@ -21,23 +28,11 @@
 - [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/R/Clinical%20Trials): Clinical Trails projects in R, packages such as 
 - [Survival Analysis](https://github.com/rzhang0716/Data-Science/tree/master/R/Survival%20Analysis): Survival Analysis in R, packages such as 
 
-## Python
-- [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/100-day-Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, Image Processing and Data Science with 100 different projects. 
-- [Machine Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Machine_Learning): It includes all machine learning algorithms implemented in Python, such as KNN, SVM, Random Forest and etc, also have some data prepartion and visualization libraries such as seaborn, pandas, matplotlib and etc. Apply machine learning in clinical trials studies and survival analysis.
-- [Deep Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing, computer vision in [Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch) abd [TensorFlow/Keras](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/TensorFlow). Apply deep learning in survival analysis and time-series/longitudinal analysis. 
 
 ## SQL
 - [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL/Stanford_SQL_Class): covers MySQL commands from basic (Select, join) to advanced Windows Function, online Stanford Classes.
 - [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL#readme): Problems from DataBase in Leetcode, written in MySQL and Oracle SQL.
 
-## SAS
-- [SAS Base](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/Codes): SAS base level codes.
-- [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/SAS_Base_Exam): Personal summaried materials for passing SAS Base Exam.
-- [SAS Advanced]()
-- [SAS Advanced Certificate 9.4]()
-
-## Linux
-- [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/Linux)
 
 ## Big Data
 - [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
@@ -50,11 +45,19 @@
 - [JavaScript]()
 
 
+## SAS
+- [SAS Base](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/Codes): SAS base level codes.
+- [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/SAS_Base_Exam): Personal summaried materials for passing SAS Base Exam.
+- [SAS Advanced]()
+- [SAS Advanced Certificate 9.4]()
+
+
 ## Statistics
 - [Statistics](https://github.com/rzhang0716/Data-Science/blob/master/Statistics/Readme.md): Basic Statistics Concepts and Theories.
 - [Courses](): Statistics Courses tooken with materials and hw, include Clinical Trials, Survival Analysis, Statistical Theories, Biological Experiemtnal Statistics, Linear models and Regression, Time Series, Bioinformatics, Categorical Analysis, Multivariate and Longitudinal Analysis, Machine Learning. 
 
-
+## Linux
+- [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/Linux)
 
 
 
