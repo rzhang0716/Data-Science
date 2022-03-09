@@ -1,0 +1,50 @@
+#####################################
+# Example: X~b(n,pi)
+# n=19, k=3
+# find the 95% exact confidence interval for pi 
+######################################
+
+n=19
+k=3
+
+######################################
+# approach 1: using pbinom(k,n,pi)=P(X<=k) for b(n,pi)
+
+# P_U(X<=3)=0.025
+# pbinom(3,n,piU)=0.025
+# pbinom(3,n,piU)-0.025=0
+
+f=function(p){
+  pbinom(3,19,p)-0.025
+}
+
+piU<-uniroot(f,c(0,1))$root
+piU
+
+# P_L(X>=3)=0.025
+# p_L(X<=2)=0.975
+# pbinom(2,n,piL)=0.975
+# pbinom(2,n,piL)-0.975=0
+
+g=function(p){
+  pbinom(2,19,p)-0.975
+}
+
+piL<-uniroot(g,c(0,1))$root
+piL
+
+c(piL,piU)
+#[1] 0.03380492 0.39578444
+
+######################################
+# approach 2: using library("Hmisc")
+#install.packages("Hmisc")
+library(Hmisc)
+
+binconf(k,n,alpha=.05,method="all")
+
+#            PointEst        Lower     Upper
+#Exact      0.1578947  0.033826249 0.3957846
+#Wilson     0.1578947  0.055204716 0.3756548
+#Asymptotic 0.1578947 -0.006065414 0.3218549
+

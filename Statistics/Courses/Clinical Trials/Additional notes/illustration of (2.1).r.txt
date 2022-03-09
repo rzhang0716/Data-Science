@@ -1,0 +1,9 @@
+#an illustation of eq (2.1) using a simplified example
+#X~b(n,pi)
+#r is a fixed number
+#P(X>r|pi)=1-P(X<=r|pi) is an increasing function of pi
+n=20
+r=10
+pi<-seq(0,1,0.01)
+fpi<-1-pbinom(r,n,pi)
+plot(pi,fpi)
