@@ -18,6 +18,7 @@
 - [Machine Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Machine_Learning): It includes all machine learning algorithms implemented in Python, such as KNN, SVM, Random Forest and etc, also have some data prepartion and visualization libraries such as seaborn, pandas, matplotlib and etc. Apply machine learning in clinical trials studies and survival analysis.
 - [Deep Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/Pytorch): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in [Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch) abd [TensorFlow/Keras](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/TensorFlow). Apply deep learning in survival analysis and time-series/longitudinal analysis. 
 - [Natural Learning Processing]()
+- [Computer Vision]()
 
 
 ## R
@@ -55,8 +56,8 @@
 
 
 ## SAS
-- [SAS Codes](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/Codes): SAS codes.
-- [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Base/SAS_Base_Exam): Personal summaried materials for passing SAS Base Exam.
+- [SAS Codes](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Codes): SAS codes.
+- [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/SAS/SAS_Base_Exam): Personal summaried materials for passing SAS Base Exam.
 
 
 ## Statistics
