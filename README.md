@@ -41,18 +41,9 @@
 
 
 ## Web-Development
-- [HTML]()
-- [CSS]()
-- [Bootstrap]()
+- [HTML&CSS&Bootstrap]()
 - [JavaScript]()
-- [jQuery]()
-- [Node.js]()
-- [API]()
-- [Git]()
-- [EJS]()
-- [MangoDB]()
-- [Mongoose]()
-- [React.js]()
+
 
 
 ## SAS
