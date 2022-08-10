@@ -1,6 +1,6 @@
 # Personal Information
 - :school:  I graduated with a Ph.D. degree in Biochemistry and a Master degree in Statistics from :wolf: North Carolina State University.
-- :hospital:  I am currently working as a Biostatistician (Data Scientist) in Nemours Chirldren's Health (DuPont).
+- :hospital:  I am currently working as a Data Scientist in Nemours Chirldren's Health (DuPont).
 - :family_man_woman_girl:  I am living with my wife, :baby: our daugther,  :dog: Mochi and :cat2: Dobe in Wilimington, Delaware.
 - :rainbow:  I have published 14 peer-reviewd papers. 
 - :man_student:  I have SAS base programming 9.4 certificate.
@@ -16,8 +16,9 @@
 ## Python
 - [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/Python%20Programming/100_day_Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, API, Image Processing and Data Science with 100 different projects. 
 - [Machine Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Machine_Learning): It includes all machine learning algorithms implemented in Python, such as KNN, SVM, Random Forest and etc, also have some data prepartion and visualization libraries such as seaborn, pandas, matplotlib and etc. Apply machine learning in clinical trials studies and survival analysis.
-- [Deep Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/Pytorch): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in [Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch) abd [TensorFlow/Keras](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/TensorFlow). Apply deep learning in survival analysis and time-series/longitudinal analysis. 
-- [Natural Learning Processing]()
+- [Deep Learning in PyTorch - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/Pytorch): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in [Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch) abd [TensorFlow/Keras](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/TensorFlow). Apply deep learning in survival analysis and time-series/longitudinal analysis. 
+- [Deep Learning in TensorFlow - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/Pytorch): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in [Pytorch](https://github.com/rzhang0716/Data-Science/tree/master/Deep_Learning/Pytorch) abd [TensorFlow/Keras](https://github.com/rzhang0716/Data-Science/tree/master/Python/Deep_Learning/TensorFlow). Apply deep learning in survival analysis and time-series/longitudinal analysis. 
+- [Natural Learning Processing - Udemy]()
 - [Computer Vision]()
 
 
@@ -35,9 +36,24 @@
 - [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL#readme): Problems from DataBase in Leetcode, written in MySQL and Oracle SQL.
 
 
+## Java
+
+
+## Algorithm
+- [Machine Learning - Coursera Anderw Ng]()
+- [Deep Learning - Coursera Anderw Ng]()
+- [Cornell-CS4780]()
+- [Data Structure and Algorithm - Udemy]()
+- [UCB-CS61B]()
+- [UCB-CS61C]()
+
 ## AWS
 - [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
 - [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Machine_Learning): AWS Specified in Machine Learning.
+
+## Spark
+- [PySpark]():
+- [SparkR]():
 
 
 ## Web-Development
