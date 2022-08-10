@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<!--
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+<script type="text/javascript">
+LatexIT.add('p',true);
+</script>
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+extensions: ["tex2jax.js"],
+jax: ["input/TeX", "output/HTML-CSS"],
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+processEscapes: true
+},
+"HTML-CSS": { availableFonts: ["TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Written Homework #2</title>
+<link href="lecturecss.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>Homework 3</h2>
+<b>Due: Friday, March 17th in class<br>
+Up to 5 members in each group. Please include NetID and names on front page.</b>
+<h3> ERM </h3>
+<h4>I. Loss function optimization using gradient descent </h4> 
+Derive the gradient update (with stepsize $c$) for your weight vector $w$ for each of the following loss functions: (here: $\|w\|_2^2=w^\top w$ and $|w|=\sum_{\alpha=1}^d |w_\alpha|$, also $\lambda$ and $C$ are non-negative constants.)
+
+<h5> a </h5> Ridge Regression: ${\cal L}(w)=\sum_{i=1}^n (w^\top x_i-y_i)^2+\lambda \|w\|_2^2$. (You will implement this in a future project)
+
+<h5> solution: </h5>
+Let $X = \left[X_1, X_2, \cdots, X_n\right]^T, Y = \left[y_1, y_2, \cdots, y_n\right]^T$, <br/><br/>
+$$\begin{eqnarray*}
+{\cal L}(w)&=&\sum_{i=1}^n (w^\top x_i-y_i)^2+\lambda \|w\|^2\\
+&=& (Xw - Y)^2 + \lambda w^Tw \\
+&=& w^TX^TXw - w^TX^TY - Y^TXw + Y^TY + \lambda w^Tw\\
+&=& Trace(w^TX^TXw - w^TX^TY - Y^TXw + Y^TY + \lambda w^Tw)\\
+\bigtriangledown {\cal L}(w) &=& 2X^TXw - 2X^TY + 2\lambda w
+\end{eqnarray*}$$
+$$w = w - c \bigtriangledown {\cal L}(w) \mbox{, where } c \mbox{ is the stepsize.}$$
+
+
+<h5> b </h5> Lasso Regression: ${\cal L}(w)=\sum_{i=1}^n (w^\top x_i-y_i)^2+\lambda |w|$}
+<h5> solution: </h5>
+The only difference between this function and the previous one is the regularization part. Hence, we have
+$$\bigtriangledown {\cal L}(w) = 2X^TXw - 2X^TY + \lambda sign(w) $$
+$$w = w - c \bigtriangledown {\cal L}(w)$$
+
+
+<h5> c </h5> Logistic Regression ($y_i\in\{+1,-1\}$): ${\cal L}(w)=\sum_{i=1}^n \log(1+\exp{(-y_i w^\top x_i)})$
+<h5> solution: </h5>
+$$\bigtriangledown {\cal L}(w) = -\sum_{i=1}^n \frac{\exp{(-y_i w^\top x_i)}}{1+\exp{(-y_i w^\top x_i)}} y_ix_i = -\sum_{i=1}^n \frac{y_ix_i}{1+\exp{(y_i w^\top x_i)}} $$
+$$w = w - c \bigtriangledown {\cal L}(w)$$
+
+<h5> d </h5> Linear Support Vector Machine ($y_i\in\{+1,-1\}$): ${\cal L}(w)=C\sum_{i=1}^n \max(1-y_iw^\top x_i,0)+\|w\|_2^2$}
+<h5> solution: </h5>
+$$\bigtriangledown {\cal L}(w) = -C\sum_{i=1}^n \delta(1-y_iw^\top x_i > 0)y_ix_i + 2w$$
+$$w = w - c \bigtriangledown {\cal L}(w)$$
+
+<h4>II. Another look at SVM</h4>  You suddenly have this vision, that it might be beneficial to 
+pre-compute all inner-products in your data set. I.e. you store a $n\times n$ matrix $K_{ij}=x_i^\top x_j$
+<h5> a </h5> Imagine you start the gradient descent procedure from above with initial weights $w^0=0$ (this is just to help intuition). 
+Take the gradient update of SVM (question I.d) and show that after $t$ gradient steps you can express the weight vector as $w^t=\sum_{i=1}^n\alpha_i^t x_i$ for some values $\alpha_i^t$. (HINT: each gradient step update the $\alpha$'s, if the update is correct you can always write $w^t=\sum_{i=1}^n\alpha_i^t x_i$
+starting from update $t=0$ to any update $t>0$)
+<h5> solution: </h5>
+In the previous problem, we have derived the update rule to be
+$$\begin{eqnarray*}
+w &=& w - c \bigtriangledown {\cal L}(w)\\
+&=& (1-2c)w + c C\sum_{i=1}^n \delta(1-y_iw^\top x_i > 0)y_ix_i\\
+\end{eqnarray*}$$
+<br/>
+Initialize $\alpha_i^0 = 0, \forall i = 1, \cdots, n$
+$$\begin{equation}
+\Delta\alpha_i^t =\left\{\!\!\!
+\begin{array}{ll}
+cCy_i & 1-y_i{w^t}^\top x_i > 0\\
+0 & else.
+\end{array}\right.%}
+\end{equation}$$
+<br/>
+At each iteration, we update $\alpha_i^{t+1} = (1-2c)\alpha_i^t + \Delta\alpha_i^t$. <br/>
+Starting with iteration 0, we have, $w^0 = \sum_{i=1}^n\alpha_i^0 x_i = 0$,
+after each update, we have, $w^t = \sum_{i=1}^n\alpha_i^t x_i$
+
+
+<h5> b </h5> Take this new definition $w = \sum_{i=1}^n \alpha_i x_i$ and substitute it into the loss function of SVM (question I.d). You can now write the loss function as ${\cal L}(\alpha)$ where $\alpha=[\alpha_1 \dots \alpha_n]^\top$ (no need to force the vector representation in your formula). Further, write the loss ${\cal L}(\alpha)$ only using the precomputed matrix entries $K_{ij}$.
+<h5> solution: </h5>
+Let $X = \left[x_1, x_2, \cdots, x_n\right]^\top$, then we have,
+$w = X^\top \alpha$
+<br/>
+Let $K_j = \left[K_{1j}, K_{2j}, \cdots, K_{nj}\right]^\top$
+$$\begin{eqnarray*}
+{\cal L}(\alpha)&=& C\sum_{i=1}^n \max(1-y_i(X^\top \alpha)^\top x_i,0)+\|X^\top \alpha\|^2\\
+&=& C\sum_{i=1}^n \max(1-y_i\alpha^\top K_i,0)+ \alpha^\top K \alpha
+\end{eqnarray*}$$
+
+<h5> c </h5> Can you derive a gradient descent update rule of SVM (question I.d) with respect to $\alpha_i$?
+<h5> solution: </h5>
+$$\bigtriangledown {\cal L}(\alpha) = -C\sum_{i=1}^n \delta(1-y_i\alpha^\top K_i > 0)y_iK_i + 2K\alpha$$
+$$\alpha = \alpha - c \bigtriangledown {\cal L}(\alpha)$$
+
+<h4>III. Weighted Ridge Regression </h4>
+Assume that in addition to your data $\left\{(x_1,y_1),\dots,(x_n,y_n)\right\}$ you also have weights $p_i\geq 0$ for each example.
+Let your loss function be
+\begin{equation}
+	{\cal L}(w)=\sum_{i=1}^n p_i(w^\top x_i-y_i)^2+\lambda w^\top w.\label{prob2:loss}
+\end{equation}
+<h5> a </h5>
+ Rephrase the previous equation in terms of the matrices $X=[x_1,\dots,x_n]^\top$, $Y=[y_1,\dots,y_n]^\top$ and the diagonal matrix $P=diag([p_1,\dots,p_n])$ (where the diag operator performs like the Matlab function with the same name.)
+<h5> solution: </h5>
+$${\cal L}(w)=(Xw-Y)^\top P(Xw-Y)+\lambda w^\top w.$$
+
+
+<h5> b </h5>
+ Derive a closed form solution for $w$. (You can use: $\frac{\partial (w^\top A)}{\partial w}=A$, $\frac{\partial (w^\top B w)}{\partial w}=Bw + B^\top w$ and $w^\top w=w^\top I w$ where $I$ is the identity matrix.)
+<h5> solution: </h5>
+$$\frac{\partial {\cal L}(w)}{\partial w} =  2X^\top P(Xw-Y) + 2\lambda Iw = 0$$
+$$w = (X^\top PX+\lambda I)^{-1} X^\top PY$$
+
+<h4> IV. Regularized Logistic Regression & MAP estimate </h4>
+<h5> a </h5> 
+One way to reduce overfitting is by adding a regularization term to the loss function. For example, look at Ridge Regression (I.a): it is just a regularized version of ordinary least square, where the
+regularization term is $\lambda ||w||^2_2$ ($\lambda$ is the regularization parameter and is fixed).
+
+Define a  "Regularized Logisitic Regression" (RLR) loss function where the regularization term is a multiple $\lambda$ of the squared 2 norm of w (like in Ridge regression).
+${\cal L}(w)=\sum_{i=1}^n \log(1+\exp{(-y_i w^\top x_i)}) + \lambda||w||^2_2 $
+
+
+<h5> b </h5> Another reasonable (seemingly unrelated) way to compute an estimate for logistic regression is through the Maximum A Posteriori (MAP) estimate:
+$$w_{MAP}=argmax\prod_{i=1}^N P(y_i|x_i,w)P(w)$$
+where we assume that: 
+<ul>
+<li> (Logistic Regression Condition) $P(y_i|x_i,w)=\frac{1}{1+exp(-y_iw^Tx_i)}$ for all $i \in{1...N}$ 
+<li> (Prior on w) w is normally distributed, has zero mean and its covariance matrix is a multiple of the identity matrix, i.e $P(w)=\prod_{j=1}^d \frac{1}{\sqrt{2 \pi} \sigma}\exp{\frac{-w_j^2}{2 \sigma^2}}$
+for some given $\sigma$
+</ul>
+Show that for a particular value of $\sigma$ and $\lambda$, the MAP estimate is the same as the w obtained by minimizing the RLR.
+
+<h5>solution</h5>
+
+$$\begin{eqnarray*}
+w_{MAP}&=&argmax\prod_{i=1}^N P(y_i|x_i,w)P(w)\\
+&=&argmax \log (\prod_{i=1}^N P(y_i|x_i,w) P(w))\\
+&=&argmax \sum_{i=1}^N \log(P(y_i|x_i,w)) + P(w)\\
+&=&argmax \sum_{i=1}^N \log{\frac{1}{1+exp(-y_iw^Tx_i)}} + \log (P(w))\\
+&=&argmax \sum_{i=1}^N -\log(1+exp(-y_iw^Tx_i)) + \log (P(w))\\
+
+
+\end{eqnarray*}$$
+
+Note:
+$$\begin{eqnarray*}
+
+\log(P(w)) &=&\log(\prod_{j=1}^d \frac{1}{\sqrt{2 \pi} \sigma}\exp({\frac{-w_j^2}{2 \sigma^2}}))\\
+ &=& d\log(\frac{1}{\sqrt{2 \pi} \sigma})+ \sum_{i=1}^d log(\exp({\frac{-w_j^2}{2 \sigma^2}}))\\
+ &=& d\log(\frac{1}{\sqrt{2 \pi} \sigma})+ \sum_{i=1}^d \frac{-w_j^2}{2 \sigma^2}\\
+ &=& d\log(\frac{1}{\sqrt{2 \pi} \sigma})- \sum_{i=1}^d \frac{w_j^2}{2 \sigma^2}\\
+ &=& d\log(\frac{1}{\sqrt{2 \pi} \sigma}) - \frac{||w||_2^2}{2 \sigma^2}\\
+\end{eqnarray*}$$
+
+Hence: 
+$$\begin{eqnarray*}
+w_{MAP}&=&argmax \sum_{i=1}^N -\log(1+exp(-y_iw^Tx_i)) + d\log(\frac{1}{\sqrt{2 \pi} \sigma}) - \frac{||w||_2^2}{2 \sigma^2}\\ 
+&=&argmax - (\sum_{i=1}^N \log(1+exp(-y_iw^Tx_i)) + \frac{||w||_2^2}{2 \sigma^2})\\ 
+&=&argmin  \sum_{i=1}^N \log(1+exp(-y_iw^Tx_i)) + \frac{||w||_2^2}{2 \sigma^2}\\ 
+\end{eqnarray*}$$
+
+Hence if $\lambda = \frac{1}{2 \sigma^2} $, $w_{MAP}$ also minimizes the loss function of the RLR.
+
+<h4> V. Linearity of Naive Bayes with Gaussian likelihood factors </h4>
+In this question, you will show that Naive Bayes is a linear classifier when using Gaussian likelihood factors with shared variances. Specifically, consider the following Naive Bayes model:
+\begin{equation}
+p(y|x) = \frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y)p(y)}{p(x)}
+\end{equation}
+With:
+\begin{equation}
+p([x]_{\alpha}|y) = \mathcal{N}([\mu_{y}]_{\alpha},[\sigma^{2}]_{\alpha})
+\end{equation}
+That is, there is a separate mean value for each feature $[x]_{\alpha}$ and each class $y \in \left\{0,1\right\}$. However, the variances are shared across classes, so that there is only one variance $[\sigma^{2}]_{\alpha}$ per feature.
+
+<h5> a </h5>
+Show that the decision rule $p(y=1|x)$ can equivalently be written as
+\begin{equation}
+p(y=1|x) = \frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)}{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)+\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)p(y=0)}.
+\end{equation}
+Hint: remember the sum rule and product rule.
+<h5> solution </h5>
+
+First, note that the numerator follows immediately from Bayes' rule, we have just substituted the actual given value $y=1$ for $y$ in the first equation in this second. For the denominator, we expand $p(x)$ using first the sum rule and the product rule. By the sum rule, $p(x)=p(x,y=1)+p(x,y=0)$. Applying the product rule to both terms on the right hand side, we get:
+\begin{equation}
+	p(x) = p(x|y=1)p(y=1)+p(x|y=0)p(y=0)
+\end{equation}
+Next, we apply the Naive Bayes' assumption to $p(x|y=1)$ and $p(x|y=0)$ to get:
+\begin{equation}
+	p(x) = \prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)+\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)p(y=0)
+\end{equation}
+Plugging this in for the denominator in Bayes' rule, we achieve the desired result.
+
+<h5> b </h5>
+Using this formulation, show how to rewrite $p(y=1|x)$ as:
+\begin{equation}
+p(y=1|x) = \frac{1}{1+\exp{\left(-\log\frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)}{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)p(y=0)}\right)}}
+\end{equation}
+
+<h5> solution </h5>
+Observe that, in general, $\frac{a}{a+b}$ can equivalently be written as $\frac{1}{1+\frac{b}{a}}$. Furthermore, the equation for $p(y=1|x)$ derived in the previous part has exactly the form $\frac{a}{a+b}$! Therefore, we can rewrite it as:
+
+\begin{equation}
+	p(y=1 \mid x)=\frac{1}{1+\frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)p(y=0)}{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)}}
+\end{equation}
+
+Next, since $\exp(\log(x))=x$,
+
+\begin{equation}
+	p(y=1 \mid x)=\frac{1}{1+\exp\left(\log\left(\frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)p(y=0)}{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)}\right)\right)}
+\end{equation}
+
+Finally, pulling a negative sign out of the log lets us flip the fraction inside:
+
+\begin{equation}
+p(y=1 \mid x) = \frac{1}{1+\exp{\left(-\log\frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)}{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)p(y=0)}\right)}}
+\end{equation}
+
+<h5> c </h5>
+Given the above expression for $p(y=1|x)$, show that Naive Bayes with this definition of $p([x]_{\alpha}|y)$ is a linear model. Hint: the form you derived in part b should remind you of a decision rule you've seen before.
+
+<h5>solution</h5>
+
+To show this, we simply plug in the following definitions to the equation we derived in part b:
+
+\begin{align}
+p(y=1) &= \rho \\
+p([x]_{\alpha} \mid y=1)&=\frac{1}{[\sigma^{2}]_{\alpha}\sqrt{2\pi}}\exp\left(\frac{-([x]_{\alpha}-[\mu_{1}]_{\alpha})^{2}}{2[\sigma^{2}]_{\alpha}}\right) \\
+p([x]_{\alpha} \mid y=0)&=\frac{1}{[\sigma^{2}]_{\alpha}\sqrt{2\pi}}\exp\left(\frac{-([x]_{\alpha}-[\mu_{0}]_{\alpha})^{2}}{2[\sigma^{2}]_{\alpha}}\right)
+\end{align}
+
+Expanding $-\log\frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)}{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)p(y=0)}$ we get:
+
+\begin{equation}
+-\log p(y=1) - \log \prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1) + \log p(y=0) + \log \prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)
+\end{equation}
+
+Observing that $\log \prod_{i} x_{i} = \sum_{i} \log x_{i}$ and rearranging terms, this is equal to:
+
+\begin{equation}
+\log \frac{p(y=0)}{p(y=1)} + \sum_{\alpha=1}^{d} \log \frac{p([x]_{\alpha}|y=0)}{p([x]_{\alpha}|y=1)}
+\end{equation}
+
+Plugging in the definition of $p(y=1)$, the first term in this is equal to $\log \frac{1-\rho}{\rho}$. 
+
+For the second term, we plug in the Gaussian distributions for $p([x]_{\alpha} \mid y=1)$ and $p([x]_{\alpha} \mid y=0)$, and then do a bit of algebra to get:
+
+\begin{equation}
+
+\sum_{\alpha=1}^{d} \frac{([\mu_{0}]_{\alpha}-[\mu_{1}]_{\alpha})[x]_{\alpha}}{[\sigma^{2}]_{\alpha}} + \frac{[\mu_{1}]^{2}_{\alpha}-[\mu_{0}]^{2}_{\alpha}}{2[\sigma^{2}]_{\alpha}}
+
+\end{equation}
+
+Putting everything together we get:
+
+\begin{equation}
+\log \frac{1-\rho}{\rho} + \sum_{\alpha=1}^{d} \frac{([\mu_{0}]_{\alpha}-[\mu_{1}]_{\alpha})[x]_{\alpha}}{[\sigma^{2}]_{\alpha}} + \frac{[\mu_{1}]^{2}_{\alpha}-[\mu_{0}]^{2}_{\alpha}}{2[\sigma^{2}]_{\alpha}}
+\end{equation}
+
+And finally we just start renaming terms. Let's first define:
+\begin{equation}
+
+b = \log \frac{1-\rho}{\rho} + \frac{[\mu_{1}]^{2}_{\alpha}-[\mu_{0}]^{2}_{\alpha}}{2[\sigma^{2}]_{\alpha}}
+\end{equation}
+
+Next, create a vector $\mathbf{w}$ so that:
+\begin{equation}
+[\mathbf{w}]_{\alpha} = \frac{[\mu_{0}]_{\alpha}-[\mu_{1}]_{\alpha}}{[\sigma^{2}]_{\alpha}}
+\end{equation}
+
+Then the sum (the second term) is simply equal to $\mathbf{w}^{\top}x$. Therefore,
+
+\begin{equation}
+-\log\frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)}{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)p(y=0)} = \mathbf{w}^{\top}x+b
+\end{equation}
+
+Plugging this in to the decision rule $p(y=1|x)$ we derived in part b, we finally see that:
+
+\begin{equation}
+	p(y=1|x) = \frac{1}{1+\exp\left(\mathbf{w}^{\top}x+b\right)}
+\end{equation}
+
+This is not only a linear decision boundary, but should look very similar indeed to the linear decision rule you've seen from logistic regression!
+</body>
+</html>

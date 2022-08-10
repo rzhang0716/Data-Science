@@ -1,0 +1,117 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<!--
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+<script type="text/javascript">
+LatexIT.add('p',true);
+</script>
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+extensions: ["tex2jax.js"],
+jax: ["input/TeX", "output/HTML-CSS"],
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+processEscapes: true
+},
+"HTML-CSS": { availableFonts: ["TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Written Homework #2</title>
+<link href="lecturecss.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>Homework 3</h2>
+<b>Due: Friday, March 17th in class.<br>
+Up to 5 members in each group. Please include NetID and names on front page.</b>
+
+<h4>I. Loss function optimization using gradient descent </h4> 
+Derive the gradient update (with stepsize $c$) for your weight vector $w$ for each of the following loss functions: (here: $\|w\|_2^2=w^\top w$ and $|w|=\sum_{\alpha=1}^d |w_\alpha|$, also $\lambda$ and $C$ are non-negative constants.)
+
+<h5> a </h5> Ridge Regression: ${\cal L}(w)=\sum_{i=1}^n (w^\top x_i-y_i)^2+\lambda \|w\|_2^2$. (You will implement this in a future project)
+
+<h5> b </h5> Lasso Regression: ${\cal L}(w)=\sum_{i=1}^n (w^\top x_i-y_i)^2+\lambda |w|$
+<h5> c </h5> Logistic Regression ($y_i\in\{+1,-1\}$): ${\cal L}(w)=\sum_{i=1}^n \log(1+\exp{(-y_i w^\top x_i)})$ 
+<h5> d </h5> Linear Support Vector Machine ($y_i\in\{+1,-1\}$): ${\cal L}(w)=C\sum_{i=1}^n \max(1-y_iw^\top x_i,0)+\|w\|_2^2$
+<h4>II. Another look at SVM</h4>  You suddenly have this vision, that it might be beneficial to 
+pre-compute all inner-products in your data set. I.e. you store a $n\times n$ matrix $K_{ij}=x_i^\top x_j$
+<h5> a </h5> Imagine you start the gradient descent procedure from above with initial weights $w^0=0$ (this is just to help intuition). 
+Take the gradient update of SVM (question I.d) and show that after $t$ gradient steps you can express the weight vector as $w^t=\sum_{i=1}^n\alpha_i^t x_i$ for some values $\alpha_i^t$. (HINT: each gradient step update the $\alpha$'s, if the update is correct you can always write $w^t=\sum_{i=1}^n\alpha_i^t x_i$ starting from update $t=0$ to any update $t>0$)
+
+<h5> b </h5> Take this new definition $w = \sum_{i=1}^n \alpha_i x_i$ and substitute it into the loss function of SVM (question I.d). You can now write the loss function as ${\cal L}(\alpha)$ where $\alpha=[\alpha_1 \dots \alpha_n]^\top$ (no need to force the vector representation in your formula). Further, write the loss ${\cal L}(\alpha)$ only using the precomputed matrix entries $K_{ij}$.
+<h5> c </h5> Can you derive a gradient descent update rule of SVM (question I.d) with respect to $\alpha_i$?
+
+<h4>III. Weighted Ridge Regression </h4>
+Assume that in addition to your data $\left\{(x_1,y_1),\dots,(x_n,y_n)\right\}$ you also have weights $p_i\geq 0$ for each example.
+Let your loss function be
+\begin{equation}
+	{\cal L}(w)=\sum_{i=1}^n p_i(w^\top x_i-y_i)^2+\lambda w^\top w.\label{prob2:loss}
+\end{equation}
+<h5> a </h5>
+ Rephrase the previous equation in terms of the matrices $X=[x_1,\dots,x_n]^\top$, $Y=[y_1,\dots,y_n]^\top$ and the diagonal matrix $P=diag([p_1,\dots,p_n])$ (where the diag operator performs like the Matlab function with the same name.)
+
+<h5> b </h5>
+ Derive a closed form solution for $w$. (You can use: $\frac{\partial (w^\top A)}{\partial w}=A$, $\frac{\partial (w^\top B w)}{\partial w}=Bw + B^\top w$ and $w^\top w=w^\top I w$ where $I$ is the identity matrix.)
+
+
+<h4> V. Regularized Logistic Regression & MAP estimate </h4>
+
+One way to reduce overfitting is by adding a regularization term to the loss function. For example, look at Ridge Regression (I.a): it is just a regularized version of ordinary least square, where the
+regularization term is $\lambda ||w||^2_2$ ($\lambda$ is the regularization parameter and is fixed).
+
+Define a  "Regularized Logisitic Regression" (RLR) loss function where the regularization term is a multiple $\lambda$ of the squared 2 norm of w (like in Ridge regression).
+
+<h5> b </h5> Another reasonable (seemingly unrelated) way to compute an estimate for logistic regression is through the Maximum A Posteriori (MAP) estimate:
+$$w_{MAP}=argmax\prod_{i=1}^N P(y_i|x_i,w)P(w)$$
+where we assume that: 
+<ul>
+<li> (Logistic Regression Condition) $P(y_i|x_i,w)=\frac{1}{1+\exp{(-y_iw^Tx_i)}}$ for all $i \in{1...N}$ 
+<li> (Prior on w) w is normally distributed, has zero mean and its covariance matrix is a multiple of the identity matrix, i.e $P(w)=\prod_{j=1}^d \frac{1}{\sqrt{2 \pi} \sigma}\exp{\left(\frac{-w_j^2}{2 \sigma^2}\right)}$
+for some given $\sigma$
+</ul>
+Show that for a particular value of $\sigma$ and $\lambda$, the MAP estimate is the same as the w obtained by minimizing the RLR.
+
+<h5> c </h5> Suppose instead of a normal prior on w, we place a zero mean Laplace prior on each weight, i.e. $P(w)=C\exp{\left(-\lambda |w|\right)}$. Show that the MAP estimate for w is the same as obtained by minimizing the logistic regression loss with L1 regularization, i.e. a regularization term of $\gamma |w|$.
+
+
+<h4> V. Linearity of Naive Bayes with Gaussian likelihood factors </h4>
+In this question, you will show that Naive Bayes is a linear classifier when using Gaussian likelihood factors with shared variances. Specifically, consider the following Naive Bayes model:
+\begin{equation}
+p(y|x) = \frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y)p(y)}{p(x)}
+\end{equation}
+With:
+\begin{equation}
+p([x]_{\alpha}|y) = \mathcal{N}([\mu_{y}]_{\alpha},[\sigma^{2}]_{\alpha})
+\end{equation}
+That is, there is a separate mean value for each feature $[x]_{\alpha}$ and each class $y \in \left\{0,1\right\}$. However, the variances are shared across classes, so that there is only one variance $[\sigma^{2}]_{\alpha}$ per feature.
+
+<h5> a </h5>
+Show that the decision rule $p(y=1|x)$ can equivalently be written as
+\begin{equation}
+p(y=1|x) = \frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)}{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)+\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)p(y=0)}.
+\end{equation}
+Hint: remember the sum rule and product rule.
+
+<h5> b </h5>
+Using this formulation, show how to rewrite $p(y=1|x)$ as:
+\begin{equation}
+p(y=1|x) = \frac{1}{1+\exp{\left(-\log\frac{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=1)p(y=1)}{\prod_{\alpha=1}^{d} p([x]_{\alpha}|y=0)p(y=0)}\right)}}
+\end{equation}
+
+<h5> c </h5>
+Given the above expression for $p(y=1|x)$, show that Naive Bayes with this definition of $p([x]_{\alpha}|y)$ is a linear model. Hint: the form you derived in part b should remind you of a decision rule you've seen before.
+</body>
+</html>

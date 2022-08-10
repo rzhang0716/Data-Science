@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{amsmath, amsfonts}
+
+\title{CS4780/5780 Homework 3}
+\author{Due: Monday 02/26/2018 11:55pm on Gradescope}
+\date{}
+
+\begin{document}
+	
+	\maketitle
+		\section*{Problem: Estimating Probabilities from data}
+		Suppose we are given a dataset $\mathcal{D} = \{\vec{x}_1,  ..., \vec{x}_n\}\subset \mathbb{R}^d$. We would like to model the data with a Gaussian distribution with an unknown $\vec{\mu}$ and a known covariance matrix, $I$, namely  $$\mathcal{P}(\vec{x} ; \vec{\mu}, I) = \frac{1}{\sqrt{(2\pi)^{d}}} \exp (-\frac{1}{2} (\vec{x} - \vec{\mu})^T (\vec{x} - \vec{\mu}))$$
+		For estimation purposes, suppose each data point $\vec{x}_i$ is drawn independently from the above Gaussian distribution.
+		\begin{enumerate}
+			\item Show how we could use Maximum Likelihood Estimation (MLE) to estimate $\vec{\mu}$ from the data $D$ by maximizing the log likelihood function, $\log P(\mathcal{D} | \vec{\mu})$. To do this, recall that in order to find the maximizer of a function, we need to find the critical point of the function by setting the gradient of the function to zero. Please also compute the second derivative and verify that it is indeed a maximum.  
+			\item One of the problems with MLE is that we cannot introduce any prior belief on $\vec{\mu}$. For instance, if we know that $\vec{\mu}$ is close to the origin, we could not incorporate this prior knowledge into our model using MLE. To work around this, we will use a Bayesian approach, i.e., Maximum A Posterior Estimation (MAP). 
+			To incorporate our prior knowledge that $\vec{\mu}$ is close to the origin, we introduce a prior on $\vec{\mu}$ defined by a  standard Gaussian, namely, $\vec{\mu} \sim \mathcal{N}(0, I)$. Now, we can find an estimate of $\vec{\mu}$ that combines our prior knowledge of $\vec{\mu}$ and the information from the data $\mathcal{D}$ by maximizing the posterior $P(\vec{\mu} | \mathcal{D})$. In order to evaluate the posterior, we will need to make use of the Bayes' rule, 
+			$$P(\vec{\mu} | \mathcal{D}) = \frac{P(\mathcal{D} | \vec{\mu})P(\vec{\mu})}{P(\mathcal{D})}.$$ Show how we can find the MAP estimate for $\vec{\mu}$ using the method shown in class (Note that in the lecture we showed how we can avoid computing ${P(\mathcal{D})}$ when doing MAP).
+			% However, the denominator 
+			% $$P(\mathcal{D}) = \int P(\mathcal{D} | \vec{\mu})P(\vec{\mu}) d\vec{\mu}$$ 
+			% is always not easy to evaluate ( Integrals are hard :( ). Fortunately, in order to find the MAP estimate for $\vec{\mu}$, we do not need to evaluate $P(\mathcal{D})$. Observe that $P(\mathcal{D})$ is not a function of $\vec{\mu}$ since we integrate it out. As such, when we try to find the maximizer of the posterior, we can instead just find the maximizer of $P(\mathcal{D} | \vec{\mu})P(\vec{\mu})$.
+			
+			
+			% Show how we can find Maximum A Posterior Estimate of $\vec{\mu}$ by maximizing $\log P(\mathcal{D} | \vec{\mu})P(\vec{\mu})$ using the approach described in (1).
+			
+			%To do so, we observe that $P(\vec{\mu} | \mathcal{D}) = \frac{P(\mathcal{D} | \vec{\mu})P(\vec{u})}{P(\mathcal{D})}$ and the denominator is not dependent on $\vec{\mu}$. As such, 
+			\item  If you want to do more than MAP, calculating the true posterior (with ${P(\mathcal{D})}$) is not always easy  and we often need to resort to approximations. However, for Gaussian distributions, that is not the case. Assume that we are going to place the same prior on $\vec{\mu}$ as in (2). We know that by Bayes' rule $$P(\vec{\mu} | \mathcal{D}) \propto P(\mathcal{D} | \vec{\mu})P(\vec{\mu})$$ and since the product of two Gaussian distributions is a Gaussian distribution, then the posterior has to be a Gaussian distribution, i.e. $\vec{\mu}\sim \mathcal{N}(\vec{m}, \Sigma)$. Using this fact we can assume that 
+\begin{equation}
+	 P(\vec{\mu}| \mathcal{D}) =   \frac{1}{\sqrt{(2\pi)^{d} |\Sigma|}} \exp (-\frac{1}{2} (\vec{\mu} - \vec{m})^T \Sigma^{-1} (\vec{\mu} - \vec{m}))
+\end{equation}
+			 and we can simplify the procedure of finding the posterior to finding $\vec{m}$ and $\Sigma$. Show how we can find $\vec{m}$ and $\Sigma$ by comparing the exponents in $\mathcal{N}(\vec{m}, \Sigma)$ and $P(\mathcal{D} | \vec{\mu})P(\vec{\mu})$.
+		\end{enumerate}
+\end{document}

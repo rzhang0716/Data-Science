@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<!--
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+<script type="text/javascript">
+LatexIT.add('p',true);
+</script>
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+extensions: ["tex2jax.js"],
+jax: ["input/TeX", "output/HTML-CSS"],
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+processEscapes: true
+},
+"HTML-CSS": { availableFonts: ["TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Written Homework #5</title>
+<link href="lecturecss.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>Homework 5</h2>
+<b>Due: Friday 04/28/2017 11:59pm on CMS<br>
+Up to 5 members in each group. Please include NetID and names on front page.</b>
+
+<h3> Problem 1: Kernels as covariance functions </h3>
+<p> In this problem, we will take a look at gaining a more intuitive understanding of kernels and how the choice of kernel can affect your machine learning model. To do this, we explore the use of kernels as covariance functions in Gaussian process regression. Recall from class that in Gaussian process regression, we often define the covariance between two labels $Y_{i}$ and $Y_{j}$ of points $x_{i}$ and $x_{j}$ with a kernel, $$\textrm{Cov}(Y_{i},Y_{j}) = k(x_{i},x_{j})$$. This implies that the <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">correlation coefficient</a> between $Y_{i}$ and $Y_{j}$ is then given by $$\textrm{Corr}(Y_{i},Y_{j}) = \frac{\textrm{Cov}(Y_{i},Y_{j})}{\sqrt{\textrm{Var}(Y_{i})\textrm{Var}(Y_{j})}}=\frac{k(x_{i},x_{j})}{\sqrt{k(x_{i},x_{i})k(x_{j},x_{j})}}$$
+This is in some sense the key assumption made by GPs about your data: the correlation between the labels of two data points is given by the equation above.
+
+<p>(a) Suppose we are using the the 0 mean Gaussian process model used in class $$\mathbf{Y} \sim \mathcal{N}(0,\mathbf{K})$$ and furthermore assume that, for any $x$ and $z$, $k(x,x)=k(z,z)=s$. Show that if $\textrm{Corr}(Y_{i},Y_{j})=1$, then $p(Y_{i}|Y_{j}=y_{j},x_i,x_j)=\mathcal{N}(y_{j},0)$, and similarly $p(Y_{j}|Y_{i}=y_{i},x_i,x_j)=\mathcal{N}(y_{i},0)$. Hint: use the Gaussian conditioning rules given in class to derive $p(Y_{i}|Y_{j}=y_{j},x_i,x_j)$, and write it in terms of the correlation coefficient. Based on this form, what happens as $\textrm{Corr}(Y_{i},Y_{j})$ approaches 0?</p>
+
+<p> (b) Suppose you were to do Gaussian process regression in one dimension (i.e., $x_{i} \in \mathcal{R}$) as above using the kernel $$k_{PER}(x_{i},x_{j}) = \exp\left(-2\sin^{2}\left(\frac{\pi}{p} \vert x_{i} - x_{j} \vert \right)\right)$$ </p>
+<p> (i) For arbitrary $z$, $z+p$, and $z+2p$ (where $p$ is the parameter in the kernel above), compute $\textrm{Corr}(Y_{z},Y_{z+p})$, $\textrm{Corr}(Y_{z},Y_{z+2p})$ and $\textrm{Corr}(Y_{z+p},Y_{z+2p})$. Based on the result from part (a), what does this tell you about $Y_{z+p},Y_{z+2p},Y_{z+3p},...$ if you are given that $Y_{z}=y_{z}$?
+<p> (ii) Now suppose that you are told that $p=4$ in the kernel above. Suppose further that you are given the following labeled dataset: $$x_{1}=1,y_{1}=1 \\ x_{2}=2,y_{2}=2 \\ x_{3}=3,y_{3}=3 \\ x_{4}=4,y_{4}=2$$. What is the Gaussian process mean prediction for the following test points: $$x_{5}=5, x_{6}=6, x_{7}=7, x_{8}=8,x_{9}=9,x_{10}=10,x_{11}=11,x_{12}=12$$ Hint: You should have to do no math. Plot by hand the Gaussian process mean prediction as a function of $x$ on the range $x \in [0,17]$. What kind of functions do you think a Gaussian process model with this kernel would be good at learning?
+<p> (c) Let $k_{b}(x,z)$ be any kernel with the property that for any $x$ and $z$, $k_{b}(x,x)=k_{b}(z,z)=s$. Define a new kernel in terms of this base kernel, $$k_{sym}(x,z) = k_{b}(x,z)+k_{b}(-x,z)$$ Let $Y_{x}$ be the label of some point $x$, and let $Y_{-x}$ be the label of $-x$. Using the definition of correlation above, show that $k_{sym}(x,z)$ encodes reflective symmetry, i.e. the predictive mean satisfies $f(x)=f(-x)$, by showing that $\textrm{Corr}(Y_{x},Y_{-x})=1$ (hint: recall that $k(x,z)=k(z,x)$ for any kernel).
+
+<h3> Problem 2: Efficiently implementing regression trees </h3>
+You are building a regression tree, and right now you need to choose a split for the given dataset $S=\{(\vec x_1,y_1),\dots,(\vec x_n,y_n)\}$ (where we have continuous labels $y_i\in{\cal R}$).
+Suppose you split on some feature $j$ with value $c$ and partition the dataset in to two sets of indices, $L$--the set of indices on the left (i.e., $i \in L \Rightarrow [x_{i}]_{j} < c$)--and $R$--the set of indices on the right (i.e., $i \in R \Rightarrow [x_{i}]_{j} > c$). Suppose you assign every data point on the left the prediction $T_{L}$ and every data point on the right the prediction $T_{R}$. Finally, suppose that each data point $x_{i}$ has an associated weight $w_{i}$, and that the weights are normalized (i.e., $\sum_{i} w_{i} = 1$). Your loss function is the averaged weighted squared-loss:
+\begin{equation}
+	{\cal L}(S)=\sum_{i \in L} {w_{i}(y_{i} - T_{L})}^2+\sum_{i \in R} {w_{i}(y_{i} - T_{R})}^2.\label{q2:loss}
+\end{equation}
+<p> (a) First, show that setting $T_{L}$ and $T_{R}$ to the weighted average label over their respective sets (i.e., $T_{L} = \frac{1}{W_{L}}\sum_{i\in L}w_{i}y_{i}$ and $T_{R} = \frac{1}{W_{R}}\sum_{i\in R}w_{i}y_{i}$) minimizes the loss $\cal L$, where $W_{L}=\sum_{i \in L}w_{i}$ and $W_{R}=\sum_{i \in R} w_{r}$ are the total weight of the left and right side respectively.
+<p> (b) Now, imagine you are considering splitting on some feature $j$, and suppose you have already sorted the training points in the order of this feature value, so that $[x_{1}]_{j} < [x_{2}]_{j} < \cdots < [x_{n}]_{j}$. You'd like to choose a split from among $c_{1} \leq c_{2} \leq \cdots \leq c_{n-1}$, where $c_{i}=\frac{[x_{i}]_{j}+[x_{i+1}]_{j}}{2}$. One way to do this would be to, for each possible split $c_{k}$, decide whether each $x_{i}$ should be partitioned left or right, and compute $\cal L$. At the end, take the split with the lowest loss. What is the running time complexity of this algorithm in terms of the number of data points $n$?
+<p> (c) Suppose some split $c_{k}$ results in the data being partitioned in to $L^{(k)}$ and $R^{(k)}$. Suppose you are given the following quantities precomputed: $W_{L^{(k)}}$, $P_{L^{(k)}} = \sum_{i \in L} w_{i}y_{i}$, and $Q_{L^{(k)}} = \sum_{i \in L} w_{i}y_{i}^{2}$. Similarly, you are given $W_{R^{(k)}}$, $P_{R^{(k)}}$ and $Q_{R^{(k)}}$. Show how, equipped with these precomputed quantities, you can compute $\cal L$ in constant time.
+<p> (d) If we split on $c_{k+1}$ instead of $c_{k}$, how many data points move from the right partition to the left partition? How many move from left to right? Based on this:
+<ol>
+	<li>Give an efficient update rule to compute $W_{L^{(k+1)}}$ and and $W_{R^{(k+1)}}$ given $W_{L^{(k)}}$ and $W_{R^{(k)}}$. </li>
+	<li>Give an efficient update rule to compute $P_{L^{(k+1)}}$ and $P_{R^{(k+1)}}$ given $P_{L^{(k)}}$ and $P_{R^{(k)}}$.</li>
+	<li>Give an efficient update rule to compute $Q_{L^{(k+1)}}$ and $Q_{R^{(k+1)}}$ given $Q_{L^{(k)}}$ and $Q_{R^{(k)}}$.</li>
+</ol>
+<p> (e) Suppose that you compute the loss of each split using the update rules you derived in part d. What is the time complexity of finding the best cut using this method?
+
+<h3> Problem 3: Decision trees with missing data </h3>
+In many applications (e.g. medical sciences) it is not always possible to obtain all features (e.g. medical examinations) on all data examples $\vec x_i$ (e.g. patients). This results in some missing features in the train / test data. In those cases we have an additional bit that indicates that a particular feature value does not exist.
+<ol>
+    <li> How would you adapt decision trees to this sort of data? (Just describe the necessary changes to the algorithm.)</li>
+    <li>Can you also create a binary decision tree that incorporates missing data?</li>
+</ol>
+</body>
+</html>

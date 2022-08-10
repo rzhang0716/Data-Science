@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{hyperref}
+
+\title{CS 4780/5780 Homework 6 Solution\vspace{-10pt}}
+\author{}
+\date{}
+
+\begin{document}
+    \maketitle
+    \section*{Problem 1: Regularization Mitigates Overfitting}
+    \begin{enumerate}[(a)]
+        \item
+        Due to regularization, $||(\mathbf{w}(\mathcal{D})||_2\leq B$ for all $\mathcal{D}$. Since $\overline{w} = \mathbb{E}_{\mathcal{D}}(\mathbf{w}(\mathcal{D}))$, we also have,
+        $$||\overline{w}||_2^2 \leq B^2.$$
+        
+        Using the triangular inequality we have,
+        $$||\mathbf{w}(\mathcal{D}) - \overline{w}||_2 \leq ||\mathbf{w}(\mathcal{D})||_2 + ||\overline{w}||_2.$$
+        
+        Taking the square of each side and asserting inequalities on individual norms,
+        \begin{align*}
+            ||\mathbf{w}(\mathcal{D}) - \overline{w}||_2^2 &\leq (||\mathbf{w}(\mathcal{D})||_2 + ||\overline{w}||_2)^2\\
+            &= ||\mathbf{w}(\mathcal{D})||_2^2 + ||\overline{w}||_2^2 + 2||\mathbf{w}(\mathcal{D})||_2||\overline{w}||_2\\
+            &\leq B^2 + B^2 + 2B^2 = 4B^2
+        \end{align*}
+
+        \item First, note that in $\overline{h}(\mathbf{x})=\mathbb{E}_{\mathcal{D}} (\mathbf{w}(\mathcal{D})^T\mathbf{x})$, the expectation of $\mathbf{w}(\mathcal{D})$ does not depend on $\mathbf{x}.$ So
+        $$\mathbb{E}_{\mathcal{D}} (\mathbf{w}(\mathcal{D})^T\mathbf{x}) = \mathbb{E}_{\mathcal{D}} (\mathbf{w}(\mathcal{D}))^T\mathbf{x}=\overline{w}^T\mathbf{x}$$
+        
+        We rewrite $h_\mathcal{D}(\mathbf{x}) - \overline{h}(\mathbf{x})$ as the following:
+        \begin{align*}
+            h_\mathcal{D}(\mathbf{x}) - \overline{h}(\mathbf{x}) &= \mathbf{w}(\mathcal{D}) ^T \mathbf{x} -\mathbb{E}_{\mathcal{D}} (\mathbf{w}(\mathcal{D})^T\mathbf{x})\\
+            &= \mathbf{w}(\mathcal{D}) ^T \mathbf{x} -\overline{w}^T\mathbf{x}\\
+            &= (\mathbf{w}(\mathcal{D})-\overline{w})^T\mathbf{x}
+        \end{align*}
+        
+        By the Cauchy-Schwarz inequality,
+        $$(h_\mathcal{D}(\mathbf{x}) - \overline{h}(\mathbf{x})) ^ 2 \leq  \big((\mathbf{w}(\mathcal{D}) - \overline{w}\big) ^T \big(\mathbf{w}(\mathcal{D}) - \overline{w})\big)(\mathbf{x}^T\mathbf{x})$$
+        
+        We write the above in terms of norms and substitute $||\mathbf{x}||_2^2 = 1$.
+        $$(h_\mathcal{D}(\mathbf{x}) - \overline{h}(\mathbf{x})) ^ 2 \leq  ||\mathbf{w}(\mathcal{D}) - \overline{w}||_2^2 \cdot ||\mathbf{x}||_2^2=||\mathbf{w}(\mathcal{D}) - \overline{w}||_2^2$$
+
+        Using our result from 1a, we get,
+
+        $$(h_\mathcal{D}(\mathbf{x}) - \overline{h}(\mathbf{x})) ^ 2 \leq 4B^2 $$
+
+        Finally, taking the expectation we get,
+
+        $$\mathbb{E}_{\mathbf{x}, \mathcal{D}}((h_\mathcal{D}(\mathbf{x}) - \overline{h}(\mathbf{x})) ^ 2) \leq 4B^2$$
+    \end{enumerate}
+    \newpage
+    \section*{Problem 2: Bias and Variance in KNN}
+    $$\text{EPE}_k (x) = \frac{\sigma^2}{k} + \sigma^2 + \left[f(x) - \frac{1}{k}\sum_{l=1}^{k}f(x_{(l)})\right]^2.$$
+    where the terms correspond to variance, noise, and bias, respectively.\\
+    Indeed, the variance term $\frac{\sigma^2}{k}$ will drop off as $k$ increases.
+    \\\hrule
+    \noindent
+    
+    \subsubsection*{Derivation:} the error decomposition is, as from lecture,
+    $$\underbrace{E_{D,(x, y)} \left[\left(y-h_{k}(x)\right)^{2}\right]}_\mathrm{Expected\;Test\;Error} = \underbrace{E_{x, D}\left[\left(h_{k}(x) - \overline{h}(x)\right)^{2}\right]}_\mathrm{Variance} + \underbrace{E_{x, y}\left[\left(\overline{y}(x) - y\right)^{2}\right]}_\mathrm{Noise} + \underbrace{E_{x}\left[\left(\overline{h}(x) - \overline{y}(x)\right)^{2}\right]}_\mathrm{Bias}$$
+    Reminder: $x,x_i,f(x),$ and $f(x_i)$ are treated as constants. $E[\varepsilon]=E[\varepsilon_{(l)}]=0$. $Var[\varepsilon]=Var[\varepsilon_{(l)}]=\sigma^2.$
+    $$\overline{y}(x)=E_{y}\left[y(x)\right] = E\left[f(x)+\varepsilon\right]=f(x)+E\left[\varepsilon\right] = f(x)$$
+    \begin{align*}
+        \overline{h}(x)&=E\left[h_k(x)\right]\\
+        &=E\left[\frac{1}{k}\sum_{l=1}^{k}(f(x_{(l)}) + \varepsilon_{(l)})\right]=\left(\frac{1}{k}\sum_{l=1}^{k}f(x_{(l)})\right) + E\left[\frac{1}{k}\sum_{l=1}^{k}\varepsilon_{(l)}\right]\\
+        &=\left(\frac{1}{k}\sum_{l=1}^{k}f(x_{(l)})\right) + \frac{1}{k}\sum_{l=1}^{k}E\left[\varepsilon_{(l)}\right]=\frac{1}{k}\sum_{l=1}^{k}f(x_{(l)})
+    \end{align*}
+    Now we can find the variance, noise, and bias of this classifier.
+    \begin{itemize}
+        \item Noise:
+        $$E_{x, y}\left[\left(\overline{y}(x) - y\right)^{2}\right] = E\left[\left(f(x) - (f(x)+\varepsilon)\right)^{2}\right] = E\left[\varepsilon^{2}\right]$$
+        
+        Using the definition of variance,
+        $$E\left[\varepsilon^2\right] = E\left[\varepsilon^2\right] - 0^2 = E\left[\varepsilon^2\right] - \left[E\left[\varepsilon\right]\right]^2 = Var[\varepsilon] = \sigma^2$$
+        
+        \item Variance:
+        $$E_{x, D}\left[\left(h_{k}(x) - \overline{h}(x)\right)^{2}\right]=E\left[\left(\frac{1}{k}\sum_{l=1}^{k}\varepsilon_{(l)}\right)^{2}\right]=\frac{1}{k^2}E\left[\sum_{1\leq i,j\leq k}\varepsilon_{(i)}\varepsilon_{(j)}\right]=\frac{1}{k^2}\sum_{1\leq i,j\leq k}E\left[\varepsilon_{(i)}\varepsilon_{(j)}\right]$$
+        
+        For $i\neq j$, the variables $\varepsilon_i$ and $\varepsilon_j$ are i.i.d.---therefore
+        $$E\left[\varepsilon_i\varepsilon_j\right] = E\left[\varepsilon_i\right]E\left[\varepsilon_j\right]=0$$
+        The cross terms in the sum cancel out. We also substitute $E\left[\varepsilon_{(l)}^2\right]=Var[\varepsilon_{(l)}]=\sigma^2$
+        $$\frac{1}{k^2}\sum_{1\leq i,j\leq k}E\left[\varepsilon_{(i)}\varepsilon_{(j)}\right]= \frac{1}{k^2}\sum_{l=1}^{k}E\left[\varepsilon_{(l)}^2\right] = \frac{1}{k^2}\sum_{l=1}^{k}\sigma^2 = \frac{1}{k^2}\cdot k\sigma^2 = \frac{\sigma^2}{k}$$
+    
+        \item Bias:
+        
+        Both terms in the expectation are constants given $x$ and $D$, which are also constants.
+        $$E_{x}\left[\left(\overline{h}(x) - \overline{y}(x)\right)^{2}\right] = \left(\overline{h}(x) - \overline{y}(x)\right)^{2}=\left(\left(\frac{1}{k}\sum_{l=1}^{k}f(x_{(l)})\right) - f(x)\right)^{2}$$
+    \end{itemize}
+\end{document}

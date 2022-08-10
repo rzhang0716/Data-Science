@@ -1,0 +1,192 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{hyperref}
+
+\title{CS 4780/5780 Homework 8 Solution}
+\author{}
+\date{}
+
+\begin{document}
+    \maketitle
+    \section*{Problem 1: Regularization Mitigates Overfitting}
+    In this question, we are going to investigate how adding l2 regularization
+    can help mitigate the effect of overfitting for ordinary least square regression.
+    First, recall that in our \href{http://www.cs.cornell.edu/courses/cs4780/2018sp/lectures/lecturenote10.html}{notes for lecture 10}, we mention that we can rewrite the objective
+    function of l2-regularized least square regression (or ridge regression)
+    $$\min_{\vec{w}} \sum_{i=1}^n (\vec{w}^T \vec{x}_i - y_i) ^ 2 + \lambda {||\vec{w}||}_2^2$$ as
+    $$\min_{\vec{w}} \sum_{i=1}^n (\vec{w}^T \vec{x}_i - y_i) ^ 2  \text{ subject to } {||\vec{w}||}_2^2 \leq B^2$$
+    To simplify our analysis, we are going to focus on the second expression.
+    In addition, we are going to assume the following:
+    \begin{enumerate}[(i)]
+        \item Each data point $(\vec{x}_i, y_i)$ is drawn identically and independently from the distribution $\mathcal{P}$, namely, the dataset $\mathcal{D} \sim \mathcal{P}^n$
+        \item For any $(\vec{x},y)$ sampled from $\mathcal{P}$, we have $||\vec{x}||_2^2 =  1$
+    \end{enumerate}
+    With the above assumption, we are going to do the following:
+    \begin{enumerate}[(a)]
+        \item Notice that $\vec{w}(\mathcal{D})$ is a function of $\mathcal{D}$ and since $\mathcal{D}$ is random, so is $\vec{w}(\mathcal{D})$. Define $\bar{w} = \mathbb{E}_{\mathcal{D}}(\vec{w}(\mathcal{D}))$. Show that
+        $$||\vec{w}(\mathcal{D}) - \bar{w} ||_2^2 \leq 4B^2 $$
+        using the triangular inequality
+        $$||a-b||_2 \leq ||a||_2 + ||b||_2$$
+         \item Define the model $h_\mathcal{D}(\vec{x}) = \vec{w}(\mathcal{D}) ^T \vec{x}$ and $\bar{h}(\vec{x}) = \mathbb{E}_{\mathcal{D}} (h_\mathcal{D}(\vec{x}))$. Show that the variance of the model
+        $$\mathbb{E}_{\vec{x}, \mathcal{D}}((h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x})) ^ 2) \leq 4B^2$$ by first showing that $$h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x}) = (w(\mathcal{D}) - \bar{w}) ^T \vec{x}$$ and then using the Cauchy-Schwarz inequality: $$(a^Tb)^2 \leq (a^Ta )(b^Tb)$$ to conclude the result.
+    \end{enumerate}
+    Takeaway: By adding regularization, we essentially bound the variance of the model which reduces overfitting.
+    \newline 
+    \newline
+    \textbf{Solution} 
+    \begin{enumerate}[(a)]
+        \item Using the triangular inequality we have,
+
+        $$||\vec{w}(\mathcal{D}) - \bar{w}||_2 \leq ||\vec{w}(\mathcal{D})||_2 + ||\bar{w}||_2$$
+
+        Take square of each side.
+
+        $$||\vec{w}(\mathcal{D}) - \bar{w}||_2^2 \leq ||\vec{w}(\mathcal{D})||_2^2 + ||\bar{w}||_2^2 + 2||\vec{w}(\mathcal{D})||_2||\bar{w}||_2$$
+
+        Since $ \bar{w} = \mathbb{E}_{\mathcal{D}}(\vec{w}(\mathcal{D}))$, we have $$||\bar{w}||_2^2 \leq B^2$$
+
+        $$||\vec{w}(\mathcal{D}) - \bar{w}||_2^2 \leq ||\vec{w}(\mathcal{D})||_2^2 + ||\bar{w}||_2^2 + 2||\vec{w}(\mathcal{D})||_2||\bar{w}||_2 \leq B^2 + B^2 + 2B^2 = 4B^2$$
+
+        \item Since $h_\mathcal{D}(\vec{x}) = \vec{w}(\mathcal{D}) ^T \vec{x}$, then
+
+        $$h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x}) = \vec{w}(\mathcal{D}) ^T \vec{x} -\mathbb{E}_{\mathcal{D}} (\vec{w}(\mathcal{D})^T\vec{x})  $$
+
+        Because $\bar{w} = \mathbb{E}_{\mathcal{D}}(\vec{w}(\mathcal{D}))$ and the expectation of $\vec{w}(\mathcal{D})$ does not depend on $\vec{x}$ we have
+        $$h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x}) = \vec{w}(\mathcal{D}) ^T \vec{x} - \bar{w}^T\vec{x}$$
+
+        By the Cauchy-Schwarz inequality,
+
+        $$(h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x})) ^ 2 \leq  ((\vec{w}(\mathcal{D}) - \bar{w}) ^T (\vec{w}(\mathcal{D}) - \bar{w}))(\vec{x}^T\vec{x})$$
+
+        This can be written as,
+        $$(h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x})) ^ 2 \leq  ||\vec{w}(\mathcal{D}) - \bar{w}||_2^2 \cdot ||\vec{x}||_2^2$$
+
+        Because $||\vec{x}||_2^2 = 1$, we have,
+
+        $$(h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x})) ^ 2 \leq  ||\vec{w}(\mathcal{D}) - \bar{w}||_2^2$$
+
+        Using our result from 1a, we get,
+
+        $$(h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x})) ^ 2 \leq 4B^2 $$
+
+        Finally, taking the expectation we get,
+
+        $$\mathbb{E}_{\vec{x}, \mathcal{D}}((h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x})) ^ 2) \leq 4B^2$$
+    \end{enumerate}
+
+    %     \textbf{Solution 2}
+        
+    %     \vskip 10mm
+    
+    % Note that $h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x}) = w(\mathcal{D}) ^T \vec{x} - w^T \vec{x} = (w(\mathcal{D}) - w)^T \vec{x}.$ By the Cauchy-Schwarz inequality we have 
+    
+    % $$((w(\mathcal{D}) - w)^T \vec{x})^2 \leq (w(\mathcal{D}) - w)^T(w(\mathcal{D}) - w) (\vec{x}^T \vec{x}) = ||w(\mathcal{D}) - w||_2^2 ||\vec{x}||_2^2 $$
+    
+    % $$= ||w(\mathcal{D}) - w||_2^2 \leq 4B^2.$$
+    
+    % It follows immediately that $\mathbb{E}_{\vec{x}, \mathcal{D}}((h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x})) ^ 2) = \mathbb{E}_{\vec{x}, \mathcal{D}}(((w(\mathcal{D}) - w)^T \vec{x})^2) \leq 4B^2$.
+
+
+    
+
+	\section*{Problem 2: Kernelized Perceptron}
+	In this problem, we are going to kernelize the perceptron algorithm. Recall the perceptron algorithm
+
+	\begin{algorithm}[H]
+		\SetAlgoLined
+
+		Initialize $\vec{w} = \vec{0}$ \;
+		\While{TRUE}{
+			m =  0 \;
+			\For{$(x_i, y_i) \in D$}{
+				\If{$y_i(\vec{w}^T\vec{x_i}) \leq 0$}{
+					$\vec{w}\gets \vec{w} + y_i\vec{x_i}$\;
+					$m\gets m + 1$\;
+				}
+				}
+            \If{$m = 0$}{
+                    break
+			}
+
+
+		}
+		\caption{Perceptron Algorithm}
+	\end{algorithm}
+	\noindent
+	Now recall that in homework 2, we have shown that if we know the number of misclassifications for each training point, say $\alpha_i$ for $\vec{x}_i$, then we deduce that
+	$$\vec{w} = \sum_{i=1}^{n} \alpha_i y_i \vec{x}_i$$ This observation allows us to modify the perceptron algorithm such that we only need to keep track the number of misclassifications for each training points, instead of updating $\vec{w}$.
+	\begin{enumerate}[(a)]
+		\item Fill in the skeleton code so that the perceptron algorithm only needs to keep track of the number of misclassifications for each training point, instead of updating $\vec{w}$ \\
+		\begin{algorithm}[H]
+			\SetAlgoLined
+
+			Initialize $\vec{\alpha} = \vec{0}$ \;
+			\While{TRUE}{
+				m =  0 \;
+				\For{$(x_i, y_i) \in D$}{
+
+					\If{$y_i\sum_{j=1}^n \alpha_jy_j\vec{x_j}^T\vec{x_i} \leq 0$}{
+						$\alpha_i \gets \alpha_i + 1$\;
+						$m\gets m + 1$\;
+					}
+					}
+                \If{$m = 0$}{
+                        break
+				}
+
+			}
+			\caption{Modified Perceptron Algorithm}
+		\end{algorithm}
+
+		\item Now, how would you modify algorithm 2 to kernelize the perceptron algorithm?\\
+
+		Change $y_i\sum_{j=1}^n\alpha_jy_j\vec{x_j}^T\vec{x_i}$ to $y_i\sum_{j=1}^n\alpha_jy_jK(x_j, x_i)$, where K is the kernel function.
+
+	\end{enumerate}
+    \newpage
+	\section*{Problem 3: Constructing Kernels}
+	In class, we have shown how we could use a few rules to construct new kernels from existing valid kernels. In this problem, we will prove that these rules indeed produce valid kernels.
+	\newline
+	Recall that there are two ways to show that a function $k: \mathbb{R}^d \times \mathbb{R}^d \rightarrow \mathbb{R}$ is a valid kernel function:
+    \begin{enumerate}
+        \item The matrix $$K_{ij} = k(\vec{x}_i, \vec{x}_j)$$ is symmetric and positive semidefinite for any set of vectors $\vec{x}_1, ..., \vec{x}_n \in \mathbb{R}^d$
+        \item $k(\vec{x}_i, \vec{x}_j) = \phi(\vec{x}_i)^T \phi(\vec{x}_j)$ for some transformation
+        $\phi$
+    \end{enumerate}
+    Suppose $k_1, k_2$ are valid kernel functions. Show that the following kernels are valid:
+	\begin{enumerate}[(a)]
+		\item $k(\vec{x}_1, \vec{x}_2) = c k_1(\vec{x}_1, \vec{x}_2)$ for any $c \geq 0$. 
+		\item $k(\vec{x}_1, \vec{x}_2) = k_1(\vec{x}_1, \vec{x}_2) + k_2(\vec{x}_1, \vec{x}_2)$ 
+		\item $k(\vec{x}_1, \vec{x}_2) = k_1(\vec{x}_1, \vec{x}_2) k_2(\vec{x}_1, \vec{x}_2)$.
+    \end{enumerate}
+    \textbf{Solution}:
+    Suppose $\phi_1$ and $\phi_2$ are the transformation associated with $k_1$ and $k_2$ repsectively.
+    \begin{enumerate}[(a)]
+        \item Notice that $k(\vec{x}_i, \vec{x}_j) = c k_1(\vec{x}_i, \vec{x}_j) = c \phi_1(\vec{x}_i)^T \phi_1(\vec{x}_j) = (\sqrt{c}\phi_1(\vec{x}_i))^T(\sqrt{c}\phi_1(\vec{x}_j))$. We can take $\phi_4(\vec{x}_i) = \sqrt{c}\phi_1(\vec{x}_i)$ as a transformation for $ck_1(\vec{x}_i, \vec{x}_j)$
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \item Observe that $k(\vec{x}_i, \vec{x}_j) = k_1(\vec{x}_i, \vec{x}_j) + k_2(\vec{x}_i, \vec{x}_j) = \phi_1(\vec{x}_i)^T \phi_1(\vec{x}_j) + \phi_2(\vec{x}_i)^T \phi_2(\vec{x}_j) = \begin{bmatrix} \phi_1(\vec{x}_i) \\ \phi_2(\vec{x}_i) \end{bmatrix} ^T \begin{bmatrix} \phi_1(\vec{x}_i) \\ \phi_2(\vec{x}_i) \end{bmatrix}$. We can take $\phi_5(\vec{x}_i) = \begin{bmatrix} \phi_1(\vec{x}_i) \\ \phi_2(\vec{x}_i) \end{bmatrix}$ as a transformation for $k_1(\vec{x}_1, \vec{x}_2) + k_2(\vec{x}_1, \vec{x}_2)$
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \item Notice that 
+        \begin{align*}
+            k(\vec{x}_i, \vec{x}_j) &= k_1(\vec{x}_i, \vec{x}_j) k_2(\vec{x}_i, \vec{x}_j) \\
+            & = \phi_1(\vec{x}_i)^T \phi_1(\vec{x}_j)\phi_2(\vec{x}_i)^T \phi_2(\vec{x}_j)
+            \\
+            & = \sum_{a = 1}^{n_1} [\phi_1(\vec{x}_i)]_a [\phi_1(\vec{x}_j)]_a \sum_{b = 1}^{n_2} [\phi_2(\vec{x}_i)]_b [\phi_2(\vec{x}_j)]_b \\
+            &= \sum_{a = 1}^{n_1} \sum_{b = 1}^{n_2} [\phi_1(\vec{x}_i)]_a [\phi_2(\vec{x}_i)]_b [\phi_1(\vec{x}_j)]_a  [\phi_2(\vec{x}_j)]_b
+        \end{align*}
+
+        Suppose $\phi_6(\vec{x}_i) = [[\phi_1(\vec{x}_i)]_1 [\phi_2(\vec{x}_i)]_1, ..., [\phi_1(\vec{x}_i)]_1 [\phi_2(\vec{x}_i)]_{n_2}, [\phi_1(\vec{x}_i)]_2 [\phi_1(\vec{x}_1)]_1,...,  [\phi_1(\vec{x}_1)]_{n_1} [\phi_1(\vec{x}_1)]_{n_2}]^T$. Then, 
+        $$\phi_6(\vec{x}_i)^T\phi_6(\vec{x}_j) = \sum_{a = 1}^{n_1} \sum_{b = 1}^{n_2} [\phi_1(\vec{x}_i)]_a [\phi_2(\vec{x}_j)]_b [\phi_1(\vec{x}_i)]_a  [\phi_2(\vec{x}_j)]_b = k_1(\vec{x}_i, \vec{x}_j) k_2(\vec{x}_i, \vec{x}_j)$$
+        % \begin{align*}
+        %     \phi_6(\vec{x}_1)^T \phi_6(\vec{x}_2) &= \\
+        % \item Suppose $K_{ij} = k(\vec{x}_i, \vec{x}_j)$, $K_{1ij} = k_{1}(\vec{x}_i, \vec{x}_j)$, and $K_{2ij} = k_{2}(\vec{x}_i, \vec{x}_j)$ for some set of vectors $\vec{x}_1, ..., \vec{x}_n \in \mathbb{R}^d$. Since $K_{1}$ and $K_{2}$ are positive semi-definite matrices, they have eigendecompositions $K_{1} = U \Lambda U^T = \sum_{i=1}^{n} \lambda_{i}\vec{u}_{i}\vec{u}^T_{i}$ and $K_{2} = V M V^T = \sum_{i=1}^{n} m_{i}\vec{v}_{i}\vec{v}^T_{i}$. Note that by definition, $K = K_{1} \odot K_{2}$ where $\odot$ is the elementwise product of two matrices. Therefore, we have $K = \sum_{i=1}^{n} \lambda_{i}\vec{u}_{i}\vec{u}^T_{i} \odot m_{i}\vec{v}_{i}\vec{v}^T_{i} = \sum_{i=1}^{n} \lambda_{i}m_{i}(\vec{u}_{i}\vec{u}^T_{i} \odot \vec{v}_{i}\vec{v}^T_{i})$. By the properties of elementwise product, $K = \sum_{i=1}^{n} \lambda_{i}m_{i}(\vec{u}_{i}\odot\vec{v}_{i})(\vec{u}_{i} \odot \vec{v}_{i})^T$. If we let $\vec{w} = \vec{u}_{i}\odot\vec{v}_{i}$, then $K = \sum_{i=1}^{n} \lambda_{i}\mu_{i}\vec{w}_{i}\vec{w}_{i}^T$. 
+        % \newline
+        % \newline
+        % Now let us prove that K is positive semi-definite. We show this by proving $\vec{z}^T K \vec{z} \geq 0$. Notice that $\vec{z}^T K \vec{z} = \sum_{i=1}^{n} \lambda_{i}m{i}\vec{z}^T\vec{w}_{i}\vec{w}_{i}^T\vec{z}$. Let $a_{i} = \vec{z}^T\vec{w}_{i}$. Then $\vec{z}^T K \vec{z} =  \sum_{i=1}^{n} \lambda_{i}\mu_{i} (a_{i})^2$ The eigenvalues of positive semi-definite matrices $\lambda_{i}$ and $m_{i}$ are always greater than equal to zero. $a_{i}^2$ is always greater than equal to zero. Therefore K is symmetric (it is a linear combination of symmetric matrices) and positive semidefinite.
+    \end{enumerate}
+\end{document}

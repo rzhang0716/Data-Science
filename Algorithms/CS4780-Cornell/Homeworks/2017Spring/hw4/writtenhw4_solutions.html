@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<!--
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+<script type="text/javascript">
+LatexIT.add('p',true);
+</script>
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+extensions: ["tex2jax.js"],
+jax: ["input/TeX", "output/HTML-CSS"],
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+processEscapes: true
+},
+"HTML-CSS": { availableFonts: ["TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Written Homework #4</title>
+<link href="lecturecss.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>Homework 4</h2>
+<b>Due: Friday 04/14/2017 11:59pm on CMS<br>
+Up to 5 members in each group. Please include NetID and names on front page.</b>
+
+<h3> Problem 1: Bias-variance of linear regression </h3>
+<p> In this problem, we derive the bias and variance of the MLE and MAP solutions of one-dimensional linear regression. Let $$y_i = w x_i + \epsilon_i$$ where $x_i \in \mathbb{R}$ are input features, $w \in \mathbb{R}$ is the true model parameter, and $\epsilon_i \sim N(0,\sigma^2)$ are iid Gaussian noise. The MLE solution is $$w^* = \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2}.$$ For any $\lambda > 0$, the MAP (i.e. ridge regression) solution is $$w^*(\lambda) = \frac{\sum_{i=1}^n x_i y_i}{\lambda + \sum_{i=1}^n x_i^2}.$$
+<p>(a) Derive the expectation and variance of $w^*$. Is $w^*$ an unbiased estimator of $w$?
+<p> Solution:
+\begin{align*}
+\mathbb{E}[w^*] &= \mathbb{E} \left[ \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2} \right] \\
+                  &= \frac{\sum_{i=1}^n x_i \mathbb{E}_D[y_i]}{\sum_{i=1}^n x_i^2} \\
+				  &= \frac{\sum_{i=1}^n x_i w x_i}{\sum_{i=1}^n x_i^2} \\
+				  &= w
+\end{align*}
+\begin{align*}
+\text{Var}(w^*) &= \text{Var} \left( \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2} \right) \\
+                  &= \frac{\sum_{i=1}^n x_i^2 \text{Var}_D[y_i]}{\left( \sum_{i=1}^n x_i^2 \right)^2} \\
+				  &= \frac{\sum_{i=1}^n x_i^2 \sigma^2}{\left( \sum_{i=1}^n x_i^2 \right)^2} \\
+				  &= \frac{\sigma^2}{\sum_{i=1}^n x_i^2}
+\end{align*}
+<p> Since $\mathbb{E}[w^*] = w$, $w$ is an unbiased estimator of $w$.
+<p>(b) For any $\lambda > 0$, derive the expectation and variance of $w^*(\lambda)$. Is $w^*(\lambda)$ an unbiased estimator of $w$?
+<p> Solution:
+\begin{align*}
+\mathbb{E}[w^*(\lambda)] &= \mathbb{E} \left[ \frac{\sum_{i=1}^n x_i y_i}{\lambda + \sum_{i=1}^n x_i^2} \right] \\
+                  &= \frac{\sum_{i=1}^n x_i \mathbb{E}_D[y_i]}{\lambda + \sum_{i=1}^n x_i^2} \\
+				  &= \frac{\sum_{i=1}^n x_i w x_i}{\lambda + \sum_{i=1}^n x_i^2} \\
+				  &= \left( \frac{\sum_{i=1}^n x_i^2}{\lambda + \sum_{i=1}^n x_i^2} \right) w
+\end{align*}
+\begin{align*}
+\text{Var}(w^*(\lambda)) &= \text{Var} \left( \frac{\sum_{i=1}^n x_i y_i}{\lambda + \sum_{i=1}^n x_i^2} \right) \\
+                  &= \frac{\sum_{i=1}^n x_i^2 \text{Var}_D[y_i]}{\left( \lambda + \sum_{i=1}^n x_i^2 \right)^2} \\
+				  &= \frac{\sum_{i=1}^n x_i^2 \sigma^2}{\left( \lambda + \sum_{i=1}^n x_i^2 \right)^2} \\
+				  &= \left[ \frac{\sum_{i=1}^n x_i^2}{\left( \lambda + \sum_{i=1}^n x_i^2 \right)^2} \right] \sigma^2
+\end{align*}
+<p> For any $\lambda > 0$, $w^*(\lambda)$ is not an unbiased estimator of $w$.
+<p>(c) Suppose now that $x \sim \text{Unif}(0,1)$. For $x_1,\ldots,x_n$ <i>fixed</i>, the expected test error $\mathbb{E}_{x,y,D}[(h_D(x)-y)^2]$ can be decomposed into bias (squared), variance, and noise as
+$$\mathbb{E}_{x,y,D}[(h_D(x)-y)^2] = \mathbb{E}_x[(\bar{h}(x) - \bar{y}(x))^2] + \mathbb{E}_{x,D}[(h_D(x) - \bar{h}(x))^2] + \mathbb{E}_{x,y}[(\bar{y}(x) - y)^2]$$
+where the expectation over $D$ is only over the $y_i$'s. Using (a) and (b), express each of the three terms for both linear regression and ridge regression.
+<p> Solution: By definition, $\bar{y}(x) = wx$. The noise term is $$\mathbb{E}_{x,y}[(\bar{y}(x) - y)^2] = \mathbb{E}_\epsilon[\epsilon^2] = \text{Var}(\epsilon) = \sigma^2.$$
+For linear regression, $\bar{h}(x) = \mathbb{E}_D[w^*] x = wx = \bar{y}(x)$, hence the bias squared term is 0. The variance term is
+\begin{align*}
+\mathbb{E}_{x,D}[(h_D(x) - \bar{h}(x))^2] &= \mathbb{E}_{x,D}[(w^* x - wx)^2] \\
+                                          &= \mathbb{E}_{x,D}[(w^* - w)^2 x^2] \\
+										  &= \mathbb{E}_D[(w^* - w)^2] \mathbb{E}_x[x^2] \hspace{18pt} \text{by independence} \\
+										  &= \frac{\text{Var}(w^*)}{3}. \\
+\end{align*}
+For ridge regression, $$\bar{h}(x) = \mathbb{E}_D[w^*(\lambda)] x = \left( \frac{\sum_{i=1}^n x_i^2}{\lambda + \sum_{i=1}^n x_i^2} \right) wx = \left( \frac{\sum_{i=1}^n x_i^2}{\lambda + \sum_{i=1}^n x_i^2} \right) \bar{y}(x).$$ Letting $\alpha = \frac{\sum_{i=1}^n x_i^2}{\lambda + \sum_{i=1}^n x_i^2}$, we get
+\begin{align*}
+\mathbb{E}_x[(\bar{h}(x) - \bar{y}(x))^2] &= \mathbb{E}_x[(\alpha wx - wx)^2] \\
+                                          &= (\alpha-1)^2 w^2 \mathbb{E}_x[x^2] \\
+                                          &= \frac{(\alpha-1)^2 w^2}{3}
+\end{align*}
+The variance term can be derive similar to the linear regression case. $$\mathbb{E}_{x,D}[(h_D(x) - \bar{h}(x))^2] = \frac{\text{Var}(w^*(\lambda))}{3}.$$
+<p>(d) If you know ahead of time that $\sigma^2$ is small, i.e. the label does not vary much given the feature, which model would you choose? What about if $\sigma^2$ is large?
+<p> Solution: The noise term is the same for both methods. If $\sigma^2$ is small, we will have $Var(w^*) \approx Var(w^*(\lambda))$, so the variance term is similar, while the bias squared term for linear regression is 0. Hence linear regression is better.
+<p> When $\sigma^2$ is large, we can use a large $\lambda$ to offset the $\sigma^2$ term in $Var(w^*(\lambda))$, so the variance term for ridge regression is much smaller than for linear regression. The bias term for ridge regression is bounded by $\frac{w^2}{3}$, which is a constant. Hence ridge regression is better.
+
+<h3> Problem 2: Constructing kernels </h3>
+<p>In class you saw how to construct new kernels from existing ones. This problem asks you to prove that these construction techniques indeed produce valid kernels.
+<p>Recall that a function $k : \mathbb{R}^d \times \mathbb{R}^d \rightarrow \mathbb{R}$ is a kernel function if and only if the matrix $$K_{ij} = k(x_i,x_j)$$ is positive semidefinite for any set of vectors $x_1,\ldots,x_n \in \mathbb{R}^d$. Let $k_1,k_2$ be kernel functions. Prove that the following are kernel functions.
+<p>(a) $k(x,z) = x^\top A z$ where $A$ is a positive semidefinite matrix
+<p> Solution: Since $A$ is real and symmetric, there exist matrices $Q$ and $D$ with $A = QDQ^\top$ with $D$ being a diagonal matrix of eigenvalues. Moreover, since $A$ is positive semidefinite, all eigenvalues of $A$ are non-negative, so the diagonal matrix $D^\frac{1}{2}$ where $$D^\frac{1}{2}_{ii} = \sqrt{D_{ii}}$$ is well-defined. This allows us to write $A = L^\top L$ with $L = D^\frac{1}{2} Q^\top$.
+<p> Now define feature function $\phi(x) = Lx$, so $k(x,z) = \phi(x)^\top \phi(z)$ is a well-defined kernel since it is the inner product of two vectors.
+<p>(b) $k(x,z) = c k_1(x,z)$ for some $c \geq 0$
+<p> Solution: Since $c \geq 0$, the kernel matrix $K$ for $k$ and $x_1,\ldots,x_n \in \mathbb{R}^d$ is a non-negative multiple of the kernel matrix $K_1$ for $k_1$. Thus $K$ is positive semidefinite when $K_1$ is.
+<p>(c) $k(x,z) = k_1(x,z) + k_2(x,z)$
+<p> Solution: Recall from class that $k$ is a kernel if and only if there exists a feature function $\phi : \mathbb{R}^d \rightarrow \mathbb{R}^{d'}$ (with $d'$ being possibly infinite) such that $k(x,z) = \phi(x)^\top \phi(z)$.
+<p> Let $\phi_1$ be the feature function for $k_1$ and let $\phi_2$ be the feature function for $k_2$. Define the feature function $\phi$ such that $\phi(x)$ is the concatenation of $\phi_1(x)$ and $\phi_2(x)$. Then $$k(x,z) = k_1(x,z) + k_2(x,z) = \phi_1(x)^\top \phi_1(z) + \phi_2(x)^\top \phi_2(z) = \phi(x)^\top \phi(z).$$ This shows that $k$ is a kernel.
+<p>(d) $k(x,z) = k_1(x,z) k_2(x,z)$
+<p> Solution: Let $\phi_1, \phi_2$ be as in (c). Then
+\begin{align*}
+$k(x,z) &= (\phi_1(x)^\top \phi_1(z)) (\phi_2(x)^\top \phi_2(z)) \\
+        &= \left( \sum_{i=1}^{d_1} \phi_1(x)_i \phi_1(z)_i \right) \left( \sum_{j=1}^{d_2} \phi_2(x)_j \phi_2(z)_j \right) \\
+		&= \sum_{i=1}^{d_1} \sum_{j=1}^{d_2} \phi_1(x)_i \phi_2(x)_j \phi_1(z)_i \phi_2(z)_j
+\end{align*}
+Define the feature function $\phi : \mathbb{R}^d \rightarrow \mathbb{R}^{d_1 \times d_2}$ by $\phi(x)_{ij} = \phi_1(x)_i \phi_2(x)_j$ and inner product $\langle \cdot , \cdot \rangle$ as the element-wise product of two matrices. This gives $k(x,z) = \langle \phi(x), \phi(z) \rangle$, so $k$ is a kernel.
+<p>(e) $k(x,z) = q(k_1(x,z))$ where $q$ is a polynomial with non-negative coefficients
+Solution: Let $q(t) = \sum_{i=0}^m c_i t^i$ for non-negative coefficients $c_0,\ldots,c_m$. It is easy to show that $k'(x,z) = c_0$ is a kernel. For each $i=1,\ldots,m$, use (d) recursively to show that $k_1(x,z)^i$ is a kernel, then use (b) to show that $c_i k_1(x,z)^i$ is a kernel. Finally, use (c) on the sum to show that $k$ is a kernel.
+<p>(f) $k(x,z) = e^{k_1(x,z)}$
+<p>Solution: The idea is to use the Taylor expansion $e^t = \sum_{n=0}^\infty \frac{t^n}{n!}$, which converges pointwise for all $t \in \mathbb{R}$. The coefficients are all non-negative, so we can use (e) on this "infinite polynomial" to show that $k$ is a kernel.
+<p> Although we accept this argument for full credit, a more rigorous proof involves using the following lemma on pointwise limit of kernels.
+<p><b>Lemma:</b> Suppose that $k_1,k_2,\ldots$ is an infinite sequence of kernels and converges pointwise to $k$. Then $k$ is a kernel.
+<p>We leave the proof of this lemma as an exercise. To prove (f) rigorously, define $k_m = \sum_{n=0}^m \frac{t^n}{n!}$. This is a sequence of kernels (which can be shown using (e)) that converges pointwise to $k$, so $k$ is a kernel by the above lemma.
+
+<h3> Problem 3: String kernels </h3>
+<p> It is possible to define kernel functions over discrete objects such as strings. This is used in applications such as bio-informatics and natural language processing. Let $\Sigma$ be the alphabet space and let $x,z \in \Sigma^*$. Define
+\[ \delta(x,z) = \begin{cases} 
+      1 & \text{if } x = z \\
+      0 & \text{otherwise}
+   \end{cases}
+\]
+<p>(a) Let $\sigma_n(x)$ denote the set of $n$-grams of $x$, e.g. $\sigma_2(\texttt{abcd}) = \{\texttt{ab},\texttt{bc},\texttt{cd}\}$. Express the kernel function $$k(x,z) = \sum_{s \in \sigma_n(x)} \sum_{t \in \sigma_n(z)} \delta(s,t)$$ using an appropriate feature expansion.
+<p> Let $S = \{s_1,s_2,\ldots,s_N\}$ be the set of $n$-grams of $\Sigma$. Let $\phi : \Sigma^* \rightarrow \mathbb{R}^N$ be such that
+\[ \phi(x)_i = \begin{cases} 
+      1 & \text{if } s_i \in \sigma_n(x) \\
+      0 & \text{otherwise}
+   \end{cases}
+\]
+Then $\phi(x)_i \phi(z)_i = 1$ if and only if $s_i \in \sigma_n(x) \cap \sigma_n(z)$. Hence $$k(x,z) = \sum_{s \in \sigma_n(x)} \sum_{t \in \sigma_n(z)} \delta(s,t) = \sum_{s_i \in \sigma_n(s) \cap \sigma_n(t)} 1 = \sum_{s_i \in S} \phi(x)_i \phi(z)_i = \phi(x)^\top \phi(z).$$
+<p>(b) Let $\tau(x)$ denote the set of words of $x$ delimited by whitespace, e.g. $\tau(\texttt{winter is cold}) = \{\texttt{winter},\texttt{is},\texttt{cold}\}$. Express the kernel function $$k(x,z) = \sum_{s \in \tau(x)} \sum_{t \in \tau(z)} \delta(s,t)$$ using an appropriate feature expansion.
+<p> A feature expansion function $\phi : \Sigma^* \rightarrow \mathbb{R}^d$ is such that $k(x,z) = \phi(x)^\top \phi(z)$. Note that $d$ does not necessarily have to be finite.
+<p> Solution: Let $\Sigma^* = \{s_1,s_2,\ldots\}$ be an enumeration of $\Sigma^*$. We can define $\phi$ similarly, except that $\phi(x)$ is an infinite-dimensional vector.
+
+<p><b>Note:</b> Both (a) and (b) have an alternative interpretation where the set $\sigma_n(x)$ and $\tau(x)$ are <i>multisets</i> as opposed to sets, i.e. the same element may appear multiple times. In this case, define $\phi(x)_i = \text{number of occurrences of } s_i$ will work.
+
+<h3> Problem 4: Kernel logistic regression </h3>
+
+<p> One weakness of logistic regression is that it is a linear classifier. In this problem, you will use kernel functions to derive a non-linear version of logistic regression.
+<p> Given the parameter vector $w$, the model predicts $$\mathbb{P}(y | x) = \frac{1}{1 + e^{-yw^\top x}}.$$ The MLE estimate for $w$ can be found by minimizing the negative log-likelihood over the training data $(x_1,y_1),\ldots,(x_n,y_n)$: $$\ell(w) = \sum_{i=1}^n \log(1+e^{-y_i w^\top x_i}).$$
+<p>(a) Express the gradient of $\ell(w)$ as a linear combination of input vectors $x_1,\ldots,x_n$. You may use your solution from Homework 3 for the gradient.
+<p> Solution: The gradient with respect to $w$ is $$\nabla \ell(w) = -\sum_{i=1}^n \frac{y_i x_i e^{-y_i w^\top x_i}}{1+e^{-y_i w^\top x_i}}.$$ Notice that each term in the sum is a multiple of $x_i$, so the gradient is a linear combination of $x_i$ at each iteration.
+<p>(b) Use (a) to express the model in terms of inner products between training inputs and a test input $x$. Write down the kernel logistic regression model by replacing inner products with a kernel function $k$.
+<p> Solution: If we initialize $w$ to the all-zero vector then we can write $w = \sum_{i=1}^n \alpha_i x_i$ for $\alpha_i \in \mathbb{R}$. The logistic regression model becomes $$\mathbb{P}(y | x) = \frac{1}{1 + e^{-y\sum_{i=1}^n \alpha_i x_i^\top x}}.$$ Replacing inner products with a kernel $k$, we get $$\mathbb{P}(y | x) = \frac{1}{1 + e^{-y\sum_{i=1}^n \alpha_i k(x_i,x)}}.$$
+<p>(c) For the kernelized model, write down the loss function $\ell(\alpha)$ for the coefficient vector $\alpha$ and derive its gradient.
+<p> Solution: $$\ell(\alpha) = \sum_{i=1}^n \log(1+e^{-y_i \sum_{j=1}^n \alpha_j k(x_j,x_i)}) = \sum_{i=1}^n \log(1+e^{-y_i (K \alpha)_i})$$ where $K_{ij} = k(x_i,x_j)$ is the kernel matrix. Its gradient is $$\nabla \ell(\alpha) = \sum_{i=1}^n \frac{\nabla_\alpha (1+e^{-y_i(K \alpha)_i)}}{1+e^{-y_i(K \alpha)_i)}} = -\sum_{i=1}^n \frac{y_i K_i^\top e^{-y_i(K \alpha)_i)}}{1+e^{-y_i w^\top x_i}}.$$
+<p>(d) Suppose now that we add a regularization term to the parameter vector for the original model, i.e. $$\ell(w) = \sum_{i=1}^n \log(1+e^{-y_i w^\top x_i}) + \lambda \|w\|_2^2.$$ Express the equivalent kernelized loss function for $\alpha$ and derive its gradient.
+<p> At this point, you should be able to use gradient descent to train the kernel logistic regression model for any binary classification task!
+<p> Solution: Writing $w = \sum_{i=1}^n \alpha_i x_i$ gives $$\|w\|_2^2 = w^\top w = \sum_{i=1}^n \sum_{j=1}^n \alpha_i \alpha_j x_i^\top x_j.$$ Replacing inner product with $k(x_i,x_j)$ and rewriting in terms of matrix product gives $$\ell(\alpha) = \sum_{i=1}^n \log(1+e^{-y_i (K \alpha)_i}) + \lambda \alpha^\top K \alpha.$$ Its gradient is $$\nabla \ell(\alpha) = -\sum_{i=1}^n \frac{y_i K_i^\top e^{-y_i(K \alpha)_i)}}{1+e^{-y_i w^\top x_i}} + 2\lambda K \alpha.$$
+
+</body>
+</html>

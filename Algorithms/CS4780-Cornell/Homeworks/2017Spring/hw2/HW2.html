@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<!--
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+<script type="text/javascript">
+LatexIT.add('p',true);
+</script>
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+extensions: ["tex2jax.js"],
+jax: ["input/TeX", "output/HTML-CSS"],
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+processEscapes: true
+},
+"HTML-CSS": { availableFonts: ["TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Written Homework #2</title>
+<link href="lecturecss.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>Homework 2</h2>
+<b>Due: Wednesday 3/1/2017 11:59pm on CMS<br>
+Up to 5 members in each group. Please include NetID and names on front page.</b>
+
+
+<h3> Problem 1: The Curse of Dimensionality </h3>
+<p>In this problem, we take a more rigorous look at the curse of dimensionality.</p>
+
+<p>We aim to demonstrate two crucial claims, this time for normally distributed data:</p>
+<ol>
+<li>As data dimensionality increases, the distance between data points increases.</li>
+<li>As data dimensionality increases, this distance growth overwhelms any degree of closeness between points.</li>
+</ol>
+<p>To do this, we will treat the squared Euclidean distance between two arbitrary points in a Gaussian point cloud as a single random variable, and prove certain properties of its expectation and variance. 
+More formally, let:</p>
+
+$$D = ||\vec{x}-\vec{z}||^2 = \sum_{\alpha=1}^d (x_\alpha-z_\alpha)^2$$
+
+<p>where $d$ is the dimensionality of the data, $x_\alpha$ and $z_\alpha$ are i.i.d. for all $\alpha$, and $x_\alpha,z_\alpha \sim N(0,1)$ for all $\alpha$.</p>
+
+<p>It will help to keep in mind the definition of variance: $\mathbb{V}[X]=\mathbb{E}[(X-\mathbb{E}[X])^2]=\mathbb{E}[X^2]-\mathbb{E}[X]^2$.</p>
+
+<h5>a)</h5>
+<p>First, calculate the expectation and variance of $(x_\alpha-z_\alpha)$ for arbitrary $\alpha$, given that $x_\alpha,z_\alpha \sim N(0,1)$. Is this distribution a Gaussian normal distribution?
+
+<h5>b)</h5>
+<p>Now, using (a), calculate the expectation of $D$ and simplify it to a function of $d$:</p>
+
+$$\mu_D^{\,} = \mathbb{E}[D] = \mathbb{E}\left[\sum_{\alpha=1}^d (x_\alpha-z_\alpha)^2\right]$$
+
+<i>This supports our first claim, showing that as dimensionality increases, the expected squared Euclidean distance between normally distributed points also increases.</i>
+
+<h5>c)</h5>
+<p>Using (a) and (b), calculate the variance of $D$ and simplify it to a function of $d$:</p>
+
+$$\sigma_D^2 = \mathbb{V}[D] = \mathbb{V}\left[\sum_{\alpha=1}^d (x_\alpha-z_\alpha)^2\right]$$
+
+<p>You may use the fact that $\mathbb{E}[X^4]=3\sigma^4$ if $X \sim N(0,\sigma^2)$. (Hint: recall that $x_\alpha$ and $z_\alpha$ are i.i.d. for all $\alpha$)</p>
+
+<h5>d)</h5>
+<p>We now know the expectation $\mu_D^{\,}$ and variance $\sigma_D^2$ for our squared-distance random variable $D$.</p>
+
+<p>Chebyshev's Inequality states that for any draw $a$ from distribution $D$,</p>
+
+$$P(|\mu_D^{\,} - a| \ge k\sigma_D^{\,}) \le 1/k^2$$
+$$P(|\mu_D^{\,} - a| \ge 2\sigma_D^{\,}) \le .25$$
+
+<p>Thus, we can expect at least $75\%$ of point pairs in a Gaussian point cloud to have squared Euclidean distances within $4\sigma_D^{\,}$ of each other. 
+Using (b) and (c), show that $$\frac{4\sigma_D^{\,}}{\mu_D^{\,}}\rightarrow 0$$  as the dimensionality $d\rightarrow \infty$.</p>
+
+<i>This supports our second claim: as the dimensionality increases, the distance growth between normally distributed points overwhelms the degree to which some of those points are closer together than others. </i>
+
+
+
+<h3>Problem 2: Perceptron</h3>
+In this problem, we examine the effect that the ordering of training data points has on the perceptron algorithm. 
+
+<h5>a)</h5>
+Construct a data set of labeled vectors such that presenting the vectors to the perceptron in one order causes it to converge more slowly than it does for another order. 
+Show that this is the case. 
+
+<h5>b)</h5>
+Let there exist a set of vectors $x_1 ... x_n$ such that the perceptron finds a separating hyperplane after no more than a single pass through the data set, regardless of order of presentation. 
+What is the greatest possible difference between the fastest and slowest convergence times, where time is measured in number of updates to the weight vector? 
+
+<p>If we assume instead that the perceptron might take more than one pass over the data set to converge, does this maximum difference increase?</p>
+
+<h5>c)</h5>
+The convergence proof given in class guarantees that the perceptron will find a separating hyperplane as long as one exists, but there could exist a wide range of such hyperplanes. 
+Can some separating hyperplanes be considered "better" than others? What would be one way to measure the "goodness" of a hyperplane (only using the training set)? 
+
+<h5>d)</h5>
+Describe how you could utilize the effects of data ordering to improve upon the perceptron algorithm as presented in class - i.e. to find a better hyperplane, as defined by your criteria defined in question c). 
+
+
+
+<h3>Problem 3: Maximum Likelihood Estimation</h3>
+For each of the following distributions, assume we have observed $n$ draws $X_1 ... X_n$. 
+State the log-likelihood function, and estimate the parameters for each distribution using MLE. 
+You will find that many of these answers are highly intuitive. 
+
+<h5>a)</h5>
+Estimate $\lambda$ for the Exponential distribution with PDF:
+
+$$f(x;\lambda) = \lambda e^{-\lambda x}$$
+
+where $x$ is non-negative. 
+
+<h5>b)</h5>
+Estimate $p$ for the Geometric distribution with PMF:
+
+$$f(x;p) = p(1-p)^x$$
+
+where $x$ is non-negative. 
+<p>How does this relate to your answer for (a)? Why do you think this is?</p>
+
+<h5>c)</h5>
+Estimate $\mu$ and $\sigma^2$ for the Gaussian distribution with PDF:
+
+$$f(x;\mu,\sigma^2) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+
+
+</body>
+</html>

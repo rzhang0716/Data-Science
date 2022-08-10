@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{hyperref}
+
+\title{CS 4780/5780 Homework 8\vspace{-10pt}}
+\author{Due: Tuesday 04/24/18 11:55pm on Gradescope}
+\date{}
+
+\begin{document}
+    \maketitle
+    \section*{Problem 1: Regularization Mitigates Overfitting}
+    In this question, we are going to investigate how adding l2 regularization 
+    can help mitigate the effect of overfitting for ordinary least square regression. 
+    First, recall that in our \href{http://www.cs.cornell.edu/courses/cs4780/2018sp/lectures/lecturenote10.html}{notes for lecture 10}, we mention that we can rewrite the objective 
+    function of l2-regularized least square regression (or ridge regression)
+    $$\min_{\vec{w}} \sum_{i=1}^n (\vec{w}^T \vec{x}_i - y_i) ^ 2 + \lambda {||\vec{w}||}_2^2$$ as 
+    $$\min_{\vec{w}} \sum_{i=1}^n (\vec{w}^T \vec{x}_i - y_i) ^ 2  \text{ subject to } {||\vec{w}||}_2^2 \leq B$$
+    To simplify our analysis, we are going to focus on the second expression. 
+    In addition, we are going to assume the following:
+    \begin{enumerate}[(i)]
+        \item Each data point $(\vec{x}_i, y_i)$ is drawn identically and independently from the distribution $\mathcal{P}$, namely, the dataset $\mathcal{D} \sim \mathcal{P}^n$ 
+        \item For any $(\vec{x},y)$ sampled from $\mathcal{P}$, we have $||\vec{x}||_2^2 =  1$ 
+    \end{enumerate}
+    With the above assumption, we are going to do the following: 
+    \begin{enumerate}[(a)]
+        \item Notice that $\vec{w}(\mathcal{D})$ is a function of $\mathcal{D}$ and since $\mathcal{D}$ is random, so is $\vec{w}(\mathcal{D})$. Define $\bar{w} = \mathbb{E}_{\mathcal{D}}(\vec{w}(\mathcal{D}))$. Show that 
+        $$||\vec{w}(\mathcal{D}) - \bar{w} ||_2^2 \leq 4B^2 $$
+        using the triangular inequality
+        $$||a-b||_2 \leq ||a||_2 + ||b||_2$$
+        \item Define the model $h_\mathcal{D}(\vec{x}) = \vec{w}(\mathcal{D}) ^T \vec{x}$ and $\bar{h}(\vec{x}) = \mathbb{E}_{\mathcal{D}} (h_\mathcal{D}(\vec{x}))$. Show that the variance of the model 
+        $$\mathbb{E}_{\vec{x}, \mathcal{D}}((h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x})) ^ 2) \leq 4B^2$$ by first showing that $$h_\mathcal{D}(\vec{x}) - \bar{h}(\vec{x}) = (w(\mathcal{D}) - w) ^T \vec{x}$$ and then using the Cauchy-Schwarz inequality: $$(a^Tb)^2 \leq (a^Ta )(b^Tb)$$ to conclude the result. 
+    \end{enumerate} 
+    Takeaway: By adding regularization, we essentially bound the variance of the model which reduces overfitting. 
+    
+	\section*{Problem 2: Kernelized Perceptron}
+	In this problem, we are going to kernelize the perceptron algorithm. Recall the perceptron algorithm
+	
+	\begin{algorithm}[H]
+		\SetAlgoLined
+		
+		Initialize $\vec{w} = \vec{0}$ \;
+		\While{TRUE}{
+			m =  0 \;
+			\For{$(x_i, y_i) \in D$}{
+				\If{$y_i(\vec{w}^T\vec{x_i}) \leq 0$}{
+					$\vec{w}\gets \vec{w} + y_i\vec{x_i}$\;
+					$m\gets m + 1$\;
+				}
+				
+				\If{$m = 0$}{
+					break
+				}
+			}
+			
+		}
+		\caption{Perceptron Algorithm}
+	\end{algorithm}
+	\noindent
+	Now recall that in homework 2, we have shown that if we know the number of misclassifications for each training point, say $\alpha_i$ for $\vec{x}_i$, then we deduce that 
+	$$\vec{w} = \sum_{i=1}^{n} \alpha_i y_i \vec{x}_i$$ This observation allows us to modify the perceptron algorithm such that we only need to keep track the number of misclassifications for each training points, instead of updating $\vec{w}$. 
+	\begin{enumerate}[(a)]
+		\item Fill in the skeleton code so that the perceptron algorithm only needs to keep track of the number of misclassifications for each training point, instead of updating $\vec{w}$
+		
+		\begin{algorithm}[H]
+			\SetAlgoLined
+			
+			Initialize \rule{7cm}{0.4pt} \;
+			\While{TRUE}{
+				m =  0 \;
+				\For{$(x_i, y_i) \in D$}{
+					
+					\If{\rule{7cm}{0.4pt}}{
+						\rule{7cm}{0.4pt}\;
+						$m\gets m + 1$\;
+					}
+					
+					\If{$m = 0$}{
+						break
+					}
+				}
+				
+			}
+			\caption{Modified Perceptron Algorithm}
+		\end{algorithm}
+		
+		\item Now, how would you modify algorithm 2 to kernelize the perceptron algorithm?
+	\end{enumerate}
+    \newpage
+	\section*{Problem 3: Constructing Kernels}
+	In class, we have shown how we could use a few rules to construct new kernels from existing valid kernels. In this problem, we will prove that these rules indeed produce valid kernels. 
+	\newline
+	Recall that there are two ways to show that a function $k: \mathbb{R}^d \times \mathbb{R}^d \rightarrow \mathbb{R}$ is a valid kernel function:
+    \begin{enumerate}
+        \item The matrix $$K_{ij} = k(\vec{x}_i, \vec{x}_j)$$ is symmetric and positive semidefinite for any set of vectors $\vec{x}_1, ..., \vec{x}_n \in \mathbb{R}^d$
+        \item $k(\vec{x}_i, \vec{x}_j) = \phi(\vec{x}_i)^T \phi(\vec{x}_j)$ for some transformation
+        $\phi$
+    \end{enumerate}
+    Suppose $k_1, k_2$ are valid kernel functions. Show that the following kernels are valid: 
+	\begin{enumerate}[(a)]
+		\item $k(\vec{x}_1, \vec{x}_2) = c k_1(\vec{x}_1, \vec{x}_2)$ for any $c \geq 0$. 
+		\item $k(\vec{x}_1, \vec{x}_2) = k_1(\vec{x}_1, \vec{x}_2) + k_2(\vec{x}_1, \vec{x}_2)$ 
+		\item $k(\vec{x}_1, \vec{x}_2) = k_1(\vec{x}_1, \vec{x}_2) k_2(\vec{x}_1, \vec{x}_2)$ 
+	\end{enumerate} 
+\end{document}

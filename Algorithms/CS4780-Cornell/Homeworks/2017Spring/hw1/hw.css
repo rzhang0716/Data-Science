@@ -1,0 +1,43 @@
+html,body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 13px verdana,helvetica,arial,sans-serif;
+	padding: 20px 7%;
+	color: #333333;
+	max-width: 700px;
+}
+
+/*
+td {
+	font: 13px verdana,helvetica,arial,sans-serif;
+	line-height: 140%;
+}
+
+th,td {
+	vertical-align: top;
+}
+*/
+
+/* Blocks - general */
+
+h2, h3, h4{
+	color: #325B9D;
+	font-weight: 600;
+	font-size: 200%;;
+}
+
+h3, h4 {
+	font-size: 140%;
+	line-height: 90%;
+	border-bottom: 1px solid #527BBD;
+	margin-top: 30px;
+}
+
+
+p {
+	line-height: 120%;
+}
+

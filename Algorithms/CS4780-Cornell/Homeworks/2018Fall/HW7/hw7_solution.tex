@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{hyperref}
+\usepackage{comment}
+
+\title{CS 4780/5780 Homework 7 Solution}
+\author{}
+\date{}
+
+\begin{document}
+    \maketitle
+	\section*{Problem 1: Kernelized Perceptron}
+	\begin{comment}
+		In this problem, we are going to kernelize the perceptron algorithm. Recall the perceptron algorithm
+		
+		\begin{algorithm}[H]
+		\SetAlgoLined
+		
+		Initialize $\vec{w} = \vec{0}$ \;
+		\While{TRUE}{
+		m =  0 \;
+		\For{$(x_i, y_i) \in D$}{
+		\If{$y_i(\vec{w}^T\vec{x_i}) \leq 0$}{
+		$\vec{w}\gets \vec{w} + y_i\vec{x_i}$\;
+		$m\gets m + 1$\;
+		}
+		}
+		\If{$m = 0$}{
+		break
+		}
+		
+		
+		}
+		\caption{Perceptron Algorithm}
+		\end{algorithm}
+		\noindent
+		Now recall that in homework 2, we have shown that if we know the number of misclassifications for each training point, say $\alpha_i$ for $\vec{x}_i$, then we deduce that
+		$$\vec{w} = \sum_{i=1}^{n} \alpha_i y_i \vec{x}_i$$ This observation allows us to modify the perceptron algorithm such that we only need to keep track the number of misclassifications for each training points, instead of updating $\vec{w}$.
+	\end{comment}
+	
+	\begin{enumerate}[(a)]
+		\item Fill in the skeleton code so that the perceptron algorithm only needs to keep track of the number of misclassifications for each training point, instead of updating $\vec{w}$ \\
+		\begin{algorithm}[H]
+			\SetAlgoLined
+
+			Initialize $\vec{\alpha} = \vec{0}$ \;
+			\While{TRUE}{
+				m =  0 \;
+				\For{$(x_i, y_i) \in D$}{
+
+					\If{$y_i\sum_{j=1}^n \alpha_jy_j\vec{x_j}^T\vec{x_i} \leq 0$}{
+						$\alpha_i \gets \alpha_i + 1$\;
+						$m\gets m + 1$\;
+					}
+					}
+                \If{$m = 0$}{
+                        break
+				}
+
+			}
+			\caption{Modified Perceptron Algorithm}
+		\end{algorithm}
+
+		\item Now, how would you modify algorithm 2 to kernelize the perceptron algorithm?\\
+
+		Change $y_i\sum_{j=1}^n\alpha_jy_j\vec{x_j}^T\vec{x_i}$ to $y_i\sum_{j=1}^n\alpha_jy_jK(x_j, x_i)$, where K is the kernel function.
+
+	\end{enumerate}
+    %\newpage
+	\section*{Problem 2: Constructing Kernels}
+	\begin{comment}
+		In class, we have shown how we could use a few rules to construct new kernels from existing valid kernels. In this problem, we will prove that these rules indeed produce valid kernels.
+		\newline
+		Recall that there are two ways to show that a function $k: \mathbb{R}^d \times \mathbb{R}^d \rightarrow \mathbb{R}$ is a valid kernel function:
+		\begin{enumerate}
+		\item The matrix $$K_{ij} = k(\vec{x}_i, \vec{x}_j)$$ is symmetric and positive semidefinite for any set of vectors $\vec{x}_1, ..., \vec{x}_n \in \mathbb{R}^d$
+		\item $k(\vec{x}_i, \vec{x}_j) = \phi(\vec{x}_i)^T \phi(\vec{x}_j)$ for some transformation
+		$\phi$
+		\end{enumerate}
+		Suppose $k_1, k_2$ are valid kernel functions. Show that the following kernels are valid:
+		\begin{enumerate}[(a)]
+		\item $k(\vec{x}_1, \vec{x}_2) = c k_1(\vec{x}_1, \vec{x}_2)$ for any $c \geq 0$. 
+		\item $k(\vec{x}_1, \vec{x}_2) = k_1(\vec{x}_1, \vec{x}_2) + k_2(\vec{x}_1, \vec{x}_2)$ 
+		\item $k(\vec{x}_1, \vec{x}_2) = k_1(\vec{x}_1, \vec{x}_2) k_2(\vec{x}_1, \vec{x}_2)$.
+		\end{enumerate}
+	\end{comment}
+    \textbf{Solution}:
+    Suppose $\phi_1$ and $\phi_2$ are the transformations associated with $k_1$ and $k_2$ repsectively.
+    \begin{enumerate}[(a)]
+        \item Notice that $k(\vec{x}_i, \vec{x}_j) = c k_1(\vec{x}_i, \vec{x}_j) = c \phi_1(\vec{x}_i)^T \phi_1(\vec{x}_j) = (\sqrt{c}\phi_1(\vec{x}_i))^T(\sqrt{c}\phi_1(\vec{x}_j))$. We can take $\phi_4(\vec{x}_i) = \sqrt{c}\phi_1(\vec{x}_i)$ as a transformation for $ck_1(\vec{x}_i, \vec{x}_j)$
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \item Observe that $k(\vec{x}_i, \vec{x}_j) = k_1(\vec{x}_i, \vec{x}_j) + k_2(\vec{x}_i, \vec{x}_j) = \phi_1(\vec{x}_i)^T \phi_1(\vec{x}_j) + \phi_2(\vec{x}_i)^T \phi_2(\vec{x}_j) = \begin{bmatrix} \phi_1(\vec{x}_i) \\ \phi_2(\vec{x}_i) \end{bmatrix} ^T \begin{bmatrix} \phi_1(\vec{x}_i) \\ \phi_2(\vec{x}_i) \end{bmatrix}$. We can take $\phi_5(\vec{x}_i) = \begin{bmatrix} \phi_1(\vec{x}_i) \\ \phi_2(\vec{x}_i) \end{bmatrix}$ as a transformation for $k_1(\vec{x}_1, \vec{x}_2) + k_2(\vec{x}_1, \vec{x}_2)$
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \item Notice that 
+        \begin{align*}
+            k(\vec{x}_i, \vec{x}_j) &= k_1(\vec{x}_i, \vec{x}_j) k_2(\vec{x}_i, \vec{x}_j) \\
+            & = \phi_1(\vec{x}_i)^T \phi_1(\vec{x}_j)\phi_2(\vec{x}_i)^T \phi_2(\vec{x}_j)
+            \\
+            & = \sum_{a = 1}^{n_1} [\phi_1(\vec{x}_i)]_a [\phi_1(\vec{x}_j)]_a \sum_{b = 1}^{n_2} [\phi_2(\vec{x}_i)]_b [\phi_2(\vec{x}_j)]_b \\
+            &= \sum_{a = 1}^{n_1} \sum_{b = 1}^{n_2} [\phi_1(\vec{x}_i)]_a [\phi_2(\vec{x}_i)]_b [\phi_1(\vec{x}_j)]_a  [\phi_2(\vec{x}_j)]_b
+        \end{align*}
+
+        Suppose $\phi_6(\vec{x}_i) = [[\phi_1(\vec{x}_i)]_1 [\phi_2(\vec{x}_i)]_1, ..., [\phi_1(\vec{x}_i)]_1 [\phi_2(\vec{x}_i)]_{n_2}, [\phi_1(\vec{x}_i)]_2 [\phi_1(\vec{x}_1)]_1,...,  [\phi_1(\vec{x}_1)]_{n_1} [\phi_1(\vec{x}_1)]_{n_2}]^T$. Then, 
+        $$\phi_6(\vec{x}_i)^T\phi_6(\vec{x}_j) = \sum_{a = 1}^{n_1} \sum_{b = 1}^{n_2} [\phi_1(\vec{x}_i)]_a [\phi_2(\vec{x}_j)]_b [\phi_1(\vec{x}_i)]_a  [\phi_2(\vec{x}_j)]_b = k_1(\vec{x}_i, \vec{x}_j) k_2(\vec{x}_i, \vec{x}_j)$$
+
+    \end{enumerate}
+\section*{Problem 3: Gaussian Process Regression}
+\begin{enumerate}
+	\item[(a)] The mean and covariance of the GP prior are defined by the mean and covariance functions given, and are independent of $Y$. Thus, the prior will have mean $\begin{bmatrix} 0 & 0\end{bmatrix}^T$ and covariance
+	$$\begin{bmatrix} 4 & 0  \\ 0 & 4\end{bmatrix}$$
+	\item[(b)] Based on the definition, the GP posterior is defined as a normal distribution with mean and covariance as follows:
+	$$K(X_*, X)(K(X, X)+\sigma^2I)^{-1}Y=K(X_*, X)(K(X, X)+0.1I)^{-1}Y$$
+	$$K(X_*, X_*) - K(X_*,X)(K(X, X)+\sigma^2I)^{-1}K(X, X_*)=K(X_*, X_*) - K(X_*,X)(K(X, X)+0.1I)^{-1}K(X, X_*)$$
+	\item[(c)] With a noise free setup, the GP posterior is defined as a normal distribution with mean and covariance as follows.
+	$$K(X_*, X)K(X, X)^{-1}Y$$
+	$$K(X_*, X_*) - K(X_*,X)K(X, X)^{-1}K(X, X_*)$$
+	where the function $K(X, X')$ defines a matrix $K$ such that $K_{ij} = k(X_i, X'_j)$. Accordingly, the relevant matrices are:
+	$$Y = \begin{bmatrix} 0 & 2 \end{bmatrix}^T$$
+	$$K(X, X) = \begin{bmatrix} 4 & 0  \\ 0 & 4\end{bmatrix}$$
+	$$K(X_*, X) = \begin{bmatrix} 1 & 1 \\ 1 & 9\end{bmatrix} = K(X, X_*)^T$$
+	$$K(X_*, X_*) = \begin{bmatrix} 1 & 1 \\ 1 & 25 \end{bmatrix}$$
+	Accordingly, we can compute the posterior mean and covariance, which are (respectively)
+	$$\begin{bmatrix} 0.5 & 4.5 \end{bmatrix}^T$$
+	$$\begin{bmatrix} 0.5 & -1.5 \\ -1.5 & 4.5 \end{bmatrix}$$
+	(So this does not match to the target values at each of the test points with variance $\begin{bmatrix} 0.5 & -1.5 \\ -1.5 & 4.5 \end{bmatrix}$).
+\end{enumerate}
+\end{document}

@@ -1,0 +1,259 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{mathabx}
+\usepackage{tikz}
+
+\setlength\parindent{0pt}
+
+\title{CS 4780/5780 Homework 4\vspace{-10pt}}
+\author{Due: Sunday 10/18/18 11:55pm on Gradescope}
+\date{\vspace{-20pt}}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1: Intuition for Naive Bayess}
+
+
+
+\subsection*{a)}
+
+\textbf{Solution:}
+From Bayes Theorem, we have: $${P(y = R|x = H)} = \frac{P(x = H|y = R)P(y = R)}{P(x = H)}$$We can easily calculate $P(x = H|y = R)$ and $P(x = H)$: 
+
+\begin{align*}
+P(x = H|y = R) &= \frac{3}{5}  = 0.6\\
+P(y = R) &= \frac{1}{2} = 0.5
+\end{align*}
+
+To calculate $P(x = H)$ we can use the law of total probability to get:
+
+\begin{align*}
+P(x = H) &= P(y = R)P(x = H|y = R) + P(\neg (y = R))P(x = H|\neg (y = R))\\
+&= P(y = R)P(x = H|y = R) + P(y = B)P(x = H|y = B)\\ 
+&= \Big(\frac{1}{2}\Big)\Big(\frac{3}{5}\Big) + \Big(\frac{1}{2}\Big)\Big(\frac{7}{10}\Big)
+\end{align*}
+
+
+Now we can calculate $P(y = R|x = H)$ to get: $$ \frac{6}{13} = 0.462$$
+
+\subsection*{b)}
+
+
+\textbf{Solution:}
+We are trying to find: 
+$$P(y = R | \textbf{x} = [H,H,T,H])$$
+
+Using Bayes' Theorem, we can have: 
+
+\begin{align*}
+     P(y = R|\textbf{x} = [H,H,T,H]) &= \frac{P(\textbf{x} = [H,H,T,H] | y = R) P(y=R)}{P(\textbf{x} = [H,H,T,H])} \\
+     &= \frac{P(\textbf{x} = [H,H,T,H] | y = R) P(y=R)}{P(\textbf{x} = [H,H,T,H] | y = R) P(y=R) + P(\textbf{x} = [H,H,T,H] | y = B) P(y=B)} \\
+     &= \frac{(\frac{3}{5} \times \frac{3}{10} \times \frac{1}{2} \times \frac{4}{5}) \times (\frac{1}{2})}{(\frac{3}{5} \times \frac{3}{10} \times \frac{1}{2} \times \frac{4}{5})  \times (\frac{1}{2}) + (\frac{7}{10} \times \frac{1}{5}
+     \times \frac{9}{10} \times \frac{2}{5})  \times (\frac{1}{2}) } \\
+     &= \frac{10}{17}
+\end{align*}
+
+\subsection*{c)}
+
+
+
+\textbf{Solution:} \\
+i. Estimation with +1 additive smoothing with 2 categories is as follows:
+
+$$[\Hat{\theta}_{jc}]_{\alpha} = \frac{\sum_{i = 1}^{18}I(y_i = c)I(x_{ia} = j) + 1}{\sum_{i=1}^{18}I(y_i = c) + 2}$$
+
+Now recalculating the probabilities we get:
+
+
+\begin{center}
+$P(penny=H|hat=Red) = \frac{7}{10} = 0.700$ \\ 
+$P(nickel=H|hat=Red)= \frac{8}{10} = 0.800$  \\
+$P(dime=H|hat=Red)= \frac{5}{10} = 0.500$   \\ 
+$P(quarter=H|hat=Red) \frac{2}{10} = 0.200$\\
+$P(penny=H|hat=Blue) = \frac{2}{12} = 0.167$ \\ 
+$P(nickel=H|hat=Blue)= \frac{4}{12} = 0.333$  \\
+$P(dime=H|hat=Blue)= \frac{10}{12} = 0.833$   \\ 
+$P(quarter=H|hat=Blue) \frac{5}{12} = 0.417$\\
+\end{center}
+
+Therefore,
+\begin{center}
+	\begin{tabular}{ | c || c|  c|  c | c |}
+		\hline
+		hat &  $P(penny=H|hat)$ & $P(nickel=H|hat)$ & $P(dime=H|hat)$ & $P(quarter=H|hat)$  \\ 
+		\hline
+		\hline
+		Red    &  0.700 &0.800  &0.500 & 0.200 \\
+		\hline
+		Blue    & 0.167 & 0.333  &0.833  &0.417  \\
+		\hline
+	\end{tabular}
+\end{center}
+ii. Since we are not given the probabilities of the coins outright, we have to estimate them. That is we can estimate them using MLE. Additionally, From Bayes' Theorem, we know that :
+
+
+\begin{align*}
+    P(y = R|\textbf{x} = [H,H,T,H]) &= \frac{P(\textbf{x} = [H,H,T,H] | y = R) P(y=R)}{P(\textbf{x} = [H,H,T,H])} \\
+     &= \frac{P(\textbf{x} = [H,H,T,H] | y = R) P(y=R)}{P(\textbf{x} = [H,H,T,H])} \\
+    &= \frac{\prod_{\alpha = 1}^{k}[\Hat{\theta}_{jR}]_{\alpha}P(y = R)}{\prod_{\alpha = 1}^{k}[\Hat{\theta}_{jR}]_{\alpha}P(y=R) + \prod_{\alpha = 1}^{k}[\Hat{\theta}_{jB}]_{\alpha}P(y=B)} \\
+    &= \frac{\prod_{\alpha = 1}^{k}[\Hat{\theta}_{jR}]_{\alpha}}{\prod_{\alpha = 1}^{k}[\Hat{\theta}_{jR}]_{\alpha} + \prod_{\alpha = 1}^{k}[\Hat{\theta}_{jB}]_{\alpha}}, \text{where $j \in [H,H,T,H]$}
+\end{align*}
+
+Now to estimate the probability of a feature $\alpha$ has value $j$ given the label is $c$, $[\Hat{\theta}_{jc}]_{\alpha}$:
+
+\begin{align*}
+[\Hat{\theta}_{jc}]_{\alpha} &= \frac{\sum_{i = 1}^{18}I(y_i = c)I(x_{ia} = j)}{\sum_{i=1}^{18}I(y_i = c)} \\
+[\Hat{\theta}_{HR}]_{penny} &= \frac{3}{4} = 0.75 \\
+[\Hat{\theta}_{HR}]_{nickel} &= \frac{7}{8} = 0.875 \\
+[\Hat{\theta}_{TR}]_{dime} &= \frac{1}{2} = 0.5 \\
+[\Hat{\theta}_{HR}]_{quarter} &= \frac{1}{8} = 0.125 \\
+[\Hat{\theta}_{HB}]_{penny} &= \frac{1}{10} = 0.1 \\
+[\Hat{\theta}_{HB}]_{nickel} &= \frac{3}{10} = 0.3 \\
+[\Hat{\theta}_{TB}]_{dime} &= \frac{1}{10} = 0.1 \\
+[\Hat{\theta}_{HB}]_{quarter} &= \frac{4}{10} = 0.4
+\end{align*}
+
+
+Finally, taking the products of the probabilities we get:
+$$\frac{4375}{4503} = 0.972$$
+
+
+
+
+\subsection*{d)}
+
+
+\textbf{Solution:}
+Feature space $\mathcal{X} \in \{H,T\}^4$. Label space $\mathcal{Y} \in \{Red, Blue\}$. The Naive Bayess assumption is valid because any two coin flips are independent of each other given a label. 
+
+
+\section*{Problem 2: Linearity of Gaussian Naive Bayess}
+
+\subsection*{a)} 
+
+
+
+
+\textbf{Solution: } 
+
+
+First, note that the numerator follows immediately from Bayes' rule, we have just substituted the actual given value $y=1$ for $y$ in the first equation in this second. For the denominator, we expand $p(\textbf{x})$ using first the sum rule and the product rule. By the sum rule, $p(\textbf{x})=p(\textbf{x},y=1)+p(\textbf{x},y=0)$. Applying the product rule to both terms on the right hand side, we get:
+\begin{equation*}
+	p(\textbf{x}) = p(\textbf{x}|y=1)p(y=1)+p(\textbf{x}|y=0)p(y=0)
+\end{equation*}
+Next, we apply the Naive Bayess' assumption to $p(\textbf{x}|y=1)$ and $p(\textbf{x}|y=0)$ to get:
+\begin{equation*}
+	p(\textbf{x}) = \prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=1)p(y=1)+\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=0)p(y=0)
+\end{equation*}
+Plugging this in for the denominator in Bayes' rule, we achieve the desired result.
+
+
+\subsection*{b)}
+
+
+\textbf{Solution:}
+
+
+
+Observe that, in general, $\frac{a}{a+b}$ can equivalently be written as $\frac{1}{1+\frac{b}{a}}$. Furthermore, the equation for $p(y=1|\textbf{x})$ derived in the previous part has exactly the form $\frac{a}{a+b}$! Therefore, we can rewrite it as:
+
+\begin{equation*}
+	p(y=1 \mid \textbf{x})=\frac{1}{1+\frac{\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=0)p(y=0)}{\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=1)p(y=1)}}
+\end{equation*}
+
+Next, since $\exp(\log(\textbf{x}))=\textbf{x}$,
+
+\begin{equation*}
+	p(y=1 \mid \textbf{x})=\frac{1}{1+\exp\left(\log\left(\frac{\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=0)p(y=0)}{\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=1)p(y=1)}\right)\right)}
+\end{equation*}
+
+Finally, pulling a negative sign out of the log lets us flip the fraction inside:
+
+\begin{equation*}
+p(y=1 \mid \textbf{x}) = \frac{1}{1+\exp{\left(-\log\frac{\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=1)p(y=1)}{\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=0)p(y=0)}\right)}}
+\end{equation*}
+
+\subsection*{c)}
+
+
+\textbf{Solution:}
+
+
+To show this, we simply plug in the following definitions to the equation we derived in part b:
+
+\begin{align*}\
+p(y=1) &= \rho \\
+p([\textbf{x}]_{\alpha} \mid y=1)&=\frac{1}{\sqrt{2\pi[\sigma]_{\alpha}}}\exp\left(\frac{-([\textbf{x}]_{\alpha}-[\mu_{1}]_{\alpha})^{2}}{2[\sigma]_{\alpha}}\right) \\
+p([\textbf{x}]_{\alpha} \mid y=0)&=\frac{1}{\sqrt{2\pi[\sigma]_{\alpha}}}\exp\left(\frac{-([\textbf{x}]_{\alpha}-[\mu_{0}]_{\alpha})^{2}}{2[\sigma]_{\alpha}}\right)
+\end{align*}
+
+Expanding $-\log\frac{\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=1)p(y=1)}{\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=0)p(y=0)}$ we get:
+
+\begin{equation*}
+-\log p(y=1) - \log \prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=1) + \log p(y=0) + \log \prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=0)
+\end{equation*}
+
+Observing that $\log \prod_{i} \textbf{x}_{i} = \sum_{i} \log \textbf{x}_{i}$ and rearranging terms, this is equal to:
+
+\begin{equation*}
+\log \frac{p(y=0)}{p(y=1)} + \sum_{\alpha=1}^{d} \log \frac{p([\textbf{x}]_{\alpha}|y=0)}{p([\textbf{x}]_{\alpha}|y=1)}
+\end{equation*}
+
+Plugging in the definition of $p(y=1)$, the first term in this is equal to $\log \frac{1-\rho}{\rho}$. 
+
+For the second term, we plug in the Gaussian distributions for $p([\textbf{x}]_{\alpha} \mid y=1)$ and $p([\textbf{x}]_{\alpha} \mid y=0)$, and then do a bit of algebra to get:
+
+\begin{equation*}
+\sum_{\alpha=1}^{d} \frac{([\mu_{0}]_{\alpha}-[\mu_{1}]_{\alpha})[\textbf{x}]_{\alpha}}{[\sigma]_{\alpha}} + \frac{[\mu_{1}]^{2}_{\alpha}-[\mu_{0}]^{2}_{\alpha}}{2[\sigma]_{\alpha}}
+\end{equation*}
+
+Putting everything together we get:
+
+\begin{equation*}
+\log \frac{1-\rho}{\rho} + \sum_{\alpha=1}^{d} \frac{([\mu_{0}]_{\alpha}-[\mu_{1}]_{\alpha})[\textbf{x}]_{\alpha}}{[\sigma]_{\alpha}} + \frac{[\mu_{1}]^{2}_{\alpha}-[\mu_{0}]^{2}_{\alpha}}{2[\sigma]_{\alpha}}
+\end{equation*}
+
+And finally we just start renaming terms. Let's first define:
+\begin{equation*}
+b = \log \frac{1-\rho}{\rho} + \sum_{\alpha=1}^{d} \frac{[\mu_{1}]^{2}_{\alpha}-[\mu_{0}]^{2}_{\alpha}}{2[\sigma]_{\alpha}}
+\end{equation*}
+
+Next, create a vector $\mathbf{w}$ so that:
+\begin{equation*}
+[\mathbf{w}]_{\alpha} = \frac{[\mu_{0}]_{\alpha}-[\mu_{1}]_{\alpha}}{[\sigma]_{\alpha}}
+\end{equation*}
+
+Then the sum (the second term) is simply equal to $\mathbf{w}^{\top}\textbf{x}$. Therefore,
+
+\begin{equation*}
+-\log\frac{\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=1)p(y=1)}{\prod_{\alpha=1}^{d} p([\textbf{x}]_{\alpha}|y=0)p(y=0)} = \mathbf{w}^{\top}\textbf{x}+b
+\end{equation*}
+
+Plugging this in to the decision rule $p(y=1|\textbf{x})$ we derived in part b, we finally see that:
+
+\begin{equation*}
+	p(y=1|\textbf{x}) = \frac{1}{1+\exp\left(\mathbf{w}^{\top}\textbf{x}+b\right)}
+\end{equation*}
+
+Notice: This is not only a linear decision boundary, but should look very similar indeed to the linear decision rule you've seen from logistic regression.
+
+
+
+\end{document}
+

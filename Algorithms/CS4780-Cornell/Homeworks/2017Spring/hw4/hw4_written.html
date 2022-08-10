@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<!--
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+<script type="text/javascript">
+LatexIT.add('p',true);
+</script>
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+extensions: ["tex2jax.js"],
+jax: ["input/TeX", "output/HTML-CSS"],
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+processEscapes: true
+},
+"HTML-CSS": { availableFonts: ["TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Written Homework #4</title>
+<link href="lecturecss.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>Homework 4</h2>
+<b>Due: Friday 04/14/2017 11:59pm on CMS<br>
+Up to 5 members in each group. Please include NetID and names on front page.</b>
+
+<h3> Problem 1: Bias-variance of linear regression </h3>
+<p> In this problem, we derive the bias and variance of the MLE and MAP solutions of one-dimensional linear regression. Let $$y_i = w x_i + \epsilon_i$$ where $x_i \in \mathbb{R}$ are input features, $w \in \mathbb{R}$ is the true model parameter, and $\epsilon_i \sim N(0,\sigma^2)$ are iid Gaussian noise. The MLE solution is $$w^* = \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2}.$$ For any $\lambda > 0$, the MAP (i.e. ridge regression) solution is $$w^*(\lambda) = \frac{\sum_{i=1}^n x_i y_i}{\lambda + \sum_{i=1}^n x_i^2}.$$
+<p>(a) Derive the expectation and variance of $w^*$. Is $w^*$ an unbiased estimator of $w$?
+<p>(b) For any $\lambda > 0$, derive the expectation and variance of $w^*(\lambda)$. Is $w^*(\lambda)$ an unbiased estimator of $w$?
+<p>(c) Suppose now that $x \sim \text{Unif}(0,1)$. For $x_1,\ldots,x_n$ <i>fixed</i>, the expected test error $\mathbb{E}_{x,y,D}[(h_D(x)-y)^2]$ can be decomposed into bias (squared), variance, and noise as
+$$\mathbb{E}_{x,y,D}[(h_D(x)-y)^2] = \mathbb{E}_x[(\bar{h}(x) - \bar{y}(x))^2] + \mathbb{E}_{x,D}[(h_D(x) - \bar{h}(x))^2] + \mathbb{E}_{x,y}[(\bar{y}(x) - y)^2]$$
+where the expectation over $D$ is only over the $y_i$'s. Using (a) and (b), express each of the three terms for both linear regression and ridge regression.
+<p>(d) If you know ahead of time that $\sigma^2$ is small, i.e. the label does not vary much given the feature, which model would you choose? What about if $\sigma^2$ is large?
+
+<h3> Problem 2: Constructing kernels </h3>
+<p>In class you saw how to construct new kernels from existing ones. This problem asks you to prove that these construction techniques indeed produce valid kernels.
+<p>Recall that a function $k : \mathbb{R}^d \times \mathbb{R}^d \rightarrow \mathbb{R}$ is a kernel function if and only if the matrix $$K_{ij} = k(x_i,x_j)$$ is positive semidefinite for any set of vectors $x_1,\ldots,x_n \in \mathbb{R}^d$. Let $k_1,k_2$ be kernel functions. Prove that the following are kernel functions.
+<p>(a) $k(x,z) = x^\top A z$ where $A$ is a positive semidefinite matrix
+<p>(b) $k(x,z) = c k_1(x,z)$ for some $c \geq 0$
+<p>(c) $k(x,z) = k_1(x,z) + k_2(x,z)$
+<p>(d) $k(x,z) = k_1(x,z) k_2(x,z)$
+<p>(e) $k(x,z) = q(k_1(x,z))$ where $q$ is a polynomial with non-negative coefficients
+<p>(f) $k(x,z) = e^{k_1(x,z)}$
+
+<h3> Problem 3: String kernels </h3>
+<p> It is possible to define kernel functions over discrete objects such as strings. This is used in applications such as bio-informatics and natural language processing. Let $\Sigma$ be the alphabet space and let $x,z \in \Sigma^*$. Define
+\[ \delta(x,z) = \begin{cases} 
+      1 & \text{if } x = z \\
+      0 & \text{otherwise}
+   \end{cases}
+\]
+<p>(a) Let $\sigma_n(x)$ denote the set of $n$-grams of $x$, e.g. $\sigma_2(\texttt{abcd}) = \{\texttt{ab},\texttt{bc},\texttt{cd}\}$. Express the kernel function $$k(x,z) = \sum_{s \in \sigma_n(x)} \sum_{t \in \sigma_n(z)} \delta(s,t)$$ using an appropriate feature expansion.
+<p>(b) Let $\tau(x)$ denote the set of words of $x$ delimited by whitespace, e.g. $\tau(\texttt{winter is cold}) = \{\texttt{winter},\texttt{is},\texttt{cold}\}$. Express the kernel function $$k(x,z) = \sum_{s \in \tau(x)} \sum_{t \in \tau(z)} \delta(s,t)$$ using an appropriate feature expansion.
+<p> A feature expansion function $\phi : \Sigma^* \rightarrow \mathbb{R}^d$ is such that $k(x,z) = \phi(x)^\top \phi(z)$. Note that $d$ does not necessarily have to be finite.
+
+<h3> Problem 4: Kernel logistic regression </h3>
+
+<p> One weakness of logistic regression is that it is a linear classifier. In this problem, you will use kernel functions to derive a non-linear version of logistic regression.
+<p> Given the parameter vector $w$, the model predicts $$\mathbb{P}(y | x) = \frac{1}{1 + e^{-yw^\top x}}.$$ The MLE estimate for $w$ can be found by minimizing the negative log-likelihood over the training data $(x_1,y_1),\ldots,(x_n,y_n)$: $$\ell(w) = \sum_{i=1}^n \log(1+e^{-y_i w^\top x_i}).$$
+<p>(a) Express the gradient of $\ell(w)$ as a linear combination of input vectors $x_1,\ldots,x_n$. You may use your solution from Homework 3 for the gradient.
+<p>(b) Use (a) to express the model in terms of inner products between training inputs and a test input $x$. Write down the kernel logistic regression model by replacing inner products with a kernel function $k$.
+<p>(c) For the kernelized model, write down the loss function $\ell(\alpha)$ for the coefficient vector $\alpha$ and derive its gradient.
+<p>(d) Suppose now that we add a regularization term to the parameter vector for the original model, i.e. $$\ell(w) = \sum_{i=1}^n \log(1+e^{-y_i w^\top x_i}) + \lambda \|w\|_2^2.$$ Express the equivalent kernelized loss function for $\alpha$ and derive its gradient.
+<p> At this point, you should be able to use gradient descent to train the kernel logistic regression model for any binary classification task!
+
+</body>
+</html>

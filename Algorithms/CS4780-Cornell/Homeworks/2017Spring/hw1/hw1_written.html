@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<!--
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+<script type="text/javascript">
+LatexIT.add('p',true);
+</script>
+-->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+extensions: ["tex2jax.js"],
+jax: ["input/TeX", "output/HTML-CSS"],
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+processEscapes: true
+},
+"HTML-CSS": { availableFonts: ["TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Written Homework #1</title>
+<link href="lecturecss.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>Homework 1</h2>
+<b>Due: Monday 02/13/2017 2:15pm in class<br>
+Up to 5 members in each group. Please include NetID and names on front page.</b>
+
+
+<h3> Problem 1: Expectation and variance </h3>
+
+<p>Recall that the expectation and variance of a continuous random variable $X$ are given by
+$$\mathbb{E}[X] = \int_{-\infty}^{\infty} x p(x) dx$$
+$$\text{Var}(X) = \mathbb{E}[(X-\mathbb{E}[X])^2]$$
+where $p(x)$ is the probability density function. Let $X$ and $Y$ be independent continuous random variables and let $a \in \mathbb{R}$. Using the above definitions, derive the expectation and variance of the following random variables in terms of $\mathbb{E}[X]$, $\mathbb{E}[Y]$, $\text{Var}(X)$ and $\text{Var}(Y)$:
+<p>(a) $X + a$
+<p>(b) $aX$
+<p>(c) $X + Y$
+
+<h3> Problem 2: <em>k</em>-Nearest-Neighbor </h3>
+
+<p>In this problem, you are going to look at a small dataset to understand various properties of <em>k</em>-NN better. Suppose there is a set of points on a two-dimensional plane from two different classes. Below are the coordinates of all points.</p>
+<p>Points in class <em>Red</em>: (0, 1), (2, 3), (4, 4)</p>
+<p>Points in class <em>Blue</em>: (2, 0), (5, 2), (6, 3)</p>
+
+<p>(a) Draw the <em>k</em>-nearest-neighbor decision boundary for <em>k
+</em> = 1. Remember that the decision boundary is defined as the line where the classification of a test point changes. Use the standard Euclidean distance between points to determine the nearest neighbors. Start by plotting the points as a two-dimensional graph. Please use the corresponding colors for points of each class (e.g, <em>blue and red</em>).</p>
+
+<p>(b) If the <em>y</em>-coordinate of each point was multiplied by 5, what would happen to the <em>k</em> = 1 boundary (Draw another picture)? Explain in at most two sentences how this effect might cause problems when working with real data.</p>
+
+
+<p>(c) The k-NN decision boundary for k = 3 is shown as below. Suppose now we have a test point at (1, 2). How would it be classied under 3-NN? Given that you can modify the 3-NN decision boundary by adding points to the training set in the diagram, what is the minimum number of points that you need to add to change the classication at (1, 2)? Show also where you need to add these points.</p>
+<img src="3nn.jpg" width="400px" />
+
+<p>(d) What is the testing complexity for one instance, e.g., how long does it take for kNN to classify one point? Assume your data has dimensionality <em>d</em>, you have <em>n</em> training examples and use Euclidean distance. Assume also that you use a quick select implementation which gives you the k smallest elements of a list of length <em>m</em> in O(<em>m</em>).</p>
+
+<h3> Problem 3: Mahalanobis distance </h3>
+
+<p> In <em>k</em>-nearest-neighbor classification, the distance metric used plays a crucial role in the model's accuracy. It is often useful to consider distance metrics aside from the Euclidean distance. One class of distance metrics used in machine learning is the so-called <em>Mahalanobis distance</em>.
+<p> A function $d : \mathbb{R}^d \times \mathbb{R}^d \rightarrow \mathbb{R}$ is called a <em>distance metric</em> if for all $x,y,z \in \mathbb{R}^d$, it satisfies the following axioms:
+<p> (i) (non-negativity) $d(x,y) \geq 0$
+<p> (ii) (identity of indiscernibles) $d(x,y) = 0 \Leftrightarrow x = y$
+<p> (iii) (symmetry) $d(x,y) = d(y,x)$
+<p> (iv) (triangle inequality) $d(x,z) \leq d(x,y) + d(y,z)$
+<p> Let $x,y \in \mathbb{R}^d$ and let $M \in \mathbb{R}^{d \times d}$ be a positive definite matrix and define $$d_M(x,y) = \sqrt{(x-y)^\top M (x-y)}.$$
+<p>(a) Show that $d_M$ is a distance metric. (Hint: A positive definite matrix has only positive eigenvalues. Use the eigendecomposition of $M$ to show that $M = L^\top L$ for some suitable $L$.)
+<p>(b) Consider $d=2$ and
+$$M = \begin{bmatrix}
+3 & 1 \\
+1 & 3
+\end{bmatrix}.$$
+Sketch the unit circle defined by $d_M$. You may (but not required to) use any plotting software available (e.g. Matlab).
+<p>(c) Is $d_M$ still a distance metric if $M$ is not positive definite?
+<p>(d) Is $d_M$ still a distance metric if $M$ is positive semi-definite but not positive definite?
+<p>For parts (c) and (d), either prove that $d_M$ is a distance metric or specify at least one of the axioms of a distance metric that $d_M$ does not satisfy.
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage[top=1in,right=1in,bottom=1in,left=1in]{geometry}
+\usepackage{background}
+\usepackage{booktabs} 
+\usepackage{float}
+\usepackage{listings}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{hyperref}
+
+\SetBgContents{ }
+\SetBgScale{1}
+\SetBgAngle{0}
+\SetBgOpacity{1}
+\SetBgColor{black}
+\SetBgPosition{current page.south west}
+\SetBgHshift{3cm}
+\SetBgVshift{1cm}
+
+\title{HW9 Solutions}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1: Gaussian Process Regression}
+\begin{enumerate}
+    \item[(a)] The mean and covariance of the GP prior are defined by the mean and covariance functions given, and are independent of $Y$. Thus, the prior will have mean $\begin{bmatrix} 0 & 0 & 0 \end{bmatrix}^T$ and covariance
+    $$\begin{bmatrix} 4 & 0 & 1 \\ 0 & 4 & 9 \\ 1 & 9 & 25\end{bmatrix}$$
+    \item[(b)] The GP posterior is defined as a normal distribution with mean and covariance as follows.
+    $$K(X_*, X)K(X, X)^{-1}Y$$
+    $$K(X_*, X_*) - K(X_*,X)K(X, X)^{-1}K(X, X_*)$$
+    where the function $K(X, X')$ defines a matrix $K$ such that $K_{ij} = k(X_i, X'_j)$. Accordingly, the relevant matrices are:
+    $$Y = \begin{bmatrix} 5 & 5 & 8 \end{bmatrix}^T$$
+    $$K(X, X) = \begin{bmatrix} 4 & 0 & 1 \\ 0 & 4 & 9 \\ 1 & 9 & 25\end{bmatrix}$$
+    $$K(X_*, X) = \begin{bmatrix} 9 & 1 & 9 \\ 1 & 1 & 1 \end{bmatrix} = K(X, X_*)^T$$
+    $$K(X_*, X_*) = \begin{bmatrix} 25 & 1 \\ 1 & 1 \end{bmatrix}$$
+    Accordingly, we can compute the posterior mean and covariance, which are (respectively)
+    $$\begin{bmatrix} 8 & 4 \end{bmatrix}^T$$
+    $$\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$$
+    which matches exactly to the target values at each of the test points.
+\end{enumerate}
+
+
+\section*{Problem 2: RELU-network}
+    \begin{enumerate}
+        \item[(a)] To find the decision boundary, we will first express $\sigma(z)$ in terms of $x_1, x_2$. Using the weights and architecture given:
+
+    \begin{align*}
+        \begin{bmatrix} h_1 \\ h_2 \end{bmatrix} &= \begin{bmatrix} 1 & -1 & 0 \\ -1 & -1 & 0 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ 1\end{bmatrix} \\
+        h_1 &= x_1 - x_2 \\
+        h_2 &= -x_1 - x_2
+    \end{align*}
+
+    \begin{align*}
+        z &= \begin{bmatrix} 1 & 1 & -2 \end{bmatrix} \begin{bmatrix} f(h_1) \\ f(h_2) \\ 1 \end{bmatrix} \\
+        &= f(h_1) +  f(h_2) - 2
+    \end{align*}
+
+    Putting this all together, we see that:
+
+    \begin{align*}
+        t &= \sigma(z) \\
+        &= \sigma(f(h_1) + f(h_2) -2)\\
+        &= \sigma(f(x_1 - x_2) + f(-x_1 - x_2) - 2) \\
+        &= \frac{1}{1+e^{-(max(0, x_1 - x_2) + max(0, -x_1 - x_2) - 2)}}
+    \end{align*}
+
+    If you do this by hand, you can split the equation into the cases in which:
+    \begin{itemize}
+        \item $x_1 > x_2 ~ and ~ x_1 + x_2 > 0$
+        \item $x_1 > x_2 ~ and ~ x_1 + x_2 < 0$
+        \item $x_1 < x_2 ~ and ~ x_1 + x_2 > 0$
+        \item $x_1 < x_2 ~ and ~ x_1 + x_2 < 0$
+    \end{itemize}
+
+    For all of these, you get the following equations:
+    \begin{itemize}
+        \item $\frac{1}{1+e^{-(x_1 - x_2 - 2)}}$
+        \item $\frac{1}{1+e^{2(x_2 + 1)}}$
+        \item $\frac{1}{1+e^{2}}$
+        \item $\frac{1}{1+e^{x_1 + x_2 + 2}}$
+    \end{itemize}
+
+    Graphing this with Wolfram Alpha gives us:
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = 0.6\textwidth]{decision_boundary.png}
+        \caption{Decision Boundary for the RELU Network}
+        \label{fig:a}
+    \end{figure}
+
+    The top is classified negative, and the bottom is positive. (See Part B for more information.)
+
+    \item[(b)] Plugging values into the equation from Part A, we see that the prediction for the point $\begin{bmatrix} 1 & 1 \end{bmatrix}^T$ is $\frac{1}{1+e^2} \approx 0.11920$. Since this is less than the decision boundary of 0.5, we classify this point as negative.
+
+    \item[(c)] 
+    Notice that $\frac{\partial t}{\partial z} = t(1-t)$ \\\\
+    For i=1,2:
+    $$
+        \frac{\partial l}{\partial v_i} = \frac{\partial l}{\partial t} \cdot 
+        \frac{\partial t}{\partial z} \cdot \frac{\partial z}{\partial v_3} = 
+        (\frac{-y}{t}+\frac{1-y}{1-t}) \cdot (t \cdot (1-t)) \cdot f(h_i) = (t-y) \cdot f(h_i)    
+    $$
+    For i=3:
+    \begin{align*}
+        \frac{\partial l}{\partial v_3} = \frac{\partial l}{\partial t}\cdot\frac{\partial t}{\partial z}\cdot\frac{\partial z}{\partial v_3} = (\frac{-y}{t}+\frac{1-y}{1-t})\cdot(t\cdot(1-t))\cdot1 = t-y
+    \end{align*}
+
+    For j=1,2:
+    \begin{align*}
+        \frac{\partial l}{\partial w_{ij}} &= \frac{\partial l}{\partial t}\cdot\frac{\partial t}{\partial z}\cdot\frac{\partial z}{\partial f(h_i)}\cdot
+        \frac{\partial f(h_i)}{\partial h_i}\cdot\frac{\partial h_i}{\partial w_{ij}} \\
+        &= (\frac{-y}{t}+\frac{1-y}{1-t}) \cdot (t\cdot(1-t))\cdot v_i\cdot I(h_i>0)\cdot x_j \\
+        &= (t-y)\cdot v_i\cdot I(h_i>0)\cdot x_j
+    \end{align*}
+
+    For j=3:
+    \begin{align*}
+        \frac{\partial l}{\partial w_{i3}} &= \frac{\partial l}{\partial t} \cdot \frac{\partial t}{\partial z} \cdot \frac{\partial z}{\partial f(h_i)}\cdot
+        \frac{\partial f(h_i)}{\partial h_i} \cdot \frac{\partial h_i}{\partial w_{i3}}\\
+        &= (\frac{-y}{t}+\frac{1-y}{1-t}) \cdot (t\cdot(1-t))\cdot I \cdot I(h_i>0) \cdot 1 \\
+        &= (t-y)\cdot v_i \cdot I(h_i>0)
+    \end{align*}
+\end{enumerate}
+
+
+
+
+
+
+\end{document}
