@@ -39,8 +39,8 @@
 
 
 ## Algorithm
--[UCB-CS61B]
--[UCB-CS61C]
+-[UCB-CS61B].
+-[UCB-CS61C].
 
 ## AWS
 - [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
