@@ -109,12 +109,12 @@ The depth of the tree means the length of the tree you desire. A larger tree hel
 
 
 ### Random Forest in Scikit-Learn
-1.	How to improve the performance of random forests?
+1.	How to improve the performance of random forests?<br/>
 **n_estimators:** The number of decision trees in the random forest. <br/>
-**max_depth:** The number of splits that each decision tree is allowed to make. If the number of splits is too low, the model underfits the data. If the number of splits is too high, the model overfits. 
-**max_features:** The number of features to consider when looking for the best split.  
-**Bootstrap:** A bootstrapped model takes only a select subset of columns and rows to train each decision tree. Thus, the model becomes less prone to overfit the data. 
-**min_samples_split:** The minimum number of samples required to split an internal node. This can vary from considering at least one sample at each node to considering all of the samples at each node. When we increase this parameter, each tree in the forest becomes more constrained as it has to consider more samples at each node.
+**max_depth:** The number of splits that each decision tree is allowed to make. If the number of splits is too low, the model underfits the data. If the number of splits is too high, the model overfits. <br/>
+**max_features:** The number of features to consider when looking for the best split.  <br/>
+**Bootstrap:** A bootstrapped model takes only a select subset of columns and rows to train each decision tree. Thus, the model becomes less prone to overfit the data. <br/>
+**min_samples_split:** The minimum number of samples required to split an internal node. This can vary from considering at least one sample at each node to considering all of the samples at each node. When we increase this parameter, each tree in the forest becomes more constrained as it has to consider more samples at each node.<br/>
 **min_samples_leaf:** The minimum number of samples required to be at a leaf node. This parameter is similar to min_samples_split, however, this describes the minimum number of samples at the leaves, the base of the tree.  
 
 2.	Advantages of random forest
