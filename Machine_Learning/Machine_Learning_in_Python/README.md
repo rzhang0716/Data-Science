@@ -75,10 +75,13 @@ MetaCost is a data preprocessing technique that relabels examples in the trainin
 
 ## Linear Discriminant Analysis
 1. Linear Discriminant Analysis is a linear model for cclassification and dimensionality reduction. LDA mostly used for feature extraction in pattern classification problems. LDA projects data from a D dimensional features space down to a D' (D>D') dimensional space in a way to **maximize the variability between the classes and  and reducing the variablity within the classes**. 
-2. Pros: (1) Handle the multiple classfication (>2 which is good for logistic regression); (2) Reduce the dimenstion as PCA; (3) Use on face detection algortihms.
-3. Cons: (1) Not good on non-linear separate; (2) Not work well on number of features > number of observations.
-4. Assumptions: (1) Normally distributed; (2) Each class has identical covariance matrix. LDA works well even assumptions violated.
-5. Fisher's Linear Discriminant (FLD): LDA is a generialized form of FLD. The basic idea of FLD is to project data points onto a line to maximize the between-class scatter and minimize the within-class scatter. 
+2. Pros: (1) Handle the multiple classfication (>2 which is good for logistic regression); 
+3. (2) Reduce the dimenstion as PCA; (3) Use on face detection algortihms.
+4. Cons: (1) Not good on non-linear separate; 
+5. (2) Not work well on number of features > number of observations.
+6. Assumptions: (1) Normally distributed; 
+7. (2) Each class has identical covariance matrix. LDA works well even assumptions violated.
+8. Fisher's Linear Discriminant (FLD): LDA is a generialized form of FLD. The basic idea of FLD is to project data points onto a line to maximize the between-class scatter and minimize the within-class scatter. 
 
 Note: LDA in R and Python are in the [LDA folder](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning/Linear_Discriminant_Analysis)
 
@@ -88,10 +91,10 @@ Note: LDA in R and Python are in the [LDA folder](https://github.com/rzhang0716/
 ### Random Forest Concept
 1.	Is Random Forest performing well for imbalanced data?
 The Random Forest model is built on decision trees and decision trees are sensitive to class imbalance. Each tree is built on a “bag” and each bag is a uniform random sample from the data (with replacement). Therefore, each tree will be biased in the same direction and magnitude by class imbalance. 
-We could use over/under-sampling and add weights to the tree splitting criterion to solve this problem. In Python, we could use class_weight from the RandomForestClassifier in scikit-learn. In R, we could use the Ranger library, to set the class.weights(1,2). 
+We could use over/under-sampling and add weights to the tree splitting criterion to solve this problem. In Python, we could use class_weight from the RandomForestClassifier in scikit-learn. In R, we could use the Ranger library, to set the class.weights. 
 2.	Does Random Forest require normalization?
 No, scaling is not necessary for the random forest. 
-The nature of RF is such that convergence and numerical precision issues, can sometimes trip up the algorithms used in logistic and linear regression, as well as neural networks, which aren’t so important. Because of this, we don’t need to transform variables to a common scale as we did in neural networks (3).
+The nature of RF is such that convergence and numerical precision issues, can sometimes trip up the algorithms used in logistic and linear regression, as well as neural networks, which aren’t so important. Because of this, we don’t need to transform variables to a common scale as we did in neural networks.
 Tree-based models do not care about the absolute value that a feature takes. They only care about the order of the values. Hence, normalization is used mainly in linear models/knn/neural networks because they are affected by the absolute values taken by feature(4).
 3.	Is there any relation between the number of trees and the tree depth? Is it necessary that the tree depth should be smaller than the number of trees?
 There is no thumb ratio between the number of trees and tree depth. Generally, increasing the number of trees will improve the performance of the model, also with computational cost. Sometimes, after a certain amount of trees, the performance not increasing much.
@@ -106,18 +109,20 @@ The depth of the tree means the length of the tree you desire. A larger tree hel
 
 
 ### Random Forest in Scikit-Learn
-1.	How to improve the performance of random forests(7, 8, 9)?
-n_estimators: The number of decision trees in the random forest. 
-max_depth: The number of splits that each decision tree is allowed to make. If the number of splits is too low, the model underfits the data. If the number of splits is too high, the model overfits. 
-max_features: The number of features to consider when looking for the best split.  
-Bootstrap: A bootstrapped model takes only a select subset of columns and rows to train each decision tree. Thus, the model becomes less prone to overfit the data. 
-min_samples_split: The minimum number of samples required to split an internal node. This can vary from considering at least one sample at each node to considering all of the samples at each node. When we increase this parameter, each tree in the forest becomes more constrained as it has to consider more samples at each node.
-min_samples_leaf: The minimum number of samples required to be at a leaf node. This parameter is similar to min_samples_split, however, this describes the minimum number of samples at the leaves, the base of the tree.  
+1.	How to improve the performance of random forests?
+**n_estimators:** The number of decision trees in the random forest. 
+**max_depth:** The number of splits that each decision tree is allowed to make. If the number of splits is too low, the model underfits the data. If the number of splits is too high, the model overfits. 
+**max_features:** The number of features to consider when looking for the best split.  
+**Bootstrap:** A bootstrapped model takes only a select subset of columns and rows to train each decision tree. Thus, the model becomes less prone to overfit the data. 
+**min_samples_split:** The minimum number of samples required to split an internal node. This can vary from considering at least one sample at each node to considering all of the samples at each node. When we increase this parameter, each tree in the forest becomes more constrained as it has to consider more samples at each node.
+**min_samples_leaf:** The minimum number of samples required to be at a leaf node. This parameter is similar to min_samples_split, however, this describes the minimum number of samples at the leaves, the base of the tree.  
 
 2.	Advantages of random forest
-Ease of building: not having as many model assumptions and no normalization required. 
-Feature importance: can be obtained from random forests.
-Feature selection: an extension of the feature importance. By calculating the feature importance, drop the less important features and decreased the dimensionality of the model to improve the accuracy and reduce training time. Another way of performing feature selection is by shuffling individual features in the data set recursively so that they lose the information provided by the column is destroyed. The model is evaluated on this modified dataset to see how the scores have been impacted. The more important the feature, the more profound its impact on the score(7).
+**Ease of building:** not having as many model assumptions and no normalization required. 
+**Feature importance:** can be obtained from random forests.
+**Feature selection:** an extension of the feature importance. By calculating the feature importance, drop the less important features and decreased the dimensionality of the model to improve the accuracy and reduce training time. Another way of performing feature selection is by shuffling individual features in the data set recursively so that they lose the information provided by the column is destroyed. The model is evaluated on this modified dataset to see how the scores have been impacted. The more important the feature, the more profound its impact on the score(7).
+
+
 
 
 
@@ -130,3 +135,13 @@ Feature selection: an extension of the feature importance. By calculating the fe
 5.	https://machinelearningmastery.com/cost-sensitive-learning-for-imbalanced-classification/
 6.	https://machinelearningmastery.com/framework-for-imbalanced-classification-projects/
 7.	https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/
+8.	1.	https://stats.stackexchange.com/questions/242833/is-random-forest-a-good-option-for-unbalanced-data-classification
+2.	https://stackoverflow.com/questions/8704681/random-forest-with-classes-that-are-very-unbalanced/8704882#8704882
+3.	https://stackoverflow.com/questions/8961586/do-i-need-to-normalize-or-scale-data-for-randomforest-r-package
+4.	https://datascience.stackexchange.com/questions/62031/normalize-standardize-in-a-random-forest
+5.	https://github.com/rzhang0716/Data-Science/blob/master/Big_Data/Spark/PySpark/Random%20Forest/random_forest_pipeline.py
+6.	https://stackoverflow.com/questions/34997134/random-forest-tuning-tree-depth-and-number-of-trees
+7.	https://towardsdatascience.com/mastering-random-forests-a-comprehensive-guide-51307c129cb1
+8.	https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d#:~:text=the%20test%20performance.-,max_depth,the%20training%20and%20test%20errors.
+9.	https://www.analyticsvidhya.com/blog/2020/03/beginners-guide-random-forest-hyperparameter-tuning/
+
