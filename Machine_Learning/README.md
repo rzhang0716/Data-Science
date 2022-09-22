@@ -135,13 +135,13 @@ The depth of the tree means the length of the tree you desire. A larger tree hel
 5.	https://machinelearningmastery.com/cost-sensitive-learning-for-imbalanced-classification/
 6.	https://machinelearningmastery.com/framework-for-imbalanced-classification-projects/
 7.	https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/
-8.	1.	https://stats.stackexchange.com/questions/242833/is-random-forest-a-good-option-for-unbalanced-data-classification
-2.	https://stackoverflow.com/questions/8704681/random-forest-with-classes-that-are-very-unbalanced/8704882#8704882
-3.	https://stackoverflow.com/questions/8961586/do-i-need-to-normalize-or-scale-data-for-randomforest-r-package
-4.	https://datascience.stackexchange.com/questions/62031/normalize-standardize-in-a-random-forest
-5.	https://github.com/rzhang0716/Data-Science/blob/master/Big_Data/Spark/PySpark/Random%20Forest/random_forest_pipeline.py
-6.	https://stackoverflow.com/questions/34997134/random-forest-tuning-tree-depth-and-number-of-trees
-7.	https://towardsdatascience.com/mastering-random-forests-a-comprehensive-guide-51307c129cb1
-8.	https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d#:~:text=the%20test%20performance.-,max_depth,the%20training%20and%20test%20errors.
-9.	https://www.analyticsvidhya.com/blog/2020/03/beginners-guide-random-forest-hyperparameter-tuning/
+8.	https://stats.stackexchange.com/questions/242833/is-random-forest-a-good-option-for-unbalanced-data-classification
+9.	https://stackoverflow.com/questions/8704681/random-forest-with-classes-that-are-very-unbalanced/8704882#8704882
+10.	https://stackoverflow.com/questions/8961586/do-i-need-to-normalize-or-scale-data-for-randomforest-r-package
+11.	https://datascience.stackexchange.com/questions/62031/normalize-standardize-in-a-random-forest
+12.	https://github.com/rzhang0716/Data-Science/blob/master/Big_Data/Spark/PySpark/Random%20Forest/random_forest_pipeline.py
+13.	https://stackoverflow.com/questions/34997134/random-forest-tuning-tree-depth-and-number-of-trees
+14.	https://towardsdatascience.com/mastering-random-forests-a-comprehensive-guide-51307c129cb1
+15.	https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d#:~:text=the%20test%20performance.-,max_depth,the%20training%20and%20test%20errors.
+16.	https://www.analyticsvidhya.com/blog/2020/03/beginners-guide-random-forest-hyperparameter-tuning/
 
