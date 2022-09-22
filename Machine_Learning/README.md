@@ -110,7 +110,7 @@ The depth of the tree means the length of the tree you desire. A larger tree hel
 
 ### Random Forest in Scikit-Learn
 1.	How to improve the performance of random forests?
-**n_estimators:** The number of decision trees in the random forest. 
+**n_estimators:** The number of decision trees in the random forest. <br/>
 **max_depth:** The number of splits that each decision tree is allowed to make. If the number of splits is too low, the model underfits the data. If the number of splits is too high, the model overfits. 
 **max_features:** The number of features to consider when looking for the best split.  
 **Bootstrap:** A bootstrapped model takes only a select subset of columns and rows to train each decision tree. Thus, the model becomes less prone to overfit the data. 
