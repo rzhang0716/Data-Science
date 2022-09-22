@@ -83,3 +83,13 @@ The simplest approach is the use of a machine learning model to predict the prob
 MetaCost is a data preprocessing technique that relabels examples in the training dataset in order to minimize cost.  In MetaCost, first, a bagged ensemble of classifiers is fit on the training dataset in order to identify those examples that need to be relabeled, a transformed version of the dataset with relabeled examples is created, then the ensemble is discarded and the transformed dataset is used to train a classifier model. 
 
 
+
+
+## Reference:
+1.	https://www.datatrigger.org/post/spark_3_weighted_random_forest/
+2.	https://www.bryanshalloway.com/2020/12/08/weighting-classification-outcomes/#weighted-classification-metrics
+3.	https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3912194/
+4.	https://hersanyagci.medium.com/under-sampling-methods-for-imbalanced-data-clustercentroids-randomundersampler-nearmiss-eae0eadcc145
+5.	https://machinelearningmastery.com/cost-sensitive-learning-for-imbalanced-classification/
+6.	https://machinelearningmastery.com/framework-for-imbalanced-classification-projects/
+7.	https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/
