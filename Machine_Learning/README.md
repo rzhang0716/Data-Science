@@ -117,9 +117,9 @@ The depth of the tree means the length of the tree you desire. A larger tree hel
 **min_samples_split:** The minimum number of samples required to split an internal node. This can vary from considering at least one sample at each node to considering all of the samples at each node. When we increase this parameter, each tree in the forest becomes more constrained as it has to consider more samples at each node.<br/>
 **min_samples_leaf:** The minimum number of samples required to be at a leaf node. This parameter is similar to min_samples_split, however, this describes the minimum number of samples at the leaves, the base of the tree.  
 
-2.	Advantages of random forest
-**Ease of building:** not having as many model assumptions and no normalization required. 
-**Feature importance:** can be obtained from random forests.
+2.	Advantages of random forest<br/>
+**Ease of building:** not having as many model assumptions and no normalization required. <br/>
+**Feature importance:** can be obtained from random forests.<br/>
 **Feature selection:** an extension of the feature importance. By calculating the feature importance, drop the less important features and decreased the dimensionality of the model to improve the accuracy and reduce training time. Another way of performing feature selection is by shuffling individual features in the data set recursively so that they lose the information provided by the column is destroyed. The model is evaluated on this modified dataset to see how the scores have been impacted. The more important the feature, the more profound its impact on the score(7).
 ****
 
