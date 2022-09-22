@@ -24,6 +24,13 @@ Under-sampling can be a good choice when you have a ton of data – millions of 
 RandomUnderSampler is a fast and easy way to balance the data by randomly selecting a subset of data for the targeted classes. Under-sample the majority class(es) by randomly picking samples with or without replacement. 
 3.	Under-sampling: Tomek links
 Tomek links are pairs of very close instances but of opposite classes. Removing the instances of the majority class of each pair increases the space between the two classes, facilitating the classification process. Tomek’s link exists if the two samples are the nearest neighbors of each other. 
-![image](https://user-images.githubusercontent.com/61474051/191805519-629bfa24-d71e-494a-b3a6-ec150af3cfa7.png)
+4.	NearMiss
+Instead of resampling the minority class, using distance, will make the majority class equal to the minority class. Compute the average distance to the minority point samples. 
+Three versions:
+(1)	Select samples from the majority class for which the average distance of the k nearest samples of the minority class is the smallest. (Close to the minority class)
+(2)	Select samples from the majority class for which the average distance to the farthest samples of the negative class is the smallest.
+(3)	2-step algorithm, First, for each negative sample, their m nearest neighbors will be kept. Then, the positive samples selected are the ones for which the average distance to the k nearest neighbors is the largest. 
+![image](https://user-images.githubusercontent.com/61474051/191805615-0d3640c2-a4d6-44ef-adf8-9683f761bbcc.png)
+
 
 
