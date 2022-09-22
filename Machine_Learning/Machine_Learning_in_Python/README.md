@@ -72,7 +72,7 @@ Modified the class_weight parameters in the specified algorithms in scikit-learn
 3. Cost-Sensitive Ensembles
 The simplest approach is the use of a machine learning model to predict the probability of class membership, then using a line search on the threshold at which examples are assigned to each crisp class label that minimizes the cost of misclassification. This is often referred to as “thresholding” or threshold optimization and is used more generally for binary classification tasks. 
 MetaCost is a data preprocessing technique that relabels examples in the training dataset in order to minimize cost.  In MetaCost, first, a bagged ensemble of classifiers is fit on the training dataset in order to identify those examples that need to be relabeled, a transformed version of the dataset with relabeled examples is created, then the ensemble is discarded and the transformed dataset is used to train a classifier model. 
-
+****
 
 
 ## Linear Discriminant Analysis
@@ -83,7 +83,7 @@ Assumptions: (1) Normally distributed; (2) Each class has identical covariance m
 Fisher's Linear Discriminant (FLD): LDA is a generialized form of FLD. The basic idea of FLD is to project data points onto a line to maximize the between-class scatter and minimize the within-class scatter. 
 
 Note: LDA in R and Python are in the [LDA folder](https://github.com/rzhang0716/Data-Science/tree/master/Machine-Learning/Linear_Discriminant_Analysis)
-
+****
 
 
 ## Random Forest
@@ -121,7 +121,7 @@ The depth of the tree means the length of the tree you desire. A larger tree hel
 **Ease of building:** not having as many model assumptions and no normalization required. 
 **Feature importance:** can be obtained from random forests.
 **Feature selection:** an extension of the feature importance. By calculating the feature importance, drop the less important features and decreased the dimensionality of the model to improve the accuracy and reduce training time. Another way of performing feature selection is by shuffling individual features in the data set recursively so that they lose the information provided by the column is destroyed. The model is evaluated on this modified dataset to see how the scores have been impacted. The more important the feature, the more profound its impact on the score(7).
-
+****
 
 
 
