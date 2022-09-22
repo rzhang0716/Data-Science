@@ -30,7 +30,6 @@ Three versions:
 (1)	Select samples from the majority class for which the average distance of the k nearest samples of the minority class is the smallest. (Close to the minority class)
 (2)	Select samples from the majority class for which the average distance to the farthest samples of the negative class is the smallest.
 (3)	2-step algorithm, First, for each negative sample, their m nearest neighbors will be kept. Then, the positive samples selected are the ones for which the average distance to the k nearest neighbors is the largest. 
-![image](https://user-images.githubusercontent.com/61474051/191805615-0d3640c2-a4d6-44ef-adf8-9683f761bbcc.png)
 
 
 
