@@ -62,12 +62,12 @@
 
 ***
 ## 07. Big Data
-- [Spark](): PySpark and SparkR, using in big data machine learning and statistical analysis.
-- [AWS]():
-- - [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
-- - [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Machine_Learning): AWS Specified in Machine Learning.
+- [Spark](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/Spark): PySpark and SparkR, using in big data machine learning and statistical analysis.
+- [AWS](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/AWS): AWS Certificates 
+- - [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
+- - [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/AWS/Machine_Learning): AWS Specified in Machine Learning.
 
-- [Hadoop]():Include big data tools, Drill, FLink, Flume, HBase, Hive, Hue, Kafka, MApReduce, etc. 
+- [Hadoop](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/Hadoop):Include big data tools, Drill, FLink, Flume, HBase, Hive, Hue, Kafka, MApReduce, etc. 
 
 ## Algorithm
 
