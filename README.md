@@ -64,7 +64,7 @@
 
 ## SAS
 - [SAS Codes](https://github.com/rzhang0716/Data-Science/tree/master/09_SAS): SAS codes.
-- [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/SAS/SAS_Base_Exam): Personal summaried materials for passing SAS Base Exam.
+- [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/09_SAS/SAS_Certificate_Exam): Personal summaried materials for passing SAS Base Exam.
 
 
 ## Statistics
