@@ -22,14 +22,11 @@
 
 ***
 ## 01. Deep Learning
+- [Deep Learning Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/): ANN, CNN, RNN, Transfer Learning, NLP etc.
 - [Deep Learning Sepcialization - Coursera](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/DeepLearning_Coursera): Deep learning specialization in Coursera by Andrew Ng.
 - [Deep Learning in PyTorch - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/PyTorch_Udemy): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in Pytorch.
 - [Deep Learning in TensorFlow - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/TensorFlow_Udemy): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in TensorFlow.
 - [Deep Learning in Keras - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/Keras_Udemy): Keras in Udemy.
-- [Artifical Neural Network]()
-- [Convolutinonal Neural Network]()
-- [Recurrent Neural Network](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/03_RNN)
-- [Transfer Learning](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/04_Transfer_Learning)
 
 
 ***
