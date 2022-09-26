@@ -46,6 +46,7 @@
 
 ***
 ## 04. Java
+-[Jave Programming Courses](https://github.com/rzhang0716/Data-Science/tree/master/04_Java/Java_Udemy): Java Programming Course in Udemy.
 
 
 ***
@@ -66,33 +67,35 @@
 - [AWS](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/AWS): AWS Certificates 
   - [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
   - [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/AWS/Machine_Learning): AWS Specified in Machine Learning.
-
 - [Hadoop](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/Hadoop):Include big data tools, Drill, FLink, Flume, HBase, Hive, Hue, Kafka, MApReduce, etc. 
 
-## Algorithm
+
+***
+## 08. Data Structure and Algorithm
+- [Data Structure and Algortihm Course](https://github.com/rzhang0716/Data-Science/tree/master/08_DataStructure_Algorithms/DataStructure_Algorithm_Udemy): Master the code interview course in Udemy.
 
 
-## AWS
-
-## Spark
-- [PySpark]():
-- [SparkR]():
-
-
-## Web-Development
-- [HTML & CSS & Bootstrap]()
-
-
-
-## SAS
+***
+## 09. SAS
 - [SAS Codes](https://github.com/rzhang0716/Data-Science/tree/master/09_SAS): SAS codes.
 - [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/09_SAS/SAS_Certificate_Exam): Personal summaried materials for passing SAS Base Exam.
 
 
 
+***
+## 10. JavaScript
+- [JavaScript Course - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/10_JavaScript/JS_Udemy): JavaScript Programming in Udemy.
 
-## Linux
-- [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/12_Linux)
+
+***
+## 11. Web-Development
+- [HTML & CSS Course - Udemy](): HTML and CSS programming in Udmey.
+- [Personal Website](): Personal Website materials.
+
+
+*** 
+## 12. Linux
+- [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/12_Linux): Basic Linux Commands.
 
 
 
