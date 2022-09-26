@@ -13,6 +13,12 @@
 
 # Repositoriy Information
 
+## 00. Machine Learning
+- [Machine Learning Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/00_Machine_Learning): Logisitc Regression, Boosting, Random Forest, SVM, KNN, Clustering, Naive Bayes, etc.
+- [Machine Learning - Coursera Anderw Ng](https://github.com/rzhang0716/Data-Science/tree/master/00_Machine_Learning/00_ML_Courses/MachineLearning-Coursera): Machine Learning Specialization in Coursera
+- [Cornell-CS4780](https://github.com/rzhang0716/Data-Science/tree/master/00_Machine_Learning/00_ML_Courses/CS4780-Cornell): Machine Learning classes in Cornell.
+- [Machine Learning in Python - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/00_Machine_Learning/00_ML_Courses/Machine_Learning_Udemy): Machine Learning using Python in Udemy.
+
 ## Python
 - [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/Python%20Programming/100_day_Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, API, Image Processing and Data Science with 100 different projects. 
 - [Machine Learning in Python](https://github.com/rzhang0716/Data-Science/tree/master/Python/Machine_Learning): It includes all machine learning algorithms implemented in Python, such as KNN, SVM, Random Forest and etc, also have some data prepartion and visualization libraries such as seaborn, pandas, matplotlib and etc. Apply machine learning in clinical trials studies and survival analysis.
@@ -39,8 +45,10 @@
 ## Java
 
 
+
+
 ## Algorithm
-- [Machine Learning - Coursera Anderw Ng]()
+
 - [Deep Learning - Coursera Anderw Ng]()
 - [Cornell-CS4780]()
 - [Data Structure and Algorithm - Udemy]()
@@ -58,7 +66,6 @@
 
 ## Web-Development
 - [HTML & CSS & Bootstrap]()
-- [JavaScript]()
 
 
 
@@ -68,8 +75,8 @@
 
 
 ## Statistics
-- [Statistics](https://github.com/rzhang0716/Data-Science/blob/master/Statistics/Readme.md): Basic Statistics Concepts and Theories.
-- [Courses](): Statistics Courses tooken with materials and hw, include Clinical Trials, Survival Analysis, Statistical Theories, Biological Experiemtnal Statistics, Linear models and Regression, Time Series, Bioinformatics, Categorical Analysis, Multivariate and Longitudinal Analysis, Machine Learning. 
+- [Statistics](https://github.com/rzhang0716/Data-Science/tree/master/06_Statistics): Basic Statistics Concepts and Theories.
+- [Courses](https://github.com/rzhang0716/Data-Science/tree/master/06_Statistics): Statistics Courses tooken with materials and hw, include Clinical Trials, Survival Analysis, Statistical Theories, Biological Experiemtnal Statistics, Linear models and Regression, Time Series, Bioinformatics, Categorical Analysis, Multivariate and Longitudinal Analysis, Machine Learning. 
 
 ## Linux
 - [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/12_Linux)
