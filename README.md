@@ -46,7 +46,7 @@
 
 ***
 ## 04. Java
--[Jave Programming Courses](https://github.com/rzhang0716/Data-Science/tree/master/04_Java/Java_Udemy): Java Programming Course in Udemy.
+- [Jave Programming Courses](https://github.com/rzhang0716/Data-Science/tree/master/04_Java/Java_Udemy): Java Programming Course in Udemy.
 
 
 ***
