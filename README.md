@@ -2,7 +2,7 @@
 - :school:  I graduated with a Ph.D. degree in Biochemistry and a Master degree in Statistics from :wolf: North Carolina State University.
 - :hospital:  I am currently working as a Data Scientist in Nemours Chirldren's Health (DuPont).
 - :family_man_woman_girl:  I am living with my wife, :baby: our daugther,  :dog: Mochi and :cat2: Dobe in Wilimington, Delaware.
-- :rainbow:  I have published 14 peer-reviewd papers. 
+- :rainbow:  I have published over 20 abstracts and papers. 
 - :man_student:  I have SAS base programming 9.4 certificate.
 
 - :cn: How to find me: 
@@ -63,8 +63,8 @@
 
 
 ## SAS
-- [SAS Codes](https://github.com/rzhang0716/Data-Science/tree/master/SAS/Codes): SAS codes.
-- [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/SAS/SAS_Base_Exam): Personal summaried materials for passing SAS Base Exam.
+- [SAS Codes](https://github.com/rzhang0716/Data-Science/tree/master/09_SAS): SAS codes.
+- [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/09_SAS/SAS_Certificate_Exam): Personal summaried materials for passing SAS Base Exam.
 
 
 ## Statistics
@@ -72,7 +72,7 @@
 - [Courses](): Statistics Courses tooken with materials and hw, include Clinical Trials, Survival Analysis, Statistical Theories, Biological Experiemtnal Statistics, Linear models and Regression, Time Series, Bioinformatics, Categorical Analysis, Multivariate and Longitudinal Analysis, Machine Learning. 
 
 ## Linux
-- [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/Linux)
+- [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/12_Linux)
 
 
 
