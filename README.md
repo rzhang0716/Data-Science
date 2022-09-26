@@ -40,7 +40,7 @@
 ## 03. R
 -  [Data Preparation](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Data_Prep): Manipulate data with dplyr, tidyr for analysis and prepare paper publish tables using Table1. 
 -  [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Data_Visualization): Make different plots with ggplot2 mainly for outlier detection and plot published figures for papers.
-- [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Clinical_Trials): Clinical Trails projects in R, mostly in Phase I to Phase III studies in Covid, oncology and heart diseases etc., which including sample size and power calculation, build models, visualization and longitudinal analysis. 
+- [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Clinical_Trials): Clinical Trails projects in R, mostly in Phase I to Phase IV studies in Covid, oncology and heart diseases etc., which including sample size and power calculation, build models, visualization and longitudinal analysis. 
 - [Survival Analysis](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Survival_Analysis): Survival Analysis in R, in oncology, covid, cancer studies, etc. using survival packages etc.
 
 
