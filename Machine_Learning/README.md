@@ -22,7 +22,8 @@ It has been stated that trying other methods, such as sampling, without trying b
     - 3b. Evaluate Class Labels.<br/>
     - 3c. If Score is Better than Best Score.<br/>
     - 3ci. Adopt Threshold.
-<br/>•	4. Use Adopted Threshold When Making Class Predictions on New Data. <br/>
+    
+•	4. Use Adopted Threshold When Making Class Predictions on New Data. <br/>
 
 3. Optimal Threshold for ROC Curve
 A ROC curve is a diagnostic plot that evaluates a set of probability predictions made by a model on a test dataset. The ROC curve is a useful diagnostic tool for understanding the trade-off for different thresholds and the ROC AUC provides a useful number for comparing models based on their general capabilities. 
