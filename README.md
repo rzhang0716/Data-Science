@@ -13,7 +13,7 @@
 ***
 # Repositoriy Information
 
-## I. Machine Learning
+## 00. Machine Learning
 - [Machine Learning Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/00_Machine_Learning): Logisitc Regression, Boosting, Random Forest, SVM, KNN, Clustering, Naive Bayes, etc.
 - [Machine Learning - Coursera Anderw Ng](https://github.com/rzhang0716/Data-Science/tree/master/00_Machine_Learning/00_ML_Courses/MachineLearning-Coursera): Machine Learning Specialization in Coursera
 - [Cornell-CS4780](https://github.com/rzhang0716/Data-Science/tree/master/00_Machine_Learning/00_ML_Courses/CS4780-Cornell): Machine Learning classes in Cornell.
@@ -21,7 +21,7 @@
 
 
 ***
-## II. Deep Learning
+## 01. Deep Learning
 - [Deep Learning Sepcialization - Coursera](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/DeepLearning_Coursera): Deep learning specialization in Coursera by Andrew Ng.
 - [Deep Learning in PyTorch - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/PyTorch_Udemy): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in Pytorch.
 - [Deep Learning in TensorFlow - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/TensorFlow_Udemy): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in TensorFlow.
@@ -33,28 +33,31 @@
 
 
 ***
-## III. Python
+## 02. Python
 - [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/02_Python): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, API, Image Processing.
 - [100-day Challenge](https://github.com/rzhang0716/Data-Science/tree/master/02_Python/100_day_Challenge): 100 day challenge with 100 different projects using Python.
 - [Web-scripting](https://github.com/rzhang0716/Data-Science/tree/master/02_Python/Scipting_with_Python): Scripting the website using Python.
 
 
 ***
-## IV.R
--  [Data Preparation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Preparation): Manipulate data with dplyr, tidyr for analysis and prepare paper publish tables using Table1. 
--  [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2 mainly for outlier detection and plot published figures for papers.
--  [Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/R/Machine%20Learning): Apply machine learning algorithms in R to solve biomedical and clinical trial research, especially for time-series and longitudinal analysis.
--  [Deep Learning](): Apply deep learning algorithms in R to solve biomedical and clinical trial research, especially for time-series and longitudinal analysis.
-- [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/R/Clinical%20Trials): Clinical Trails projects in R, mostly in Phase I to Phase III studies in Covid, oncology and heart diseases etc., which including sample size and power calculation, build models, visualization and longitudinal analysis. 
-- [Survival Analysis](https://github.com/rzhang0716/Data-Science/tree/master/R/Survival%20Analysis): Survival Analysis in R, in oncology, covid, cancer studies, etc. using survival packages etc.
+## 03. R
+-  [Data Preparation](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Data_Prep): Manipulate data with dplyr, tidyr for analysis and prepare paper publish tables using Table1. 
+-  [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Data_Visualization): Make different plots with ggplot2 mainly for outlier detection and plot published figures for papers.
+- [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Clinical_Trials): Clinical Trails projects in R, mostly in Phase I to Phase III studies in Covid, oncology and heart diseases etc., which including sample size and power calculation, build models, visualization and longitudinal analysis. 
+- [Survival Analysis](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Survival_Analysis): Survival Analysis in R, in oncology, covid, cancer studies, etc. using survival packages etc.
 
 
-## SQL
+***
+## 04. Java
+
+
+***
+## 05. SQL
 - [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL/Courses): covers MySQL commands from basic (Select, join) to advanced Windows Function, online Stanford Classes.
 - [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL#readme): Problems from DataBase in Leetcode, written in MySQL and Oracle SQL.
 
 
-## Java
+
 
 
 
