@@ -53,12 +53,14 @@
 
 ***
 ## 05. SQL
-- [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL/Courses): covers MySQL commands from basic (Select, join) to advanced Windows Function, online Stanford Classes.
-- [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/Database-SQL#readme): Problems from DataBase in Leetcode, written in MySQL and Oracle SQL.
+- [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/05_SQL): covers MySQL commands from basic (Select, join) to advanced Windows Function, online Stanford Classes.
+- [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/05_SQL#readme): Problems from DataBase in Leetcode, written in MySQL and Oracle SQL.
 
 
-
-
+***
+## 06. Statistics
+- [Statistics](https://github.com/rzhang0716/Data-Science/tree/master/06_Statistics#readme): Basic Statistics Concepts and Theories.
+- [Courses](https://github.com/rzhang0716/Data-Science/tree/master/06_Statistics): Statistics Courses tooken with materials and hw, include Clinical Trials, Survival Analysis, Statistical Theories, Biological Experiemtnal Statistics, Linear models and Regression, Time Series, Bioinformatics, Categorical Analysis, Multivariate and Longitudinal Analysis, Machine Learning. 
 
 
 
@@ -89,9 +91,7 @@
 - [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/09_SAS/SAS_Certificate_Exam): Personal summaried materials for passing SAS Base Exam.
 
 
-## Statistics
-- [Statistics](https://github.com/rzhang0716/Data-Science/tree/master/06_Statistics): Basic Statistics Concepts and Theories.
-- [Courses](https://github.com/rzhang0716/Data-Science/tree/master/06_Statistics): Statistics Courses tooken with materials and hw, include Clinical Trials, Survival Analysis, Statistical Theories, Biological Experiemtnal Statistics, Linear models and Regression, Time Series, Bioinformatics, Categorical Analysis, Multivariate and Longitudinal Analysis, Machine Learning. 
+
 
 ## Linux
 - [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/12_Linux)
