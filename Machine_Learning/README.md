@@ -21,7 +21,7 @@ It has been stated that trying other methods, such as sampling, without trying b
     - 3a. Convert probabilities to Class Labels using the threshold.<br/>
     - 3b. Evaluate Class Labels.<br/>
     - 3c. If Score is Better than Best Score.<br/>
-    - 3ci. Adopt Threshold.<br/>
+    - 3ci. Adopt Threshold.
 •	4. Use Adopted Threshold When Making Class Predictions on New Data. <br/>
 
 3. Optimal Threshold for ROC Curve
