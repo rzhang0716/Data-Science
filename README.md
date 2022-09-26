@@ -72,7 +72,7 @@
 - [Courses](): Statistics Courses tooken with materials and hw, include Clinical Trials, Survival Analysis, Statistical Theories, Biological Experiemtnal Statistics, Linear models and Regression, Time Series, Bioinformatics, Categorical Analysis, Multivariate and Longitudinal Analysis, Machine Learning. 
 
 ## Linux
-- [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/Linux)
+- [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/12_Linux)
 
 
 
