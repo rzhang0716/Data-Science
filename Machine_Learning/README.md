@@ -4,6 +4,36 @@
 ## Imbalanced Data Handling
 Most machine learning algorithms work best when the number of samples in each class is about equal as most algorithms are designed to maximize accuracy and reduce errors (loss functions). Class imbalance appears in many domains: fraud detection, spam filtering, disease screening, SaaS subscription churn, and advertising click-throughs. 
 
+
+### Threshold-Moving for Imbalanced Classification
+1. Converting Probabilities to Class Labels
+The problem is that the default threshold may not represent an optimal interpretation of the predicted probabilities. 
+(1) The predicted probabilities are not calibrated.
+(2) The metrics used to train the model is different from the metric used to evaluate a final model.
+(3) The class distribution is severely skewed. 
+(4) The cost of one type of misclassification is more important than another type of misclassification. 
+2. Threshold-Moving for Imbalanced Classification
+The bottom line is that when studying problems with imbalanced data, using the classifiers produced by standard machine learning algorithms without adjusting the output threshold may well be a critical mistake. 
+It has been stated that trying other methods, such as sampling, without trying by simply setting the threshold may be misleading.<br/>
+•	1. Fit Model on the Training Dataset.<br/>
+•	2. Predict Probabilities on the Test Dataset.<br/>
+•	3. For each threshold in Thresholds:<br/>
+  •	3a. Convert probabilities to Class Labels using the threshold.<br/>
+  •	3b. Evaluate Class Labels.<br/>
+  •	3c. If Score is Better than Best Score.<br/>
+  •	3ci. Adopt Threshold.<br/>
+•	4. Use Adopted Threshold When Making Class Predictions on New Data.<br/>
+
+3. Optimal Threshold for ROC Curve
+A ROC curve is a diagnostic plot that evaluates a set of probability predictions made by a model on a test dataset. The ROC curve is a useful diagnostic tool for understanding the trade-off for different thresholds and the ROC AUC provides a useful number for comparing models based on their general capabilities. 
+The G-mean is a metric for imbalanced classification that, if optimized, will seek a balance between sensitivity and specificity. G-mean = sqrt(Sensitivity*Specificity).
+4. Optimal Threshold for Precision-Recall Curve
+Unlike the ROC curve, a precision-recall curve focuses on the performance of a classifier on the positive (minority class) only. Use F-measure to evaluate. 
+F-measure = (2*Precision*Recall)/(Precision + Recall). 
+5. Optimal Threshold Tuning
+We can define a set of thresholds and then evaluate predicted probabilities under each in order to find and select the optimal threshold.  
+
+
 ### Under-sampling
 Advantages: It can help improve run time and storage problems by reducing the number of training data samples when the training data set is huge.
 Disadvantages: (1) It can discard potentially useful information which could be important for building rule classifiers; (2) The sample chosen by random under-sampling may be a biased sample and it will not be an accurate representation of the population to cause the inaccurate results on the actual test data.
