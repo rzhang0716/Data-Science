@@ -60,18 +60,19 @@
 - [Courses](https://github.com/rzhang0716/Data-Science/tree/master/06_Statistics): Statistics Courses tooken with materials and hw, include Clinical Trials, Survival Analysis, Statistical Theories, Biological Experiemtnal Statistics, Linear models and Regression, Time Series, Bioinformatics, Categorical Analysis, Multivariate and Longitudinal Analysis, Machine Learning. 
 
 
+***
+## 07. Big Data
+- [Spark](): PySpark and SparkR, using in big data machine learning and statistical analysis.
+- [AWS]():
+- - [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
+- - [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Machine_Learning): AWS Specified in Machine Learning.
+
+- [Hadoop]():Include big data tools, Drill, FLink, Flume, HBase, Hive, Hue, Kafka, MApReduce, etc. 
 
 ## Algorithm
 
-- [Deep Learning - Coursera Anderw Ng]()
-- [Cornell-CS4780]()
-- [Data Structure and Algorithm - Udemy]()
-- [UCB-CS61B]()
-- [UCB-CS61C]()
 
 ## AWS
-- [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
-- [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/Big_Data/AWS/Machine_Learning): AWS Specified in Machine Learning.
 
 ## Spark
 - [PySpark]():
