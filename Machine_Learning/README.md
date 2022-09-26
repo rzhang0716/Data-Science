@@ -216,4 +216,4 @@ The leaf weight values of the trees can be regularized using popular regularizat
 15.	https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d#:~:text=the%20test%20performance.-,max_depth,the%20training%20and%20test%20errors.
 16.	https://www.analyticsvidhya.com/blog/2020/03/beginners-guide-random-forest-hyperparameter-tuning/
 17. https://machinelearningmastery.com/threshold-moving-for-imbalanced-classification/
-18. 1. https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/
+18. https://machinelearningmastery.com/gentle-introduction-gradient-boosting-algorithm-machine-learning/
