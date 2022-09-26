@@ -20,7 +20,6 @@
 - [Machine Learning in Python - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/00_Machine_Learning/00_ML_Courses/Machine_Learning_Udemy): Machine Learning using Python in Udemy.
 
 
-***
 ## 01. Deep Learning
 - [Deep Learning Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/): ANN, CNN, RNN, Transfer Learning, NLP etc.
 - [Deep Learning Sepcialization - Coursera](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/DeepLearning_Coursera): Deep learning specialization in Coursera by Andrew Ng.
