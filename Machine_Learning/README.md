@@ -177,7 +177,7 @@ Trees are added one at a time, and existing trees in the model are not changed. 
 1. Tree Constraints
 It is important that the weak learners have the skill but remain weak. A good general heuristic is that the more constrained tree creation is, the more trees you will need in the model, and the reverse, where less constrained individual trees, the fewer trees that will be required. 
 •	Number of trees, generally adding more trees to the model can be very slow to overfit. The advice is to keep adding trees until no further improvement is observed. </br>
-•	Tree depth, deeper trees are more complex trees, and shorter trees are preferred. Generally, better results are seen with 4-8 levels. 
+•	Tree depth, deeper trees are more complex trees, and shorter trees are preferred. Generally, better results are seen with 4-8 levels. </br>
 •	Number of nodes or number of leaves, like depth, this can constrain the size of the tree but is not constrained to a symmetrical structure if other constraints are used. </br>
 •	Number of observations per split imposes a minimum constraint on the amount of training data at a training node before a split can be constrained.</br>
 •	Minimum improvement to loss is a constraint on the improvement of any split added to a tree. </br>
