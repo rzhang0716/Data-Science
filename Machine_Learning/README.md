@@ -18,10 +18,10 @@ It has been stated that trying other methods, such as sampling, without trying b
 •	1. Fit Model on the Training Dataset. <br/>
 •	2. Predict Probabilities on the Test Dataset.<br/>
 •	3. For each threshold in Thresholds:<br/>
-    •	3a. Convert probabilities to Class Labels using the threshold.<br/>
-    •	3b. Evaluate Class Labels.<br/>
-    •	3c. If Score is Better than Best Score.<br/>
-    •	3ci. Adopt Threshold.<br/>
+    - 3a. Convert probabilities to Class Labels using the threshold.<br/>
+    - 3b. Evaluate Class Labels.<br/>
+    - 3c. If Score is Better than Best Score.<br/>
+    - 3ci. Adopt Threshold.<br/>
 •	4. Use Adopted Threshold When Making Class Predictions on New Data. <br/>
 
 3. Optimal Threshold for ROC Curve
