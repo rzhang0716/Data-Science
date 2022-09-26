@@ -10,7 +10,7 @@
   - :telescope:  [LinkedIn](https://www.linkedin.com/in/rzhang12/)
 
 
-
+***
 # Repositoriy Information
 
 ## I. Machine Learning
@@ -20,6 +20,7 @@
 - [Machine Learning in Python - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/00_Machine_Learning/00_ML_Courses/Machine_Learning_Udemy): Machine Learning using Python in Udemy.
 
 
+***
 ## II. Deep Learning
 - [Deep Learning Sepcialization - Coursera](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/DeepLearning_Coursera): Deep learning specialization in Coursera by Andrew Ng.
 - [Deep Learning in PyTorch - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/PyTorch_Udemy): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in Pytorch.
@@ -31,12 +32,15 @@
 - [Transfer Learning](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/04_Transfer_Learning)
 
 
+***
 ## III. Python
-- [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/Python/Python%20Programming/100_day_Challenge): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, API, Image Processing and Data Science with 100 different projects. 
+- [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/02_Python): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, API, Image Processing.
+- [100-day Challenge](https://github.com/rzhang0716/Data-Science/tree/master/02_Python/100_day_Challenge): 100 day challenge with 100 different projects using Python.
+- [Web-scripting](https://github.com/rzhang0716/Data-Science/tree/master/02_Python/Scipting_with_Python): Scripting the website using Python.
 
 
-
-## R
+***
+## IV.R
 -  [Data Preparation](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Preparation): Manipulate data with dplyr, tidyr for analysis and prepare paper publish tables using Table1. 
 -  [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/R/Data%20Visualization): Make different plots with ggplot2 mainly for outlier detection and plot published figures for papers.
 -  [Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/R/Machine%20Learning): Apply machine learning algorithms in R to solve biomedical and clinical trial research, especially for time-series and longitudinal analysis.
