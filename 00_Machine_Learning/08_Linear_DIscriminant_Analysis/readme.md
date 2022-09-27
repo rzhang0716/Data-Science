@@ -7,4 +7,5 @@ Linear Discriminant Analysis is a linear model for cclassification and dimension
 ### Cons: </br>(1) Not good on non-linear separate; </br>
 (2) Not work well on number of features > number of observations.</br>
 ### Assumptions: </br>(1) Normally distributed; </br>(2) Each class has identical covariance matrix. LDA works well even assumptions violated.
-## Fisher's Linear Discriminant (FLD): LDA is a generialized form of FLD. The basic idea of FLD is to project data points onto a line to maximize the between-class scatter and minimize the within-class scatter. 
+## Fisher's Linear Discriminant (FLD)
+LDA is a generialized form of FLD. The basic idea of FLD is to project data points onto a line to maximize the between-class scatter and minimize the within-class scatter. 
