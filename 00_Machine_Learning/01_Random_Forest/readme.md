@@ -1,4 +1,4 @@
-# <align="center"> Random Forest 
+<h1 align="center">Random Forest</h1>
 
 ## Random Forest Concept
 1.	Is Random Forest performing well for imbalanced data?
