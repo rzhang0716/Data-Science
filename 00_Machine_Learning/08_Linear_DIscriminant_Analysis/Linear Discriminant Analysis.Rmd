@@ -1,0 +1,160 @@
+---
+title: "Megan"
+author: "Ran Zhang"
+date: "1/24/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load packages and set working directory
+```{r}
+library(tidyverse)
+library(readxl)
+library(lattice)
+
+```
+
+
+Load the dataset and manipulate
+```{r}
+# Read the excel file
+df <- read_excel('df.xlsx')
+
+# Convert to tibble for manipulation
+df <- as_tibble(df)
+
+# Convert treatment to factor
+df_new <- df %>% mutate(treatment = ifelse(treatment == "No Meds", 0, 1))
+df_new$treatment <- as.factor(df_new$treatment)
+
+# Pivot-longer
+df_long <- df_new %>% pivot_longer(cols=c('MIG_CXCL9', 'IP10_CXCL10', 'Eotaxin2_CCL24'), names_to = 'type')
+```
+
+
+******************
+Box Plot
+******************
+
+Boxplot
+```{r}
+# MIG_CXCL9
+MIG_CXCL9_boxplot <- ggplot(df, aes(x=treatment, y=MIG_CXCL9, fill=treatment)) + geom_boxplot(alpha=0.7)  + theme_classic() + theme(legend.position="none")
+# ggsave('MIG_CXCL9_boxplot.jpg', MIG_CXCL9_boxplot, dpi = 600) 
+
+# IP10_CXCL10
+IP10_CXCL10_boxplot <- ggplot(df, aes(x=treatment, y=IP10_CXCL10, fill=treatment)) + geom_boxplot(alpha=0.7)  + theme_classic() + theme(legend.position="none")
+# ggsave('IP10_CXCL10_boxplot.jpg', IP10_CXCL10_boxplot, dpi = 600) 
+
+# Eotaxin2_CCL24
+Eotaxin2_CCL24_boxplot <- ggplot(df, aes(x=treatment, y=Eotaxin2_CCL24, fill=treatment)) + geom_boxplot(alpha=0.7)  + theme_classic() + theme(legend.position="none")
+# ggsave('Eotaxin2_CCL24_boxplot.jpg', Eotaxin2_CCL24_boxplot, dpi = 600) 
+```
+
+******************
+Scatter Pair Plot
+******************
+
+```{r}
+library("ggplot2")                     
+library("GGally") 
+library(tidyverse)
+```
+
+```{r}
+df_pair <- df %>% select(MIG_CXCL9, IP10_CXCL10, Eotaxin2_CCL24)
+pair_plot <- ggpairs(data = df_pair)
+# ggsave('pair_plot.jpg', pair_plot, dpi = 600) 
+```
+
+
+****************************
+Linear Discriminant Analysis
+****************************
+
+Linear Discriminant Analysis
+```{r}
+library(caret)
+theme_set(theme_classic())
+```
+
+Split the data
+```{r}
+set.seed(666)
+train.index <- df_new$treatment %>% createDataPartition(p=0.7, list=FALSE)
+df.train <- df_new[train.index, ]
+df.test <- df_new[-train.index, ]
+```
+
+LDA on individual variable
+```{r}
+library(MASS) # This package will supress the dplyr package select function
+library(caret) # For confusion matrix
+library(MLmetrics) # For f1 score
+library(pROC) # For AUC
+```
+
+MIG_CXCL9
+```{r}
+# Build the model
+MIG_CXCL9.model <- lda(treatment ~ MIG_CXCL9, data = df.train)
+
+# Make the prediction
+MIG_CXCL9.prediction <- MIG_CXCL9.model %>% predict(df.test)
+
+# Confustion matrix 
+print(confusionMatrix(MIG_CXCL9.prediction$class, df.test$treatment))
+
+# F1 score
+print(F1_Score(df.test$treatment, MIG_CXCL9.prediction$class))
+```
+
+IP10_CXCL10
+```{r}
+# Build the model
+IP10_CXCL10.model <- lda(treatment ~ IP10_CXCL10, data = df.train)
+
+# Make the prediction
+IP10_CXCL10.prediction <- IP10_CXCL10.model %>% predict(df.test)
+
+# Confustion matrix 
+print(confusionMatrix(IP10_CXCL10.prediction$class, df.test$treatment))
+
+# F1 score
+print(F1_Score(df.test$treatment, IP10_CXCL10.prediction$class))
+```
+
+
+Eotaxin2_CCL24
+```{r}
+# Build the model
+Eotaxin2_CCL24.model <- lda(treatment ~ Eotaxin2_CCL24, data = df.train)
+
+# Make the prediction
+Eotaxin2_CCL24.prediction <- Eotaxin2_CCL24.model %>% predict(df.test)
+
+# Confustion matrix 
+print(confusionMatrix(Eotaxin2_CCL24.prediction$class, df.test$treatment))
+
+# F1 score
+print(F1_Score(df.test$treatment, Eotaxin2_CCL24.prediction$class))
+```
+
+
+Three variables together to build the model
+```{r}
+df.model <- lda(treatment ~ MIG_CXCL9 + IP10_CXCL10 + Eotaxin2_CCL24, data = df.train)
+
+# Make the prediction
+df.prediction <- df.model %>% predict(df.test)
+
+# Confustion matrix 
+print(confusionMatrix(df.prediction$class, df.test$treatment))
+
+# F1 score
+print(F1_Score(df.test$treatment, df.prediction$class))
+```
+
