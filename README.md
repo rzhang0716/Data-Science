@@ -1,8 +1,8 @@
 # Personal Information
 - :school:  I graduated with a Ph.D. degree in Biochemistry and a Master degree in Statistics from :wolf: North Carolina State University.
 - :hospital:  I am currently working as a Data Scientist in Nemours Chirldren's Health (DuPont).
-- :family_man_woman_girl:  I am living with my wife, :baby: our daugther,  :dog: Mochi and :cat2: Dobe in Wilimington, Delaware.
-- :rainbow:  I have published over 20 abstracts and papers. 
+- :family_man_woman_girl:  I am living with my wife, :baby: our daugther,  :dog: Mochi and :cat2: Dobe in Greater Philadelphia.
+- :rainbow:  I have published 25+ abstracts and papers. 
 - :man_student:  I have SAS base programming 9.4 certificate.
 
 - :cn: How to find me: 
@@ -20,83 +20,73 @@
 - [Machine Learning in Python - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/00_Machine_Learning/00_ML_Courses/Machine_Learning_Udemy): Machine Learning using Python in Udemy.
 
 
-***
 ## 01. Deep Learning
 - [Deep Learning Algorithms](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/): ANN, CNN, RNN, Transfer Learning, NLP etc.
 - [Deep Learning Sepcialization - Coursera](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/DeepLearning_Coursera): Deep learning specialization in Coursera by Andrew Ng.
-- [Deep Learning in PyTorch - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/PyTorch_Udemy): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in Pytorch.
-- [Deep Learning in TensorFlow - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/TensorFlow_Udemy): About implent neural network (ANN, CNN, RNN), transfer learning, auto-encoder, natural learning processing foundations and computer vision foundations in TensorFlow.
+- [Deep Learning in PyTorch - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/PyTorch_Udemy): Deep Learning in Pytorch.
+- [Deep Learning in TensorFlow - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/TensorFlow_Udemy): Deep Learning in TensorFlow.
 - [Deep Learning in Keras - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/01_Deep_Learning/00_Courses/Keras_Udemy): Keras in Udemy.
 
 
-***
 ## 02. Python
 - [Python Programming](https://github.com/rzhang0716/Data-Science/tree/master/02_Python): Include all levels python programming from the basic to intermdeiate to advanced, which include from the basic for loops to OOP, GUI, Web Scripting, API, Image Processing.
 - [100-day Challenge](https://github.com/rzhang0716/Data-Science/tree/master/02_Python/100_day_Challenge): 100 day challenge with 100 different projects using Python.
 - [Web-scripting](https://github.com/rzhang0716/Data-Science/tree/master/02_Python/Scipting_with_Python): Scripting the website using Python.
 
 
-***
 ## 03. R
 -  [Data Preparation](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Data_Prep): Manipulate data with dplyr, tidyr for analysis and prepare paper publish tables using Table1. 
 -  [Data Visualization](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Data_Visualization): Make different plots with ggplot2 mainly for outlier detection and plot published figures for papers.
-- [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Clinical_Trials): Clinical Trails projects in R, mostly in Phase I to Phase III studies in Covid, oncology and heart diseases etc., which including sample size and power calculation, build models, visualization and longitudinal analysis. 
+- [Clinical Trails](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Clinical_Trials): Clinical Trails projects in R, mostly in Phase I to Phase IV studies in Covid, oncology and heart diseases etc., which including sample size and power calculation, build models, visualization and longitudinal analysis. 
 - [Survival Analysis](https://github.com/rzhang0716/Data-Science/tree/master/03_R/Survival_Analysis): Survival Analysis in R, in oncology, covid, cancer studies, etc. using survival packages etc.
 
 
-***
 ## 04. Java
+- [Jave Programming Courses](https://github.com/rzhang0716/Data-Science/tree/master/04_Java/Java_Udemy): Java Programming Course in Udemy.
 
 
-***
 ## 05. SQL
 - [MySQL](https://github.com/rzhang0716/Data-Science/tree/master/05_SQL): covers MySQL commands from basic (Select, join) to advanced Windows Function, online Stanford Classes.
 - [Database problems in Leetcode](https://github.com/rzhang0716/Data-Science/tree/master/05_SQL#readme): Problems from DataBase in Leetcode, written in MySQL and Oracle SQL.
 
 
-***
 ## 06. Statistics
 - [Statistics](https://github.com/rzhang0716/Data-Science/tree/master/06_Statistics#readme): Basic Statistics Concepts and Theories.
 - [Courses](https://github.com/rzhang0716/Data-Science/tree/master/06_Statistics): Statistics Courses tooken with materials and hw, include Clinical Trials, Survival Analysis, Statistical Theories, Biological Experiemtnal Statistics, Linear models and Regression, Time Series, Bioinformatics, Categorical Analysis, Multivariate and Longitudinal Analysis, Machine Learning. 
 
 
-***
 ## 07. Big Data
 - [Spark](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/Spark): PySpark and SparkR, using in big data machine learning and statistical analysis.
 - [AWS](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/AWS): AWS Certificates 
   - [AWS Cloud Practioner](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/AWS/Cloud%20Practitioner): Materials and summaries for preparing AWS Cloud Prctioner Exam.
   - [AWS Specific in Machine Learning](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/AWS/Machine_Learning): AWS Specified in Machine Learning.
-
 - [Hadoop](https://github.com/rzhang0716/Data-Science/tree/master/07_Big_Data/Hadoop):Include big data tools, Drill, FLink, Flume, HBase, Hive, Hue, Kafka, MApReduce, etc. 
 
-## Algorithm
+
+## 08. Data Structure and Algorithm
+- [Data Structure and Algortihm Course](https://github.com/rzhang0716/Data-Science/tree/master/08_DataStructure_Algorithms/DataStructure_Algorithm_Udemy): Master the code interview course in Udemy.
 
 
-## AWS
-
-## Spark
-- [PySpark]():
-- [SparkR]():
-
-
-## Web-Development
-- [HTML & CSS & Bootstrap]()
-
-
-
-## SAS
+## 09. SAS
 - [SAS Codes](https://github.com/rzhang0716/Data-Science/tree/master/09_SAS): SAS codes.
 - [SAS Base Certificate 9.4](https://github.com/rzhang0716/Data-Science/tree/master/09_SAS/SAS_Certificate_Exam): Personal summaried materials for passing SAS Base Exam.
 
 
+## 10. JavaScript
+- [JavaScript Course - Udemy](https://github.com/rzhang0716/Data-Science/tree/master/10_JavaScript/JS_Udemy): JavaScript Programming in Udemy.
 
 
-## Linux
-- [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/12_Linux)
+## 11. Web-Development
+- [HTML & CSS Course - Udemy](): HTML and CSS programming in Udmey.
+- [Personal Website](): Personal Website materials.
+
+
+## 12. Linux
+- [Linux Basic Commands](https://github.com/rzhang0716/Data-Science/tree/master/12_Linux): Basic Linux Commands.
 
 
 
-
+***
 # Support Information
 [![Ran's github stats](https://github-readme-stats.vercel.app/api?username=rzhang0716&count_private=true&show_icons=true&theme=radical&hide_rank=false)]
 
