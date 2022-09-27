@@ -1,0 +1,113 @@
+---
+title: "PCA for survival"
+author: "Ran Zhang"
+date: "12/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load libraries
+```{r}
+library(tidyverse)
+library(superpc)
+library(MetabolicSurv)
+library(readxl)
+```
+
+Set working directory and file
+```{r}
+setwd("~/Desktop/Private/Work/Nemours/Projects/Survival Analysis/SEERdata")
+df <- read_excel('partdata.xlsx')
+df <- na.omit(df)
+head(df)
+```
+
+Steps overview:
+1. Compute (univariate) standard regression coefficients for each feature
+2. Form a reduced data matrix consisting of only those features whose univariate coefficient exceeds a threshold theta in absolute value (theta is estimated by cross-validation)
+3. Compute the first (or first few) principal components of the reduced data matrix
+4. Use these principal component(s) in a regression model to predict the outcome
+
+
+```{r}
+# Change the name for matching further analysis
+df['censoring.status'] = df$status
+# Normalization 
+df[3:27] <- scale(df[3:27])
+```
+
+Train_test_split
+```{r}
+library(creditmodel)
+set.seed(666)
+split_df <- train_test_split(df,prop = 0.8,seed = 666)
+train_df <- split_df$train
+test_df <- split_df$test
+```
+
+Reset index and column names
+```{r}
+rownames(train_df) <- NULL
+rownames(test_df) <- NULL
+
+# Training Set
+censoring.status <- as.matrix(train_df$censoring.status)
+y_train <- as.vector(train_df$time)
+x_train <- as.matrix(train_df[3:27])
+colnames(censoring.status) <- NULL
+colnames(x_train) <- NULL
+colnames(y_train) <- NULL
+featurenames <- paste("feature",as.character(1:25),sep="")
+
+# Test Set 
+censoring.status <- as.matrix(train_df$censoring.status)
+y_test <- as.vector(test_df$time)
+x_test <- as.matrix(test_df[3:27])
+colnames(x_test) <- NULL
+colnames(y_test) <- NULL
+censoring.status.test <- as.matrix(test_df$censoring.status)
+colnames(censoring.status.test) <- NULL
+```
+
+
+
+Modeling and Prediction
+```{r}
+# Construct the data for analysis 
+data <- list(x = t(x_train), y =y_train, censoring.status = censoring.status, featurenames=featurenames)
+data.test<-list(x=t(x_test),y=y_test, censoring.status=censoring.status.test, featurenames= featurenames)
+
+# Train the model
+train.obj<- superpc.train(data, type="survival")
+
+# Cross-validation
+cv.obj<-superpc.cv(train.obj, data)
+
+# Plot the cross-validation
+print(superpc.plotcv(cv.obj))
+
+# Fits the continuous outcomes 
+fit.cts<- superpc.predict(train.obj, data, data.test, threshold=0.7, n.components=3, prediction.type="continuous")
+print(superpc.fit.to.outcome(train.obj, data.test, fit.cts$v.pred))
+```
+
+
+Compute the importance score for each equal its correlation with the supervised PC predictor.
+```{r}
+# Soft threshold the importance scores, and use the shrunken scores as weights to from a reduced predictor. 
+# Cross-validation gives us an estimate of the best amount to shrink and an idea of how well the shrunken predictor works.
+fit.red<- superpc.predict.red(train.obj, data, data.test, threshold=0.7)
+
+superpc.listfeatures(data.test, train.obj, fit.red)
+
+```
+
+
+
+
+
+
+
