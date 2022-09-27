@@ -1,4 +1,4 @@
-# Random Forest
+<align="center"> # Random Forest 
 
 ## Random Forest Concept
 1.	Is Random Forest performing well for imbalanced data?
