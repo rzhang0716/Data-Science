@@ -191,6 +191,7 @@ It is common to have small values in the range of 0.1 to 0.3, as well as values 
 A big insight into bagging ensembles and the random forest was allowing trees to be greedily created from subsamples of the training dataset. This can also be used to reduce the correlation between the trees in the sequence in gradient boosting models. 
 At each iteration, a subsample of the training data is drawn at random (w/t replacement) from the full training dataset. The randomly selected subsample is then used, instead of the full sample to fit the base learner. 
 Generally, aggressive sub-sampling such as selecting only 50% of the data has shown to be beneficial. 
+
 4. Penalized Gradient Boosting
 The leaf weight values of the trees can be regularized using popular regularization functions, such as L1 and L2. 
 
