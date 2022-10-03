@@ -21,11 +21,15 @@ Trees are added one at a time, and existing trees in the model are not changed. 
 ### 4. Improvements to Basic Gradient Boosting
 (1) Tree Constraints </br>
 It is important that the weak learners have the skill but remain weak. A good general heuristic is that the more constrained tree creation is, the more trees you will need in the model, and the reverse, where less constrained individual trees, the fewer trees that will be required. 
-•	Number of trees, generally adding more trees to the model can be very slow to overfit. The advice is to keep adding trees until no further improvement is observed. </br>
+•	Number of trees, generally adding more trees to the model can be very slow to overfit. The advice is to keep adding trees until no further improvement is observed, _n_estimators_ in python. </br>
 •	Tree depth, deeper trees are more complex trees, and shorter trees are preferred. Generally, better results are seen with 4-8 levels. </br>
 •	Number of nodes or number of leaves, like depth, this can constrain the size of the tree but is not constrained to a symmetrical structure if other constraints are used. </br>
 •	Number of observations per split imposes a minimum constraint on the amount of training data at a training node before a split can be constrained.</br>
 •	Minimum improvement to loss is a constraint on the improvement of any split added to a tree. </br>
+• Number of samples: Tree is fitted on the random subset of the samples. _sub_sample_ </br>
+• Number of Features: Number of features used by each tree and specified by _max_features_ </br>
+• Learning Rate" Controls the amount of contribution that each model has on the ensemble prediction. Smaller rate requires more decision trees while large rate require small value. _learning_rate_ </br>
+
 (2) Weight Updates
 The predictions to each tree are added together sequentially. The contribution of each tree to this sum can be weighted to slow down the learning by the algorithm. This weighting is called a shrinkage or a learning rate. The effect is that learning is slowed down, in turn, requires more trees to be added to the model, in turn taking longer to train, providing a configuration trade-off between the number of trees and learning rate. 
 It is common to have small values in the range of 0.1 to 0.3, as well as values less than 0.1. 
