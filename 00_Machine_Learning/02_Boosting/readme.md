@@ -21,7 +21,6 @@ Trees are added one at a time, and existing trees in the model are not changed. 
 ### 4. Improvements to Basic Gradient Boosting
 (1) Tree Constraints </br>
 It is important that the weak learners have the skill but remain weak. A good general heuristic is that the more constrained tree creation is, the more trees you will need in the model, and the reverse, where less constrained individual trees, the fewer trees that will be required. 
-
 •	Tree depth, deeper trees are more complex trees, and shorter trees are preferred. Generally, better results are seen with 4-8 levels. </br>
 •	Number of nodes or number of leaves, like depth, this can constrain the size of the tree but is not constrained to a symmetrical structure if other constraints are used. </br>
 •	Number of observations per split imposes a minimum constraint on the amount of training data at a training node before a split can be constrained.</br>
