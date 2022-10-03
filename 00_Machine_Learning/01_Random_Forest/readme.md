@@ -33,3 +33,8 @@ The depth of the tree means the length of the tree you desire. A larger tree hel
 **Ease of building:** not having as many model assumptions and no normalization required. <br/>
 **Feature importance:** can be obtained from random forests.<br/>
 **Feature selection:** an extension of the feature importance. By calculating the feature importance, drop the less important features and decreased the dimensionality of the model to improve the accuracy and reduce training time. Another way of performing feature selection is by shuffling individual features in the data set recursively so that they lose the information provided by the column is destroyed. The model is evaluated on this modified dataset to see how the scores have been impacted. The more important the feature, the more profound its impact on the score(7).
+
+
+***
+## Reference:
+1. https://towardsdatascience.com/mastering-random-forests-a-comprehensive-guide-51307c129cb1
