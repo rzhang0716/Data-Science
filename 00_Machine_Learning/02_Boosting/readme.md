@@ -19,7 +19,7 @@ Decision trees are used as the weak learner in gradient boosting. Initially, suc
 Trees are added one at a time, and existing trees in the model are not changed. Like the gradient descent, the additional tree is added to the model to reduce the loss. This procedure is called functional gradient descent or gradient descent with functions. The output for the new tree is then added to the output of the existing sequence of trees to correct or improve the final output of the model. A fixed number of trees are added, or training stops once loss reaches an acceptable level or no longer improves on an external validation dataset. 
 
 ### 4. Improvements to Basic Gradient Boosting
-(1) Tree Constraints
+(1) Tree Constraints </br>
 It is important that the weak learners have the skill but remain weak. A good general heuristic is that the more constrained tree creation is, the more trees you will need in the model, and the reverse, where less constrained individual trees, the fewer trees that will be required. 
 •	Number of trees, generally adding more trees to the model can be very slow to overfit. The advice is to keep adding trees until no further improvement is observed. </br>
 •	Tree depth, deeper trees are more complex trees, and shorter trees are preferred. Generally, better results are seen with 4-8 levels. </br>
