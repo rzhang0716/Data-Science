@@ -1,5 +1,17 @@
 # Boosting
 
+## Ensemble Learning
+### 1. Bagging 
+Build different models in parallel using random subsets of data and deterministically aggregates the predictions of all predictors.
+
+### 2. Boosting
+Iterative, sequential, and adaptive as each predictor fixes its predecessors's error.
+
+### 3. Stacking
+Meta-learning technique that involves combining predictions from multiple machine learning algorithms, like bagging and boosting. 
+
+
+***
 ## Gradient Boosting
 ### 1. The origin of Boosting
 A weak hypothesis or weak learner is defined as one whose performance is at least slightly better than random chance. The idea is to use the weak learning method several times to get a succession of hypotheses, each one refocused on the examples that the previous ones found difficult and misclassified. 
@@ -56,8 +68,15 @@ XGBoost is a more regularized form of Gradient Boosting, XGBoost uses advanced r
 ***
 ## CatBoost
 
+CatBoost's name is from "Category" and "Boosting", widely used in recommendation systems, search ranking, self-driving cars, forecasting, and virtual assistants. 
+
+### 1. Key Features of CatBoost
+(1) Symmetric trees: CatBoost build symmetric (balanced) trees, unlike XGBoost and LightGBM. In every step, leaves from the previous tree are split using the same condition. The feature-split pair that accounts for the lowest loss is selected and used for all the level's nodes. This can used as regularization to control overfitting due to the structure serves. 
+![image](https://user-images.githubusercontent.com/61474051/193871875-48296930-85d4-4379-b54a-f6713fad7abe.png)
+
 
 
 ***
 ## Reference: 
 1. https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/
+2. https://neptune.ai/blog/when-to-choose-catboost-over-xgboost-or-lightgbm
