@@ -101,7 +101,18 @@ LightGBM: lgb-rmse, lgb-pairwise </br>
 
 (3) InternalFeatureImportance: Calculate values for each input feature and various combinations using the split values in the node on the path symmetric tree leaves. 
 
+(4) SHAP: CatBoost uses SHAP (SHapley Additive exPlanations) to break a prediction value into contributions from each feature. It calculate feature importance by measuring the impact of a feature on a single prediction value compared to the baseline prediction. This provides visual explanations of features that make the most impact on your model's decision-making. SHAP can be applied in two ways: Per Data Instance and whole data set. 
 
+
+### 5. Feature analysis chart
+This provides calculated and plotted feature-specific statistics and visualizes how CatBoost is splitting the data for each feature. Includes 
+(1) Mean target value for each bin (bins groups continuous feature) or category (supported currently for only One-Hot Encoded features). </br>
+(2) Mean prediction value for each bin. </br>
+(3) Number of data instances (object) in each bin </br>
+(4) Predictions for various feature values </br>
+
+### 6. Parameters comparison
+![Screen Shot 2022-10-04 at 1 13 20 PM](https://user-images.githubusercontent.com/61474051/193883552-731f49c0-b998-4057-8437-5377540d23ee.png)
 
 
 ***
