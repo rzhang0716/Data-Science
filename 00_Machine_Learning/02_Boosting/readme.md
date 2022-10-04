@@ -74,9 +74,38 @@ CatBoost's name is from "Category" and "Boosting", widely used in recommendation
 (1) Symmetric trees: CatBoost build symmetric (balanced) trees, unlike XGBoost and LightGBM. In every step, leaves from the previous tree are split using the same condition. The feature-split pair that accounts for the lowest loss is selected and used for all the level's nodes. This can used as regularization to control overfitting due to the structure serves. 
 ![image](https://user-images.githubusercontent.com/61474051/193871875-48296930-85d4-4379-b54a-f6713fad7abe.png)
 
+(2) Ordered boosting: Classic boosting algorithms are prone to overfitting on small/noisy datasets due to a problem known as prediction shift. When calculating the gradient estimate of a data instance, these algorithms use the same data instance that the model was built with, thus having no chances of experiencing unseen data. However, CatBoost uses the concept of ordered boosting, a premutation-driven approach to train model on a subset of data while calculating residuals on another subset, thus preventing target leakage and overfitting. 
+
+(3) Native feature support: CatBoost supports all kinds of features, numerical, categorical, or text and fast processing. 
+
+### 2. Categorical features
+(1) One-hot encoding: By default, CatBooster represents all binary features with one-hot encoding. And this can extends to multiple class by setting *one_hot_max_size = N*. 
+
+(2) Statistics based on category: CatBoost applies target encoding with random permutation to handle categorical features. It creates a new feature to account for the category encoding. The addition of random permutation to the encoding strategy is to prevent overfitting due to data leakage and feature bias. 
+
+(3) Greedy search for combination: CatBoost also automatically combines categorical features, most times two or three. To keep possible combinations limited, CatBoost does not enumerate through all combinations but only some of the best, using statistics like category frequency. (See reference 3). For each tree, CatBoost adds all categorical features and their combinations already used for previous splits in the current tree with all categorical features in the dataset. 
+
+
+### 3. Text Features
+CatBoost also handles text features by providing inherent text preprocessing using Bag-of-Words, Naive-Bayes, and BM-25 (for multiclassification) to extract words from text data, create dictionaries, and transform them into numerical features. 
+
+CatBoost has a ranking mode - CatBoostRanking, just like XGBoost ranker and LightGBM ranker. 
+CatBoost: RMSE, QueryRMSE, PairLogit, PairLogitPairwise, YetiRank, YetiRankPairwise </br>
+XGBoost: reg:linear, xgb-lmart-ndcg, xgb-pairwise </br>
+LightGBM: lgb-rmse, lgb-pairwise </br>
+
+### 4. Feature Importance
+(1) PredictionValuesChange: This shows on average, the prediction changes over the feature value changes. The bigger the average values of prediction changes due to features, the higher the importance. 
+
+(2) LossFunctionChange: This will get feature importance by taking the difference between the loss function of a model, including a given feature, and the model without that feature. The higher the difference, the more the feature is important. 
+
+(3) InternalFeatureImportance: Calculate values for each input feature and various combinations using the split values in the node on the path symmetric tree leaves. 
+
+
 
 
 ***
 ## Reference: 
 1. https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/
 2. https://neptune.ai/blog/when-to-choose-catboost-over-xgboost-or-lightgbm
+3. https://catboost.ai/en/docs/concepts/algorithm-main-stages_cat-to-numberic
