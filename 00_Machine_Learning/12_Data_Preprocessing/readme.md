@@ -9,6 +9,12 @@ Feature selection methods can be divided into supervised and unsupervise. The di
 (2) **Filter feature selection methods** use statistical techniques to evaluate the relationship between each input variable and the target variabe, and these scores are used as the basis to choose (filter) those input variables that will be used in the model. Filter methods evaluate the relevance of the predictors outside of the predictive models and subsequently model only the predictors that pass some criterion. </br>
 (3) **Intrinsic featrure selection methods** There are some machine learning algorithms that perform feature selection automatically as part of learning the model. Such as penalized regression models like Lasso and decision trees, random forests etc. 
 
+### 2. Statistics for Filter-Based Feature Selection Methods
+It is common to use correlation type statistical measures between input and output variables as the basis for filter feature selection. The statistical measures used in filter-based feature selection are generally calculated one input variable at a time with the target variable.
+![image](https://user-images.githubusercontent.com/61474051/194111880-6d35ecdf-de6b-426f-9a4f-27bf7b92effb.png)
+
+
+
 
 ***
 1. Most algorithms (linear regression, logistic regression, neural network, support vector machine, etc.) require some sort of the encoding on categorical variables. This is because most algorithms only take numerical values as inputs.
@@ -18,3 +24,11 @@ Feature selection methods can be divided into supervised and unsupervise. The di
 3. R is doing dummy coding for factors, which is almost one-hot encoding, but one class is used as a reference class. This means that for 𝑛 classes there will be 𝑛−1 binary indicator variables. For the reference class all these are 0. For any other class a single indicator will be 1 and the rest 0.
 
 4. LabelEncoder in scikit-learn is for y only, as OneHotEncoder in scikit-learn now is supported for string input, no need labelencoder to convert strings to numbers.
+
+
+
+
+
+***
+## Reference
+1. https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/
