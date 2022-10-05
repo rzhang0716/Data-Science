@@ -136,6 +136,8 @@ a. "Forbidden": Missing values are interpreted as an error as they are not suppo
 b. "Min": Missing values are processed as the minimum values (default) for the feature under observation. </br>
 c. "Max": Missing values are processed as the maximum value for the feature under observation. 
 
+### 8. Tutorial and codes
+Please see reference 5 for the tutorials and codes for CatBoost. 
 
 ***
 ## Reference: 
@@ -143,3 +145,4 @@ c. "Max": Missing values are processed as the maximum value for the feature unde
 2. https://neptune.ai/blog/when-to-choose-catboost-over-xgboost-or-lightgbm
 3. https://catboost.ai/en/docs/concepts/algorithm-main-stages_cat-to-numberic
 4. https://machinelearningmastery.com/light-gradient-boosted-machine-lightgbm-ensemble/
+5. https://github.com/catboost/tutorials
