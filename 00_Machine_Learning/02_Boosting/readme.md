@@ -120,7 +120,12 @@ This provides calculated and plotted feature-specific statistics and visualizes 
 a. Iter: Consider the overfitted model and stop training after the specified number of iterations using the iteration with the optimal metric value. This uses the *early_stopping_rounds* parameters same as XGBoost and LightGBM.  </br>
 b. IncToDec: Ignore the overfitting detector when the threshold is reached and continue learning for the specified number of iterations after the iteration with the optimal metric value.
 
-(2) Missing value support: CatBoost provides three inherent missing values stategies for processing missing values
+(2) Missing value support: CatBoost provides three inherent missing values stategies for processing missing values </br>
+a. "Forbidden": Missing values are interpreted as an error as they are not supported. </br>
+b. "Min": Missing values are processed as the minimum values (default) for the feature under observation. </br>
+c. "Max": Missing values are processed as the maximum value for the feature under observation. 
+
+
 ***
 ## Reference: 
 1. https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/
