@@ -38,3 +38,4 @@ It is common to use correlation type statistical measures between input and outp
 ## Reference
 1. https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/
 2. https://scikit-learn.org/stable/auto_examples/compose/plot_column_transformer_mixed_types.html
+3. https://scikit-learn.org/stable/modules/preprocessing.html
