@@ -63,6 +63,17 @@ XGBoost is a more regularized form of Gradient Boosting, XGBoost uses advanced r
 
 ***
 ## LightGBM
+Light Gradient Boosted Machine, or LightGBM for short, is an open-source implementation of gradient boosting designed to be efficient and perhaps more effective than other implementations. </br>
+
+### 1. Algorithm
+**Gradient-based One-Side Sampling**, or GOSS for short, is a modification to the gradient boosting method that focuses attention on those training examples that result in a larger gradient, in turn speeding up learning and reducing the computational complexity of the method. With GOSS, we exclude a significant proportion of data instances with small gradients, and only use the rest to estimate the information gain. Since the data instances with larger graidents play a more important role in the computation of information gain, GOSS can obtain quite accurate estimation of the information gain with a much smaller data size. </br>
+
+**Exclusive Feature Bundling**, or EFB for short, is an approach for bundling sparse (mostly zero) mutually exclusive features, such as categorical variable inputs that have been one-hot encoded. It is a type of automatic feature selection. Budle mutually exclusive features to reduce the number of features. </br>
+
+We can consider the LightGBM as the gradient boosting with GOSS and EFB. 
+
+### Hyperparameter
+Besides the tree depth, number of trees, learning rate, **Boosting Type** is another hyperparameter should be considered. *boosting_type* in python. The default is GBDT, short for gradient boosting decion tree. Also, dart for dropouts meet multiple additive regression trees; goos is mentioned above. 
 
 
 ***
@@ -131,3 +142,4 @@ c. "Max": Missing values are processed as the maximum value for the feature unde
 1. https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/
 2. https://neptune.ai/blog/when-to-choose-catboost-over-xgboost-or-lightgbm
 3. https://catboost.ai/en/docs/concepts/algorithm-main-stages_cat-to-numberic
+4. https://machinelearningmastery.com/light-gradient-boosted-machine-lightgbm-ensemble/
