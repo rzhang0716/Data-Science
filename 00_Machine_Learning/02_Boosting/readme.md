@@ -118,7 +118,9 @@ This provides calculated and plotted feature-specific statistics and visualizes 
 ### 7. Other useful features
 (1) Overfitting detector: CatBoost has an overfitting detector that can stop training earlier than the training paramters. Two stragegies can be implemented for overfitting detection. </br>
 a. Iter: Consider the overfitted model and stop training after the specified number of iterations using the iteration with the optimal metric value. This uses the *early_stopping_rounds* parameters same as XGBoost and LightGBM.  </br>
-b. IncToDec: 
+b. IncToDec: Ignore the overfitting detector when the threshold is reached and continue learning for the specified number of iterations after the iteration with the optimal metric value.
+
+(2) Missing value support: CatBoost provides three inherent missing values stategies for processing missing values
 ***
 ## Reference: 
 1. https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/
