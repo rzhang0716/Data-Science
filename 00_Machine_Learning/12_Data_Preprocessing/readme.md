@@ -27,7 +27,7 @@ It is common to use correlation type statistical measures between input and outp
 
 4. LabelEncoder in scikit-learn is for y only, as OneHotEncoder in scikit-learn now is supported for string input, no need labelencoder to convert strings to numbers.
 
-5. Column Transformer
+5. Column Transformer. </br>
 ![Screen Shot 2022-10-05 at 12 35 26 PM](https://user-images.githubusercontent.com/61474051/194114104-c4d7bdfb-24ee-4e01-ad81-ce90f8ad512c.png)
 
 
