@@ -1,14 +1,14 @@
 <h1>Random Forest</h1>
 
 ## Random Forest Concept
-1.	Is Random Forest performing well for imbalanced data?
+1.	Is Random Forest performing well for imbalanced data? </br>
 The Random Forest model is built on decision trees and decision trees are sensitive to class imbalance. Each tree is built on a “bag” and each bag is a uniform random sample from the data (with replacement). Therefore, each tree will be biased in the same direction and magnitude by class imbalance. 
 We could use over/under-sampling and add weights to the tree splitting criterion to solve this problem. In Python, we could use class_weight from the RandomForestClassifier in scikit-learn. In R, we could use the Ranger library, to set the class.weights. 
-2.	Does Random Forest require normalization?
+2.	Does Random Forest require normalization?</br>
 No, scaling is not necessary for the random forest. 
 The nature of RF is such that convergence and numerical precision issues, can sometimes trip up the algorithms used in logistic and linear regression, as well as neural networks, which aren’t so important. Because of this, we don’t need to transform variables to a common scale as we did in neural networks.
 Tree-based models do not care about the absolute value that a feature takes. They only care about the order of the values. Hence, normalization is used mainly in linear models/knn/neural networks because they are affected by the absolute values taken by feature(4).
-3.	Is there any relation between the number of trees and the tree depth? Is it necessary that the tree depth should be smaller than the number of trees?
+3.	Is there any relation between the number of trees and the tree depth? Is it necessary that the tree depth should be smaller than the number of trees?</br>
 There is no thumb ratio between the number of trees and tree depth. Generally, increasing the number of trees will improve the performance of the model, also with computational cost. Sometimes, after a certain amount of trees, the performance not increasing much.
 The depth of the tree means the length of the tree you desire. A larger tree helps you to convey more info whereas a smaller tree gives less precise. So depth should large enough to split each node to your desired number of observations(6).
 
