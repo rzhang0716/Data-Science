@@ -72,7 +72,7 @@ Light Gradient Boosted Machine, or LightGBM for short, is an open-source impleme
 
 We can consider the LightGBM as the gradient boosting with GOSS and EFB. 
 
-### Hyperparameter
+### 2. Hyperparameter
 Besides the tree depth, number of trees, learning rate, **Boosting Type** is another hyperparameter should be considered. *boosting_type* in python. The default is GBDT, short for gradient boosting decion tree. Also, dart for dropouts meet multiple additive regression trees; goos is mentioned above. 
 
 
