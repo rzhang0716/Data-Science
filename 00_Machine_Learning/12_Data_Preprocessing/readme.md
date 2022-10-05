@@ -2,7 +2,12 @@
 
 ## Feature Selection
 ### 1. Feature Selection Methods
-**Feature Selection** methods are intended to reduce the number of input variables to those that are believed to be most useful to a model in order to predict the target variable. Mainly focused on removing non-informative or redundant predictors from the model. 
+**Feature Selection** methods are intended to reduce the number of input variables to those that are believed to be most useful to a model in order to predict the target variable. Mainly focused on removing non-informative or redundant predictors from the model. </br>
+
+Feature selection methods can be divided into supervised and unsupervise. The difference is whether features are selected based on the target variable or not. Unsupervised methods remove redundant variables using correlation. Whereas supervised techniques use the target variable that remove irrelavent variables. Supervised can be further divided iuinto wrapper and filter methods.
+(1) **Wrapper feature selection methods** create many models with different subses of input features and select those features that result in the best performing model according to a performance metric, such as recursive feature elimination (RFE). Wrapper methods evaluate multiple models using procedures that add and/or remove predicors to find the optimal combination that maximize model performance. </br>
+(2) **Filter feature selection methods** use statistical techniques to evaluate the relationship between each input variable and the target variabe, and these scores are used as the basis to choose (filter) those input variables that will be used in the model. Filter methods evaluate the relevance of the predictors outside of the predictive models and subsequently model only the predictors that pass some criterion. </br>
+(3) **Intrinsic featrure selection methods** There are some machine learning algorithms that perform feature selection automatically as part of learning the model. Such as penalized regression models like Lasso and decision trees, random forests etc. 
 
 
 ***
