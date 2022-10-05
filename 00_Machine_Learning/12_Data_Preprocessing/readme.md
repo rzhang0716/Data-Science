@@ -16,7 +16,9 @@ It is common to use correlation type statistical measures between input and outp
 
 
 
+
 ***
+## Notes
 1. Most algorithms (linear regression, logistic regression, neural network, support vector machine, etc.) require some sort of the encoding on categorical variables. This is because most algorithms only take numerical values as inputs.
 
 2. Algorithms that do not require an encoding are algorithms that can directly deal with joint discrete distributions such as Markov chain / Naive Bayes / Bayesian network, tree based, etc.
@@ -25,6 +27,9 @@ It is common to use correlation type statistical measures between input and outp
 
 4. LabelEncoder in scikit-learn is for y only, as OneHotEncoder in scikit-learn now is supported for string input, no need labelencoder to convert strings to numbers.
 
+5. Column Transformer
+![Screen Shot 2022-10-05 at 12 35 26 PM](https://user-images.githubusercontent.com/61474051/194114104-c4d7bdfb-24ee-4e01-ad81-ce90f8ad512c.png)
+
 
 
 
@@ -32,3 +37,4 @@ It is common to use correlation type statistical measures between input and outp
 ***
 ## Reference
 1. https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/
+2. https://scikit-learn.org/stable/auto_examples/compose/plot_column_transformer_mixed_types.html
