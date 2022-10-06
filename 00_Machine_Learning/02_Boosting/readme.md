@@ -1,5 +1,17 @@
 # Boosting
 
+## Ensemble Learning
+### 1. Bagging 
+Build different models in parallel using random subsets of data and deterministically aggregates the predictions of all predictors.
+
+### 2. Boosting
+Iterative, sequential, and adaptive as each predictor fixes its predecessors's error.
+
+### 3. Stacking
+Meta-learning technique that involves combining predictions from multiple machine learning algorithms, like bagging and boosting. 
+
+
+***
 ## Gradient Boosting
 ### 1. The origin of Boosting
 A weak hypothesis or weak learner is defined as one whose performance is at least slightly better than random chance. The idea is to use the weak learning method several times to get a succession of hypotheses, each one refocused on the examples that the previous ones found difficult and misclassified. 
@@ -51,13 +63,86 @@ XGBoost is a more regularized form of Gradient Boosting, XGBoost uses advanced r
 
 ***
 ## LightGBM
+Light Gradient Boosted Machine, or LightGBM for short, is an open-source implementation of gradient boosting designed to be efficient and perhaps more effective than other implementations. </br>
+
+### 1. Algorithm
+**Gradient-based One-Side Sampling**, or GOSS for short, is a modification to the gradient boosting method that focuses attention on those training examples that result in a larger gradient, in turn speeding up learning and reducing the computational complexity of the method. With GOSS, we exclude a significant proportion of data instances with small gradients, and only use the rest to estimate the information gain. Since the data instances with larger graidents play a more important role in the computation of information gain, GOSS can obtain quite accurate estimation of the information gain with a much smaller data size. </br>
+
+**Exclusive Feature Bundling**, or EFB for short, is an approach for bundling sparse (mostly zero) mutually exclusive features, such as categorical variable inputs that have been one-hot encoded. It is a type of automatic feature selection. Budle mutually exclusive features to reduce the number of features. </br>
+
+We can consider the LightGBM as the gradient boosting with GOSS and EFB. 
+
+### 2. Hyperparameter
+Besides the tree depth, number of trees, learning rate, **Boosting Type** is another hyperparameter should be considered. *boosting_type* in python. The default is GBDT, short for gradient boosting decion tree. Also, dart for dropouts meet multiple additive regression trees; goos is mentioned above. 
 
 
 ***
 ## CatBoost
 
+CatBoost's name is from "Category" and "Boosting", widely used in recommendation systems, search ranking, self-driving cars, forecasting, and virtual assistants. 
 
+### 1. Key Features of CatBoost
+(1) Symmetric trees: CatBoost build symmetric (balanced) trees, unlike XGBoost and LightGBM. In every step, leaves from the previous tree are split using the same condition. The feature-split pair that accounts for the lowest loss is selected and used for all the level's nodes. This can used as regularization to control overfitting due to the structure serves. 
+![image](https://user-images.githubusercontent.com/61474051/193871875-48296930-85d4-4379-b54a-f6713fad7abe.png)
+
+(2) Ordered boosting: Classic boosting algorithms are prone to overfitting on small/noisy datasets due to a problem known as prediction shift. When calculating the gradient estimate of a data instance, these algorithms use the same data instance that the model was built with, thus having no chances of experiencing unseen data. However, CatBoost uses the concept of ordered boosting, a premutation-driven approach to train model on a subset of data while calculating residuals on another subset, thus preventing target leakage and overfitting. 
+
+(3) Native feature support: CatBoost supports all kinds of features, numerical, categorical, or text and fast processing. 
+
+### 2. Categorical features
+(1) One-hot encoding: By default, CatBooster represents all binary features with one-hot encoding. And this can extends to multiple class by setting *one_hot_max_size = N*. 
+
+(2) Statistics based on category: CatBoost applies target encoding with random permutation to handle categorical features. It creates a new feature to account for the category encoding. The addition of random permutation to the encoding strategy is to prevent overfitting due to data leakage and feature bias. 
+
+(3) Greedy search for combination: CatBoost also automatically combines categorical features, most times two or three. To keep possible combinations limited, CatBoost does not enumerate through all combinations but only some of the best, using statistics like category frequency. (See reference 3). For each tree, CatBoost adds all categorical features and their combinations already used for previous splits in the current tree with all categorical features in the dataset. 
+
+
+### 3. Text Features
+CatBoost also handles text features by providing inherent text preprocessing using Bag-of-Words, Naive-Bayes, and BM-25 (for multiclassification) to extract words from text data, create dictionaries, and transform them into numerical features. 
+
+CatBoost has a ranking mode - CatBoostRanking, just like XGBoost ranker and LightGBM ranker. 
+CatBoost: RMSE, QueryRMSE, PairLogit, PairLogitPairwise, YetiRank, YetiRankPairwise </br>
+XGBoost: reg:linear, xgb-lmart-ndcg, xgb-pairwise </br>
+LightGBM: lgb-rmse, lgb-pairwise </br>
+
+### 4. Feature Importance
+(1) PredictionValuesChange: This shows on average, the prediction changes over the feature value changes. The bigger the average values of prediction changes due to features, the higher the importance. 
+
+(2) LossFunctionChange: This will get feature importance by taking the difference between the loss function of a model, including a given feature, and the model without that feature. The higher the difference, the more the feature is important. 
+
+(3) InternalFeatureImportance: Calculate values for each input feature and various combinations using the split values in the node on the path symmetric tree leaves. 
+
+(4) SHAP: CatBoost uses SHAP (SHapley Additive exPlanations) to break a prediction value into contributions from each feature. It calculate feature importance by measuring the impact of a feature on a single prediction value compared to the baseline prediction. This provides visual explanations of features that make the most impact on your model's decision-making. SHAP can be applied in two ways: Per Data Instance and whole data set. 
+
+
+### 5. Feature analysis chart
+This provides calculated and plotted feature-specific statistics and visualizes how CatBoost is splitting the data for each feature. Includes 
+(1) Mean target value for each bin (bins groups continuous feature) or category (supported currently for only One-Hot Encoded features). </br>
+(2) Mean prediction value for each bin. </br>
+(3) Number of data instances (object) in each bin </br>
+(4) Predictions for various feature values </br>
+
+### 6. Parameters comparison
+![Screen Shot 2022-10-04 at 1 13 20 PM](https://user-images.githubusercontent.com/61474051/193883552-731f49c0-b998-4057-8437-5377540d23ee.png)
+
+
+### 7. Other useful features
+(1) Overfitting detector: CatBoost has an overfitting detector that can stop training earlier than the training paramters. Two stragegies can be implemented for overfitting detection. </br>
+a. Iter: Consider the overfitted model and stop training after the specified number of iterations using the iteration with the optimal metric value. This uses the *early_stopping_rounds* parameters same as XGBoost and LightGBM.  </br>
+b. IncToDec: Ignore the overfitting detector when the threshold is reached and continue learning for the specified number of iterations after the iteration with the optimal metric value.
+
+(2) Missing value support: CatBoost provides three inherent missing values stategies for processing missing values </br>
+a. "Forbidden": Missing values are interpreted as an error as they are not supported. </br>
+b. "Min": Missing values are processed as the minimum values (default) for the feature under observation. </br>
+c. "Max": Missing values are processed as the maximum value for the feature under observation. 
+
+### 8. Tutorial and codes
+Please see reference 5 for the tutorials and codes for CatBoost. 
 
 ***
 ## Reference: 
 1. https://machinelearningmastery.com/gradient-boosting-machine-ensemble-in-python/
+2. https://neptune.ai/blog/when-to-choose-catboost-over-xgboost-or-lightgbm
+3. https://catboost.ai/en/docs/concepts/algorithm-main-stages_cat-to-numberic
+4. https://machinelearningmastery.com/light-gradient-boosted-machine-lightgbm-ensemble/
+5. https://github.com/catboost/tutorials
