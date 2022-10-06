@@ -25,7 +25,10 @@ Successive halving (SH) is like a tournament among candidate parameter combinati
 #### (1) Specifying an objective metric
 By default, accuracy score is for classification and r2 is for regression. Score function can be defined based on different targets of the problem. 
 
-#### (2) 
+#### (2) Specifying multiple metrics for evaluation
+We can also specifiy multimetric score by setting a list of strings or a dictionary. See reference 2.
+
+
 
 
 
@@ -34,3 +37,4 @@ By default, accuracy score is for classification and r2 is for regression. Score
 ***
 ## Reference:
 1. https://scikit-learn.org/stable/modules/grid_search.html
+2. https://scikit-learn.org/stable/auto_examples/model_selection/plot_multi_metric_evaluation.html#sphx-glr-auto-examples-model-selection-plot-multi-metric-evaluation-py
