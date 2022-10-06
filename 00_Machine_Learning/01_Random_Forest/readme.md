@@ -47,7 +47,8 @@ The depth of the tree means the length of the tree you desire. A larger tree hel
 The permutation based importance can be used to overcome drawbacks of default feature importance computed with mean impurity decrease. This method will randomly shuffle each feature and compute the change in the model's performance. The features which impact the performance the most are the most important one. </br>
 The permutation feature importance is defined to be the decrease in a model score when a single feature value is randomly shuffled. This procedure breaks the realtionship between the feature and the target, thus the drop in the model score is indicative of how much the model depends on the feature. 
 
-
+### 3. SHAP
+SHApley Additive exPlanations is a game theoretic approach to explain the output of any machine learning model. Also for tree ensemble methods, including XGBoost, LightGBM, CatBoost, scikit-learn and pyspark. See reference 5 for more about this method. 
 
 ***
 ## Reference:
@@ -55,4 +56,5 @@ The permutation feature importance is defined to be the decrease in a model scor
 2. https://mljar.com/blog/feature-importance-in-random-forest/
 3. https://scikit-learn.org/stable/modules/permutation_importance.html
 4. https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html#sphx-glr-auto-examples-inspection-plot-permutation-importance-py
+5. https://github.com/slundberg/shap
 
