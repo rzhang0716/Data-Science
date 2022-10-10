@@ -58,6 +58,7 @@ SHApley Additive exPlanations is a game theoretic approach to explain the output
 We can download the dot file and then install graphviz to read it and we can also using scikit-learn *export_graphviz* library to read it.
 
 ### 3. Using *dtreeviz*
+This tool has multiple functions include more specific details, including show the prediction path, nodes, high deminsion figures etc. 
 
 
 ***
