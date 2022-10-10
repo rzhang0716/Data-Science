@@ -51,10 +51,22 @@ The permutation feature importance is defined to be the decrease in a model scor
 SHApley Additive exPlanations is a game theoretic approach to explain the output of any machine learning model. Also for tree ensemble methods, including XGBoost, LightGBM, CatBoost, scikit-learn and pyspark. See reference 5 for more about this method. 
 
 ***
+## Visualize decision trees & random forest
+### 1. Visualize using Matplotlib
+
+### 2. Visualize using Graphviz
+We can download the dot file and then install graphviz to read it and we can also using scikit-learn *export_graphviz* library to read it.
+
+### 3. Using *dtreeviz*
+This tool has multiple functions include more specific details, including show the prediction path, nodes, high deminsion figures etc. 
+
+
+***
 ## Reference:
 1. https://towardsdatascience.com/mastering-random-forests-a-comprehensive-guide-51307c129cb1
 2. https://mljar.com/blog/feature-importance-in-random-forest/
 3. https://scikit-learn.org/stable/modules/permutation_importance.html
 4. https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html#sphx-glr-auto-examples-inspection-plot-permutation-importance-py
 5. https://github.com/slundberg/shap
+6. https://github.com/parrt/dtreeviz
 
