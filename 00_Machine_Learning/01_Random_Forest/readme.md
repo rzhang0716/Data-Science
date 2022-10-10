@@ -68,4 +68,5 @@ This tool has multiple functions include more specific details, including show t
 3. https://scikit-learn.org/stable/modules/permutation_importance.html
 4. https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html#sphx-glr-auto-examples-inspection-plot-permutation-importance-py
 5. https://github.com/slundberg/shap
+6. https://github.com/parrt/dtreeviz
 
