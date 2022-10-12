@@ -65,6 +65,10 @@ XGBoost is a more regularized form of Gradient Boosting, XGBoost uses advanced r
 ## LightGBM
 Light Gradient Boosted Machine, or LightGBM for short, is an open-source implementation of gradient boosting designed to be efficient and perhaps more effective than other implementations. </br>
 
+LightGBM is leaf-wise grows, unlike others are level-wise. There will result in the same tree if grow the full tree. The difference is in the order in which the tree is expanded since we don't grow the tree to the full depth, order really matters in the normal situation. </br>
+
+For a small number of nodes, leaf-wise will probably out-perform level-wise. As we add more nodes, without stopping or pruning they will converage to the same performance becasue they will literally build the same tree eventually. </br>
+
 ### 1. Algorithm
 **Gradient-based One-Side Sampling**, or GOSS for short, is a modification to the gradient boosting method that focuses attention on those training examples that result in a larger gradient, in turn speeding up learning and reducing the computational complexity of the method. With GOSS, we exclude a significant proportion of data instances with small gradients, and only use the rest to estimate the information gain. Since the data instances with larger graidents play a more important role in the computation of information gain, GOSS can obtain quite accurate estimation of the information gain with a much smaller data size. </br>
 
