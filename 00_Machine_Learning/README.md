@@ -7,4 +7,4 @@ Machine learning courses in Coursera (Andrew Ng), Cornell CS4780 (Killian Weinbe
 Classification and Feature Importance and feature selection using Random Forest in Spark, Python and R. 
 
 ## 02. Boosting
-Classification in Spark, R and Python (XGBoost, LightGBM, CatBoost), and extract feature importance and feature selection with XGBoost. 
+Classification in Spark, R and Python (XGBoost, LightGBM, CatBoost), and extract feature importance and feature selection. 
