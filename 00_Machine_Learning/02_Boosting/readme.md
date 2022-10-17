@@ -57,7 +57,9 @@ The leaf weight values of the trees can be regularized using popular regularizat
 
 ***
 ## XGBoost
-XGBoost is a more regularized form of Gradient Boosting, XGBoost uses advanced regularization (L1 & L2), which improves model generalization capabilities. Faster and better model performance.
+XGBoost is a more regularized form of Gradient Boosting, XGBoost uses advanced regularization (L1 & L2), which improves model generalization capabilities. Faster and better model performance. </br>
+
+Feature Importance: Built in function plot_importance, the evaluation metric is f-score, which simply sums up how many times each feature is split on. 
 
 
 
