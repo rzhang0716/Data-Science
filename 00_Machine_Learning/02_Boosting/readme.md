@@ -84,7 +84,7 @@ Feature Importance: Built in function plot_importance, the evaluation metric is 
 •	alpha: L1 regularization. This also encourages smaller weights. </br>
 
 ### Imbalanced data 
-Difference between `sample_weights` and `scale_pos_weight` </br>
+Difference between DMatrix's weight and `scale_pos_weight` </br>
 
 `scale_pos_weight` is a float (i.e. single value), which allows you to adjust the classification threshold. I.e. to tune the model's tendency to predict positive or negative values across the entire dataset.</br>
 
