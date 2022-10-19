@@ -61,7 +61,19 @@ XGBoost is a more regularized form of Gradient Boosting, XGBoost uses advanced r
 
 Feature Importance: Built in function plot_importance, the evaluation metric is f-score, which simply sums up how many times each feature is split on. 
 
+•	learning_rate: In each boosting step, this values shrinks the weight of new feature, preventing overfitting or a local minimum. The value should between 0 and 1. </br>
 
+•	max_depth: The maximum depth of a tree. Greater the depth and the greater the complexity of the model and more easy to overfit. </br>
+
+•	n_estimators: Number of trees in the ensemble. </br>
+
+•	gamma: Regularization term and it's related to the complexity of the model. It is the minimum loss necessary of occur a split in a leaf. </br>
+
+•	colsample_bytree: Represents the fraction of columns to be subsampled. Re;ated to the speed of the algorithm and prevent overfitting. </br>
+
+•	lambda: L2 regularization. This encourages smaller weights. </br>
+
+•	alpha: L1 regularization. This also encourages smaller weights. </br>
 
 ***
 ## LightGBM
