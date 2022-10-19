@@ -33,13 +33,21 @@ Trees are added one at a time, and existing trees in the model are not changed. 
 ### 4. Improvements to Basic Gradient Boosting
 (1) Tree Constraints </br>
 It is important that the weak learners have the skill but remain weak. A good general heuristic is that the more constrained tree creation is, the more trees you will need in the model, and the reverse, where less constrained individual trees, the fewer trees that will be required. 
+
 •	Tree depth, deeper trees are more complex trees, and shorter trees are preferred. Generally, better results are seen with 4-8 levels. </br>
+
 •	Number of nodes or number of leaves, like depth, this can constrain the size of the tree but is not constrained to a symmetrical structure if other constraints are used. </br>
+
 •	Number of observations per split imposes a minimum constraint on the amount of training data at a training node before a split can be constrained.</br>
+
 •	Minimum improvement to loss is a constraint on the improvement of any split added to a tree. </br>
+
 •	Number of trees, generally adding more trees to the model can be very slow to overfit. The advice is to keep adding trees until no further improvement is observed, _n_estimators_ in python. </br>
+
 • Number of samples: Tree is fitted on the random subset of the samples. _sub_sample_ </br>
+
 • Number of Features: Number of features used by each tree and specified by _max_features_ </br>
+
 • Learning Rate" Controls the amount of contribution that each model has on the ensemble prediction. Smaller rate requires more decision trees while large rate require small value. _learning_rate_ </br>
 
 (2) Weight Updates
@@ -57,9 +65,40 @@ The leaf weight values of the trees can be regularized using popular regularizat
 
 ***
 ## XGBoost
-XGBoost is a more regularized form of Gradient Boosting, XGBoost uses advanced regularization (L1 & L2), which improves model generalization capabilities. Faster and better model performance.
+XGBoost is a more regularized form of Gradient Boosting, XGBoost uses advanced regularization (L1 & L2), which improves model generalization capabilities. Faster and better model performance. </br>
 
+Feature Importance: Built in function plot_importance, the evaluation metric is f-score, which simply sums up how many times each feature is split on. 
 
+•	learning_rate: In each boosting step, this values shrinks the weight of new feature, preventing overfitting or a local minimum. The value should between 0 and 1. </br>
+
+•	max_depth: The maximum depth of a tree. Greater the depth and the greater the complexity of the model and more easy to overfit. </br>
+
+•	n_estimators: Number of trees in the ensemble. </br>
+
+•	gamma: Regularization term and it's related to the complexity of the model. It is the minimum loss necessary of occur a split in a leaf. </br>
+
+•	colsample_bytree: Represents the fraction of columns to be subsampled. Re;ated to the speed of the algorithm and prevent overfitting. </br>
+
+•	lambda: L2 regularization. This encourages smaller weights. </br>
+
+•	alpha: L1 regularization. This also encourages smaller weights. </br>
+
+### Imbalanced data 
+Difference between DMatrix's weight and `scale_pos_weight` </br>
+
+`scale_pos_weight` is a float (i.e. single value), which allows you to adjust the classification threshold. I.e. to tune the model's tendency to predict positive or negative values across the entire dataset.</br>
+
+DMatrix's weight argument requires an array-like object and is used to specify a "Weight for each instance". This allows more control over how the classifier makes its predictions, as each weight is used to scale the loss function that is being optimised.</br>
+
+**Scenario One**
+
+In this scenario, our dataset consists of images either with a cat or with no animal at all. The dataset is imbalanced, with most images having no animal. Here we might use scale_pos_weight to increase the weighting of positive (with cats) images to deal with the imbalance.</br>
+
+In general, we tend to set scale_pos_weight proportionally to the imbalance. For example, if 20% of the images contain a cat, we would set scale_positive_weight to 4. (Of course this hyperparameter should be set empirically, e.g. using cross-validation, but this is a sensible initial/default value.)</br>
+
+**Scenario Two**
+
+In this scenario, our dataset is again imbalanced with similar proportions of cat vs 'no-cat' images. However, this time it also includes some images with a dog. Potentially, our classifier may tend to mistake dogs for cats, decreasing its performance, with a higher false positive rate. In this instance, we may wish to specify per-sample weights using DMatrix's weight argument. In effect we would attempt to penalise dog-related false positives, which would not be possible with a single factor applied to the overall classification threshold. </br>
 
 ***
 ## LightGBM
