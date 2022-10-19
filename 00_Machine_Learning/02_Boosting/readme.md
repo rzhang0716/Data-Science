@@ -83,6 +83,23 @@ Feature Importance: Built in function plot_importance, the evaluation metric is 
 
 •	alpha: L1 regularization. This also encourages smaller weights. </br>
 
+### Imbalanced data 
+Difference between `sample_weights` and `scale_pos_weight` </br>
+
+`scale_pos_weight` is a float (i.e. single value), which allows you to adjust the classification threshold. I.e. to tune the model's tendency to predict positive or negative values across the entire dataset.</br>
+
+DMatrix's weight argument requires an array-like object and is used to specify a "Weight for each instance". This allows more control over how the classifier makes its predictions, as each weight is used to scale the loss function that is being optimised.</br>
+
+**Scenario One**
+
+In this scenario, our dataset consists of images either with a cat or with no animal at all. The dataset is imbalanced, with most images having no animal. Here we might use scale_pos_weight to increase the weighting of positive (with cats) images to deal with the imbalance.</br>
+
+In general, we tend to set scale_pos_weight proportionally to the imbalance. For example, if 20% of the images contain a cat, we would set scale_positive_weight to 4. (Of course this hyperparameter should be set empirically, e.g. using cross-validation, but this is a sensible initial/default value.)</br>
+
+**Scenario Two**
+
+In this scenario, our dataset is again imbalanced with similar proportions of cat vs 'no-cat' images. However, this time it also includes some images with a dog. Potentially, our classifier may tend to mistake dogs for cats, decreasing its performance, with a higher false positive rate. In this instance, we may wish to specify per-sample weights using DMatrix's weight argument. In effect we would attempt to penalise dog-related false positives, which would not be possible with a single factor applied to the overall classification threshold. </br>
+
 ***
 ## LightGBM
 Light Gradient Boosted Machine, or LightGBM for short, is an open-source implementation of gradient boosting designed to be efficient and perhaps more effective than other implementations. </br>
