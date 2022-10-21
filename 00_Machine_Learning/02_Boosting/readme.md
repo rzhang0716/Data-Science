@@ -122,7 +122,7 @@ Besides the tree depth, number of trees, learning rate, **Boosting Type** is ano
 ***
 ## CatBoost
 
-CatBoost's name is from "Category" and "Boosting", widely used in recommendation systems, search ranking, self-driving cars, forecasting, and virtual assistants. 
+CatBoost's name is from "Category" and "Boosting", widely used in recommendation systems, search ranking, self-driving cars, forecasting, and virtual assistants. Don't use one-hot encoding during preprocessing data for CatBoost, as CatBoost will handle categorical variables automatically during training. 
 
 ### 1. Key Features of CatBoost
 (1) Symmetric trees: CatBoost build symmetric (balanced) trees, unlike XGBoost and LightGBM. In every step, leaves from the previous tree are split using the same condition. The feature-split pair that accounts for the lowest loss is selected and used for all the level's nodes. This can used as regularization to control overfitting due to the structure serves. 
