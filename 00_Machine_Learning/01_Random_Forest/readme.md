@@ -1,5 +1,7 @@
 <h1>Random Forest</h1>
 
+Cross validation is important with small data, multiple cross validation with different train/test split is also important to imporve the stable/predicatble or the model. 
+
 ## Random Forest Concept
 1.	Is Random Forest performing well for imbalanced data? </br>
 The Random Forest model is built on decision trees and decision trees are sensitive to class imbalance. Each tree is built on a “bag” and each bag is a uniform random sample from the data (with replacement). Therefore, each tree will be biased in the same direction and magnitude by class imbalance. 
