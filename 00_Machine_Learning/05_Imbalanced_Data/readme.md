@@ -102,3 +102,5 @@ The simplest approach is the use of a machine learning model to predict the prob
 MetaCost is a data preprocessing technique that relabels examples in the training dataset in order to minimize cost.  In MetaCost, first, a bagged ensemble of classifiers is fit on the training dataset in order to identify those examples that need to be relabeled, a transformed version of the dataset with relabeled examples is created, then the ensemble is discarded and the transformed dataset is used to train a classifier model. 
 
 
+## VII. Propensity Score Matching
+Porpensity score matching (PSM) is a statistical matching technique (used on prospective data) that attempts to estimate the effect of a treatment, policy, or other intervention by accounting for the covariates that predict receiving the treatment. It is the probability of treatment assignment conditional on observed baseline covariates.
