@@ -1,6 +1,6 @@
 # Personal Information
 - :school:  I graduated with a Ph.D. degree in Biochemistry and a Master degree in Statistics from :wolf: North Carolina State University.
-- :hospital:  I am currently working as a Data Scientist in Nemours Chirldren's Health (DuPont).
+- :hospital:  I am currently working as a Biostatistician in Nemours Chirldren's Health (DuPont).
 - :family_man_woman_girl:  I am living with my wife, :baby: our daugther,  :dog: Mochi and :cat2: Dobe in Greater Philadelphia.
 - :rainbow:  I have published 25+ abstracts and papers. 
 - :man_student:  I have SAS base programming 9.4 certificate.
